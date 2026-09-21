@@ -8,9 +8,9 @@ export function TopMerchants() {
   ];
 
   return (
-    <div className="flex h-full min-h-[350px] w-full flex-col rounded-xl border border-slate-200/60 bg-white p-6 shadow-[0_1px_2px_0_rgba(0,0,0,0.01)] dark:border-slate-800 dark:bg-slate-900">
+    <div className="flex h-full min-h-[350px] w-full flex-col rounded-xl border border-border/60 bg-white p-6 shadow-[0_1px_2px_0_rgba(0,0,0,0.01)] border-border bg-background">
       <div className="mb-6 flex items-center justify-between">
-        <h3 className="text-[16px] font-semibold text-slate-900 dark:text-white">Top Merchants</h3>
+        <h3 className="text-[16px] font-semibold text-foreground dark:text-white">Top Merchants</h3>
         <button className="text-[13px] font-medium text-primary hover:text-primary/80 transition-colors">
           View All
         </button>
@@ -24,19 +24,19 @@ export function TopMerchants() {
             </div>
             <div className="flex flex-1 flex-col overflow-hidden">
               <div className="flex items-center justify-between">
-                <span className="truncate text-[14px] font-semibold text-slate-900 dark:text-white">{m.name}</span>
-                <span className="text-[13px] font-semibold tabular-nums text-slate-900 dark:text-white">{m.volume}</span>
+                <span className="truncate text-[14px] font-semibold text-foreground dark:text-white">{m.name}</span>
+                <span className="text-[13px] font-semibold tabular-nums text-foreground dark:text-white">{m.volume}</span>
               </div>
               <div className="flex items-center justify-between mt-0.5">
-                <span className="text-[12px] text-slate-500">MID: {m.mid}</span>
+                <span className="text-[12px] text-muted-foreground">MID: {m.mid}</span>
                 <div className="flex items-center gap-2">
-                  <div className="h-1.5 w-16 overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800">
+                  <div className="h-1.5 w-16 overflow-hidden rounded-full bg-muted bg-card">
                     <div 
                       className={`h-full rounded-full ${m.rate >= 95 ? "bg-emerald-500" : "bg-amber-500"}`}
                       style={{ width: `${m.rate}%` }}
                     />
                   </div>
-                  <span className="text-[12px] font-medium tabular-nums text-slate-500">{m.rate}%</span>
+                  <span className="text-[12px] font-medium tabular-nums text-muted-foreground">{m.rate}%</span>
                 </div>
               </div>
             </div>

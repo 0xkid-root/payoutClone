@@ -24,19 +24,19 @@ const data = [
 
 export function PayoutVolumeChart() {
   return (
-    <div className="flex h-full min-h-[350px] w-full flex-col rounded-xl border border-slate-200/60 bg-white p-6 shadow-[0_1px_2px_0_rgba(0,0,0,0.01)] dark:border-slate-800 dark:bg-slate-900">
+    <div className="flex h-full min-h-[350px] w-full flex-col rounded-xl border border-border/60 bg-white p-6 shadow-[0_1px_2px_0_rgba(0,0,0,0.01)] border-border bg-background">
       <div className="mb-6 flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <h3 className="text-[16px] font-semibold text-slate-900 dark:text-white">Payout Volume Overview (Last 7 Days)</h3>
-          <Info className="h-4 w-4 text-slate-400" />
+          <h3 className="text-[16px] font-semibold text-foreground dark:text-white">Payout Volume Overview (Last 7 Days)</h3>
+          <Info className="h-4 w-4 text-muted-foreground" />
         </div>
         <div className="flex items-center gap-2">
-          <button className="flex items-center gap-1 rounded-md border border-slate-200 bg-white px-3 py-1.5 text-[13px] font-medium text-slate-600 shadow-sm dark:border-slate-800 dark:bg-slate-900 dark:text-slate-300">
+          <button className="flex items-center gap-1 rounded-md border border-border bg-white px-3 py-1.5 text-[13px] font-medium text-slate-600 shadow-sm border-border bg-background dark:text-slate-300">
             Amount (₹)
             <ChevronDown className="h-3 w-3" />
           </button>
-          <div className="flex items-center rounded-md border border-slate-200 bg-white p-0.5 dark:border-slate-800 dark:bg-slate-900">
-            <button className="flex items-center gap-1 rounded px-2.5 py-1 text-[13px] font-semibold text-slate-900 dark:text-white">
+          <div className="flex items-center rounded-md border border-border bg-white p-0.5 border-border bg-background">
+            <button className="flex items-center gap-1 rounded px-2.5 py-1 text-[13px] font-semibold text-foreground dark:text-white">
               7D
               <ChevronDown className="h-3 w-3" />
             </button>

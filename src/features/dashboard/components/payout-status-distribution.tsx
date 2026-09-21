@@ -13,17 +13,17 @@ export function PayoutStatusDistribution() {
   const total = 12547;
 
   return (
-    <div className="flex h-full min-h-[350px] w-full flex-col rounded-xl border border-slate-200/60 bg-white p-6 shadow-[0_1px_2px_0_rgba(0,0,0,0.01)] dark:border-slate-800 dark:bg-slate-900">
+    <div className="flex h-full min-h-[350px] w-full flex-col rounded-xl border border-border/60 bg-white p-6 shadow-[0_1px_2px_0_rgba(0,0,0,0.01)] border-border bg-background">
       <div className="mb-2">
-        <h3 className="text-[16px] font-semibold text-slate-900 dark:text-white">Payout Status Distribution</h3>
+        <h3 className="text-[16px] font-semibold text-foreground dark:text-white">Payout Status Distribution</h3>
       </div>
       
       <div className="relative flex-1">
         <div className="absolute inset-0 flex items-center justify-center flex-col pointer-events-none">
-          <span className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white tabular-nums">
+          <span className="text-2xl font-bold tracking-tight text-foreground dark:text-white tabular-nums">
             {total.toLocaleString()}
           </span>
-          <span className="text-[12px] font-medium text-slate-500">Total Payouts</span>
+          <span className="text-[12px] font-medium text-muted-foreground">Total Payouts</span>
         </div>
         
         <ResponsiveContainer width="100%" height="100%">
@@ -66,8 +66,8 @@ export function PayoutStatusDistribution() {
               <span className="font-medium text-slate-700 dark:text-slate-300">{item.name}</span>
             </div>
             <div className="flex items-center gap-3">
-              <span className="font-semibold tabular-nums text-slate-900 dark:text-white">{item.value.toLocaleString()}</span>
-              <span className="w-10 text-right font-medium tabular-nums text-slate-500">({item.percent}%)</span>
+              <span className="font-semibold tabular-nums text-foreground dark:text-white">{item.value.toLocaleString()}</span>
+              <span className="w-10 text-right font-medium tabular-nums text-muted-foreground">({item.percent}%)</span>
             </div>
           </div>
         ))}
