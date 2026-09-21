@@ -11,10 +11,10 @@ export function ActivityTab({ merchant }: { merchant: Merchant }) {
   ];
 
   return (
-    <div className="grid grid-cols-1 border-t border-slate-100 dark:border-slate-800">
+    <div className="grid grid-cols-1 border-t border-slate-100 border-border">
       <div>
-        <div className="px-5 py-4 bg-slate-50/50 dark:bg-slate-900/20 border-b border-slate-100 dark:border-slate-800">
-          <h3 className="text-sm font-semibold text-slate-900 dark:text-white">Recent Activity</h3>
+        <div className="px-5 py-4 bg-slate-50/50 bg-background/20 border-b border-slate-100 border-border">
+          <h3 className="text-sm font-semibold text-foreground dark:text-white">Recent Activity</h3>
         </div>
         <div className="p-6">
           <div className="space-y-6">
@@ -23,13 +23,13 @@ export function ActivityTab({ merchant }: { merchant: Merchant }) {
                 <div className="flex flex-col items-center">
                   <div className="h-2.5 w-2.5 rounded-full bg-primary mt-1.5" />
                   {i !== activities.length - 1 && (
-                    <div className="h-full w-px bg-slate-200 my-1 dark:bg-slate-800" />
+                    <div className="h-full w-px bg-slate-200 my-1 bg-card" />
                   )}
                 </div>
                 <div className="flex flex-col pb-6">
-                  <span className="text-sm font-semibold text-slate-900 dark:text-white">{activity.title}</span>
-                  <span className="text-sm text-slate-600 mt-0.5 dark:text-slate-400">{activity.desc}</span>
-                  <span className="text-xs text-slate-400 mt-1 font-medium">{activity.time}</span>
+                  <span className="text-sm font-semibold text-foreground dark:text-white">{activity.title}</span>
+                  <span className="text-sm text-slate-600 mt-0.5 text-muted-foreground">{activity.desc}</span>
+                  <span className="text-xs text-muted-foreground mt-1 font-medium">{activity.time}</span>
                 </div>
               </div>
             ))}

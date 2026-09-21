@@ -40,10 +40,10 @@ export const merchantColumns: ColumnDef<Merchant>[] = [
     header: "Merchant",
     cell: ({ row }) => (
       <div className="flex flex-col">
-        <span className="font-semibold text-slate-900 dark:text-white whitespace-nowrap">
+        <span className="font-semibold text-foreground dark:text-white whitespace-nowrap">
           {row.original.businessName}
         </span>
-        <span className="text-[12px] font-medium text-slate-500 mt-0.5">
+        <span className="text-[12px] font-medium text-muted-foreground mt-0.5">
           {row.original.merchantCode}
         </span>
       </div>
@@ -107,7 +107,7 @@ export const merchantColumns: ColumnDef<Merchant>[] = [
         month: "short",
         year: "numeric",
       });
-      return <span className="text-[13px] font-medium text-slate-600 dark:text-slate-400">{formatted}</span>;
+      return <span className="text-[13px] font-medium text-slate-600 text-muted-foreground">{formatted}</span>;
     },
   },
   {

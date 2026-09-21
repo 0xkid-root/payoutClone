@@ -51,21 +51,21 @@ export function BusinessDocumentsTab({ merchant }: { merchant: Merchant }) {
   };
 
   return (
-    <Card className="shadow-none border-slate-200/60 dark:border-slate-800">
-      <CardHeader className="pb-3 border-b border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/20">
+    <Card className="shadow-none border-border/60 border-border">
+      <CardHeader className="pb-3 border-b border-slate-100 border-border bg-slate-50/50 bg-background/20">
         <CardTitle className="text-sm font-semibold text-slate-700 dark:text-slate-300">Business Documents</CardTitle>
       </CardHeader>
       <CardContent className="p-0">
         <div className="divide-y divide-slate-100 dark:divide-slate-800">
           {documents.map((doc) => (
-            <div key={doc.id} className="p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-slate-50/30 transition-colors dark:hover:bg-slate-900/10">
+            <div key={doc.id} className="p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-slate-50/30 transition-colors dark:hover:bg-background/10">
               <div className="flex items-center gap-3">
                 <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-blue-50 text-blue-600 dark:bg-blue-900/20 dark:text-blue-400">
                   <FileText className="h-5 w-5" />
                 </div>
                 <div className="flex flex-col">
-                  <h4 className="text-sm font-semibold text-slate-900 dark:text-white">{doc.name}</h4>
-                  <div className="flex items-center gap-2 mt-0.5 text-[12px] text-slate-500">
+                  <h4 className="text-sm font-semibold text-foreground dark:text-white">{doc.name}</h4>
+                  <div className="flex items-center gap-2 mt-0.5 text-[12px] text-muted-foreground">
                     <span>{doc.type}</span>
                     <span className="hidden sm:inline">•</span>
                     <span className="hidden sm:inline">{doc.fileType}</span>
@@ -79,10 +79,10 @@ export function BusinessDocumentsTab({ merchant }: { merchant: Merchant }) {
               <div className="flex items-center gap-4 sm:justify-end">
                 <StatusBadge status={doc.status} />
                 <div className="flex items-center gap-1">
-                  <Button variant="ghost" size="icon" className="h-8 w-8 text-slate-500 hover:text-slate-900">
+                  <Button variant="ghost" size="icon" className="h-8 w-8 text-muted-foreground hover:text-foreground">
                     <Eye className="h-4 w-4" />
                   </Button>
-                  <Button variant="ghost" size="icon" className="h-8 w-8 text-slate-500 hover:text-slate-900">
+                  <Button variant="ghost" size="icon" className="h-8 w-8 text-muted-foreground hover:text-foreground">
                     <Download className="h-4 w-4" />
                   </Button>
                 </div>
