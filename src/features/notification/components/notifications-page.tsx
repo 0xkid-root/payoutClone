@@ -52,7 +52,7 @@ export default function NotificationsPage() {
         actions={
           <Button
             variant="outline"
-            className="h-9 px-4 rounded-xl border-slate-200/60 bg-white shadow-[0_1px_2px_0_rgba(0,0,0,0.01)] hover:bg-slate-50 dark:border-slate-800 dark:bg-slate-900 dark:hover:bg-slate-800"
+            className="h-9 px-4 rounded-xl border-border/60 bg-white shadow-[0_1px_2px_0_rgba(0,0,0,0.01)] hover:bg-slate-50 border-border bg-background dark:hover:bg-card"
           >
             <CheckCircle2 className="mr-2 h-4 w-4 text-emerald-500" />
             Mark all as read
@@ -60,9 +60,9 @@ export default function NotificationsPage() {
         }
       />
 
-      <div className="flex flex-col rounded-xl border border-slate-200/60 bg-white shadow-[0_1px_2px_0_rgba(0,0,0,0.01)] dark:border-slate-800 dark:bg-slate-900 overflow-hidden">
-        <div className="px-6 py-4 border-b border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/50">
-          <h3 className="text-[15px] font-semibold text-slate-900 dark:text-white">
+      <div className="flex flex-col rounded-xl border border-border/60 bg-white shadow-[0_1px_2px_0_rgba(0,0,0,0.01)] border-border bg-background overflow-hidden">
+        <div className="px-6 py-4 border-b border-slate-100 border-border bg-slate-50/50 bg-background/50">
+          <h3 className="text-[15px] font-semibold text-foreground dark:text-white">
             Recent Alerts
           </h3>
         </div>
@@ -70,7 +70,7 @@ export default function NotificationsPage() {
           {alerts.map((alert, i) => (
             <div
               key={i}
-              className={`flex items-start gap-4 p-5 sm:p-6 transition-colors hover:bg-slate-50/80 dark:hover:bg-slate-800/30 ${i !== alerts.length - 1 ? "border-b border-slate-100 dark:border-slate-800" : ""}`}
+              className={`flex items-start gap-4 p-5 sm:p-6 transition-colors hover:bg-slate-50/80 dark:hover:bg-card/30 ${i !== alerts.length - 1 ? "border-b border-slate-100 border-border" : ""}`}
             >
               <div
                 className={`mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full ${alert.bg} ${alert.color}`}
@@ -79,21 +79,21 @@ export default function NotificationsPage() {
               </div>
               <div className="flex flex-1 flex-col">
                 <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1 sm:gap-4">
-                  <span className="text-[14px] font-semibold text-slate-900 dark:text-white">
+                  <span className="text-[14px] font-semibold text-foreground dark:text-white">
                     {alert.title}
                   </span>
-                  <span className="text-[12px] font-medium text-slate-500 whitespace-nowrap">
+                  <span className="text-[12px] font-medium text-muted-foreground whitespace-nowrap">
                     {alert.time}
                   </span>
                 </div>
-                <p className="mt-1 text-[13px] text-slate-600 dark:text-slate-400 leading-relaxed">
+                <p className="mt-1 text-[13px] text-slate-600 text-muted-foreground leading-relaxed">
                   {alert.desc}
                 </p>
                 <div className="mt-3.5 flex gap-2">
                   <Button
                     variant="outline"
                     size="sm"
-                    className="h-8 px-3 text-[12px] font-medium rounded-lg border-slate-200/60 shadow-none dark:border-slate-700"
+                    className="h-8 px-3 text-[12px] font-medium rounded-lg border-border/60 shadow-none border-border"
                   >
                     View Details
                   </Button>

@@ -12,7 +12,7 @@ export const getVanColumns = (onViewDetails: (van: VanAccount) => void): ColumnD
     header: "VAN Number",
     cell: ({ row }) => {
       const van = row.original.vanNumber;
-      return <div className="font-mono font-medium text-slate-900 dark:text-slate-100">{van}</div>;
+      return <div className="font-mono font-medium text-foreground text-foreground">{van}</div>;
     },
   },
   {
@@ -20,10 +20,10 @@ export const getVanColumns = (onViewDetails: (van: VanAccount) => void): ColumnD
     header: "Merchant",
     cell: ({ row }) => (
       <div className="flex flex-col">
-        <span className="font-semibold text-[13px] text-slate-900 dark:text-slate-100">
+        <span className="font-semibold text-[13px] text-foreground text-foreground">
           {row.original.merchantName}
         </span>
-        <span className="text-[12px] text-slate-500 font-mono">
+        <span className="text-[12px] text-muted-foreground font-mono">
           {row.original.merchantId}
         </span>
       </div>
@@ -37,7 +37,7 @@ export const getVanColumns = (onViewDetails: (van: VanAccount) => void): ColumnD
         <span className="font-medium text-[13px] text-slate-700 dark:text-slate-300">
           {row.original.provider}
         </span>
-        <span className="text-[12px] text-slate-500">
+        <span className="text-[12px] text-muted-foreground">
           {row.original.accountType}
         </span>
       </div>
@@ -51,7 +51,7 @@ export const getVanColumns = (onViewDetails: (van: VanAccount) => void): ColumnD
       let badgeClass = "";
       
       if (status === "Active") badgeClass = "border-emerald-200/50 bg-emerald-50 text-emerald-600 dark:bg-emerald-500/10";
-      else if (status === "Inactive") badgeClass = "border-slate-200/50 bg-slate-50 text-slate-600 dark:bg-slate-500/10";
+      else if (status === "Inactive") badgeClass = "border-border/50 bg-slate-50 text-slate-600 dark:bg-slate-500/10";
       else if (status === "Suspended") badgeClass = "border-red-200/50 bg-red-50 text-red-600 dark:bg-red-500/10";
       else badgeClass = "border-amber-200/50 bg-amber-50 text-amber-600 dark:bg-amber-500/10";
 
@@ -67,7 +67,7 @@ export const getVanColumns = (onViewDetails: (van: VanAccount) => void): ColumnD
     header: "Assigned On",
     cell: ({ row }) => {
       const date = new Date(row.original.assignedAt);
-      return <div className="text-[13px] text-slate-600 dark:text-slate-400">{date.toLocaleDateString("en-GB")}</div>;
+      return <div className="text-[13px] text-slate-600 text-muted-foreground">{date.toLocaleDateString("en-GB")}</div>;
     },
   },
   {
@@ -75,7 +75,7 @@ export const getVanColumns = (onViewDetails: (van: VanAccount) => void): ColumnD
     header: "Last Activity",
     cell: ({ row }) => {
       const date = new Date(row.original.lastActivityAt);
-      return <div className="text-[13px] text-slate-600 dark:text-slate-400">{date.toLocaleDateString("en-GB")}</div>;
+      return <div className="text-[13px] text-slate-600 text-muted-foreground">{date.toLocaleDateString("en-GB")}</div>;
     },
   },
   {
@@ -85,7 +85,7 @@ export const getVanColumns = (onViewDetails: (van: VanAccount) => void): ColumnD
         <Button 
           variant="ghost" 
           size="sm" 
-          className="h-8 text-[13px] font-medium text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100"
+          className="h-8 text-[13px] font-medium text-slate-600 hover:text-foreground text-muted-foreground dark:hover:text-slate-100"
           onClick={() => onViewDetails(row.original)}
         >
           <Eye className="mr-2 h-4 w-4" />

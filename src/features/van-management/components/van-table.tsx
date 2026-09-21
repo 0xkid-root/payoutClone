@@ -48,10 +48,10 @@ export function VanTable({ onViewDetails }: VanTableProps) {
   };
 
   return (
-    <div className="flex flex-col gap-4 bg-white dark:bg-slate-900 rounded-xl border border-slate-200/60 dark:border-slate-800 shadow-[0_1px_2px_0_rgba(0,0,0,0.01)] p-6 h-full">
+    <div className="flex flex-col gap-4 bg-white bg-background rounded-xl border border-border/60 border-border shadow-[0_1px_2px_0_rgba(0,0,0,0.01)] p-6 h-full">
       <div className="flex flex-col sm:flex-row items-center gap-4 justify-between">
         <div className="relative w-full sm:w-96">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
           <Input 
             placeholder="Search VAN, merchant, merchant ID..." 
             className="pl-9 bg-slate-50/50 dark:bg-slate-950/50"

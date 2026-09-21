@@ -18,7 +18,7 @@ export function VanDetailsPage() {
   const { data: van, isLoading, error } = useVanQuery(id);
 
   if (isLoading) {
-    return <div className="p-8 text-center text-slate-500">Loading details...</div>;
+    return <div className="p-8 text-center text-muted-foreground">Loading details...</div>;
   }
 
   if (error || !van) {
@@ -32,8 +32,8 @@ export function VanDetailsPage() {
 
   const InfoRow = ({ label, value, monospace }: { label: string, value: string | React.ReactNode, monospace?: boolean }) => (
     <div className="flex flex-col gap-1">
-      <span className="text-xs font-medium text-slate-500">{label}</span>
-      <span className={`text-[13px] text-slate-900 dark:text-white ${monospace ? 'font-mono font-medium' : 'font-semibold'}`}>
+      <span className="text-xs font-medium text-muted-foreground">{label}</span>
+      <span className={`text-[13px] text-foreground dark:text-white ${monospace ? 'font-mono font-medium' : 'font-semibold'}`}>
         {value || "-"}
       </span>
     </div>
@@ -47,7 +47,7 @@ export function VanDetailsPage() {
         actions={
           <Button
             variant="outline"
-            className="bg-white shadow-sm dark:bg-slate-900 border-slate-200 dark:border-slate-800"
+            className="bg-white shadow-sm bg-background border-border border-border"
             onClick={() => router.back()}
           >
             <ArrowLeft className="mr-2 h-4 w-4" />
@@ -56,11 +56,11 @@ export function VanDetailsPage() {
         }
       />
 
-      <div className="rounded-[14px] border border-slate-200/60 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900 overflow-hidden flex flex-col p-6 gap-8">
+      <div className="rounded-[14px] border border-border/60 bg-white shadow-sm border-border bg-background overflow-hidden flex flex-col p-6 gap-8">
         
         {/* VAN Information */}
         <div className="space-y-4">
-          <h3 className="text-[13px] font-bold uppercase tracking-wider text-slate-500 border-b border-slate-200 dark:border-slate-800 pb-2">
+          <h3 className="text-[13px] font-bold uppercase tracking-wider text-muted-foreground border-b border-border border-border pb-2">
             VAN Information
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
@@ -73,7 +73,7 @@ export function VanDetailsPage() {
             <InfoRow label="Current Status" value={
               <span className={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-[11px] font-semibold ${
                 van.status === 'Active' ? 'border-emerald-200/50 bg-emerald-50 text-emerald-600 dark:bg-emerald-500/10' :
-                van.status === 'Inactive' ? 'border-slate-200/50 bg-slate-50 text-slate-600 dark:bg-slate-500/10' :
+                van.status === 'Inactive' ? 'border-border/50 bg-slate-50 text-slate-600 dark:bg-slate-500/10' :
                 van.status === 'Suspended' ? 'border-red-200/50 bg-red-50 text-red-600 dark:bg-red-500/10' :
                 'border-amber-200/50 bg-amber-50 text-amber-600 dark:bg-amber-500/10'
               }`}>
@@ -85,7 +85,7 @@ export function VanDetailsPage() {
 
         {/* Merchant Information */}
         <div className="space-y-4">
-          <h3 className="text-[13px] font-bold uppercase tracking-wider text-slate-500 border-b border-slate-200 dark:border-slate-800 pb-2">
+          <h3 className="text-[13px] font-bold uppercase tracking-wider text-muted-foreground border-b border-border border-border pb-2">
             Merchant Information
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -97,7 +97,7 @@ export function VanDetailsPage() {
 
         {/* Banking Information */}
         <div className="space-y-4">
-          <h3 className="text-[13px] font-bold uppercase tracking-wider text-slate-500 border-b border-slate-200 dark:border-slate-800 pb-2">
+          <h3 className="text-[13px] font-bold uppercase tracking-wider text-muted-foreground border-b border-border border-border pb-2">
             Banking Information
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -109,22 +109,22 @@ export function VanDetailsPage() {
 
         {/* Activity */}
         <div className="space-y-4">
-          <h3 className="text-[13px] font-bold uppercase tracking-wider text-slate-500 border-b border-slate-200 dark:border-slate-800 pb-2">
+          <h3 className="text-[13px] font-bold uppercase tracking-wider text-muted-foreground border-b border-border border-border pb-2">
             Recent Activity
           </h3>
           <div className="flex items-start gap-3">
             <div className="mt-1">
-              <Activity className="h-4 w-4 text-slate-400" />
+              <Activity className="h-4 w-4 text-muted-foreground" />
             </div>
             <div>
-              <p className="text-[13px] font-semibold text-slate-900 dark:text-white">Last Status Update</p>
-              <p className="text-[12px] text-slate-500">{new Date(van.lastActivityAt).toLocaleString('en-GB')}</p>
+              <p className="text-[13px] font-semibold text-foreground dark:text-white">Last Status Update</p>
+              <p className="text-[12px] text-muted-foreground">{new Date(van.lastActivityAt).toLocaleString('en-GB')}</p>
             </div>
           </div>
         </div>
 
         {/* Actions Footer */}
-        <div className="pt-6 mt-4 border-t border-slate-100 dark:border-slate-800 flex justify-end gap-3">
+        <div className="pt-6 mt-4 border-t border-slate-100 border-border flex justify-end gap-3">
           {van.status === 'Active' ? (
             <>
               <Button 
