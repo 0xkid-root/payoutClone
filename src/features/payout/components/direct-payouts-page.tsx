@@ -50,10 +50,10 @@ export function DirectPayoutsPage() {
     <div className="flex flex-col gap-6 p-6 max-w-7xl mx-auto w-full pb-10">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
-          <h1 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-slate-50">
+          <h1 className="text-2xl font-bold tracking-tight text-foreground text-foreground">
             Direct Payouts
           </h1>
-          <p className="text-sm text-slate-500 mt-1">
+          <p className="text-sm text-muted-foreground mt-1">
             Monitor and review all direct merchant payout transactions.
           </p>
         </div>
@@ -69,7 +69,7 @@ export function DirectPayoutsPage() {
         </div>
       </div>
 
-      <div className="flex flex-col bg-white dark:bg-slate-900 rounded-xl border border-slate-200/60 dark:border-slate-800 shadow-[0_1px_2px_0_rgba(0,0,0,0.01)] p-6">
+      <div className="flex flex-col bg-white bg-background rounded-xl border border-border/60 border-border shadow-[0_1px_2px_0_rgba(0,0,0,0.01)] p-6">
         <PayoutFilters
           searchQuery={globalFilter}
           onSearchChange={setGlobalFilter}

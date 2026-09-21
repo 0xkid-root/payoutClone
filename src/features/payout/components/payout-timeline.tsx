@@ -95,13 +95,13 @@ export function PayoutTimeline({ payout }: PayoutTimelineProps) {
                   step.isCompleted && !step.isError && "border-emerald-500 bg-emerald-500",
                   step.isCompleted && step.isError && "border-red-500 bg-red-500",
                   !step.isCompleted && step.isCurrent && "border-blue-500 bg-blue-500",
-                  !step.isCompleted && !step.isCurrent && "border-slate-200 bg-slate-100 dark:border-slate-800 dark:bg-slate-900"
+                  !step.isCompleted && !step.isCurrent && "border-border bg-muted border-border bg-background"
                 )}
               >
                 <Icon
                   className={cn(
                     "h-4 w-4",
-                    !step.isCompleted && !step.isCurrent && "text-slate-400"
+                    !step.isCompleted && !step.isCurrent && "text-muted-foreground"
                   )}
                 />
               </div>
@@ -109,7 +109,7 @@ export function PayoutTimeline({ payout }: PayoutTimelineProps) {
                 <div
                   className={cn(
                     "h-full w-[2px] min-h-[32px] my-2",
-                    step.isCompleted ? "bg-emerald-500" : "bg-slate-200 dark:bg-slate-800"
+                    step.isCompleted ? "bg-emerald-500" : "bg-slate-200 bg-card"
                   )}
                 />
               )}
@@ -118,13 +118,13 @@ export function PayoutTimeline({ payout }: PayoutTimelineProps) {
               <p
                 className={cn(
                   "text-sm font-semibold",
-                  step.isCurrent ? "text-slate-900 dark:text-slate-50" : "text-slate-600 dark:text-slate-400"
+                  step.isCurrent ? "text-foreground text-foreground" : "text-slate-600 text-muted-foreground"
                 )}
               >
                 {step.title}
               </p>
               {step.time && (
-                <p className="text-xs text-slate-500 dark:text-slate-500 mt-1">
+                <p className="text-xs text-muted-foreground text-muted-foreground mt-1">
                   {step.time}
                 </p>
               )}

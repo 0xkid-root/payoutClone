@@ -22,7 +22,7 @@ export function PayoutStatusBadge({ status, className }: PayoutStatusBadgeProps)
       case "Retry Queued":
         return "bg-amber-500/15 text-amber-600 dark:text-amber-400 hover:bg-amber-500/25";
       default:
-        return "bg-slate-500/15 text-slate-600 dark:text-slate-400";
+        return "bg-slate-500/15 text-slate-600 text-muted-foreground";
     }
   };
 

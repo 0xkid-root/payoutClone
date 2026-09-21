@@ -61,7 +61,7 @@ export function PayoutTable({
       cell: ({ row }) => (
         <div className="flex flex-col">
           <span className="font-medium">{row.original.merchantName}</span>
-          <span className="text-xs text-slate-500">{row.original.merchantId}</span>
+          <span className="text-xs text-muted-foreground">{row.original.merchantId}</span>
         </div>
       ),
     },
@@ -71,7 +71,7 @@ export function PayoutTable({
       cell: ({ row }) => (
         <div className="flex flex-col">
           <span className="font-medium">{row.original.beneficiaryName}</span>
-          <span className="text-xs text-slate-500">{row.original.beneficiaryId || "Direct"}</span>
+          <span className="text-xs text-muted-foreground">{row.original.beneficiaryId || "Direct"}</span>
         </div>
       ),
     },
@@ -88,7 +88,7 @@ export function PayoutTable({
       accessorKey: "fee",
       header: () => <div className="text-right">Fee</div>,
       cell: ({ row }) => (
-        <div className="text-right text-slate-500">
+        <div className="text-right text-muted-foreground">
           {formatINR(row.original.fee)}
         </div>
       ),
@@ -116,7 +116,7 @@ export function PayoutTable({
       accessorKey: "requestedAt",
       header: "Requested On",
       cell: ({ row }) => (
-        <span className="text-sm text-slate-500">
+        <span className="text-sm text-muted-foreground">
           {format(new Date(row.original.requestedAt), "dd MMM yyyy")}
         </span>
       ),
@@ -128,7 +128,7 @@ export function PayoutTable({
 
         return (
           <DropdownMenu>
-            <DropdownMenuTrigger className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors hover:bg-slate-100 hover:text-slate-900 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-slate-950 disabled:pointer-events-none disabled:opacity-50 dark:hover:bg-slate-800 dark:hover:text-slate-50 dark:focus-visible:ring-slate-300 h-8 w-8 p-0">
+            <DropdownMenuTrigger className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors hover:bg-muted hover:text-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-slate-950 disabled:pointer-events-none disabled:opacity-50 dark:hover:bg-card dark:hover:text-slate-50 dark:focus-visible:ring-slate-300 h-8 w-8 p-0">
               <span className="sr-only">Open menu</span>
               <MoreHorizontal className="h-4 w-4" />
             </DropdownMenuTrigger>

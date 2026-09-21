@@ -44,7 +44,7 @@ export function PayoutFilters({
 
       <div className="flex items-center gap-3">
         <Select value={statusFilter} onValueChange={(val) => onStatusChange(val || "All")}>
-          <SelectTrigger className="w-[140px] h-9 text-[13px] bg-white dark:bg-slate-900">
+          <SelectTrigger className="w-[140px] h-9 text-[13px] bg-white bg-background">
             <SelectValue placeholder="Status" />
           </SelectTrigger>
           <SelectContent>
@@ -60,7 +60,7 @@ export function PayoutFilters({
         </Select>
 
         <Select value={methodFilter} onValueChange={(val) => onMethodChange(val || "All")}>
-          <SelectTrigger className="w-[140px] h-9 text-[13px] bg-white dark:bg-slate-900">
+          <SelectTrigger className="w-[140px] h-9 text-[13px] bg-white bg-background">
             <SelectValue placeholder="Method" />
           </SelectTrigger>
           <SelectContent>
@@ -76,7 +76,7 @@ export function PayoutFilters({
           <Button
             variant="ghost"
             onClick={handleClearFilters}
-            className="text-slate-500 hover:text-slate-900 dark:hover:text-slate-100 h-9 px-2 text-[13px]"
+            className="text-muted-foreground hover:text-foreground dark:hover:text-slate-100 h-9 px-2 text-[13px]"
           >
             <X className="mr-2 h-4 w-4" />
             Clear
