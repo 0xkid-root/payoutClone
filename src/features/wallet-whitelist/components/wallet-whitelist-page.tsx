@@ -37,7 +37,7 @@ export function WalletWhitelistPage() {
         actions={
           <Button
             variant="outline"
-            className="bg-white shadow-sm dark:bg-slate-900 border-slate-200 dark:border-slate-800"
+            className="bg-white shadow-sm bg-background border-border border-border"
             onClick={handleRefresh}
             disabled={isRefreshing}
           >
@@ -47,9 +47,9 @@ export function WalletWhitelistPage() {
         }
       />
 
-      <div className="rounded-[14px] border border-slate-200/60 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900 overflow-hidden flex flex-col">
+      <div className="rounded-[14px] border border-border/60 bg-white shadow-sm border-border bg-background overflow-hidden flex flex-col">
         {/* Tabs Header */}
-        <div className="border-b border-slate-200/60 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/50 p-2 flex overflow-x-auto scrollbar-hide">
+        <div className="border-b border-border/60 border-border bg-slate-50/50 bg-background/50 p-2 flex overflow-x-auto scrollbar-hide">
           {tabs.map((tab) => {
             const isActive = activeTab === tab.id;
             const Icon = tab.icon;
@@ -59,11 +59,11 @@ export function WalletWhitelistPage() {
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
                 className={`relative flex items-center px-4 py-2.5 rounded-lg text-[13px] font-medium transition-all ${isActive
-                    ? "bg-white shadow-sm border border-slate-200/60 text-primary dark:bg-slate-800 dark:border-slate-700 dark:text-white"
-                    : "text-slate-500 hover:bg-slate-100/50 dark:text-slate-400 dark:hover:bg-slate-800/30"
+                    ? "bg-white shadow-sm border border-border/60 text-primary bg-card border-border dark:text-white"
+                    : "text-muted-foreground hover:bg-muted/50 text-muted-foreground dark:hover:bg-card/30"
                   }`}
               >
-                <Icon className={`mr-2 h-4 w-4 ${isActive ? "text-primary" : "text-slate-400"}`} />
+                <Icon className={`mr-2 h-4 w-4 ${isActive ? "text-primary" : "text-muted-foreground"}`} />
                 <span className="whitespace-nowrap">{tab.label}</span>
               </button>
             );
@@ -71,7 +71,7 @@ export function WalletWhitelistPage() {
         </div>
 
         {/* Tab Content */}
-        <div className="bg-white dark:bg-slate-900 min-h-[400px]">
+        <div className="bg-white bg-background min-h-[400px]">
           {activeTab === "pending" && <PendingTab />}
           {activeTab === "approved" && <ApprovedTab />}
           {activeTab === "rejected" && <RejectedTab />}

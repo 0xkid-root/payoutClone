@@ -49,7 +49,7 @@ export function WalletDashboardPage() {
         description="Monitor system-wide wallet balances, transaction flows, and pending actions."
         actions={
           <div className="flex items-center gap-3">
-            <Button variant="outline" className="bg-white shadow-sm dark:bg-slate-900 border-slate-200 dark:border-slate-800">
+            <Button variant="outline" className="bg-white shadow-sm bg-background border-border border-border">
               <Download className="mr-2 h-4 w-4" />
               Export Report
             </Button>
@@ -67,7 +67,7 @@ export function WalletDashboardPage() {
       <div className="grid gap-5 sm:grid-cols-1 md:grid-cols-3">
         {statsLoading ? (
           Array(3).fill(0).map((_, i) => (
-            <div key={i} className="h-32 rounded-xl bg-slate-100 dark:bg-slate-800 animate-pulse" />
+            <div key={i} className="h-32 rounded-xl bg-muted bg-card animate-pulse" />
           ))
         ) : stats ? (
           <>
@@ -75,7 +75,7 @@ export function WalletDashboardPage() {
               title="Total Wallet Balance"
               value={formatCurrency(stats.totalBalance)}
               icon={Wallet}
-              iconColorClass="text-indigo-600"
+              iconColorClass="text-primary"
             />
             <StatCard
               title="Available Balance"
@@ -98,42 +98,42 @@ export function WalletDashboardPage() {
       <div className="grid gap-5 sm:grid-cols-1 md:grid-cols-3">
         {statsLoading ? (
           Array(3).fill(0).map((_, i) => (
-            <div key={i} className="h-32 rounded-xl bg-slate-100 dark:bg-slate-800 animate-pulse" />
+            <div key={i} className="h-32 rounded-xl bg-muted bg-card animate-pulse" />
           ))
         ) : stats ? (
           <>
-            <div className="rounded-xl border border-slate-200/60 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+            <div className="rounded-xl border border-border/60 bg-white p-6 shadow-sm border-border bg-background">
               <div className="flex items-center justify-between">
-                <p className="text-sm font-medium text-slate-500">Today's Credits</p>
+                <p className="text-sm font-medium text-muted-foreground">Today's Credits</p>
                 <ArrowDownCircle className="h-5 w-5 text-emerald-500" />
               </div>
               <div className="mt-2 flex items-baseline gap-2">
-                <p className="text-2xl font-bold text-slate-900 dark:text-white">{formatCurrency(stats.todaysCredits)}</p>
+                <p className="text-2xl font-bold text-foreground dark:text-white">{formatCurrency(stats.todaysCredits)}</p>
                 <span className={`text-xs font-medium ${stats.creditsComparison > 0 ? "text-emerald-600" : "text-red-600"}`}>
                   {stats.creditsComparison > 0 ? "+" : ""}{stats.creditsComparison}%
                 </span>
               </div>
             </div>
-            <div className="rounded-xl border border-slate-200/60 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+            <div className="rounded-xl border border-border/60 bg-white p-6 shadow-sm border-border bg-background">
               <div className="flex items-center justify-between">
-                <p className="text-sm font-medium text-slate-500">Today's Debits</p>
+                <p className="text-sm font-medium text-muted-foreground">Today's Debits</p>
                 <ArrowUpCircle className="h-5 w-5 text-red-500" />
               </div>
               <div className="mt-2 flex items-baseline gap-2">
-                <p className="text-2xl font-bold text-slate-900 dark:text-white">{formatCurrency(stats.todaysDebits)}</p>
+                <p className="text-2xl font-bold text-foreground dark:text-white">{formatCurrency(stats.todaysDebits)}</p>
                 <span className={`text-xs font-medium ${stats.debitsComparison > 0 ? "text-emerald-600" : "text-red-600"}`}>
                   {stats.debitsComparison > 0 ? "+" : ""}{stats.debitsComparison}%
                 </span>
               </div>
             </div>
-            <div className="rounded-xl border border-slate-200/60 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+            <div className="rounded-xl border border-border/60 bg-white p-6 shadow-sm border-border bg-background">
               <div className="flex items-center justify-between">
-                <p className="text-sm font-medium text-slate-500">Pending Requests</p>
-                <Clock className="h-5 w-5 text-indigo-500" />
+                <p className="text-sm font-medium text-muted-foreground">Pending Requests</p>
+                <Clock className="h-5 w-5 text-primary" />
               </div>
               <div className="mt-2 flex items-baseline gap-2">
-                <p className="text-2xl font-bold text-slate-900 dark:text-white">{stats.pendingRequests}</p>
-                <span className="text-xs font-medium text-slate-500">Awaiting approval</span>
+                <p className="text-2xl font-bold text-foreground dark:text-white">{stats.pendingRequests}</p>
+                <span className="text-xs font-medium text-muted-foreground">Awaiting approval</span>
               </div>
             </div>
           </>
@@ -142,10 +142,10 @@ export function WalletDashboardPage() {
 
       <div className="grid gap-6 lg:grid-cols-3">
         {/* Wallet Flow Chart */}
-        <div className="lg:col-span-2 rounded-xl border border-slate-200/60 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900 flex flex-col overflow-hidden">
-          <div className="p-5 border-b border-slate-100 dark:border-slate-800 flex justify-between items-center bg-slate-50/50 dark:bg-slate-900/50">
-            <h3 className="text-base font-semibold text-slate-900 dark:text-white">Wallet Flow</h3>
-            <select className="text-sm border-slate-200 rounded-md bg-white dark:bg-slate-900 dark:border-slate-700 py-1 px-2">
+        <div className="lg:col-span-2 rounded-xl border border-border/60 bg-white shadow-sm border-border bg-background flex flex-col overflow-hidden">
+          <div className="p-5 border-b border-slate-100 border-border flex justify-between items-center bg-slate-50/50 bg-background/50">
+            <h3 className="text-base font-semibold text-foreground dark:text-white">Wallet Flow</h3>
+            <select className="text-sm border-border rounded-md bg-white bg-background border-border py-1 px-2">
               <option>Last 10 Days</option>
               <option>Last 30 Days</option>
             </select>
@@ -169,11 +169,11 @@ export function WalletDashboardPage() {
                     </linearGradient>
                   </defs>
                   <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e2e8f0" />
-                  <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: '#64748b' }} dy={10} />
+                  <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: 'hsl(var(--muted-foreground))' }} dy={10} />
                   <YAxis 
                     axisLine={false} 
                     tickLine={false} 
-                    tick={{ fontSize: 12, fill: '#64748b' }} 
+                    tick={{ fontSize: 12, fill: 'hsl(var(--muted-foreground))' }} 
                     tickFormatter={(val) => `₹${(val / 1000000).toFixed(1)}M`}
                   />
                   <Tooltip 
@@ -190,20 +190,20 @@ export function WalletDashboardPage() {
 
         <div className="flex flex-col gap-6">
           {/* Status Distribution */}
-          <div className="rounded-xl border border-slate-200/60 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900 overflow-hidden">
-            <div className="p-4 border-b border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/50">
-              <h3 className="text-sm font-semibold text-slate-900 dark:text-white">Wallet Status</h3>
+          <div className="rounded-xl border border-border/60 bg-white shadow-sm border-border bg-background overflow-hidden">
+            <div className="p-4 border-b border-slate-100 border-border bg-slate-50/50 bg-background/50">
+              <h3 className="text-sm font-semibold text-foreground dark:text-white">Wallet Status</h3>
             </div>
             <div className="p-0">
-              <div className="flex justify-between items-center p-4 border-b border-slate-50 dark:border-slate-800/50">
+              <div className="flex justify-between items-center p-4 border-b border-slate-50 border-border/50">
                 <div className="flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-emerald-500"></div><span className="text-sm font-medium text-slate-700 dark:text-slate-300">Active</span></div>
                 <span className="text-sm font-bold">1,248</span>
               </div>
-              <div className="flex justify-between items-center p-4 border-b border-slate-50 dark:border-slate-800/50">
-                <div className="flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-indigo-500"></div><span className="text-sm font-medium text-slate-700 dark:text-slate-300">Frozen</span></div>
+              <div className="flex justify-between items-center p-4 border-b border-slate-50 border-border/50">
+                <div className="flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-primary"></div><span className="text-sm font-medium text-slate-700 dark:text-slate-300">Frozen</span></div>
                 <span className="text-sm font-bold">24</span>
               </div>
-              <div className="flex justify-between items-center p-4 border-b border-slate-50 dark:border-slate-800/50">
+              <div className="flex justify-between items-center p-4 border-b border-slate-50 border-border/50">
                 <div className="flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-amber-500"></div><span className="text-sm font-medium text-slate-700 dark:text-slate-300">Suspended</span></div>
                 <span className="text-sm font-bold">12</span>
               </div>
@@ -215,14 +215,14 @@ export function WalletDashboardPage() {
           </div>
 
           {/* Pending Actions */}
-          <div className="rounded-xl border border-slate-200/60 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900 overflow-hidden flex-1">
-            <div className="p-4 border-b border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/50">
-              <h3 className="text-sm font-semibold text-slate-900 dark:text-white">Pending Actions</h3>
+          <div className="rounded-xl border border-border/60 bg-white shadow-sm border-border bg-background overflow-hidden flex-1">
+            <div className="p-4 border-b border-slate-100 border-border bg-slate-50/50 bg-background/50">
+              <h3 className="text-sm font-semibold text-foreground dark:text-white">Pending Actions</h3>
             </div>
             <div className="p-2 space-y-1">
-              <Link href="/wallet/fund-requests" className="flex items-center justify-between p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors group">
+              <Link href="/wallet/fund-requests" className="flex items-center justify-between p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-card/50 transition-colors group">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-md bg-indigo-50 text-indigo-600 dark:bg-indigo-900/30 dark:text-indigo-400">
+                  <div className="p-2 rounded-md bg-indigo-50 text-primary dark:bg-indigo-900/30 dark:text-indigo-400">
                     <HandCoins className="h-4 w-4" />
                   </div>
                   <span className="text-sm font-medium text-slate-700 dark:text-slate-300">Fund Requests</span>
@@ -232,7 +232,7 @@ export function WalletDashboardPage() {
                 </div>
               </Link>
               
-              <Link href="/wallet/withdrawals" className="flex items-center justify-between p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors group">
+              <Link href="/wallet/withdrawals" className="flex items-center justify-between p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-card/50 transition-colors group">
                 <div className="flex items-center gap-3">
                   <div className="p-2 rounded-md bg-emerald-50 text-emerald-600 dark:bg-emerald-900/30 dark:text-emerald-400">
                     <CreditCard className="h-4 w-4" />
@@ -244,7 +244,7 @@ export function WalletDashboardPage() {
                 </div>
               </Link>
 
-              <Link href="/wallet/adjustments" className="flex items-center justify-between p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors group">
+              <Link href="/wallet/adjustments" className="flex items-center justify-between p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-card/50 transition-colors group">
                 <div className="flex items-center gap-3">
                   <div className="p-2 rounded-md bg-blue-50 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400">
                     <RefreshCw className="h-4 w-4" />
@@ -252,7 +252,7 @@ export function WalletDashboardPage() {
                   <span className="text-sm font-medium text-slate-700 dark:text-slate-300">Manual Adjustments</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <Badge variant="secondary" className="bg-slate-100 text-slate-700 hover:bg-slate-100 dark:bg-slate-800 dark:text-slate-300">8</Badge>
+                  <Badge variant="secondary" className="bg-muted text-slate-700 hover:bg-muted bg-card dark:text-slate-300">8</Badge>
                 </div>
               </Link>
             </div>
@@ -261,9 +261,9 @@ export function WalletDashboardPage() {
       </div>
 
       {/* Recent Activity Table */}
-      <div className="rounded-xl border border-slate-200/60 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900 overflow-hidden mt-2">
-        <div className="p-5 border-b border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/50 flex justify-between items-center">
-          <h3 className="text-base font-semibold text-slate-900 dark:text-white">Recent Wallet Activity</h3>
+      <div className="rounded-xl border border-border/60 bg-white shadow-sm border-border bg-background overflow-hidden mt-2">
+        <div className="p-5 border-b border-slate-100 border-border bg-slate-50/50 bg-background/50 flex justify-between items-center">
+          <h3 className="text-base font-semibold text-foreground dark:text-white">Recent Wallet Activity</h3>
           <Link href="/wallet/transactions">
             <Button variant="link" className="text-primary h-auto p-0 text-sm">View All &rarr;</Button>
           </Link>
@@ -272,42 +272,42 @@ export function WalletDashboardPage() {
         <div className="overflow-x-auto">
           <Table>
             <TableHeader className="bg-transparent">
-              <TableRow className="hover:bg-transparent border-slate-100 dark:border-slate-800">
-                <TableHead className="h-10 text-xs font-semibold uppercase tracking-wider text-slate-500">Transaction ID</TableHead>
-                <TableHead className="h-10 text-xs font-semibold uppercase tracking-wider text-slate-500">Merchant</TableHead>
-                <TableHead className="h-10 text-xs font-semibold uppercase tracking-wider text-slate-500">Type</TableHead>
-                <TableHead className="h-10 text-xs font-semibold uppercase tracking-wider text-slate-500 text-right">Amount</TableHead>
-                <TableHead className="h-10 text-xs font-semibold uppercase tracking-wider text-slate-500 text-right">Balance</TableHead>
-                <TableHead className="h-10 text-xs font-semibold uppercase tracking-wider text-slate-500">Status</TableHead>
-                <TableHead className="h-10 text-xs font-semibold uppercase tracking-wider text-slate-500">Date</TableHead>
+              <TableRow className="hover:bg-transparent border-slate-100 border-border">
+                <TableHead className="h-10 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Transaction ID</TableHead>
+                <TableHead className="h-10 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Merchant</TableHead>
+                <TableHead className="h-10 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Type</TableHead>
+                <TableHead className="h-10 text-xs font-semibold uppercase tracking-wider text-muted-foreground text-right">Amount</TableHead>
+                <TableHead className="h-10 text-xs font-semibold uppercase tracking-wider text-muted-foreground text-right">Balance</TableHead>
+                <TableHead className="h-10 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Status</TableHead>
+                <TableHead className="h-10 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Date</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               {txLoading ? (
                 <TableRow>
-                  <TableCell colSpan={7} className="h-32 text-center text-slate-500">Loading transactions...</TableCell>
+                  <TableCell colSpan={7} className="h-32 text-center text-muted-foreground">Loading transactions...</TableCell>
                 </TableRow>
               ) : transactions?.slice(0, 5).map((tx) => (
-                <TableRow key={tx.id} className="border-slate-100 dark:border-slate-800/50 hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors">
-                  <TableCell className="font-medium text-slate-900 dark:text-white text-[13px]">{tx.id}</TableCell>
-                  <TableCell className="text-slate-600 dark:text-slate-400 text-[13px] font-medium">{tx.merchantName}</TableCell>
+                <TableRow key={tx.id} className="border-slate-100 border-border/50 hover:bg-slate-50/50 dark:hover:bg-card/30 transition-colors">
+                  <TableCell className="font-medium text-foreground dark:text-white text-[13px]">{tx.id}</TableCell>
+                  <TableCell className="text-slate-600 text-muted-foreground text-[13px] font-medium">{tx.merchantName}</TableCell>
                   <TableCell>
                     <span className={`inline-flex items-center rounded-full border px-2 py-0.5 text-[11px] font-semibold ${
                       tx.type === 'Credit' ? 'border-emerald-200/50 bg-emerald-50 text-emerald-600 dark:bg-emerald-500/10' :
                       tx.type === 'Debit' ? 'border-red-200/50 bg-red-50 text-red-600 dark:bg-red-500/10' :
-                      'border-indigo-200/50 bg-indigo-50 text-indigo-600 dark:bg-indigo-500/10'
+                      'border-indigo-200/50 bg-indigo-50 text-primary dark:bg-primary/10'
                     }`}>
                       {tx.type}
                     </span>
                   </TableCell>
                   <TableCell className={`text-right text-[13px] font-semibold tabular-nums ${
                     tx.type === 'Credit' ? 'text-emerald-600' : 
-                    tx.type === 'Debit' || tx.type === 'Withdrawal' ? 'text-red-600' : 'text-slate-900 dark:text-white'
+                    tx.type === 'Debit' || tx.type === 'Withdrawal' ? 'text-red-600' : 'text-foreground dark:text-white'
                   }`}>
                     {tx.type === 'Credit' ? '+' : tx.type === 'Debit' || tx.type === 'Withdrawal' ? '-' : ''}
                     {formatCurrency(tx.amount)}
                   </TableCell>
-                  <TableCell className="text-right text-[13px] text-slate-600 dark:text-slate-400 tabular-nums">
+                  <TableCell className="text-right text-[13px] text-slate-600 text-muted-foreground tabular-nums">
                     {formatCurrency(tx.balanceAfter)}
                   </TableCell>
                   <TableCell>
@@ -319,7 +319,7 @@ export function WalletDashboardPage() {
                       {tx.status}
                     </span>
                   </TableCell>
-                  <TableCell className="text-[13px] text-slate-500">
+                  <TableCell className="text-[13px] text-muted-foreground">
                     {new Date(tx.createdAt).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })}
                   </TableCell>
                 </TableRow>

@@ -47,11 +47,11 @@ export function WalletTransactionsPage() {
         description="Monitor system-wide wallet transactions and transfer history."
         actions={
           <div className="flex gap-3">
-            <Button variant="outline" className="bg-white shadow-sm dark:bg-slate-900 border-slate-200 dark:border-slate-800">
+            <Button variant="outline" className="bg-white shadow-sm bg-background border-border border-border">
               <SlidersHorizontal className="mr-2 h-4 w-4" />
               Advanced Filters
             </Button>
-            <Button variant="outline" className="bg-white shadow-sm dark:bg-slate-900 border-slate-200 dark:border-slate-800">
+            <Button variant="outline" className="bg-white shadow-sm bg-background border-border border-border">
               <Download className="mr-2 h-4 w-4" />
               Export
             </Button>
@@ -59,15 +59,15 @@ export function WalletTransactionsPage() {
         }
       />
 
-      <div className="rounded-xl border border-slate-200/60 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900 overflow-hidden flex flex-col">
+      <div className="rounded-xl border border-border/60 bg-white shadow-sm border-border bg-background overflow-hidden flex flex-col">
         {/* Toolbar */}
-        <div className="p-4 border-b border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/50 flex flex-col sm:flex-row items-center gap-4 justify-between">
+        <div className="p-4 border-b border-slate-100 border-border bg-slate-50/50 bg-background/50 flex flex-col sm:flex-row items-center gap-4 justify-between">
           <div className="flex items-center gap-3 w-full sm:w-auto">
             <div className="relative w-full sm:w-80">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
               <Input 
                 placeholder="Search transaction ID, merchant, ref..." 
-                className="pl-9 bg-white dark:bg-slate-900"
+                className="pl-9 bg-white bg-background"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
@@ -75,8 +75,8 @@ export function WalletTransactionsPage() {
           </div>
           <div className="flex items-center gap-3 w-full sm:w-auto">
             <Select value={typeFilter} onValueChange={(val) => setTypeFilter(val || "all")}>
-              <SelectTrigger className="w-full sm:w-[150px] bg-white dark:bg-slate-900">
-                <Filter className="mr-2 h-4 w-4 text-slate-400" />
+              <SelectTrigger className="w-full sm:w-[150px] bg-white bg-background">
+                <Filter className="mr-2 h-4 w-4 text-muted-foreground" />
                 <SelectValue placeholder="Type" />
               </SelectTrigger>
               <SelectContent>
@@ -92,7 +92,7 @@ export function WalletTransactionsPage() {
               <Button 
                 variant="ghost" 
                 onClick={() => { setSearchTerm(""); setTypeFilter("all"); }}
-                className="text-slate-500"
+                className="text-muted-foreground"
               >
                 Clear
               </Button>
@@ -104,66 +104,66 @@ export function WalletTransactionsPage() {
         <div className="overflow-x-auto">
           <Table>
             <TableHeader className="bg-transparent">
-              <TableRow className="hover:bg-transparent border-slate-100 dark:border-slate-800">
-                <TableHead className="h-11 px-5 text-xs font-semibold uppercase tracking-wider text-slate-500">Transaction ID</TableHead>
-                <TableHead className="h-11 px-5 text-xs font-semibold uppercase tracking-wider text-slate-500">Merchant</TableHead>
-                <TableHead className="h-11 px-5 text-xs font-semibold uppercase tracking-wider text-slate-500">Type</TableHead>
-                <TableHead className="h-11 px-5 text-xs font-semibold uppercase tracking-wider text-slate-500 text-right">Amount</TableHead>
-                <TableHead className="h-11 px-5 text-xs font-semibold uppercase tracking-wider text-slate-500 text-right">Balance</TableHead>
-                <TableHead className="h-11 px-5 text-xs font-semibold uppercase tracking-wider text-slate-500">Reference</TableHead>
-                <TableHead className="h-11 px-5 text-xs font-semibold uppercase tracking-wider text-slate-500">Status</TableHead>
-                <TableHead className="h-11 px-5 text-xs font-semibold uppercase tracking-wider text-slate-500">Date</TableHead>
+              <TableRow className="hover:bg-transparent border-slate-100 border-border">
+                <TableHead className="h-11 px-5 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Transaction ID</TableHead>
+                <TableHead className="h-11 px-5 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Merchant</TableHead>
+                <TableHead className="h-11 px-5 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Type</TableHead>
+                <TableHead className="h-11 px-5 text-xs font-semibold uppercase tracking-wider text-muted-foreground text-right">Amount</TableHead>
+                <TableHead className="h-11 px-5 text-xs font-semibold uppercase tracking-wider text-muted-foreground text-right">Balance</TableHead>
+                <TableHead className="h-11 px-5 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Reference</TableHead>
+                <TableHead className="h-11 px-5 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Status</TableHead>
+                <TableHead className="h-11 px-5 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Date</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               {isLoading ? (
                 Array(5).fill(0).map((_, i) => (
-                  <TableRow key={i} className="border-slate-100 dark:border-slate-800/50">
+                  <TableRow key={i} className="border-slate-100 border-border/50">
                     <TableCell colSpan={8} className="p-5">
-                      <div className="h-5 w-full bg-slate-100 dark:bg-slate-800 rounded animate-pulse"></div>
+                      <div className="h-5 w-full bg-muted bg-card rounded animate-pulse"></div>
                     </TableCell>
                   </TableRow>
                 ))
               ) : filteredTx?.length === 0 ? (
                 <TableRow>
-                  <TableCell colSpan={8} className="h-32 text-center text-slate-500">
+                  <TableCell colSpan={8} className="h-32 text-center text-muted-foreground">
                     No transactions found.
                   </TableCell>
                 </TableRow>
               ) : filteredTx?.map((tx) => (
-                <TableRow key={tx.id} className="border-slate-100 dark:border-slate-800/50 hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors">
+                <TableRow key={tx.id} className="border-slate-100 border-border/50 hover:bg-slate-50/50 dark:hover:bg-card/30 transition-colors">
                   <TableCell className="p-4 px-5">
-                    <span className="font-semibold text-slate-900 dark:text-white text-[13px]">{tx.id}</span>
+                    <span className="font-semibold text-foreground dark:text-white text-[13px]">{tx.id}</span>
                   </TableCell>
                   <TableCell className="p-4 px-5">
-                    <span className="text-slate-600 dark:text-slate-400 text-[13px] font-medium">{tx.merchantName}</span>
+                    <span className="text-slate-600 text-muted-foreground text-[13px] font-medium">{tx.merchantName}</span>
                   </TableCell>
                   <TableCell className="p-4 px-5">
                     <span className={`inline-flex items-center rounded-full border px-2 py-0.5 text-[11px] font-semibold ${
                       tx.type === 'Credit' ? 'border-emerald-200/50 bg-emerald-50 text-emerald-600 dark:bg-emerald-500/10' :
                       tx.type === 'Debit' ? 'border-red-200/50 bg-red-50 text-red-600 dark:bg-red-500/10' :
-                      'border-indigo-200/50 bg-indigo-50 text-indigo-600 dark:bg-indigo-500/10'
+                      'border-indigo-200/50 bg-indigo-50 text-primary dark:bg-primary/10'
                     }`}>
                       {tx.type}
                     </span>
                   </TableCell>
                   <TableCell className={`p-4 px-5 text-right font-semibold tabular-nums text-[13px] ${
                     tx.type === 'Credit' ? 'text-emerald-600' : 
-                    tx.type === 'Debit' || tx.type === 'Withdrawal' ? 'text-red-600' : 'text-slate-900 dark:text-white'
+                    tx.type === 'Debit' || tx.type === 'Withdrawal' ? 'text-red-600' : 'text-foreground dark:text-white'
                   }`}>
                     {tx.type === 'Credit' ? '+' : tx.type === 'Debit' || tx.type === 'Withdrawal' ? '-' : ''}
                     {formatCurrency(tx.amount)}
                   </TableCell>
-                  <TableCell className="p-4 px-5 text-right tabular-nums text-[13px] text-slate-600 dark:text-slate-400">
+                  <TableCell className="p-4 px-5 text-right tabular-nums text-[13px] text-slate-600 text-muted-foreground">
                     {formatCurrency(tx.balanceAfter)}
                   </TableCell>
                   <TableCell className="p-4 px-5">
-                    <span className="font-mono text-[12px] text-slate-500">{tx.referenceId || "—"}</span>
+                    <span className="font-mono text-[12px] text-muted-foreground">{tx.referenceId || "—"}</span>
                   </TableCell>
                   <TableCell className="p-4 px-5">
                     <StatusBadge status={tx.status} />
                   </TableCell>
-                  <TableCell className="p-4 px-5 text-[13px] text-slate-500">
+                  <TableCell className="p-4 px-5 text-[13px] text-muted-foreground">
                     {new Date(tx.createdAt).toLocaleString('en-GB', { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' })}
                   </TableCell>
                 </TableRow>
@@ -173,15 +173,15 @@ export function WalletTransactionsPage() {
         </div>
 
         {/* Pagination */}
-        <div className="p-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-sm">
-          <div className="text-slate-500">
-            Showing <span className="font-medium text-slate-900 dark:text-white">{filteredTx?.length || 0}</span> results
+        <div className="p-4 border-t border-slate-100 border-border flex items-center justify-between text-sm">
+          <div className="text-muted-foreground">
+            Showing <span className="font-medium text-foreground dark:text-white">{filteredTx?.length || 0}</span> results
           </div>
           <div className="flex items-center gap-2">
             <Button variant="outline" size="sm" className="h-8 w-8 p-0" disabled>
               <ChevronLeft className="h-4 w-4" />
             </Button>
-            <Button variant="outline" size="sm" className="h-8 w-8 p-0 bg-slate-100 dark:bg-slate-800" disabled>
+            <Button variant="outline" size="sm" className="h-8 w-8 p-0 bg-muted bg-card" disabled>
               1
             </Button>
             <Button variant="outline" size="sm" className="h-8 w-8 p-0" disabled>
