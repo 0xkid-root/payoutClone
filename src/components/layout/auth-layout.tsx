@@ -9,7 +9,7 @@ export function AuthLayout({
   return (
     <main className="h-screen overflow-hidden bg-slate-50 p-0 sm:p-4 lg:p-6">
 
-      <div className="h-full w-full overflow-hidden bg-white shadow-[0_1px_3px_0_rgba(0,0,0,0.02)] border border-slate-200 sm:rounded-[20px]">
+      <div className="h-full w-full overflow-hidden bg-white shadow-[0_1px_3px_0_rgba(0,0,0,0.02)] border border-border sm:rounded-[20px]">
 
         <div className="grid h-full w-full lg:grid-cols-[42%_58%]">
 

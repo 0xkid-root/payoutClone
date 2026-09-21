@@ -60,9 +60,9 @@ export function DataTable<TData, TValue>({
 
   return (
     <div className="space-y-4">
-      <div className="rounded-md border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 overflow-hidden">
+      <div className="rounded-md border border-border border-border bg-white bg-background overflow-hidden">
         <Table>
-          <TableHeader className="bg-slate-50/50 dark:bg-slate-900/50">
+          <TableHeader className="bg-slate-50/50 bg-background/50">
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>
                 {headerGroup.headers.map((header) => {
@@ -86,7 +86,7 @@ export function DataTable<TData, TValue>({
                 <TableRow
                   key={row.id}
                   data-state={row.getIsSelected() && "selected"}
-                  className="hover:bg-slate-50/50 dark:hover:bg-slate-800/50 transition-colors"
+                  className="hover:bg-slate-50/50 dark:hover:bg-card/50 transition-colors"
                 >
                   {row.getVisibleCells().map((cell) => (
                     <TableCell key={cell.id}>
@@ -102,7 +102,7 @@ export function DataTable<TData, TValue>({
               <TableRow>
                 <TableCell
                   colSpan={columns.length}
-                  className="h-24 text-center text-slate-500"
+                  className="h-24 text-center text-muted-foreground"
                 >
                   No results.
                 </TableCell>

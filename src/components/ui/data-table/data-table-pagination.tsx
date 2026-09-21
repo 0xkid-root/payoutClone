@@ -26,7 +26,7 @@ export function DataTablePagination<TData>({
 }: DataTablePaginationProps<TData>) {
   return (
     <div className="flex items-center justify-between px-2">
-      <div className="flex-1 text-sm text-slate-500 dark:text-slate-400">
+      <div className="flex-1 text-sm text-muted-foreground text-muted-foreground">
         {/* Placeholder for row selection count if needed */}
       </div>
       <div className="flex items-center space-x-6 lg:space-x-8">

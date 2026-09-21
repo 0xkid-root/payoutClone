@@ -22,13 +22,13 @@ export function SidebarHeader({ onClose }: SidebarHeaderProps) {
         {!isCollapsed && (
           <div className="flex flex-col">
             <span className="text-[15px] font-bold tracking-tight text-slate-900 dark:text-white">PayNexus</span>
-            <span className="text-[10px] font-semibold tracking-wider text-slate-500 uppercase">Admin Console</span>
+            <span className="text-[10px] font-semibold tracking-wider text-sidebar-foreground0 uppercase">Admin Console</span>
           </div>
         )}
       </Link>
 
       {onClose && (
-        <Button variant="ghost" size="icon" className="shrink-0 lg:hidden text-slate-500" onClick={onClose}>
+        <Button variant="ghost" size="icon" className="shrink-0 lg:hidden text-sidebar-foreground0" onClick={onClose}>
           <Menu className="h-5 w-5" />
         </Button>
       )}

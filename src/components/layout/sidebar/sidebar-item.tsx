@@ -25,7 +25,7 @@ export function SidebarItem({ item }: { item: NavItem }) {
         isCollapsed ? "justify-center px-0" : "gap-3 px-3",
         isActive
           ? "bg-primary/[0.04] text-primary dark:bg-primary/10 dark:text-primary"
-          : "text-slate-500 hover:bg-slate-50 hover:text-slate-900 focus-visible:bg-slate-50 dark:text-slate-400 dark:hover:bg-slate-800/50 dark:hover:text-white"
+          : "text-sidebar-foreground0 hover:bg-slate-50 hover:text-slate-900 focus-visible:bg-slate-50 dark:text-slate-400 dark:hover:bg-sidebar-accent/50 dark:hover:text-white"
       )}
     >
       {/* Active Indicator Line */}
@@ -33,7 +33,7 @@ export function SidebarItem({ item }: { item: NavItem }) {
         <div className="absolute left-0 top-1/2 h-4 w-[3px] -translate-y-1/2 rounded-r bg-primary" />
       )}
 
-      <Icon className={cn("h-[18px] w-[18px] shrink-0 transition-colors", isActive ? "text-primary" : "text-slate-400 group-hover:text-slate-500 dark:group-hover:text-slate-300")} />
+      <Icon className={cn("h-[18px] w-[18px] shrink-0 transition-colors", isActive ? "text-primary" : "text-slate-400 group-hover:text-sidebar-foreground0 dark:group-hover:text-slate-300")} />
 
       {!isCollapsed && (
         <span className="truncate">{item.title}</span>
