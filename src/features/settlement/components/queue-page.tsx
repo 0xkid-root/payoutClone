@@ -90,8 +90,8 @@ export function SettlementQueuePage() {
     <div className="space-y-6 max-w-[1400px] mx-auto p-4 md:p-6 pb-20">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">Settlement Queue</h1>
-          <p className="text-slate-500 mt-1">Monitor settlements that are currently being processed or require attention.</p>
+          <h1 className="text-3xl font-bold tracking-tight text-foreground dark:text-white">Settlement Queue</h1>
+          <p className="text-muted-foreground mt-1">Monitor settlements that are currently being processed or require attention.</p>
         </div>
         <Button variant="outline" className="gap-2">
           <Download className="w-4 h-4" />
@@ -99,11 +99,11 @@ export function SettlementQueuePage() {
         </Button>
       </div>
 
-      <div className="flex w-full flex-col rounded-xl border border-slate-200/60 bg-white shadow-[0_1px_2px_0_rgba(0,0,0,0.01)] dark:border-slate-800 dark:bg-slate-900">
-        <div className="p-4 border-b border-slate-100 dark:border-slate-800">
+      <div className="flex w-full flex-col rounded-xl border border-border/60 bg-white shadow-[0_1px_2px_0_rgba(0,0,0,0.01)] border-border bg-background">
+        <div className="p-4 border-b border-slate-100 border-border">
           <div className="flex flex-col md:flex-row justify-between gap-4 items-center">
             {/* Tabs */}
-            <div className="flex bg-slate-100 dark:bg-slate-800/50 p-1 rounded-lg w-full md:w-auto overflow-x-auto">
+            <div className="flex bg-muted bg-card/50 p-1 rounded-lg w-full md:w-auto overflow-x-auto">
               {tabs.map((tab) => (
                 <button
                   key={tab}
@@ -113,8 +113,8 @@ export function SettlementQueuePage() {
                   }}
                   className={`px-4 py-1.5 text-sm font-medium rounded-md whitespace-nowrap transition-all ${
                     activeTab === tab 
-                      ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm' 
-                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                      ? 'bg-white dark:bg-slate-700 text-foreground dark:text-white shadow-sm' 
+                      : 'text-slate-600 text-muted-foreground hover:text-foreground dark:hover:text-white'
                   }`}
                 >
                   {tab}
@@ -125,16 +125,16 @@ export function SettlementQueuePage() {
             {/* Search and Filters */}
             <div className="flex flex-col md:flex-row gap-3 w-full md:w-auto">
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                 <Input 
                   placeholder="Search Settlement ID..." 
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="pl-9 w-full md:w-[250px] bg-slate-50 dark:bg-slate-900/50 border-slate-200" 
+                  className="pl-9 w-full md:w-[250px] bg-slate-50 bg-background/50 border-border" 
                 />
               </div>
               <Select value={providerFilter} onValueChange={(val) => setProviderFilter(val || 'all')}>
-                <SelectTrigger className="w-full md:w-[160px] bg-slate-50 dark:bg-slate-900/50 border-slate-200">
+                <SelectTrigger className="w-full md:w-[160px] bg-slate-50 bg-background/50 border-border">
                   <SelectValue placeholder="Provider" />
                 </SelectTrigger>
                 <SelectContent>

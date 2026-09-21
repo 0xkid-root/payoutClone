@@ -112,10 +112,10 @@ export function CreateSlabFee() {
   return (
     <div className="flex flex-col gap-6 pb-8 max-w-6xl mx-auto">
       <div className="flex items-center gap-2 mb-2">
-        <Link href="/fees-pricing/slab" className="text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors">
+        <Link href="/fees-pricing/slab" className="text-muted-foreground hover:text-foreground dark:hover:text-white transition-colors">
           <ArrowLeft className="h-5 w-5" />
         </Link>
-        <span className="text-sm font-medium text-slate-500">Back to Slab Fees</span>
+        <span className="text-sm font-medium text-muted-foreground">Back to Slab Fees</span>
       </div>
 
       <PageHeader
@@ -123,10 +123,10 @@ export function CreateSlabFee() {
         description="Configure transaction fees based on transaction amount ranges."
       />
 
-      <div className="rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900 overflow-hidden">
+      <div className="rounded-2xl border border-border bg-white shadow-sm border-border bg-background overflow-hidden">
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="p-6 md:p-8 space-y-6">
-            <h3 className="text-lg font-semibold text-slate-900 dark:text-white">Fee Configuration</h3>
+            <h3 className="text-lg font-semibold text-foreground dark:text-white">Fee Configuration</h3>
             
             <div className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -181,9 +181,9 @@ export function CreateSlabFee() {
               </div>
             </div>
 
-            <div className="pt-6 border-t border-slate-200 dark:border-slate-800">
+            <div className="pt-6 border-t border-border border-border">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="text-md font-semibold text-slate-900 dark:text-white">Pricing Slabs</h3>
+                <h3 className="text-md font-semibold text-foreground dark:text-white">Pricing Slabs</h3>
                 <Button 
                   type="button" 
                   variant="outline" 
@@ -200,9 +200,9 @@ export function CreateSlabFee() {
                 </div>
               )}
 
-              <div className="overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-800">
+              <div className="overflow-x-auto rounded-xl border border-border border-border">
                 <div className="min-w-[600px] p-4">
-                  <div className="grid grid-cols-12 gap-4 pb-2 border-b border-slate-200 dark:border-slate-800 text-sm font-medium text-slate-500">
+                  <div className="grid grid-cols-12 gap-4 pb-2 border-b border-border border-border text-sm font-medium text-muted-foreground">
                     <div className="col-span-3">Min Amount</div>
                     <div className="col-span-3">Max Amount</div>
                     <div className="col-span-2">Type</div>
@@ -248,7 +248,7 @@ export function CreateSlabFee() {
                           <div className="col-span-3">
                             <div className="relative">
                               {slabType === "FLAT" && (
-                                <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500">₹</span>
+                                <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground">₹</span>
                               )}
                               <Input
                                 type="number"
@@ -258,7 +258,7 @@ export function CreateSlabFee() {
                                 placeholder="0.00"
                               />
                               {slabType === "PERCENTAGE" && (
-                                <span className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500">%</span>
+                                <span className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground">%</span>
                               )}
                             </div>
                           </div>
@@ -267,7 +267,7 @@ export function CreateSlabFee() {
                               type="button"
                               variant="ghost"
                               size="icon"
-                              className="text-slate-400 hover:text-red-500"
+                              className="text-muted-foreground hover:text-red-500"
                               onClick={() => remove(index)}
                               disabled={fields.length === 1}
                             >
@@ -289,16 +289,16 @@ export function CreateSlabFee() {
             </div>
           </div>
 
-          <div className="border-t border-slate-200 dark:border-slate-800" />
+          <div className="border-t border-border border-border" />
           
-          <div className="p-6 md:p-8 bg-slate-50/50 dark:bg-slate-900/20">
+          <div className="p-6 md:p-8 bg-slate-50/50 bg-background/20">
             <FeeCalculationPreview
               feeType="SLAB_BASED"
               slabs={watchSlabs as any}
             />
           </div>
 
-          <div className="border-t border-slate-200 dark:border-slate-800 p-6 md:px-8 flex justify-end gap-3 bg-white dark:bg-slate-900">
+          <div className="border-t border-border border-border p-6 md:px-8 flex justify-end gap-3 bg-white bg-background">
             <Button type="button" variant="outline" onClick={() => router.push("/fees-pricing/slab")}>
               Cancel
             </Button>

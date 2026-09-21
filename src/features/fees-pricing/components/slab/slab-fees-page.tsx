@@ -49,22 +49,22 @@ export function SlabFeesPage() {
         }
       />
 
-      <div className="flex flex-col rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900 overflow-hidden">
-        <div className="flex flex-col gap-4 border-b border-slate-200 p-4 sm:flex-row sm:items-center sm:justify-between dark:border-slate-800">
+      <div className="flex flex-col rounded-2xl border border-border bg-white shadow-sm border-border bg-background overflow-hidden">
+        <div className="flex flex-col gap-4 border-b border-border p-4 sm:flex-row sm:items-center sm:justify-between border-border">
           <div className="relative w-full sm:max-w-xs">
-            <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+            <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
             <Input
               placeholder="Search Merchant / Fee ID..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="h-10 w-full rounded-xl pl-9 bg-slate-50 border-slate-200 dark:bg-slate-900/50 dark:border-slate-800"
+              className="h-10 w-full rounded-xl pl-9 bg-slate-50 border-border bg-background/50 border-border"
             />
           </div>
         </div>
 
         <Table>
           <TableHeader>
-            <TableRow className="bg-slate-50/50 hover:bg-slate-50/50 dark:bg-slate-800/20 dark:hover:bg-slate-800/20 border-slate-200 dark:border-slate-800">
+            <TableRow className="bg-slate-50/50 hover:bg-slate-50/50 bg-card/20 dark:hover:bg-card/20 border-border border-border">
               <TableHead>Fee ID</TableHead>
               <TableHead>Merchant</TableHead>
               <TableHead>Slabs</TableHead>
@@ -83,14 +83,14 @@ export function SlabFeesPage() {
               </TableRow>
             ) : filteredFees?.length === 0 ? (
               <TableRow>
-                <TableCell colSpan={7} className="h-24 text-center text-slate-500">
+                <TableCell colSpan={7} className="h-24 text-center text-muted-foreground">
                   No slab fees found.
                 </TableCell>
               </TableRow>
             ) : (
               filteredFees?.map((item) => (
                 <TableRow key={item.id}>
-                  <TableCell className="font-medium text-slate-900 dark:text-white">
+                  <TableCell className="font-medium text-foreground dark:text-white">
                     {item.id}
                   </TableCell>
                   <TableCell className="font-medium">{item.merchantName}</TableCell>
@@ -99,14 +99,14 @@ export function SlabFeesPage() {
                       {item.slabs?.length} slabs
                     </Link>
                   </TableCell>
-                  <TableCell className="text-slate-500">
+                  <TableCell className="text-muted-foreground">
                     {new Date(item.effectiveFrom).toLocaleDateString("en-GB", {
                       day: "numeric",
                       month: "short",
                       year: "numeric",
                     })}
                   </TableCell>
-                  <TableCell className="text-slate-500">
+                  <TableCell className="text-muted-foreground">
                     {item.effectiveTo
                       ? new Date(item.effectiveTo).toLocaleDateString("en-GB", {
                           day: "numeric",
@@ -126,7 +126,7 @@ export function SlabFeesPage() {
                       <DropdownMenuContent align="end" className="w-40">
                         <DropdownMenuItem>
                           <Link href={`/fees-pricing/slab/${item.id}`} className="flex items-center w-full cursor-pointer">
-                            <Eye className="mr-2 h-4 w-4 text-slate-500" />
+                            <Eye className="mr-2 h-4 w-4 text-muted-foreground" />
                             View / Edit
                           </Link>
                         </DropdownMenuItem>
@@ -134,12 +134,12 @@ export function SlabFeesPage() {
                         <DropdownMenuItem className="cursor-pointer">
                           {item.status === "ACTIVE" ? (
                             <>
-                              <Ban className="mr-2 h-4 w-4 text-slate-500" />
+                              <Ban className="mr-2 h-4 w-4 text-muted-foreground" />
                               Deactivate
                             </>
                           ) : (
                             <>
-                              <CheckCircle className="mr-2 h-4 w-4 text-slate-500" />
+                              <CheckCircle className="mr-2 h-4 w-4 text-muted-foreground" />
                               Activate
                             </>
                           )}

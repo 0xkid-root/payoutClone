@@ -57,7 +57,7 @@ const columns: ColumnDef<SettlementRecord>[] = [
     header: 'Completed At',
     cell: ({ row }) => {
       const dateStr = row.getValue('completedAt') as string;
-      if (!dateStr) return <span className="text-slate-400">-</span>;
+      if (!dateStr) return <span className="text-muted-foreground">-</span>;
       const date = new Date(dateStr);
       return <span className="text-sm">{date.toLocaleString('en-IN', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })}</span>;
     }
@@ -96,8 +96,8 @@ export function SettlementHistoryPage() {
     <div className="space-y-6 max-w-[1400px] mx-auto p-4 md:p-6 pb-20">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">Settlement History</h1>
-          <p className="text-slate-500 mt-1">Search and generate reports from historical settlements.</p>
+          <h1 className="text-3xl font-bold tracking-tight text-foreground dark:text-white">Settlement History</h1>
+          <p className="text-muted-foreground mt-1">Search and generate reports from historical settlements.</p>
         </div>
         <div className="flex gap-2">
           <Button variant="outline" className="gap-2">
@@ -111,22 +111,22 @@ export function SettlementHistoryPage() {
         </div>
       </div>
 
-      <div className="flex w-full flex-col rounded-xl border border-slate-200/60 bg-white shadow-[0_1px_2px_0_rgba(0,0,0,0.01)] dark:border-slate-800 dark:bg-slate-900">
-        <div className="p-4 border-b border-slate-100 dark:border-slate-800">
+      <div className="flex w-full flex-col rounded-xl border border-border/60 bg-white shadow-[0_1px_2px_0_rgba(0,0,0,0.01)] border-border bg-background">
+        <div className="p-4 border-b border-slate-100 border-border">
           <div className="flex flex-col md:flex-row flex-wrap gap-4 items-center justify-between">
             <div className="relative w-full md:w-[350px]">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
               <Input 
                 placeholder="Search Settlement ID, Merchant, UTR..." 
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-9 w-full bg-slate-50 dark:bg-slate-900/50 border-slate-200" 
+                className="pl-9 w-full bg-slate-50 bg-background/50 border-border" 
               />
             </div>
             
             <div className="flex flex-wrap items-center gap-3 w-full md:w-auto">
               <Select value={statusFilter} onValueChange={(val) => setStatusFilter(val || 'all')}>
-                <SelectTrigger className="w-[160px] bg-slate-50 dark:bg-slate-900/50 border-slate-200">
+                <SelectTrigger className="w-[160px] bg-slate-50 bg-background/50 border-border">
                   <SelectValue placeholder="Status" />
                 </SelectTrigger>
                 <SelectContent>
@@ -139,7 +139,7 @@ export function SettlementHistoryPage() {
               </Select>
 
               <Select value={providerFilter} onValueChange={(val) => setProviderFilter(val || 'all')}>
-                <SelectTrigger className="w-[160px] bg-slate-50 dark:bg-slate-900/50 border-slate-200">
+                <SelectTrigger className="w-[160px] bg-slate-50 bg-background/50 border-border">
                   <SelectValue placeholder="Provider" />
                 </SelectTrigger>
                 <SelectContent>
@@ -151,7 +151,7 @@ export function SettlementHistoryPage() {
               </Select>
               
               <Select value={dateRange} onValueChange={(val) => setDateRange(val || 'last30')}>
-                <SelectTrigger className="w-[160px] bg-slate-50 dark:bg-slate-900/50 border-slate-200">
+                <SelectTrigger className="w-[160px] bg-slate-50 bg-background/50 border-border">
                   <SelectValue placeholder="Date Range" />
                 </SelectTrigger>
                 <SelectContent>

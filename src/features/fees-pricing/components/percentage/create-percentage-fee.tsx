@@ -89,10 +89,10 @@ export function CreatePercentageFee() {
   return (
     <div className="flex flex-col gap-6 pb-8 max-w-5xl mx-auto">
       <div className="flex items-center gap-2 mb-2">
-        <Link href="/fees-pricing/percentage" className="text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors">
+        <Link href="/fees-pricing/percentage" className="text-muted-foreground hover:text-foreground dark:hover:text-white transition-colors">
           <ArrowLeft className="h-5 w-5" />
         </Link>
-        <span className="text-sm font-medium text-slate-500">Back to Percentage Fees</span>
+        <span className="text-sm font-medium text-muted-foreground">Back to Percentage Fees</span>
       </div>
 
       <PageHeader
@@ -100,10 +100,10 @@ export function CreatePercentageFee() {
         description="Configure a percentage-based pricing rule for a merchant."
       />
 
-      <div className="rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900 overflow-hidden">
+      <div className="rounded-2xl border border-border bg-white shadow-sm border-border bg-background overflow-hidden">
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="p-6 md:p-8 space-y-6">
-            <h3 className="text-lg font-semibold text-slate-900 dark:text-white">Fee Configuration</h3>
+            <h3 className="text-lg font-semibold text-foreground dark:text-white">Fee Configuration</h3>
             
             <div className="space-y-6">
               <div className="space-y-2">
@@ -139,7 +139,7 @@ export function CreatePercentageFee() {
                       className={`pr-8 ${errors.percentage ? "border-red-500" : ""}`}
                       placeholder="e.g. 0.50"
                     />
-                    <span className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500">%</span>
+                    <span className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground">%</span>
                   </div>
                   {errors.percentage && <p className="text-sm text-red-500">{errors.percentage.message}</p>}
                 </div>
@@ -147,7 +147,7 @@ export function CreatePercentageFee() {
                 <div className="space-y-2">
                   <Label>Minimum Fee</Label>
                   <div className="relative">
-                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500">₹</span>
+                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground">₹</span>
                     <Input
                       type="number"
                       step="0.01"
@@ -162,7 +162,7 @@ export function CreatePercentageFee() {
                 <div className="space-y-2">
                   <Label>Maximum Fee</Label>
                   <div className="relative">
-                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500">₹</span>
+                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground">₹</span>
                     <Input
                       type="number"
                       step="0.01"
@@ -203,9 +203,9 @@ export function CreatePercentageFee() {
             </div>
           </div>
 
-          <div className="border-t border-slate-200 dark:border-slate-800" />
+          <div className="border-t border-border border-border" />
           
-          <div className="p-6 md:p-8 bg-slate-50/50 dark:bg-slate-900/20">
+          <div className="p-6 md:p-8 bg-slate-50/50 bg-background/20">
             <FeeCalculationPreview
               feeType="PERCENTAGE"
               percentage={watchPercentage || 0}
@@ -214,7 +214,7 @@ export function CreatePercentageFee() {
             />
           </div>
 
-          <div className="border-t border-slate-200 dark:border-slate-800 p-6 md:px-8 flex justify-end gap-3 bg-white dark:bg-slate-900">
+          <div className="border-t border-border border-border p-6 md:px-8 flex justify-end gap-3 bg-white bg-background">
             <Button type="button" variant="outline" onClick={() => router.push("/fees-pricing/percentage")}>
               Cancel
             </Button>
