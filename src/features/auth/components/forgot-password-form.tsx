@@ -24,10 +24,10 @@ export function ForgotPasswordForm() {
           />
         </div>
         <div className="flex flex-col">
-          <h1 className="text-xl font-bold tracking-tight text-slate-900 sm:text-2xl">
+          <h1 className="text-xl font-bold tracking-tight text-foreground sm:text-2xl">
             PayNexus
           </h1>
-          <p className="text-sm font-medium text-slate-500">
+          <p className="text-sm font-medium text-muted-foreground">
             Admin Portal
           </p>
         </div>
@@ -35,7 +35,7 @@ export function ForgotPasswordForm() {
 
       <Link
         href="/login"
-        className="mb-8 inline-flex w-fit items-center text-sm font-bold text-slate-500 transition-colors hover:text-slate-900"
+        className="mb-8 inline-flex w-fit items-center text-sm font-bold text-muted-foreground transition-colors hover:text-foreground"
       >
         <ArrowLeft className="mr-2 h-4 w-4" />
         Back to Login
@@ -43,10 +43,10 @@ export function ForgotPasswordForm() {
 
       {/* Title Area */}
       <div className="mb-8">
-        <h2 className="mb-2 text-[24px] font-bold tracking-tight text-slate-900 sm:text-[28px]">
+        <h2 className="mb-2 text-[24px] font-bold tracking-tight text-foreground sm:text-[28px]">
           Forgot Password?
         </h2>
-        <p className="text-[14px] font-medium leading-relaxed text-slate-500">
+        <p className="text-[14px] font-medium leading-relaxed text-muted-foreground">
           Enter your registered email address and we'll send you instructions to reset your password.
         </p>
       </div>
@@ -57,12 +57,12 @@ export function ForgotPasswordForm() {
         <div className="space-y-2">
           <Label htmlFor="email" className="text-[13px] font-semibold text-slate-700">Email Address</Label>
           <div className="relative group">
-            <Mail className="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400 transition-colors group-focus-within:text-primary" />
+            <Mail className="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground transition-colors group-focus-within:text-primary" />
             <Input
               id="email"
               type="email"
               placeholder="Enter your email address"
-              className="h-11 rounded-lg border border-slate-200 bg-slate-50/50 pl-10 text-[14px] font-medium transition-all placeholder:text-slate-400 hover:bg-slate-100 focus-visible:bg-white focus-visible:ring-1 focus-visible:ring-primary focus-visible:border-primary shadow-sm"
+              className="h-11 rounded-lg border border-border bg-slate-50/50 pl-10 text-[14px] font-medium transition-all placeholder:text-muted-foreground hover:bg-muted focus-visible:bg-white focus-visible:ring-1 focus-visible:ring-primary focus-visible:border-primary shadow-sm"
             />
           </div>
         </div>
@@ -74,9 +74,9 @@ export function ForgotPasswordForm() {
 
         <div className="relative my-6">
           <div className="absolute inset-0 flex items-center">
-            <div className="w-full border-t border-slate-200"></div>
+            <div className="w-full border-t border-border"></div>
           </div>
-          <div className="relative flex justify-center text-xs font-bold uppercase tracking-wider text-slate-400">
+          <div className="relative flex justify-center text-xs font-bold uppercase tracking-wider text-muted-foreground">
             <span className="bg-[#ffffff] px-4">OR</span>
           </div>
         </div>
@@ -86,7 +86,7 @@ export function ForgotPasswordForm() {
           href="/login"
           className={cn(
             buttonVariants({ variant: "outline" }),
-            "flex h-11 w-full justify-center rounded-lg border-slate-200 text-[14px] font-semibold text-slate-700 shadow-sm transition-all hover:bg-slate-50 hover:text-slate-900"
+            "flex h-11 w-full justify-center rounded-lg border-border text-[14px] font-semibold text-slate-700 shadow-sm transition-all hover:bg-slate-50 hover:text-foreground"
           )}
         >
           Back to Login
@@ -94,7 +94,7 @@ export function ForgotPasswordForm() {
       </form>
 
       {/* Security Message */}
-      <div className="mt-8 flex items-center justify-center gap-2 text-[13px] font-medium text-slate-500 rounded-lg bg-slate-50 px-4 py-3 border border-slate-100">
+      <div className="mt-8 flex items-center justify-center gap-2 text-[13px] font-medium text-muted-foreground rounded-lg bg-slate-50 px-4 py-3 border border-slate-100">
         <ShieldCheck className="h-4 w-4 shrink-0 text-primary" />
         <p>A secure reset link will be sent directly to your inbox.</p>
       </div>

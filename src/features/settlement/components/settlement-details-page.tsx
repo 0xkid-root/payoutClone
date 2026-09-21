@@ -65,7 +65,7 @@ export function SettlementDetailsPage({ id = 'STL-000123' }: { id?: string }) {
   });
 
   if (isLoading || !settlement) {
-    return <div className="p-8 text-center text-slate-500">Loading settlement details...</div>;
+    return <div className="p-8 text-center text-muted-foreground">Loading settlement details...</div>;
   }
 
   return (
@@ -78,12 +78,12 @@ export function SettlementDetailsPage({ id = 'STL-000123' }: { id?: string }) {
         </Link>
         <div>
           <div className="flex items-center gap-3">
-            <h1 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">Settlement #{settlement.id}</h1>
+            <h1 className="text-3xl font-bold tracking-tight text-foreground dark:text-white">Settlement #{settlement.id}</h1>
             <Badge variant={settlement.status === 'Completed' ? 'default' : settlement.status === 'Failed' ? 'destructive' : 'secondary'}>
               {settlement.status}
             </Badge>
           </div>
-          <p className="text-slate-500 mt-1">
+          <p className="text-muted-foreground mt-1">
             Settlement Date: {new Date(settlement.settlementDate).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}
           </p>
         </div>
@@ -97,59 +97,59 @@ export function SettlementDetailsPage({ id = 'STL-000123' }: { id?: string }) {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2 space-y-6">
-          <div className="flex w-full flex-col rounded-xl border border-slate-200/60 bg-white p-6 shadow-[0_1px_2px_0_rgba(0,0,0,0.01)] dark:border-slate-800 dark:bg-slate-900">
-            <h3 className="text-[16px] font-semibold text-slate-900 dark:text-white mb-4">Settlement Overview</h3>
+          <div className="flex w-full flex-col rounded-xl border border-border/60 bg-white p-6 shadow-[0_1px_2px_0_rgba(0,0,0,0.01)] border-border bg-background">
+            <h3 className="text-[16px] font-semibold text-foreground dark:text-white mb-4">Settlement Overview</h3>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               <div>
-                <p className="text-[12px] font-medium text-slate-500 mb-1">Merchant</p>
+                <p className="text-[12px] font-medium text-muted-foreground mb-1">Merchant</p>
                 <div className="flex items-center gap-2">
-                  <Building2 className="w-4 h-4 text-slate-400" />
+                  <Building2 className="w-4 h-4 text-muted-foreground" />
                   <span className="text-[14px] font-semibold">{settlement.merchantName}</span>
                 </div>
               </div>
               <div>
-                <p className="text-[12px] font-medium text-slate-500 mb-1">Transaction Count</p>
+                <p className="text-[12px] font-medium text-muted-foreground mb-1">Transaction Count</p>
                 <span className="text-[14px] font-semibold">{settlement.transactionCount}</span>
               </div>
               <div>
-                <p className="text-[12px] font-medium text-slate-500 mb-1">Provider</p>
+                <p className="text-[12px] font-medium text-muted-foreground mb-1">Provider</p>
                 <div className="flex items-center gap-2">
-                  <Landmark className="w-4 h-4 text-slate-400" />
+                  <Landmark className="w-4 h-4 text-muted-foreground" />
                   <span className="text-[14px] font-semibold">{settlement.provider}</span>
                 </div>
               </div>
               <div>
-                <p className="text-[12px] font-medium text-slate-500 mb-1">Net Settlement</p>
+                <p className="text-[12px] font-medium text-muted-foreground mb-1">Net Settlement</p>
                 <span className="font-semibold text-emerald-600 text-lg">{formatCurrency(settlement.settlementAmount)}</span>
               </div>
             </div>
           </div>
 
-          <div className="flex w-full flex-col rounded-xl border border-slate-200/60 bg-white p-6 shadow-[0_1px_2px_0_rgba(0,0,0,0.01)] dark:border-slate-800 dark:bg-slate-900">
-            <h3 className="text-[16px] font-semibold text-slate-900 dark:text-white mb-4">Amount Breakdown</h3>
-            <div className="bg-slate-50 dark:bg-slate-900/50 rounded-lg p-6 space-y-4 font-mono text-sm">
+          <div className="flex w-full flex-col rounded-xl border border-border/60 bg-white p-6 shadow-[0_1px_2px_0_rgba(0,0,0,0.01)] border-border bg-background">
+            <h3 className="text-[16px] font-semibold text-foreground dark:text-white mb-4">Amount Breakdown</h3>
+            <div className="bg-slate-50 bg-background/50 rounded-lg p-6 space-y-4 font-mono text-sm">
               <div className="flex justify-between items-center">
-                <span className="text-slate-600 dark:text-slate-400">Gross Payout Amount</span>
-                <span className="font-semibold text-slate-900 dark:text-white">{formatCurrency(settlement.grossAmount)}</span>
+                <span className="text-slate-600 text-muted-foreground">Gross Payout Amount</span>
+                <span className="font-semibold text-foreground dark:text-white">{formatCurrency(settlement.grossAmount)}</span>
               </div>
               <div className="flex justify-between items-center text-red-500">
                 <span>Total Fees Deducted</span>
                 <span>-{formatCurrency(settlement.fees)}</span>
               </div>
-              <div className="flex justify-between items-center text-red-500 pb-4 border-b border-slate-200 dark:border-slate-800">
+              <div className="flex justify-between items-center text-red-500 pb-4 border-b border-border border-border">
                 <span>Taxes (GST)</span>
                 <span>-{formatCurrency(settlement.gst)}</span>
               </div>
               <div className="flex justify-between items-center text-base pt-2">
-                <span className="font-semibold text-slate-900 dark:text-white">Net Settlement Amount</span>
+                <span className="font-semibold text-foreground dark:text-white">Net Settlement Amount</span>
                 <span className="font-bold text-emerald-600">{formatCurrency(settlement.settlementAmount)}</span>
               </div>
             </div>
           </div>
 
-          <div className="flex w-full flex-col rounded-xl border border-slate-200/60 bg-white shadow-[0_1px_2px_0_rgba(0,0,0,0.01)] dark:border-slate-800 dark:bg-slate-900 lg:col-span-2">
-            <div className="p-6 border-b border-slate-100 dark:border-slate-800">
-              <h3 className="text-[16px] font-semibold text-slate-900 dark:text-white">Transactions in Settlement</h3>
+          <div className="flex w-full flex-col rounded-xl border border-border/60 bg-white shadow-[0_1px_2px_0_rgba(0,0,0,0.01)] border-border bg-background lg:col-span-2">
+            <div className="p-6 border-b border-slate-100 border-border">
+              <h3 className="text-[16px] font-semibold text-foreground dark:text-white">Transactions in Settlement</h3>
             </div>
             <div className="p-4 sm:p-6 pt-4">
               <DataTable 
@@ -166,69 +166,69 @@ export function SettlementDetailsPage({ id = 'STL-000123' }: { id?: string }) {
         </div>
 
         <div className="space-y-6">
-          <div className="flex w-full flex-col rounded-xl border border-slate-200/60 bg-white p-6 shadow-[0_1px_2px_0_rgba(0,0,0,0.01)] dark:border-slate-800 dark:bg-slate-900">
-            <h3 className="text-[16px] font-semibold text-slate-900 dark:text-white mb-6">Status Timeline</h3>
-            <div className="relative pl-6 border-l-2 border-slate-200 dark:border-slate-800 space-y-8">
+          <div className="flex w-full flex-col rounded-xl border border-border/60 bg-white p-6 shadow-[0_1px_2px_0_rgba(0,0,0,0.01)] border-border bg-background">
+            <h3 className="text-[16px] font-semibold text-foreground dark:text-white mb-6">Status Timeline</h3>
+            <div className="relative pl-6 border-l-2 border-border border-border space-y-8">
               <div className="relative">
-                <div className="absolute -left-[35px] bg-slate-100 dark:bg-slate-800 border-2 border-emerald-500 p-1 rounded-full">
+                <div className="absolute -left-[35px] bg-muted bg-card border-2 border-emerald-500 p-1 rounded-full">
                   <CheckCircle2 className="w-3 h-3 text-emerald-500" />
                 </div>
-                <h4 className="font-semibold text-slate-900 dark:text-white">Completed</h4>
-                <p className="text-sm text-slate-500">16 Sep, 09:17 AM</p>
+                <h4 className="font-semibold text-foreground dark:text-white">Completed</h4>
+                <p className="text-sm text-muted-foreground">16 Sep, 09:17 AM</p>
               </div>
               <div className="relative">
-                <div className="absolute -left-[35px] bg-slate-100 dark:bg-slate-800 border-2 border-emerald-500 p-1 rounded-full">
+                <div className="absolute -left-[35px] bg-muted bg-card border-2 border-emerald-500 p-1 rounded-full">
                   <CheckCircle2 className="w-3 h-3 text-emerald-500" />
                 </div>
-                <h4 className="font-semibold text-slate-900 dark:text-white">Bank Response Received</h4>
-                <p className="text-sm text-slate-500">16 Sep, 09:16 AM</p>
+                <h4 className="font-semibold text-foreground dark:text-white">Bank Response Received</h4>
+                <p className="text-sm text-muted-foreground">16 Sep, 09:16 AM</p>
               </div>
               <div className="relative">
-                <div className="absolute -left-[35px] bg-slate-100 dark:bg-slate-800 border-2 border-emerald-500 p-1 rounded-full">
+                <div className="absolute -left-[35px] bg-muted bg-card border-2 border-emerald-500 p-1 rounded-full">
                   <CheckCircle2 className="w-3 h-3 text-emerald-500" />
                 </div>
-                <h4 className="font-semibold text-slate-900 dark:text-white">Sent to Bank</h4>
-                <p className="text-sm text-slate-500">16 Sep, 09:14 AM</p>
+                <h4 className="font-semibold text-foreground dark:text-white">Sent to Bank</h4>
+                <p className="text-sm text-muted-foreground">16 Sep, 09:14 AM</p>
               </div>
               <div className="relative">
-                <div className="absolute -left-[35px] bg-slate-100 dark:bg-slate-800 border-2 border-emerald-500 p-1 rounded-full">
+                <div className="absolute -left-[35px] bg-muted bg-card border-2 border-emerald-500 p-1 rounded-full">
                   <CheckCircle2 className="w-3 h-3 text-emerald-500" />
                 </div>
-                <h4 className="font-semibold text-slate-900 dark:text-white">Processing</h4>
-                <p className="text-sm text-slate-500">16 Sep, 09:12 AM</p>
+                <h4 className="font-semibold text-foreground dark:text-white">Processing</h4>
+                <p className="text-sm text-muted-foreground">16 Sep, 09:12 AM</p>
               </div>
               <div className="relative">
-                <div className="absolute -left-[35px] bg-slate-100 dark:bg-slate-800 border-2 border-emerald-500 p-1 rounded-full">
+                <div className="absolute -left-[35px] bg-muted bg-card border-2 border-emerald-500 p-1 rounded-full">
                   <CheckCircle2 className="w-3 h-3 text-emerald-500" />
                 </div>
-                <h4 className="font-semibold text-slate-900 dark:text-white">Settlement Created</h4>
-                <p className="text-sm text-slate-500">16 Sep, 09:10 AM</p>
+                <h4 className="font-semibold text-foreground dark:text-white">Settlement Created</h4>
+                <p className="text-sm text-muted-foreground">16 Sep, 09:10 AM</p>
               </div>
             </div>
           </div>
 
-          <div className="flex w-full flex-col rounded-xl border border-slate-200/60 bg-white p-6 shadow-[0_1px_2px_0_rgba(0,0,0,0.01)] dark:border-slate-800 dark:bg-slate-900">
-            <h3 className="text-[16px] font-semibold text-slate-900 dark:text-white mb-4">Settlement Provider</h3>
+          <div className="flex w-full flex-col rounded-xl border border-border/60 bg-white p-6 shadow-[0_1px_2px_0_rgba(0,0,0,0.01)] border-border bg-background">
+            <h3 className="text-[16px] font-semibold text-foreground dark:text-white mb-4">Settlement Provider</h3>
             <div className="space-y-4 text-sm">
-              <div className="flex justify-between py-2 border-b border-slate-100 dark:border-slate-800">
-                <span className="text-slate-500">Provider</span>
+              <div className="flex justify-between py-2 border-b border-slate-100 border-border">
+                <span className="text-muted-foreground">Provider</span>
                 <span className="font-medium">{settlement.provider}</span>
               </div>
-              <div className="flex justify-between py-2 border-b border-slate-100 dark:border-slate-800">
-                <span className="text-slate-500">Provider Ref</span>
+              <div className="flex justify-between py-2 border-b border-slate-100 border-border">
+                <span className="text-muted-foreground">Provider Ref</span>
                 <span className="font-mono text-xs">{settlement.providerReference || '-'}</span>
               </div>
-              <div className="flex justify-between py-2 border-b border-slate-100 dark:border-slate-800">
-                <span className="text-slate-500">Bank Ref</span>
+              <div className="flex justify-between py-2 border-b border-slate-100 border-border">
+                <span className="text-muted-foreground">Bank Ref</span>
                 <span className="font-mono text-xs">{settlement.bankReference || '-'}</span>
               </div>
-              <div className="flex justify-between py-2 border-b border-slate-100 dark:border-slate-800">
-                <span className="text-slate-500">UTR</span>
+              <div className="flex justify-between py-2 border-b border-slate-100 border-border">
+                <span className="text-muted-foreground">UTR</span>
                 <span className="font-mono text-xs text-blue-600">{settlement.utr || '-'}</span>
               </div>
               <div className="flex justify-between py-2">
-                <span className="text-slate-500">Processed At</span>
-                <span className="font-medium text-slate-900 dark:text-white">
+                <span className="text-muted-foreground">Processed At</span>
+                <span className="font-medium text-foreground dark:text-white">
                   {settlement.completedAt ? new Date(settlement.completedAt).toLocaleString('en-IN', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }) : '-'}
                 </span>
               </div>

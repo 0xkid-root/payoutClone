@@ -29,7 +29,7 @@ export function AdminLayout({ children }: { children: React.ReactNode }) {
         <div className="fixed inset-0 z-50 lg:hidden">
           {/* Backdrop */}
           <div
-            className="fixed inset-0 bg-slate-900/40 backdrop-blur-sm transition-opacity"
+            className="fixed inset-0 bg-sidebar/40 backdrop-blur-sm transition-opacity"
             onClick={() => setIsMobileMenuOpen(false)}
           />
           {/* Sidebar */}
@@ -40,7 +40,7 @@ export function AdminLayout({ children }: { children: React.ReactNode }) {
       )}
 
       {/* Main Content Area */}
-      <div className="flex flex-1 flex-col min-w-0 overflow-hidden bg-[#f4f4f5] dark:bg-slate-900">
+      <div className="flex flex-1 flex-col min-w-0 overflow-hidden bg-[#f4f4f5] bg-sidebar">
         <Header onMenuClick={() => setIsMobileMenuOpen(true)} />
         <main className="flex-1 overflow-y-auto overflow-x-hidden p-4 sm:p-6 lg:p-8">
           <div className="mx-auto w-full max-w-7xl">

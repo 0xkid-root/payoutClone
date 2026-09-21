@@ -18,7 +18,7 @@ export function StatCard({
   title,
   value,
   icon: Icon,
-  iconColorClass = "text-slate-400",
+  iconColorClass = "text-muted-foreground",
   trendValue,
   trendLabel,
   trendUp,
@@ -28,13 +28,13 @@ export function StatCard({
 }: StatCardProps) {
   return (
     <div className={cn(
-      "flex flex-col justify-between rounded-xl border bg-white p-5 shadow-[0_1px_2px_0_rgba(0,0,0,0.01)] transition-colors hover:bg-slate-50/30 dark:bg-slate-900",
-      alertText ? "border-amber-200/60 dark:border-amber-900/30" : "border-slate-200/60 dark:border-slate-800"
+      "flex flex-col justify-between rounded-xl border bg-white p-5 shadow-[0_1px_2px_0_rgba(0,0,0,0.01)] transition-colors hover:bg-slate-50/30 bg-background",
+      alertText ? "border-amber-200/60 dark:border-amber-900/30" : "border-border/60 border-border"
     )}>
       <div className="flex items-start justify-between">
         <div className="flex flex-col">
-          <span className="text-[14px] font-medium text-slate-500">{title}</span>
-          <span className="mt-1.5 text-[28px] font-bold tracking-tight text-slate-900 tabular-nums dark:text-white">
+          <span className="text-[14px] font-medium text-muted-foreground">{title}</span>
+          <span className="mt-1.5 text-[28px] font-bold tracking-tight text-foreground tabular-nums dark:text-white">
             {value}
           </span>
         </div>
@@ -45,7 +45,7 @@ export function StatCard({
       
       <div className="mt-4 flex flex-col gap-1.5">
         {(trendValue || alertText) && (
-          <div className="flex items-center gap-1.5 text-[13px] text-slate-500">
+          <div className="flex items-center gap-1.5 text-[13px] text-muted-foreground">
             {trendValue && (
               <span
                 className={cn(

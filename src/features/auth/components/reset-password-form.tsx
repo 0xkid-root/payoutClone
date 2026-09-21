@@ -27,10 +27,10 @@ export function ResetPasswordForm() {
           />
         </div>
         <div className="flex flex-col">
-          <h1 className="text-xl font-bold tracking-tight text-slate-900 sm:text-2xl">
+          <h1 className="text-xl font-bold tracking-tight text-foreground sm:text-2xl">
             PayNexus
           </h1>
-          <p className="text-sm font-medium text-slate-500">
+          <p className="text-sm font-medium text-muted-foreground">
             Admin Portal
           </p>
         </div>
@@ -38,7 +38,7 @@ export function ResetPasswordForm() {
 
       <Link
         href="/login"
-        className="mb-8 inline-flex w-fit items-center text-sm font-bold text-slate-500 transition-colors hover:text-slate-900"
+        className="mb-8 inline-flex w-fit items-center text-sm font-bold text-muted-foreground transition-colors hover:text-foreground"
       >
         <ArrowLeft className="mr-2 h-4 w-4" />
         Back to Login
@@ -46,10 +46,10 @@ export function ResetPasswordForm() {
 
       {/* Title Area */}
       <div className="mb-8">
-        <h2 className="mb-2 text-[24px] font-bold tracking-tight text-slate-900 sm:text-[28px]">
+        <h2 className="mb-2 text-[24px] font-bold tracking-tight text-foreground sm:text-[28px]">
           Create New Password
         </h2>
-        <p className="text-[14px] font-medium leading-relaxed text-slate-500">
+        <p className="text-[14px] font-medium leading-relaxed text-muted-foreground">
           Your new password must be strong and different from previously used passwords.
         </p>
       </div>
@@ -60,17 +60,17 @@ export function ResetPasswordForm() {
         <div className="space-y-2">
           <Label htmlFor="new-password" className="text-[13px] font-semibold text-slate-700">New Password</Label>
           <div className="relative group">
-            <Lock className="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400 transition-colors group-focus-within:text-primary" />
+            <Lock className="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground transition-colors group-focus-within:text-primary" />
             <Input
               id="new-password"
               type={showNewPassword ? "text" : "password"}
               placeholder="Enter your new password"
-              className="h-11 rounded-lg border border-slate-200 bg-slate-50/50 pl-10 pr-10 text-[14px] font-medium transition-all placeholder:text-slate-400 hover:bg-slate-100 focus-visible:bg-white focus-visible:ring-1 focus-visible:ring-primary focus-visible:border-primary shadow-sm"
+              className="h-11 rounded-lg border border-border bg-slate-50/50 pl-10 pr-10 text-[14px] font-medium transition-all placeholder:text-muted-foreground hover:bg-muted focus-visible:bg-white focus-visible:ring-1 focus-visible:ring-primary focus-visible:border-primary shadow-sm"
             />
             <button
               type="button"
               onClick={() => setShowNewPassword(!showNewPassword)}
-              className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 transition-colors hover:text-slate-700 focus:outline-none"
+              className="absolute right-3.5 top-1/2 -translate-y-1/2 text-muted-foreground transition-colors hover:text-slate-700 focus:outline-none"
               aria-label={showNewPassword ? "Hide password" : "Show password"}
             >
               {showNewPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
@@ -82,7 +82,7 @@ export function ResetPasswordForm() {
               <div className="h-1.5 flex-1 bg-slate-200"></div>
               <div className="h-1.5 flex-1 rounded-r-full bg-slate-200"></div>
             </div>
-            <span className="text-xs font-medium text-slate-500">
+            <span className="text-xs font-medium text-muted-foreground">
               Password strength: <span className="text-yellow-600">Medium</span>
             </span>
           </div>
@@ -92,17 +92,17 @@ export function ResetPasswordForm() {
         <div className="space-y-2">
           <Label htmlFor="confirm-password" className="text-[13px] font-semibold text-slate-700">Confirm Password</Label>
           <div className="relative group">
-            <Lock className="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400 transition-colors group-focus-within:text-primary" />
+            <Lock className="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground transition-colors group-focus-within:text-primary" />
             <Input
               id="confirm-password"
               type={showConfirmPassword ? "text" : "password"}
               placeholder="Confirm your new password"
-              className="h-11 rounded-lg border border-slate-200 bg-slate-50/50 pl-10 pr-10 text-[14px] font-medium transition-all placeholder:text-slate-400 hover:bg-slate-100 focus-visible:bg-white focus-visible:ring-1 focus-visible:ring-primary focus-visible:border-primary shadow-sm"
+              className="h-11 rounded-lg border border-border bg-slate-50/50 pl-10 pr-10 text-[14px] font-medium transition-all placeholder:text-muted-foreground hover:bg-muted focus-visible:bg-white focus-visible:ring-1 focus-visible:ring-primary focus-visible:border-primary shadow-sm"
             />
             <button
               type="button"
               onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-              className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 transition-colors hover:text-slate-700 focus:outline-none"
+              className="absolute right-3.5 top-1/2 -translate-y-1/2 text-muted-foreground transition-colors hover:text-slate-700 focus:outline-none"
               aria-label={showConfirmPassword ? "Hide password" : "Show password"}
             >
               {showConfirmPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
@@ -117,7 +117,7 @@ export function ResetPasswordForm() {
       </form>
 
       {/* Security Message */}
-      <div className="mt-8 flex items-center justify-center gap-2 text-[13px] font-medium text-slate-500 rounded-lg bg-slate-50 px-4 py-3 border border-slate-100">
+      <div className="mt-8 flex items-center justify-center gap-2 text-[13px] font-medium text-muted-foreground rounded-lg bg-slate-50 px-4 py-3 border border-slate-100">
         <ShieldCheck className="h-4 w-4 shrink-0 text-primary" />
         <p>For your security, all sessions will be logged out after reset.</p>
       </div>

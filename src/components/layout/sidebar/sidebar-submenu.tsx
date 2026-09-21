@@ -41,7 +41,7 @@ export function SidebarSubmenu({ item }: { item: NavItem }) {
             "group relative flex w-full items-center justify-center rounded-lg py-2.5 outline-none transition-all duration-200",
             isChildActive
               ? "bg-primary/5 text-primary"
-              : "text-slate-600 hover:bg-slate-50 hover:text-slate-900 focus-visible:bg-slate-50 dark:text-slate-400 dark:hover:bg-slate-800/50 dark:hover:text-white"
+              : "text-slate-600 hover:bg-slate-50 hover:text-slate-900 focus-visible:bg-slate-50 dark:text-slate-400 dark:hover:bg-sidebar-accent/50 dark:hover:text-white"
           )}
         >
           {isChildActive && (
@@ -50,8 +50,8 @@ export function SidebarSubmenu({ item }: { item: NavItem }) {
           <Icon className={cn("h-5 w-5 shrink-0 transition-colors", isChildActive ? "text-primary" : "text-slate-400 group-hover:text-slate-600 dark:group-hover:text-slate-300")} />
         </DropdownMenuTrigger>
 
-        <DropdownMenuContent side="right" align="start" sideOffset={14} className="w-56 p-2 shadow-xl border-slate-200/60 dark:border-slate-800">
-          <DropdownMenuLabel className="text-[11px] font-semibold uppercase tracking-wider text-slate-500">
+        <DropdownMenuContent side="right" align="start" sideOffset={14} className="w-56 p-2 shadow-xl border-slate-200/60 border-sidebar-border">
+          <DropdownMenuLabel className="text-[11px] font-semibold uppercase tracking-wider text-sidebar-foreground0">
             {item.title}
           </DropdownMenuLabel>
           <DropdownMenuSeparator className="my-1" />
@@ -84,7 +84,7 @@ export function SidebarSubmenu({ item }: { item: NavItem }) {
           "group relative flex w-full items-center justify-between gap-3 rounded-lg px-3 py-2.5 text-[14px] font-medium outline-none transition-all duration-200",
           isChildActive
             ? "bg-primary/5 text-primary"
-            : "text-slate-600 hover:bg-slate-50 hover:text-slate-900 focus-visible:bg-slate-50 dark:text-slate-400 dark:hover:bg-slate-800/50 dark:hover:text-white"
+            : "text-slate-600 hover:bg-slate-50 hover:text-slate-900 focus-visible:bg-slate-50 dark:text-slate-400 dark:hover:bg-sidebar-accent/50 dark:hover:text-white"
         )}
       >
         <div className="flex items-center gap-3 overflow-hidden">
@@ -122,7 +122,7 @@ export function SidebarSubmenu({ item }: { item: NavItem }) {
                       "rounded-md px-3 py-2 text-[13px] font-medium transition-colors outline-none",
                       isSubActive
                         ? "text-primary bg-primary/5"
-                        : "text-slate-500 hover:bg-slate-50 hover:text-slate-900 focus-visible:bg-slate-50 dark:text-slate-400 dark:hover:bg-slate-800/50 dark:hover:text-white"
+                        : "text-sidebar-foreground0 hover:bg-slate-50 hover:text-slate-900 focus-visible:bg-slate-50 dark:text-slate-400 dark:hover:bg-sidebar-accent/50 dark:hover:text-white"
                     )}
                   >
                     {child.title}

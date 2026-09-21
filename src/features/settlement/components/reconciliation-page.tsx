@@ -58,7 +58,7 @@ const columns: ColumnDef<ReconciliationRecord>[] = [
     accessorKey: "internalAmount",
     header: "Internal",
     cell: ({ row }) => (
-      <span className="font-medium text-slate-900 dark:text-white">
+      <span className="font-medium text-foreground dark:text-white">
         {formatCurrency(row.getValue("internalAmount"))}
       </span>
     ),
@@ -67,7 +67,7 @@ const columns: ColumnDef<ReconciliationRecord>[] = [
     accessorKey: "bankAmount",
     header: "Bank",
     cell: ({ row }) => (
-      <span className="text-slate-600 dark:text-slate-400">
+      <span className="text-slate-600 text-muted-foreground">
         {formatCurrency(row.getValue("bankAmount"))}
       </span>
     ),
@@ -76,7 +76,7 @@ const columns: ColumnDef<ReconciliationRecord>[] = [
     accessorKey: "partnerAmount",
     header: "Partner",
     cell: ({ row }) => (
-      <span className="text-slate-600 dark:text-slate-400">
+      <span className="text-slate-600 text-muted-foreground">
         {formatCurrency(row.getValue("partnerAmount"))}
       </span>
     ),
@@ -161,10 +161,10 @@ export function ReconciliationDashboardPage() {
     <div className="space-y-6 max-w-[1400px] mx-auto p-4 md:p-6 pb-20">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+          <h1 className="text-3xl font-bold tracking-tight text-foreground dark:text-white">
             Reconciliation
           </h1>
-          <p className="text-slate-500 mt-1">
+          <p className="text-muted-foreground mt-1">
             Compare PayNexus internal transaction records with bank and
             payment-partner records.
           </p>
@@ -212,22 +212,22 @@ export function ReconciliationDashboardPage() {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Reconciliation Trend */}
-        <div className="lg:col-span-2 flex h-full min-h-[350px] w-full flex-col rounded-xl border border-slate-200/60 bg-white p-6 shadow-[0_1px_2px_0_rgba(0,0,0,0.01)] dark:border-slate-800 dark:bg-slate-900">
+        <div className="lg:col-span-2 flex h-full min-h-[350px] w-full flex-col rounded-xl border border-border/60 bg-white p-6 shadow-[0_1px_2px_0_rgba(0,0,0,0.01)] border-border bg-background">
           <div className="flex flex-row items-center justify-between mb-2">
             <div>
-              <h3 className="text-[16px] font-semibold text-slate-900 dark:text-white">
+              <h3 className="text-[16px] font-semibold text-foreground dark:text-white">
                 Reconciliation Trend
               </h3>
-              <p className="text-[12px] font-medium text-slate-500 mt-1">
+              <p className="text-[12px] font-medium text-muted-foreground mt-1">
                 Match vs Mismatch rates over time
               </p>
             </div>
-            <div className="flex items-center gap-2 rounded-md border border-slate-200 bg-white p-0.5 dark:border-slate-800 dark:bg-slate-900">
+            <div className="flex items-center gap-2 rounded-md border border-border bg-white p-0.5 border-border bg-background">
               {["7D", "30D", "90D"].map((t) => (
                 <button
                   key={t}
                   onClick={() => setTimeRange(t)}
-                  className={`flex items-center gap-1 rounded px-2.5 py-1 text-[13px] font-semibold transition-colors ${timeRange === t ? "bg-slate-100 text-slate-900 dark:bg-slate-800 dark:text-white" : "text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white"}`}
+                  className={`flex items-center gap-1 rounded px-2.5 py-1 text-[13px] font-semibold transition-colors ${timeRange === t ? "bg-muted text-foreground bg-card dark:text-white" : "text-slate-600 hover:text-foreground text-muted-foreground dark:hover:text-white"}`}
                 >
                   {t}
                 </button>
@@ -279,15 +279,15 @@ export function ReconciliationDashboardPage() {
                   content={({ active, payload, label }) => {
                     if (active && payload && payload.length) {
                       return (
-                        <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-3 rounded-lg shadow-lg">
-                          <p className="font-medium text-slate-900 dark:text-white mb-2">
+                        <div className="bg-white bg-background border border-border border-border p-3 rounded-lg shadow-lg">
+                          <p className="font-medium text-foreground dark:text-white mb-2">
                             {label}
                           </p>
                           <div className="space-y-1">
                             {payload.map((entry, index) => (
                               <p
                                 key={index}
-                                className="text-sm text-slate-600 dark:text-slate-400 flex justify-between gap-4"
+                                className="text-sm text-slate-600 text-muted-foreground flex justify-between gap-4"
                               >
                                 <span>
                                   {entry.name === "matched"
@@ -350,12 +350,12 @@ export function ReconciliationDashboardPage() {
         </div>
 
         {/* Match Distribution */}
-        <div className="flex h-full min-h-[350px] w-full flex-col rounded-xl border border-slate-200/60 bg-white p-6 shadow-[0_1px_2px_0_rgba(0,0,0,0.01)] dark:border-slate-800 dark:bg-slate-900">
+        <div className="flex h-full min-h-[350px] w-full flex-col rounded-xl border border-border/60 bg-white p-6 shadow-[0_1px_2px_0_rgba(0,0,0,0.01)] border-border bg-background">
           <div className="mb-2">
-            <h3 className="text-[16px] font-semibold text-slate-900 dark:text-white">
+            <h3 className="text-[16px] font-semibold text-foreground dark:text-white">
               Match Distribution
             </h3>
-            <p className="text-[12px] font-medium text-slate-500 mt-1">
+            <p className="text-[12px] font-medium text-muted-foreground mt-1">
               Current status breakdown
             </p>
           </div>
@@ -397,11 +397,11 @@ export function ReconciliationDashboardPage() {
                     content={({ active, payload }) => {
                       if (active && payload && payload.length) {
                         return (
-                          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-2 rounded shadow-lg text-sm">
-                            <span className="font-medium text-slate-900 dark:text-white">
+                          <div className="bg-white bg-background border border-border border-border p-2 rounded shadow-lg text-sm">
+                            <span className="font-medium text-foreground dark:text-white">
                               {payload[0].name}:{" "}
                             </span>
-                            <span className="text-slate-600 dark:text-slate-400">
+                            <span className="text-slate-600 text-muted-foreground">
                               {payload[0].value}%
                             </span>
                           </div>
@@ -413,10 +413,10 @@ export function ReconciliationDashboardPage() {
                 </PieChart>
               </ResponsiveContainer>
               <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
-                <span className="text-2xl font-bold text-slate-900 dark:text-white">
+                <span className="text-2xl font-bold text-foreground dark:text-white">
                   98.6%
                 </span>
-                <span className="text-[11px] font-medium text-slate-500">
+                <span className="text-[11px] font-medium text-muted-foreground">
                   Matched
                 </span>
               </div>
@@ -436,11 +436,11 @@ export function ReconciliationDashboardPage() {
                     <span
                       className={`w-2.5 h-2.5 rounded-full ${item.color}`}
                     ></span>
-                    <span className="text-slate-600 dark:text-slate-400 font-medium">
+                    <span className="text-slate-600 text-muted-foreground font-medium">
                       {item.name}
                     </span>
                   </div>
-                  <span className="font-semibold text-slate-900 dark:text-white">
+                  <span className="font-semibold text-foreground dark:text-white">
                     {item.value}%
                   </span>
                 </div>
@@ -450,9 +450,9 @@ export function ReconciliationDashboardPage() {
         </div>
       </div>
 
-      <div className="flex w-full flex-col rounded-xl border border-slate-200/60 bg-white shadow-[0_1px_2px_0_rgba(0,0,0,0.01)] dark:border-slate-800 dark:bg-slate-900">
-        <div className="p-4 border-b border-slate-100 dark:border-slate-800">
-          <div className="flex bg-slate-100 dark:bg-slate-800/50 p-1 rounded-lg w-fit overflow-x-auto">
+      <div className="flex w-full flex-col rounded-xl border border-border/60 bg-white shadow-[0_1px_2px_0_rgba(0,0,0,0.01)] border-border bg-background">
+        <div className="p-4 border-b border-slate-100 border-border">
+          <div className="flex bg-muted bg-card/50 p-1 rounded-lg w-fit overflow-x-auto">
             {tabs.map((tab) => (
               <button
                 key={tab}
@@ -462,8 +462,8 @@ export function ReconciliationDashboardPage() {
                 }}
                 className={`px-4 py-1.5 text-sm font-medium rounded-md whitespace-nowrap transition-all ${
                   activeTab === tab
-                    ? "bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm"
-                    : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+                    ? "bg-white dark:bg-slate-700 text-foreground dark:text-white shadow-sm"
+                    : "text-slate-600 text-muted-foreground hover:text-foreground dark:hover:text-white"
                 }`}
               >
                 {tab}

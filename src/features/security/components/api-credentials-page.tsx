@@ -25,17 +25,17 @@ export default function ApiCredentialsPage() {
         }
       />
 
-      <div className="flex flex-col rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900 overflow-hidden">
-        <div className="flex flex-col gap-4 border-b border-slate-200 p-4 sm:flex-row sm:items-center sm:justify-between dark:border-slate-800">
+      <div className="flex flex-col rounded-2xl border border-border bg-white shadow-sm border-border bg-background overflow-hidden">
+        <div className="flex flex-col gap-4 border-b border-border p-4 sm:flex-row sm:items-center sm:justify-between border-border">
           <div className="relative w-full sm:max-w-xs">
-            <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
-            <Input placeholder="Search keys..." className="h-10 w-full rounded-xl pl-9 bg-slate-50 border-slate-200 dark:bg-slate-900/50 dark:border-slate-800" />
+            <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+            <Input placeholder="Search keys..." className="h-10 w-full rounded-xl pl-9 bg-slate-50 border-border bg-background/50 border-border" />
           </div>
         </div>
 
         <Table>
           <TableHeader>
-            <TableRow className="bg-slate-50/50 hover:bg-slate-50/50 dark:bg-slate-800/20 dark:hover:bg-slate-800/20 border-slate-200 dark:border-slate-800">
+            <TableRow className="bg-slate-50/50 hover:bg-slate-50/50 bg-card/20 dark:hover:bg-card/20 border-border border-border">
               <TableHead>Key Name</TableHead>
               <TableHead>Environment / Merchant</TableHead>
               <TableHead>Secret Key Preview</TableHead>
@@ -48,18 +48,18 @@ export default function ApiCredentialsPage() {
           <TableBody>
             {MOCK_API_KEYS.map((item) => (
               <TableRow key={item.id}>
-                <TableCell className="font-medium text-slate-900 dark:text-white">{item.name}</TableCell>
-                <TableCell className="text-slate-500">{item.merchantId}</TableCell>
+                <TableCell className="font-medium text-foreground dark:text-white">{item.name}</TableCell>
+                <TableCell className="text-muted-foreground">{item.merchantId}</TableCell>
                 <TableCell>
                   <div className="flex items-center gap-2">
-                    <span className="font-mono text-sm tracking-widest text-slate-600 dark:text-slate-400">
+                    <span className="font-mono text-sm tracking-widest text-slate-600 text-muted-foreground">
                       {item.keyPrefix}••••••••
                     </span>
                     <Button variant="ghost" size="icon" className="h-6 w-6"><Copy className="h-3 w-3" /></Button>
                   </div>
                 </TableCell>
-                <TableCell className="text-slate-500 text-sm">{item.createdAt}</TableCell>
-                <TableCell className="text-slate-500 text-sm">{item.lastUsed}</TableCell>
+                <TableCell className="text-muted-foreground text-sm">{item.createdAt}</TableCell>
+                <TableCell className="text-muted-foreground text-sm">{item.lastUsed}</TableCell>
                 <TableCell><StatusBadge status={item.status} /></TableCell>
                 <TableCell className="text-right">
                   <Button variant="ghost" size="sm" className="text-red-600 hover:text-red-700 hover:bg-red-50">Revoke</Button>

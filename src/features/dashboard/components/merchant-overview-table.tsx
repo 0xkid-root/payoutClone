@@ -29,7 +29,7 @@ const StatusBadge = ({ status }: { status: DashboardMerchant["status"] }) => {
     ACTIVE: "bg-emerald-50 text-emerald-600 border-emerald-200/50",
     PENDING: "bg-amber-50 text-amber-600 border-amber-200/50",
     SUSPENDED: "bg-red-50 text-red-600 border-red-200/50",
-    BLOCKED: "bg-slate-50 text-slate-600 border-slate-200/50",
+    BLOCKED: "bg-slate-50 text-slate-600 border-border/50",
   };
 
   return (
@@ -48,7 +48,7 @@ export const dashboardMerchantColumns: ColumnDef<DashboardMerchant>[] = [
         <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary/10 text-[12px] font-bold text-primary">
           {row.original.merchantName.charAt(0)}
         </div>
-        <span className="font-semibold text-slate-900 dark:text-white whitespace-nowrap">
+        <span className="font-semibold text-foreground dark:text-white whitespace-nowrap">
           {row.original.merchantName}
         </span>
       </div>
@@ -58,7 +58,7 @@ export const dashboardMerchantColumns: ColumnDef<DashboardMerchant>[] = [
     accessorKey: "merchantCode",
     header: "MID",
     cell: ({ row }) => (
-      <span className="text-[13px] font-medium text-slate-500">
+      <span className="text-[13px] font-medium text-muted-foreground">
         {row.original.merchantCode}
       </span>
     ),
@@ -67,7 +67,7 @@ export const dashboardMerchantColumns: ColumnDef<DashboardMerchant>[] = [
     accessorKey: "totalPayout",
     header: "Total Payout (₹)",
     cell: ({ row }) => (
-      <span className="font-semibold tabular-nums text-slate-900 dark:text-white">
+      <span className="font-semibold tabular-nums text-foreground dark:text-white">
         ₹{row.original.totalPayout.toLocaleString()}
       </span>
     ),
@@ -79,13 +79,13 @@ export const dashboardMerchantColumns: ColumnDef<DashboardMerchant>[] = [
       const rate = row.original.successRate;
       return (
         <div className="flex items-center gap-2">
-          <div className="h-1.5 w-16 overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800">
+          <div className="h-1.5 w-16 overflow-hidden rounded-full bg-muted bg-card">
             <div 
               className={`h-full rounded-full ${rate >= 95 ? "bg-emerald-500" : "bg-amber-500"}`}
               style={{ width: `${rate}%` }}
             />
           </div>
-          <span className="text-[13px] font-medium tabular-nums text-slate-500">{rate}%</span>
+          <span className="text-[13px] font-medium tabular-nums text-muted-foreground">{rate}%</span>
         </div>
       );
     },
@@ -112,7 +112,7 @@ export const dashboardMerchantColumns: ColumnDef<DashboardMerchant>[] = [
     accessorKey: "totalTxns",
     header: "Total Txns",
     cell: ({ row }) => (
-      <span className="tabular-nums text-slate-600 dark:text-slate-400">
+      <span className="tabular-nums text-slate-600 text-muted-foreground">
         {row.original.totalTxns.toLocaleString()}
       </span>
     ),
@@ -126,7 +126,7 @@ export const dashboardMerchantColumns: ColumnDef<DashboardMerchant>[] = [
     id: "actions",
     cell: () => (
       <DropdownMenu>
-        <DropdownMenuTrigger className="flex h-8 w-8 items-center justify-center rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">
+        <DropdownMenuTrigger className="flex h-8 w-8 items-center justify-center rounded-md hover:bg-muted dark:hover:bg-card">
           <span className="sr-only">Open menu</span>
           <MoreVertical className="h-4 w-4" />
         </DropdownMenuTrigger>
@@ -158,9 +158,9 @@ export function MerchantOverviewTable() {
     (columnFilters.find((f) => f.id === "status")?.value as string) || "ALL";
 
   return (
-    <div className="flex h-full flex-col rounded-xl border border-slate-200/60 bg-white p-6 shadow-[0_1px_2px_0_rgba(0,0,0,0.01)] dark:border-slate-800 dark:bg-slate-900">
+    <div className="flex h-full flex-col rounded-xl border border-border/60 bg-white p-6 shadow-[0_1px_2px_0_rgba(0,0,0,0.01)] border-border bg-background">
       <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <h3 className="text-[16px] font-semibold text-slate-900 dark:text-white">Merchants Overview (Top 5)</h3>
+        <h3 className="text-[16px] font-semibold text-foreground dark:text-white">Merchants Overview (Top 5)</h3>
         <div className="flex items-center gap-3">
           <DataTableSearch
             placeholder="Search Merchant or MID..."
@@ -173,7 +173,7 @@ export function MerchantOverviewTable() {
               setColumnFilters([{ id: "status", value: val }]);
             }}
           >
-            <SelectTrigger className="w-[140px] h-9 text-[13px] bg-white dark:bg-slate-900">
+            <SelectTrigger className="w-[140px] h-9 text-[13px] bg-white bg-background">
               <SelectValue placeholder="Status" />
             </SelectTrigger>
             <SelectContent>
@@ -215,7 +215,7 @@ export function MerchantOverviewTable() {
               onSortingChange={setSorting}
               hidePagination={true}
             />
-            <div className="mt-4 flex justify-center border-t border-slate-100 pt-4 dark:border-slate-800">
+            <div className="mt-4 flex justify-center border-t border-slate-100 pt-4 border-border">
               <Button variant="ghost" className="text-[13px] font-medium text-primary hover:bg-primary/5 hover:text-primary/90">
                 View All Merchants
               </Button>

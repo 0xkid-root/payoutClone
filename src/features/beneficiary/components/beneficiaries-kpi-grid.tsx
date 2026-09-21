@@ -20,7 +20,7 @@ export function BeneficiariesKpiGrid() {
         title="Inactive Beneficiaries"
         value="727"
         icon={XCircle}
-        iconColorClass="text-slate-500"
+        iconColorClass="text-muted-foreground"
       />
     </div>
   );

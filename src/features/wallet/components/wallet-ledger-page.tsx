@@ -47,7 +47,7 @@ export function WalletLedgerPage() {
         title="Global Ledger"
         description="Immutable read-only view of all financial wallet operations."
         actions={
-          <Button variant="outline" className="bg-white shadow-sm dark:bg-slate-900 border-slate-200 dark:border-slate-800">
+          <Button variant="outline" className="bg-white shadow-sm bg-background border-border border-border">
             <Download className="mr-2 h-4 w-4" />
             Export Ledger
           </Button>
@@ -67,15 +67,15 @@ export function WalletLedgerPage() {
         </div>
       </div>
 
-      <div className="rounded-xl border border-slate-200/60 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900 overflow-hidden flex flex-col">
+      <div className="rounded-xl border border-border/60 bg-white shadow-sm border-border bg-background overflow-hidden flex flex-col">
         {/* Toolbar */}
-        <div className="p-4 border-b border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/50 flex flex-col sm:flex-row items-center gap-4 justify-between">
+        <div className="p-4 border-b border-slate-100 border-border bg-slate-50/50 bg-background/50 flex flex-col sm:flex-row items-center gap-4 justify-between">
           <div className="flex items-center gap-3 w-full sm:w-auto">
             <div className="relative w-full sm:w-80">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
               <Input 
                 placeholder="Search ledger ID, transaction, ref..." 
-                className="pl-9 bg-white dark:bg-slate-900"
+                className="pl-9 bg-white bg-background"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
@@ -83,8 +83,8 @@ export function WalletLedgerPage() {
           </div>
           <div className="flex items-center gap-3 w-full sm:w-auto">
             <Select value={typeFilter} onValueChange={(val) => setTypeFilter(val || "all")}>
-              <SelectTrigger className="w-full sm:w-[150px] bg-white dark:bg-slate-900">
-                <Filter className="mr-2 h-4 w-4 text-slate-400" />
+              <SelectTrigger className="w-full sm:w-[150px] bg-white bg-background">
+                <Filter className="mr-2 h-4 w-4 text-muted-foreground" />
                 <SelectValue placeholder="Type" />
               </SelectTrigger>
               <SelectContent>
@@ -97,7 +97,7 @@ export function WalletLedgerPage() {
               <Button 
                 variant="ghost" 
                 onClick={() => { setSearchTerm(""); setTypeFilter("all"); }}
-                className="text-slate-500"
+                className="text-muted-foreground"
               >
                 Clear
               </Button>
@@ -109,40 +109,40 @@ export function WalletLedgerPage() {
         <div className="overflow-x-auto">
           <Table>
             <TableHeader className="bg-transparent">
-              <TableRow className="hover:bg-transparent border-slate-100 dark:border-slate-800">
-                <TableHead className="h-11 px-5 text-xs font-semibold uppercase tracking-wider text-slate-500">Date</TableHead>
-                <TableHead className="h-11 px-5 text-xs font-semibold uppercase tracking-wider text-slate-500">Ledger ID</TableHead>
-                <TableHead className="h-11 px-5 text-xs font-semibold uppercase tracking-wider text-slate-500">Transaction ID</TableHead>
-                <TableHead className="h-11 px-5 text-xs font-semibold uppercase tracking-wider text-slate-500">Type</TableHead>
-                <TableHead className="h-11 px-5 text-xs font-semibold uppercase tracking-wider text-slate-500 text-right">Credit</TableHead>
-                <TableHead className="h-11 px-5 text-xs font-semibold uppercase tracking-wider text-slate-500 text-right">Debit</TableHead>
-                <TableHead className="h-11 px-5 text-xs font-semibold uppercase tracking-wider text-slate-500 text-right">Running Balance</TableHead>
-                <TableHead className="h-11 px-5 text-xs font-semibold uppercase tracking-wider text-slate-500">Reference</TableHead>
-                <TableHead className="h-11 px-5 text-xs font-semibold uppercase tracking-wider text-slate-500">Status</TableHead>
+              <TableRow className="hover:bg-transparent border-slate-100 border-border">
+                <TableHead className="h-11 px-5 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Date</TableHead>
+                <TableHead className="h-11 px-5 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Ledger ID</TableHead>
+                <TableHead className="h-11 px-5 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Transaction ID</TableHead>
+                <TableHead className="h-11 px-5 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Type</TableHead>
+                <TableHead className="h-11 px-5 text-xs font-semibold uppercase tracking-wider text-muted-foreground text-right">Credit</TableHead>
+                <TableHead className="h-11 px-5 text-xs font-semibold uppercase tracking-wider text-muted-foreground text-right">Debit</TableHead>
+                <TableHead className="h-11 px-5 text-xs font-semibold uppercase tracking-wider text-muted-foreground text-right">Running Balance</TableHead>
+                <TableHead className="h-11 px-5 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Reference</TableHead>
+                <TableHead className="h-11 px-5 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Status</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               {isLoading ? (
                 Array(5).fill(0).map((_, i) => (
-                  <TableRow key={i} className="border-slate-100 dark:border-slate-800/50">
+                  <TableRow key={i} className="border-slate-100 border-border/50">
                     <TableCell colSpan={9} className="p-5">
-                      <div className="h-5 w-full bg-slate-100 dark:bg-slate-800 rounded animate-pulse"></div>
+                      <div className="h-5 w-full bg-muted bg-card rounded animate-pulse"></div>
                     </TableCell>
                   </TableRow>
                 ))
               ) : filteredLedger?.length === 0 ? (
                 <TableRow>
-                  <TableCell colSpan={9} className="h-32 text-center text-slate-500">
+                  <TableCell colSpan={9} className="h-32 text-center text-muted-foreground">
                     No ledger entries found.
                   </TableCell>
                 </TableRow>
               ) : filteredLedger?.map((entry) => (
-                <TableRow key={entry.id} className="border-slate-100 dark:border-slate-800/50 hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors">
-                  <TableCell className="p-4 px-5 text-[13px] text-slate-500">
+                <TableRow key={entry.id} className="border-slate-100 border-border/50 hover:bg-slate-50/50 dark:hover:bg-card/30 transition-colors">
+                  <TableCell className="p-4 px-5 text-[13px] text-muted-foreground">
                     {new Date(entry.date).toLocaleString('en-GB', { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' })}
                   </TableCell>
                   <TableCell className="p-4 px-5">
-                    <span className="font-semibold text-slate-900 dark:text-white text-[13px]">{entry.id}</span>
+                    <span className="font-semibold text-foreground dark:text-white text-[13px]">{entry.id}</span>
                   </TableCell>
                   <TableCell className="p-4 px-5">
                     <span className="font-mono text-[12px] text-primary">{entry.transactionId}</span>
@@ -156,11 +156,11 @@ export function WalletLedgerPage() {
                   <TableCell className="p-4 px-5 text-right font-semibold tabular-nums text-[13px] text-red-600">
                     {formatCurrency(entry.debit)}
                   </TableCell>
-                  <TableCell className="p-4 px-5 text-right tabular-nums font-semibold text-[13px] text-slate-900 dark:text-white">
+                  <TableCell className="p-4 px-5 text-right tabular-nums font-semibold text-[13px] text-foreground dark:text-white">
                     {formatCurrency(entry.runningBalance)}
                   </TableCell>
                   <TableCell className="p-4 px-5">
-                    <span className="font-mono text-[12px] text-slate-500">{entry.reference || "—"}</span>
+                    <span className="font-mono text-[12px] text-muted-foreground">{entry.reference || "—"}</span>
                   </TableCell>
                   <TableCell className="p-4 px-5">
                     <StatusBadge status={entry.status} />
@@ -172,15 +172,15 @@ export function WalletLedgerPage() {
         </div>
 
         {/* Pagination */}
-        <div className="p-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-sm">
-          <div className="text-slate-500">
-            Showing <span className="font-medium text-slate-900 dark:text-white">{filteredLedger?.length || 0}</span> results
+        <div className="p-4 border-t border-slate-100 border-border flex items-center justify-between text-sm">
+          <div className="text-muted-foreground">
+            Showing <span className="font-medium text-foreground dark:text-white">{filteredLedger?.length || 0}</span> results
           </div>
           <div className="flex items-center gap-2">
             <Button variant="outline" size="sm" className="h-8 w-8 p-0" disabled>
               <ChevronLeft className="h-4 w-4" />
             </Button>
-            <Button variant="outline" size="sm" className="h-8 w-8 p-0 bg-slate-100 dark:bg-slate-800" disabled>
+            <Button variant="outline" size="sm" className="h-8 w-8 p-0 bg-muted bg-card" disabled>
               1
             </Button>
             <Button variant="outline" size="sm" className="h-8 w-8 p-0" disabled>

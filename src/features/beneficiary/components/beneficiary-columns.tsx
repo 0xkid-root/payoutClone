@@ -27,7 +27,7 @@ const StatusBadge = ({ status }: { status: Beneficiary["status"] }) => {
 const VerificationBadge = ({ status }: { status: Beneficiary["verificationStatus"] }) => {
   const styles = {
     Verified: "text-emerald-600",
-    "Not Verified": "text-slate-500",
+    "Not Verified": "text-muted-foreground",
   };
 
   return (
@@ -48,10 +48,10 @@ export const beneficiaryColumns: ColumnDef<Beneficiary>[] = [
     header: "Beneficiary",
     cell: ({ row }) => (
       <div className="flex flex-col">
-        <span className="font-semibold text-slate-900 dark:text-white whitespace-nowrap">
+        <span className="font-semibold text-foreground dark:text-white whitespace-nowrap">
           {row.original.name}
         </span>
-        <span className="text-[12px] font-medium text-slate-500 mt-0.5">
+        <span className="text-[12px] font-medium text-muted-foreground mt-0.5">
           {row.original.id}
         </span>
       </div>
@@ -62,10 +62,10 @@ export const beneficiaryColumns: ColumnDef<Beneficiary>[] = [
     header: "Merchant",
     cell: ({ row }) => (
       <div className="flex flex-col">
-        <span className="font-medium text-slate-900 dark:text-white whitespace-nowrap">
+        <span className="font-medium text-foreground dark:text-white whitespace-nowrap">
           {row.original.merchantName}
         </span>
-        <span className="text-[12px] font-medium text-slate-500 mt-0.5">
+        <span className="text-[12px] font-medium text-muted-foreground mt-0.5">
           {row.original.mid}
         </span>
       </div>
@@ -109,14 +109,14 @@ export const beneficiaryColumns: ColumnDef<Beneficiary>[] = [
         month: "short",
         year: "numeric",
       });
-      return <span className="text-[13px] font-medium text-slate-600 dark:text-slate-400">{formatted}</span>;
+      return <span className="text-[13px] font-medium text-slate-600 text-muted-foreground">{formatted}</span>;
     },
   },
   {
     id: "actions",
     cell: () => (
       <DropdownMenu>
-        <DropdownMenuTrigger className="flex h-8 w-8 items-center justify-center rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">
+        <DropdownMenuTrigger className="flex h-8 w-8 items-center justify-center rounded-md hover:bg-muted dark:hover:bg-card">
           <span className="sr-only">Open menu</span>
           <MoreVertical className="h-4 w-4" />
         </DropdownMenuTrigger>

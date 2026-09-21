@@ -54,10 +54,10 @@ export function ApproveDialog({ isOpen, onClose, onSuccess, request }: ApproveDi
             Are you sure you want to approve this bank account for wallet funding? This will authorize the merchant to request funds from this account.
           </DialogDescription>
         </DialogHeader>
-        <div className="bg-slate-50 dark:bg-slate-900/50 p-4 rounded-lg my-2 border border-slate-100 dark:border-slate-800">
-          <p className="text-sm text-slate-500 mb-1">Merchant: <span className="font-semibold text-slate-900 dark:text-white">{request.merchantName}</span></p>
-          <p className="text-sm text-slate-500 mb-1">Bank: <span className="font-semibold text-slate-900 dark:text-white">{request.bankName}</span></p>
-          <p className="text-sm text-slate-500">Account: <span className="font-mono font-medium text-slate-900 dark:text-white">{maskAccountNumber(request.accountNumber)}</span></p>
+        <div className="bg-slate-50 bg-background/50 p-4 rounded-lg my-2 border border-slate-100 border-border">
+          <p className="text-sm text-muted-foreground mb-1">Merchant: <span className="font-semibold text-foreground dark:text-white">{request.merchantName}</span></p>
+          <p className="text-sm text-muted-foreground mb-1">Bank: <span className="font-semibold text-foreground dark:text-white">{request.bankName}</span></p>
+          <p className="text-sm text-muted-foreground">Account: <span className="font-mono font-medium text-foreground dark:text-white">{maskAccountNumber(request.accountNumber)}</span></p>
         </div>
         <DialogFooter className="mt-4">
           <Button variant="outline" onClick={onClose} disabled={isPending}>

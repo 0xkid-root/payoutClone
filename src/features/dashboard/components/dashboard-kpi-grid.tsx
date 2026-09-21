@@ -51,7 +51,7 @@ export function DashboardKpiGrid() {
         title="Total Merchants"
         value="28"
         icon={Store}
-        iconColorClass="text-slate-500"
+        iconColorClass="text-muted-foreground"
         actionLabel="Active Merchants 26"
       />
     </div>

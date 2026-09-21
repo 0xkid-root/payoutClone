@@ -23,17 +23,17 @@ export function VanManagementPage() {
       {/* Page Header */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
-          <h1 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
+          <h1 className="text-2xl font-bold tracking-tight text-foreground dark:text-white">
             VAN Management
           </h1>
-          <p className="text-slate-500 dark:text-slate-400 mt-1 text-[15px]">
+          <p className="text-muted-foreground text-muted-foreground mt-1 text-[15px]">
             Manage virtual accounts assigned to merchants and monitor their current status.
           </p>
         </div>
         <div className="flex items-center gap-3">
           <Button 
             variant="outline" 
-            className="bg-white shadow-sm dark:bg-slate-900 border-slate-200 dark:border-slate-800"
+            className="bg-white shadow-sm bg-background border-border border-border"
             onClick={handleRefresh}
             disabled={isRefreshing}
           >

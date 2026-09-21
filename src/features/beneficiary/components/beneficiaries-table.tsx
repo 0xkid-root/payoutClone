@@ -35,7 +35,7 @@ export function BeneficiariesTable() {
     (columnFilters.find((f) => f.id === "status")?.value as string) || "ALL";
 
   return (
-    <div className="flex h-full flex-col rounded-xl border border-slate-200/60 bg-white p-6 shadow-[0_1px_2px_0_rgba(0,0,0,0.01)] dark:border-slate-800 dark:bg-slate-900">
+    <div className="flex h-full flex-col rounded-xl border border-border/60 bg-white p-6 shadow-[0_1px_2px_0_rgba(0,0,0,0.01)] border-border bg-background">
       <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex-1 w-full max-w-lg">
           <DataTableSearch
@@ -52,7 +52,7 @@ export function BeneficiariesTable() {
               setColumnFilters([{ id: "status", value: val }]);
             }}
           >
-            <SelectTrigger className="w-[140px] h-9 text-[13px] bg-white dark:bg-slate-900">
+            <SelectTrigger className="w-[140px] h-9 text-[13px] bg-white bg-background">
               <SelectValue placeholder="Status" />
             </SelectTrigger>
             <SelectContent>

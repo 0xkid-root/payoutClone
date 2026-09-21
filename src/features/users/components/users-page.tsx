@@ -26,17 +26,17 @@ export default function UsersPage() {
         }
       />
 
-      <div className="flex flex-col rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900 overflow-hidden">
-        <div className="flex flex-col gap-4 border-b border-slate-200 p-4 sm:flex-row sm:items-center sm:justify-between dark:border-slate-800">
+      <div className="flex flex-col rounded-2xl border border-border bg-white shadow-sm border-border bg-background overflow-hidden">
+        <div className="flex flex-col gap-4 border-b border-border p-4 sm:flex-row sm:items-center sm:justify-between border-border">
           <div className="relative w-full sm:max-w-xs">
-            <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
-            <Input placeholder="Search users by name or email..." className="h-10 w-full rounded-xl pl-9 bg-slate-50 border-slate-200 dark:bg-slate-900/50 dark:border-slate-800" />
+            <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+            <Input placeholder="Search users by name or email..." className="h-10 w-full rounded-xl pl-9 bg-slate-50 border-border bg-background/50 border-border" />
           </div>
         </div>
 
         <Table>
           <TableHeader>
-            <TableRow className="bg-slate-50/50 hover:bg-slate-50/50 dark:bg-slate-800/20 dark:hover:bg-slate-800/20 border-slate-200 dark:border-slate-800">
+            <TableRow className="bg-slate-50/50 hover:bg-slate-50/50 bg-card/20 dark:hover:bg-card/20 border-border border-border">
               <TableHead>User Name</TableHead>
               <TableHead>Email Address</TableHead>
               <TableHead>Role</TableHead>
@@ -48,22 +48,22 @@ export default function UsersPage() {
           <TableBody>
             {MOCK_USERS.map((item) => (
               <TableRow key={item.id}>
-                <TableCell className="font-medium text-slate-900 dark:text-white">
+                <TableCell className="font-medium text-foreground dark:text-white">
                   <div className="flex items-center gap-3">
-                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300">
+                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-muted text-slate-600 bg-card dark:text-slate-300">
                        {item.name.charAt(0)}
                     </div>
                     {item.name}
                   </div>
                 </TableCell>
-                <TableCell className="text-slate-500">{item.email}</TableCell>
+                <TableCell className="text-muted-foreground">{item.email}</TableCell>
                 <TableCell>
                   <div className="flex items-center gap-1.5">
                     <ShieldCheck className="h-3 w-3 text-primary" />
                     <span className="text-xs font-semibold text-slate-700 dark:text-slate-300">{item.role}</span>
                   </div>
                 </TableCell>
-                <TableCell className="text-slate-500 text-sm">{item.lastLogin}</TableCell>
+                <TableCell className="text-muted-foreground text-sm">{item.lastLogin}</TableCell>
                 <TableCell><StatusBadge status={item.status} /></TableCell>
                 <TableCell className="text-right">
                   <Button variant="ghost" size="sm" className="text-primary hover:bg-primary/10">Manage Access</Button>

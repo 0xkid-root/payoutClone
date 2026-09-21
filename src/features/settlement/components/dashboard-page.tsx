@@ -81,8 +81,8 @@ export function SettlementDashboardPage() {
   return (
     <div className="space-y-6 max-w-[1400px] mx-auto p-4 md:p-6 pb-20">
       <div>
-        <h1 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">Settlement Dashboard</h1>
-        <p className="text-slate-500 mt-1">Monitor daily settlement cycles and reconciliation status.</p>
+        <h1 className="text-3xl font-bold tracking-tight text-foreground dark:text-white">Settlement Dashboard</h1>
+        <p className="text-muted-foreground mt-1">Monitor daily settlement cycles and reconciliation status.</p>
       </div>
 
       {/* Top Summary Cards */}
@@ -122,18 +122,18 @@ export function SettlementDashboardPage() {
       {/* Main Visuals */}
       <div className="grid gap-6 md:grid-cols-3">
         {/* Hero Graph */}
-        <div className="md:col-span-2 flex h-full min-h-[350px] w-full flex-col rounded-xl border border-slate-200/60 bg-white p-6 shadow-[0_1px_2px_0_rgba(0,0,0,0.01)] dark:border-slate-800 dark:bg-slate-900">
+        <div className="md:col-span-2 flex h-full min-h-[350px] w-full flex-col rounded-xl border border-border/60 bg-white p-6 shadow-[0_1px_2px_0_rgba(0,0,0,0.01)] border-border bg-background">
           <div className="flex flex-row items-center justify-between mb-2">
             <div>
-              <h3 className="text-[16px] font-semibold text-slate-900 dark:text-white">Settlement Performance</h3>
-              <p className="text-[12px] font-medium text-slate-500 mt-1">Total settlement vs completed vs pending</p>
+              <h3 className="text-[16px] font-semibold text-foreground dark:text-white">Settlement Performance</h3>
+              <p className="text-[12px] font-medium text-muted-foreground mt-1">Total settlement vs completed vs pending</p>
             </div>
-            <div className="flex items-center gap-2 rounded-md border border-slate-200 bg-white p-0.5 dark:border-slate-800 dark:bg-slate-900">
+            <div className="flex items-center gap-2 rounded-md border border-border bg-white p-0.5 border-border bg-background">
               {['7D', '30D', '90D'].map(t => (
                 <button 
                   key={t}
                   onClick={() => setTimeRange(t)}
-                  className={`flex items-center gap-1 rounded px-2.5 py-1 text-[13px] font-semibold transition-colors ${timeRange === t ? 'bg-slate-100 text-slate-900 dark:bg-slate-800 dark:text-white' : 'text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white'}`}
+                  className={`flex items-center gap-1 rounded px-2.5 py-1 text-[13px] font-semibold transition-colors ${timeRange === t ? 'bg-muted text-foreground bg-card dark:text-white' : 'text-slate-600 hover:text-foreground text-muted-foreground dark:hover:text-white'}`}
                 >
                   {t}
                 </button>
@@ -165,20 +165,20 @@ export function SettlementDashboardPage() {
                     content={({ active, payload, label }) => {
                       if (active && payload && payload.length) {
                         return (
-                          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-3 rounded-lg shadow-lg">
-                            <p className="font-medium text-slate-900 dark:text-white mb-2">{label}</p>
+                          <div className="bg-white bg-background border border-border border-border p-3 rounded-lg shadow-lg">
+                            <p className="font-medium text-foreground dark:text-white mb-2">{label}</p>
                             <div className="space-y-1">
-                              <p className="text-sm text-slate-600 dark:text-slate-400">
+                              <p className="text-sm text-slate-600 text-muted-foreground">
                                 <span className="inline-block w-3 h-3 rounded-full bg-slate-400 mr-2"></span>
-                                Total: <span className="font-semibold text-slate-900 dark:text-white">{formatCurrency(payload[0].payload.settlement)}</span>
+                                Total: <span className="font-semibold text-foreground dark:text-white">{formatCurrency(payload[0].payload.settlement)}</span>
                               </p>
-                              <p className="text-sm text-slate-600 dark:text-slate-400">
+                              <p className="text-sm text-slate-600 text-muted-foreground">
                                 <span className="inline-block w-3 h-3 rounded-full bg-emerald-500 mr-2"></span>
-                                Completed: <span className="font-semibold text-slate-900 dark:text-white">{formatCurrency(payload[0].value as number)}</span>
+                                Completed: <span className="font-semibold text-foreground dark:text-white">{formatCurrency(payload[0].value as number)}</span>
                               </p>
-                              <p className="text-sm text-slate-600 dark:text-slate-400">
+                              <p className="text-sm text-slate-600 text-muted-foreground">
                                 <span className="inline-block w-3 h-3 rounded-full bg-amber-500 mr-2"></span>
-                                Pending: <span className="font-semibold text-slate-900 dark:text-white">{formatCurrency(payload[1].value as number)}</span>
+                                Pending: <span className="font-semibold text-foreground dark:text-white">{formatCurrency(payload[1].value as number)}</span>
                               </p>
                             </div>
                           </div>
@@ -195,9 +195,9 @@ export function SettlementDashboardPage() {
         </div>
 
         {/* Donut Chart */}
-        <div className="flex h-full min-h-[350px] w-full flex-col rounded-xl border border-slate-200/60 bg-white p-6 shadow-[0_1px_2px_0_rgba(0,0,0,0.01)] dark:border-slate-800 dark:bg-slate-900">
+        <div className="flex h-full min-h-[350px] w-full flex-col rounded-xl border border-border/60 bg-white p-6 shadow-[0_1px_2px_0_rgba(0,0,0,0.01)] border-border bg-background">
           <div className="mb-2">
-            <h3 className="text-[16px] font-semibold text-slate-900 dark:text-white">Status Distribution</h3>
+            <h3 className="text-[16px] font-semibold text-foreground dark:text-white">Status Distribution</h3>
           </div>
           <div className="relative flex-1 flex flex-col items-center justify-center">
             <div className="h-[220px] w-full relative">
@@ -222,9 +222,9 @@ export function SettlementDashboardPage() {
                       if (active && payload && payload.length) {
                         const data = payload[0].payload;
                         return (
-                          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-2 rounded-lg shadow-lg">
+                          <div className="bg-white bg-background border border-border border-border p-2 rounded-lg shadow-lg">
                             <p className="text-sm font-medium" style={{ color: data.color }}>{data.name}</p>
-                            <p className="text-sm font-bold text-slate-900 dark:text-white">{formatCurrency(data.value)}</p>
+                            <p className="text-sm font-bold text-foreground dark:text-white">{formatCurrency(data.value)}</p>
                           </div>
                         );
                       }
@@ -234,8 +234,8 @@ export function SettlementDashboardPage() {
                 </PieChart>
               </ResponsiveContainer>
               <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
-                <span className="text-xs text-slate-500">Total</span>
-                <span className="text-lg font-bold text-slate-900 dark:text-white">{formatCurrency(12480000)}</span>
+                <span className="text-xs text-muted-foreground">Total</span>
+                <span className="text-lg font-bold text-foreground dark:text-white">{formatCurrency(12480000)}</span>
               </div>
             </div>
             <div className="w-full mt-4 space-y-2">
@@ -243,9 +243,9 @@ export function SettlementDashboardPage() {
                 <div key={s.name} className="flex justify-between items-center text-sm">
                   <div className="flex items-center gap-2">
                     <div className="w-2 h-2 rounded-full" style={{ backgroundColor: s.color }}></div>
-                    <span className="text-[12px] font-medium text-slate-500">{s.name}</span>
+                    <span className="text-[12px] font-medium text-muted-foreground">{s.name}</span>
                   </div>
-                  <span className="text-[13px] font-semibold text-slate-900 dark:text-white">{((s.value / 12480000) * 100).toFixed(1)}%</span>
+                  <span className="text-[13px] font-semibold text-foreground dark:text-white">{((s.value / 12480000) * 100).toFixed(1)}%</span>
                 </div>
               ))}
             </div>
@@ -254,11 +254,11 @@ export function SettlementDashboardPage() {
       </div>
 
       {/* Settlement Health */}
-      <div className="flex w-full flex-col rounded-xl border border-slate-200/60 bg-white p-6 shadow-[0_1px_2px_0_rgba(0,0,0,0.01)] dark:border-slate-800 dark:bg-slate-900">
+      <div className="flex w-full flex-col rounded-xl border border-border/60 bg-white p-6 shadow-[0_1px_2px_0_rgba(0,0,0,0.01)] border-border bg-background">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4">
           <div>
-            <h3 className="text-[16px] font-semibold text-slate-900 dark:text-white">Reconciliation Health</h3>
-            <p className="text-[12px] font-medium text-slate-500 mt-1">Are today's settlements reconciling correctly?</p>
+            <h3 className="text-[16px] font-semibold text-foreground dark:text-white">Reconciliation Health</h3>
+            <p className="text-[12px] font-medium text-muted-foreground mt-1">Are today's settlements reconciling correctly?</p>
           </div>
           <div className="flex gap-6">
             <div className="text-right">
@@ -275,7 +275,7 @@ export function SettlementDashboardPage() {
             </div>
           </div>
         </div>
-        <div className="w-full h-3 rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden flex">
+        <div className="w-full h-3 rounded-full bg-muted bg-card overflow-hidden flex">
           <div className="h-full bg-emerald-500" style={{ width: '98.6%' }}></div>
           <div className="h-full bg-amber-500" style={{ width: '0.3%' }}></div>
           <div className="h-full bg-red-500" style={{ width: '1.1%' }}></div>
@@ -283,7 +283,7 @@ export function SettlementDashboardPage() {
       </div>
 
       {/* Recent Settlement Activity */}
-      <Card className="shadow-sm border-slate-200 dark:border-slate-800">
+      <Card className="shadow-sm border-border border-border">
         <CardHeader>
           <CardTitle>Recent Settlement Activity</CardTitle>
         </CardHeader>

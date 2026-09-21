@@ -58,17 +58,17 @@ export function FeeCalculationPreview({
 
   return (
     <div className="flex flex-col h-full">
-      <h3 className="mb-4 text-sm font-semibold text-slate-900 dark:text-white">Fee Calculation Preview</h3>
+      <h3 className="mb-4 text-sm font-semibold text-foreground dark:text-white">Fee Calculation Preview</h3>
       
       <div className="mb-6 space-y-2">
-        <Label htmlFor="custom-amount" className="text-xs text-slate-500">Test Custom Amount</Label>
+        <Label htmlFor="custom-amount" className="text-xs text-muted-foreground">Test Custom Amount</Label>
         <div className="relative">
-          <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500">₹</span>
+          <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground">₹</span>
           <Input
             id="custom-amount"
             type="number"
             placeholder="e.g. 5000"
-            className="pl-7 bg-white dark:bg-slate-900"
+            className="pl-7 bg-white bg-background"
             value={customAmount}
             onChange={(e) => setCustomAmount(e.target.value)}
           />
@@ -76,7 +76,7 @@ export function FeeCalculationPreview({
       </div>
 
       <div className="space-y-3">
-        <div className="flex justify-between text-xs font-medium text-slate-500 pb-2 border-b border-slate-200 dark:border-slate-800">
+        <div className="flex justify-between text-xs font-medium text-muted-foreground pb-2 border-b border-border border-border">
           <span>Transaction Amount</span>
           <span>Calculated Fee</span>
         </div>
@@ -88,7 +88,7 @@ export function FeeCalculationPreview({
               <span className="text-slate-700 dark:text-slate-300">
                 ₹{amt.toLocaleString('en-IN')}
               </span>
-              <span className="font-medium text-slate-900 dark:text-white">
+              <span className="font-medium text-foreground dark:text-white">
                 {fee === null ? "Out of range" : `₹${fee.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`}
               </span>
             </div>

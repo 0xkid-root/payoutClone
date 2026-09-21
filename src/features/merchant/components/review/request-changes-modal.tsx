@@ -44,10 +44,10 @@ export function RequestChangesModal({ isOpen, onClose, merchant }: RequestChange
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-[500px] border-slate-200/60 dark:border-slate-800 shadow-xl bg-white dark:bg-slate-950">
+      <DialogContent className="sm:max-w-[500px] border-border/60 border-border shadow-xl bg-white dark:bg-slate-950">
         <DialogHeader>
-          <DialogTitle className="text-xl text-slate-900 dark:text-white">Request Changes</DialogTitle>
-          <DialogDescription className="text-slate-500">
+          <DialogTitle className="text-xl text-foreground dark:text-white">Request Changes</DialogTitle>
+          <DialogDescription className="text-muted-foreground">
             Select the information or documents that require correction from {merchant.businessName}.
           </DialogDescription>
         </DialogHeader>
@@ -79,15 +79,15 @@ export function RequestChangesModal({ isOpen, onClose, merchant }: RequestChange
             <Label className="text-sm font-semibold text-slate-700 dark:text-slate-300">Reason / Instructions</Label>
             <textarea 
               placeholder="e.g., The uploaded PAN document is blurry. Please upload a clear, color copy." 
-              className="w-full rounded-md border p-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 resize-none h-24 bg-slate-50/50 dark:bg-slate-900/50 border-slate-200 dark:border-slate-800"
+              className="w-full rounded-md border p-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 resize-none h-24 bg-slate-50/50 bg-background/50 border-border border-border"
               value={reason}
               onChange={(e) => setReason(e.target.value)}
             />
           </div>
         </div>
 
-        <DialogFooter className="border-t border-slate-100 dark:border-slate-800 pt-4 sm:justify-between">
-          <Button variant="ghost" onClick={onClose} className="text-slate-500">Cancel</Button>
+        <DialogFooter className="border-t border-slate-100 border-border pt-4 sm:justify-between">
+          <Button variant="ghost" onClick={onClose} className="text-muted-foreground">Cancel</Button>
           <Button 
             onClick={handleSubmit} 
             disabled={selectedSections.length === 0 || !reason.trim() || isSubmitting}

@@ -31,12 +31,12 @@ export function DataTableSearch({
 
   return (
     <div className={cn("relative w-full max-w-sm", className)}>
-      <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-500" />
+      <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
       <Input
         placeholder={placeholder}
         value={value}
         onChange={(e) => setValue(e.target.value)}
-        className="pl-9 bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 focus-visible:ring-primary"
+        className="pl-9 bg-white bg-background border-border border-border focus-visible:ring-primary"
       />
     </div>
   );

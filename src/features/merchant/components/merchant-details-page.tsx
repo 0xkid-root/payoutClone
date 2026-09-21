@@ -37,7 +37,7 @@ export function MerchantDetailsPage({ merchantId }: { merchantId: string }) {
   const [activeTab, setActiveTab] = useState("overview");
 
   if (isLoading) {
-    return <div className="p-8 text-center text-slate-500">Loading merchant details...</div>;
+    return <div className="p-8 text-center text-muted-foreground">Loading merchant details...</div>;
   }
 
   if (isError || !merchant) {
@@ -72,18 +72,18 @@ export function MerchantDetailsPage({ merchantId }: { merchantId: string }) {
       <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
         <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center">
           <Link href="/merchants">
-            <Button variant="ghost" size="icon" className="h-8 w-8 text-slate-500 hover:text-slate-900">
+            <Button variant="ghost" size="icon" className="h-8 w-8 text-muted-foreground hover:text-foreground">
               <ArrowLeft className="h-4 w-4" />
             </Button>
           </Link>
           <div>
             <div className="flex items-center gap-3">
-              <h1 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
+              <h1 className="text-2xl font-bold tracking-tight text-foreground dark:text-white">
                 {merchant.businessName}
               </h1>
               <StatusBadge status={merchant.status} />
             </div>
-            <p className="mt-1 text-sm font-medium text-slate-500 flex items-center gap-2">
+            <p className="mt-1 text-sm font-medium text-muted-foreground flex items-center gap-2">
               {merchant.merchantCode}
               <span className="h-1 w-1 rounded-full bg-slate-300"></span>
               {merchant.businessType}
@@ -125,7 +125,7 @@ export function MerchantDetailsPage({ merchantId }: { merchantId: string }) {
           title="Total Payouts"
           value={formattedPayouts}
           icon={ArrowUpRight}
-          iconColorClass="text-indigo-500"
+          iconColorClass="text-primary"
         />
         <StatCard
           title="Successful Payouts"
@@ -136,9 +136,9 @@ export function MerchantDetailsPage({ merchantId }: { merchantId: string }) {
       </div>
 
       {/* Unified Main Card for Tabs and Content */}
-      <div className="rounded-xl border border-slate-200/60 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900 overflow-hidden flex flex-col mt-4">
+      <div className="rounded-xl border border-border/60 bg-white shadow-sm border-border bg-background overflow-hidden flex flex-col mt-4">
         {/* Tabs Navigation */}
-        <div className="border-b border-slate-200/60 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/50 p-2 flex overflow-x-auto scrollbar-hide">
+        <div className="border-b border-border/60 border-border bg-slate-50/50 bg-background/50 p-2 flex overflow-x-auto scrollbar-hide">
           {tabs.map((tab) => {
             const isActive = activeTab === tab.id;
             return (
@@ -147,8 +147,8 @@ export function MerchantDetailsPage({ merchantId }: { merchantId: string }) {
                 onClick={() => setActiveTab(tab.id)}
                 className={`whitespace-nowrap px-4 py-2.5 rounded-lg text-sm font-medium transition-all mr-1 ${
                   isActive
-                    ? "bg-white shadow-sm border border-slate-200/60 text-primary dark:bg-slate-800 dark:border-slate-700 dark:text-white"
-                    : "text-slate-500 hover:text-slate-700 hover:bg-slate-100/50 dark:text-slate-400 dark:hover:text-slate-300 dark:hover:bg-slate-800/30"
+                    ? "bg-white shadow-sm border border-border/60 text-primary bg-card border-border dark:text-white"
+                    : "text-muted-foreground hover:text-slate-700 hover:bg-muted/50 text-muted-foreground dark:hover:text-slate-300 dark:hover:bg-card/30"
                 }`}
               >
                 {tab.label}
@@ -158,7 +158,7 @@ export function MerchantDetailsPage({ merchantId }: { merchantId: string }) {
         </div>
 
         {/* Tab Content */}
-        <div className="bg-white dark:bg-slate-900 p-0 pb-2 [&>div]:border-0 [&>div]:rounded-none [&>div]:shadow-none">
+        <div className="bg-white bg-background p-0 pb-2 [&>div]:border-0 [&>div]:rounded-none [&>div]:shadow-none">
           {activeTab === "overview" && <OverviewTab merchant={merchant} onTabChange={setActiveTab} />}
           {activeTab === "business" && <BusinessTab merchant={merchant} />}
           {activeTab === "kyc" && <KycTab merchant={merchant} />}

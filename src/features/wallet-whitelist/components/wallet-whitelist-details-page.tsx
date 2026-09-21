@@ -20,7 +20,7 @@ export function WalletWhitelistDetailsPage() {
   const { data: request, isLoading, error } = useWhitelistRequest(id);
 
   if (isLoading) {
-    return <div className="p-8 text-center text-slate-500">Loading details...</div>;
+    return <div className="p-8 text-center text-muted-foreground">Loading details...</div>;
   }
 
   if (error || !request) {
@@ -34,8 +34,8 @@ export function WalletWhitelistDetailsPage() {
 
   const InfoRow = ({ label, value, monospace }: { label: string, value: string | React.ReactNode, monospace?: boolean }) => (
     <div className="flex flex-col gap-1">
-      <span className="text-xs font-medium text-slate-500">{label}</span>
-      <span className={`text-[13px] text-slate-900 dark:text-white ${monospace ? 'font-mono font-medium' : 'font-semibold'}`}>
+      <span className="text-xs font-medium text-muted-foreground">{label}</span>
+      <span className={`text-[13px] text-foreground dark:text-white ${monospace ? 'font-mono font-medium' : 'font-semibold'}`}>
         {value || "-"}
       </span>
     </div>
@@ -49,7 +49,7 @@ export function WalletWhitelistDetailsPage() {
         actions={
           <Button
             variant="outline"
-            className="bg-white shadow-sm dark:bg-slate-900 border-slate-200 dark:border-slate-800"
+            className="bg-white shadow-sm bg-background border-border border-border"
             onClick={() => router.back()}
           >
             <ArrowLeft className="mr-2 h-4 w-4" />
@@ -58,7 +58,7 @@ export function WalletWhitelistDetailsPage() {
         }
       />
 
-      <div className="rounded-[14px] border border-slate-200/60 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900 overflow-hidden flex flex-col p-6 gap-8">
+      <div className="rounded-[14px] border border-border/60 bg-white shadow-sm border-border bg-background overflow-hidden flex flex-col p-6 gap-8">
         {/* Status Banner */}
         {request.status === 'Rejected' && (
           <div className="p-4 rounded-lg bg-red-50 border border-red-200/60 dark:bg-red-500/10 dark:border-red-500/20">
@@ -69,7 +69,7 @@ export function WalletWhitelistDetailsPage() {
 
         {/* Merchant Information */}
         <div className="space-y-4">
-          <h3 className="text-[13px] font-bold uppercase tracking-wider text-slate-500 border-b border-slate-200 dark:border-slate-800 pb-2">
+          <h3 className="text-[13px] font-bold uppercase tracking-wider text-muted-foreground border-b border-border border-border pb-2">
             Merchant Information
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -81,7 +81,7 @@ export function WalletWhitelistDetailsPage() {
 
         {/* Bank Account Information */}
         <div className="space-y-4">
-          <h3 className="text-[13px] font-bold uppercase tracking-wider text-slate-500 border-b border-slate-200 dark:border-slate-800 pb-2">
+          <h3 className="text-[13px] font-bold uppercase tracking-wider text-muted-foreground border-b border-border border-border pb-2">
             Bank Account Information
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -95,7 +95,7 @@ export function WalletWhitelistDetailsPage() {
 
         {/* Request Information */}
         <div className="space-y-4">
-          <h3 className="text-[13px] font-bold uppercase tracking-wider text-slate-500 border-b border-slate-200 dark:border-slate-800 pb-2">
+          <h3 className="text-[13px] font-bold uppercase tracking-wider text-muted-foreground border-b border-border border-border pb-2">
             Request Information
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -118,13 +118,13 @@ export function WalletWhitelistDetailsPage() {
 
         {/* Supporting Document */}
         <div className="space-y-4">
-          <h3 className="text-[13px] font-bold uppercase tracking-wider text-slate-500 border-b border-slate-200 dark:border-slate-800 pb-2">
+          <h3 className="text-[13px] font-bold uppercase tracking-wider text-muted-foreground border-b border-border border-border pb-2">
             Supporting Document
           </h3>
-          <div className="p-4 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800 flex items-center justify-between max-w-md">
+          <div className="p-4 rounded-lg bg-slate-50 bg-background border border-border/60 border-border flex items-center justify-between max-w-md">
             <div>
-              <p className="text-[13px] font-bold text-slate-900 dark:text-white mb-0.5">{request.documentType}</p>
-              <p className="text-xs text-slate-500">Document provided for verification</p>
+              <p className="text-[13px] font-bold text-foreground dark:text-white mb-0.5">{request.documentType}</p>
+              <p className="text-xs text-muted-foreground">Document provided for verification</p>
             </div>
             <Button variant="outline" size="sm" className="h-8">
               <ExternalLink className="mr-2 h-3.5 w-3.5" />
@@ -135,7 +135,7 @@ export function WalletWhitelistDetailsPage() {
 
         {/* Actions Footer */}
         {request.status === 'Pending' && (
-          <div className="pt-6 mt-4 border-t border-slate-100 dark:border-slate-800 flex justify-end gap-3">
+          <div className="pt-6 mt-4 border-t border-slate-100 border-border flex justify-end gap-3">
             <Button
               variant="outline"
               className="border-red-200 text-red-700 hover:bg-red-50 hover:text-red-800 dark:border-red-900/50 dark:hover:bg-red-900/20 dark:text-red-500"

@@ -54,12 +54,12 @@ export function WalletDetailsPage({ walletId }: { walletId: string }) {
   if (isWalletLoading) {
     return (
       <div className="flex flex-col gap-6 pb-8">
-        <div className="h-6 w-32 bg-slate-100 dark:bg-slate-800 rounded animate-pulse" />
-        <div className="h-24 w-full bg-slate-100 dark:bg-slate-800 rounded animate-pulse" />
+        <div className="h-6 w-32 bg-muted bg-card rounded animate-pulse" />
+        <div className="h-24 w-full bg-muted bg-card rounded animate-pulse" />
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="h-32 bg-slate-100 dark:bg-slate-800 rounded-xl animate-pulse" />
-          <div className="h-32 bg-slate-100 dark:bg-slate-800 rounded-xl animate-pulse" />
-          <div className="h-32 bg-slate-100 dark:bg-slate-800 rounded-xl animate-pulse" />
+          <div className="h-32 bg-muted bg-card rounded-xl animate-pulse" />
+          <div className="h-32 bg-muted bg-card rounded-xl animate-pulse" />
+          <div className="h-32 bg-muted bg-card rounded-xl animate-pulse" />
         </div>
       </div>
     );
@@ -69,8 +69,8 @@ export function WalletDetailsPage({ walletId }: { walletId: string }) {
     return (
       <div className="flex flex-col gap-6 pb-8 items-center justify-center min-h-[400px]">
         <AlertCircle className="h-12 w-12 text-slate-300 dark:text-slate-600 mb-4" />
-        <h2 className="text-xl font-bold text-slate-900 dark:text-white">Wallet Not Found</h2>
-        <p className="text-slate-500">The wallet you are looking for does not exist.</p>
+        <h2 className="text-xl font-bold text-foreground dark:text-white">Wallet Not Found</h2>
+        <p className="text-muted-foreground">The wallet you are looking for does not exist.</p>
         <Link href="/wallet/all">
           <Button variant="outline" className="mt-4">
             <ArrowLeft className="mr-2 h-4 w-4" /> Back to All Wallets
@@ -84,20 +84,20 @@ export function WalletDetailsPage({ walletId }: { walletId: string }) {
     <div className="flex flex-col gap-8 pb-10">
       {/* Back Navigation */}
       <div>
-        <Link href="/wallet/all" className="inline-flex items-center text-sm font-medium text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors">
+        <Link href="/wallet/all" className="inline-flex items-center text-sm font-medium text-muted-foreground hover:text-foreground dark:hover:text-white transition-colors">
           <ArrowLeft className="mr-2 h-4 w-4" />
           Back to All Wallets
         </Link>
       </div>
 
       {/* Wallet Header */}
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 border-b border-slate-200/60 dark:border-slate-800 pb-6">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 border-b border-border/60 border-border pb-6">
         <div>
-          <p className="text-xs font-bold uppercase tracking-widest text-slate-500 mb-2">Wallet</p>
-          <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white mb-2">
+          <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-2">Wallet</p>
+          <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground dark:text-white mb-2">
             {wallet.merchantName}
           </h1>
-          <div className="flex flex-wrap items-center gap-x-2 gap-y-2 text-sm text-slate-500">
+          <div className="flex flex-wrap items-center gap-x-2 gap-y-2 text-sm text-muted-foreground">
             <span>Merchant ID: <span className="font-mono font-medium text-slate-700 dark:text-slate-300">{wallet.merchantId}</span></span>
             <span>&middot;</span>
             <span>Wallet ID: <span className="font-mono font-medium text-slate-700 dark:text-slate-300">{wallet.id}</span></span>
@@ -125,7 +125,7 @@ export function WalletDetailsPage({ walletId }: { walletId: string }) {
           title="Total Balance"
           value={formatCurrency(wallet.totalBalance)}
           icon={WalletIcon}
-          iconColorClass="text-slate-400"
+          iconColorClass="text-muted-foreground"
         />
         <StatCard
           title="Available Balance"
@@ -143,57 +143,57 @@ export function WalletDetailsPage({ walletId }: { walletId: string }) {
       </div>
 
       {/* Wallet Overview */}
-      <div className="rounded-[14px] border border-slate-200/60 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900 overflow-hidden">
-        <div className="p-5 border-b border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/50">
-          <h2 className="text-sm font-semibold text-slate-900 dark:text-white">
+      <div className="rounded-[14px] border border-border/60 bg-white shadow-sm border-border bg-background overflow-hidden">
+        <div className="p-5 border-b border-slate-100 border-border bg-slate-50/50 bg-background/50">
+          <h2 className="text-sm font-semibold text-foreground dark:text-white">
             Wallet Overview
           </h2>
-          <p className="text-xs text-slate-500 mt-0.5">Account information and current wallet capabilities</p>
+          <p className="text-xs text-muted-foreground mt-0.5">Account information and current wallet capabilities</p>
         </div>
         
         <div className="grid lg:grid-cols-2 divide-y lg:divide-y-0 lg:divide-x divide-slate-100 dark:divide-slate-800">
           {/* Left Column: Wallet Information */}
           <div className="p-6">
-            <h3 className="text-[13px] font-semibold text-slate-900 dark:text-white mb-5">
+            <h3 className="text-[13px] font-semibold text-foreground dark:text-white mb-5">
               Wallet Information
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-8">
               <div>
-                <p className="text-xs font-medium text-slate-500 mb-1">Merchant</p>
-                <p className="text-[13px] font-semibold text-slate-900 dark:text-white">{wallet.merchantName}</p>
+                <p className="text-xs font-medium text-muted-foreground mb-1">Merchant</p>
+                <p className="text-[13px] font-semibold text-foreground dark:text-white">{wallet.merchantName}</p>
               </div>
               <div>
-                <p className="text-xs font-medium text-slate-500 mb-1">Merchant ID</p>
-                <p className="text-[13px] font-semibold text-slate-900 dark:text-white font-mono">{wallet.merchantId}</p>
+                <p className="text-xs font-medium text-muted-foreground mb-1">Merchant ID</p>
+                <p className="text-[13px] font-semibold text-foreground dark:text-white font-mono">{wallet.merchantId}</p>
               </div>
               <div>
-                <p className="text-xs font-medium text-slate-500 mb-1">Wallet ID</p>
-                <p className="text-[13px] font-semibold text-slate-900 dark:text-white font-mono">{wallet.id}</p>
+                <p className="text-xs font-medium text-muted-foreground mb-1">Wallet ID</p>
+                <p className="text-[13px] font-semibold text-foreground dark:text-white font-mono">{wallet.id}</p>
               </div>
               <div>
-                <p className="text-xs font-medium text-slate-500 mb-1">Wallet Type</p>
-                <p className="text-[13px] font-semibold text-slate-900 dark:text-white">{wallet.walletType}</p>
+                <p className="text-xs font-medium text-muted-foreground mb-1">Wallet Type</p>
+                <p className="text-[13px] font-semibold text-foreground dark:text-white">{wallet.walletType}</p>
               </div>
               <div>
-                <p className="text-xs font-medium text-slate-500 mb-1">Currency</p>
-                <p className="text-[13px] font-semibold text-slate-900 dark:text-white">{wallet.currency}</p>
+                <p className="text-xs font-medium text-muted-foreground mb-1">Currency</p>
+                <p className="text-[13px] font-semibold text-foreground dark:text-white">{wallet.currency}</p>
               </div>
               <div>
-                <p className="text-xs font-medium text-slate-500 mb-1">Created</p>
-                <p className="text-[13px] font-semibold text-slate-900 dark:text-white">
+                <p className="text-xs font-medium text-muted-foreground mb-1">Created</p>
+                <p className="text-[13px] font-semibold text-foreground dark:text-white">
                   {new Date(wallet.createdAt).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })}
                 </p>
               </div>
               <div>
-                <p className="text-xs font-medium text-slate-500 mb-1">KYC Status</p>
+                <p className="text-xs font-medium text-muted-foreground mb-1">KYC Status</p>
                 <div className="flex items-center gap-1.5 mt-0.5">
                   <div className={`w-1.5 h-1.5 rounded-full ${wallet.kycStatus === 'Verified' ? 'bg-emerald-500' : wallet.kycStatus === 'Pending' ? 'bg-amber-500' : 'bg-red-500'}`}></div>
-                  <p className="text-[13px] font-semibold text-slate-900 dark:text-white">{wallet.kycStatus}</p>
+                  <p className="text-[13px] font-semibold text-foreground dark:text-white">{wallet.kycStatus}</p>
                 </div>
               </div>
               <div>
-                <p className="text-xs font-medium text-slate-500 mb-1">Last Activity</p>
-                <p className="text-[13px] font-semibold text-slate-900 dark:text-white">
+                <p className="text-xs font-medium text-muted-foreground mb-1">Last Activity</p>
+                <p className="text-[13px] font-semibold text-foreground dark:text-white">
                   {new Date(wallet.lastActivityAt).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })},{' '}
                   {new Date(wallet.lastActivityAt).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}
                 </p>
@@ -203,55 +203,55 @@ export function WalletDetailsPage({ walletId }: { walletId: string }) {
 
           {/* Right Column: Operational Status */}
           <div className="p-6">
-            <h3 className="text-[13px] font-semibold text-slate-900 dark:text-white mb-5">
+            <h3 className="text-[13px] font-semibold text-foreground dark:text-white mb-5">
               Operational Status
             </h3>
             <div className="flex flex-col gap-5">
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <div>
-                  <p className="text-xs font-medium text-slate-500 mb-1.5">Transactions</p>
+                  <p className="text-xs font-medium text-muted-foreground mb-1.5">Transactions</p>
                   <div className="flex items-center gap-1.5">
                     <div className={`w-1.5 h-1.5 rounded-full ${displayStatus === 'Frozen' ? 'bg-red-500' : wallet.transactionEnabled ? 'bg-emerald-500' : 'bg-slate-300'}`}></div>
-                    <p className="text-[13px] font-semibold text-slate-900 dark:text-white">
+                    <p className="text-[13px] font-semibold text-foreground dark:text-white">
                       {displayStatus === 'Frozen' ? 'Disabled' : wallet.transactionEnabled ? 'Enabled' : 'Disabled'}
                     </p>
                   </div>
                 </div>
                 <div>
-                  <p className="text-xs font-medium text-slate-500 mb-1.5">Credits</p>
+                  <p className="text-xs font-medium text-muted-foreground mb-1.5">Credits</p>
                   <div className="flex items-center gap-1.5">
                     <div className={`w-1.5 h-1.5 rounded-full ${displayStatus === 'Frozen' ? 'bg-red-500' : wallet.creditEnabled ? 'bg-emerald-500' : 'bg-slate-300'}`}></div>
-                    <p className="text-[13px] font-semibold text-slate-900 dark:text-white">
+                    <p className="text-[13px] font-semibold text-foreground dark:text-white">
                       {displayStatus === 'Frozen' ? 'Disabled' : wallet.creditEnabled ? 'Enabled' : 'Disabled'}
                     </p>
                   </div>
                 </div>
                 <div>
-                  <p className="text-xs font-medium text-slate-500 mb-1.5">Withdrawals</p>
+                  <p className="text-xs font-medium text-muted-foreground mb-1.5">Withdrawals</p>
                   <div className="flex items-center gap-1.5">
                     <div className={`w-1.5 h-1.5 rounded-full ${displayStatus === 'Frozen' ? 'bg-red-500' : wallet.withdrawalEnabled ? 'bg-emerald-500' : 'bg-slate-300'}`}></div>
-                    <p className="text-[13px] font-semibold text-slate-900 dark:text-white">
+                    <p className="text-[13px] font-semibold text-foreground dark:text-white">
                       {displayStatus === 'Frozen' ? 'Disabled' : wallet.withdrawalEnabled ? 'Enabled' : 'Disabled'}
                     </p>
                   </div>
                 </div>
               </div>
 
-              <div className="pt-5 border-t border-slate-100 dark:border-slate-800">
-                <p className="text-xs font-medium text-slate-500 mb-1">Funds on Hold</p>
+              <div className="pt-5 border-t border-slate-100 border-border">
+                <p className="text-xs font-medium text-muted-foreground mb-1">Funds on Hold</p>
                 <p className="text-xl font-bold text-amber-600 dark:text-amber-500 tracking-tight mb-0.5">{formatCurrency(wallet.holdBalance)}</p>
-                <p className="text-xs text-slate-500">Temporarily restricted</p>
+                <p className="text-xs text-muted-foreground">Temporarily restricted</p>
               </div>
 
-              <div className="pt-5 border-t border-slate-100 dark:border-slate-800">
-                <p className="text-xs font-medium text-slate-500 mb-1.5">Wallet Health</p>
+              <div className="pt-5 border-t border-slate-100 border-border">
+                <p className="text-xs font-medium text-muted-foreground mb-1.5">Wallet Health</p>
                 <div className="flex items-center gap-1.5 mb-1">
                   <div className={`w-1.5 h-1.5 rounded-full ${displayStatus === 'Frozen' ? 'bg-amber-500' : 'bg-emerald-500'}`}></div>
-                  <p className="text-[13px] font-semibold text-slate-900 dark:text-white">
+                  <p className="text-[13px] font-semibold text-foreground dark:text-white">
                     {displayStatus === 'Frozen' ? 'Attention Required' : 'Healthy'}
                   </p>
                 </div>
-                <p className="text-xs text-slate-500">
+                <p className="text-xs text-muted-foreground">
                   {displayStatus === 'Frozen' ? 'Wallet is currently frozen.' : 'All wallet operations are currently enabled.'}
                 </p>
               </div>
@@ -263,7 +263,7 @@ export function WalletDetailsPage({ walletId }: { walletId: string }) {
       {/* Recent Activity */}
       <div className="mt-8 pb-10">
         <div className="flex justify-between items-end mb-4">
-          <h2 className="text-[15px] font-semibold text-slate-900 dark:text-white">
+          <h2 className="text-[15px] font-semibold text-foreground dark:text-white">
             Recent Wallet Activity
           </h2>
           <Link href="/wallet/transactions">
@@ -275,56 +275,56 @@ export function WalletDetailsPage({ walletId }: { walletId: string }) {
 
         <div className="overflow-x-auto">
             <Table>
-              <TableHeader className="border-b border-slate-200 dark:border-slate-800">
-                <TableRow className="hover:bg-transparent border-slate-100 dark:border-slate-800">
-                  <TableHead className="h-11 px-5 text-[11px] font-semibold uppercase tracking-wider text-slate-500">Transaction ID</TableHead>
-                  <TableHead className="h-11 px-5 text-[11px] font-semibold uppercase tracking-wider text-slate-500">Type</TableHead>
-                  <TableHead className="h-11 px-5 text-[11px] font-semibold uppercase tracking-wider text-slate-500 text-right">Amount</TableHead>
-                  <TableHead className="h-11 px-5 text-[11px] font-semibold uppercase tracking-wider text-slate-500 text-right">Balance</TableHead>
-                  <TableHead className="h-11 px-5 text-[11px] font-semibold uppercase tracking-wider text-slate-500">Status</TableHead>
-                  <TableHead className="h-11 px-5 text-[11px] font-semibold uppercase tracking-wider text-slate-500">Date</TableHead>
+              <TableHeader className="border-b border-border border-border">
+                <TableRow className="hover:bg-transparent border-slate-100 border-border">
+                  <TableHead className="h-11 px-5 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">Transaction ID</TableHead>
+                  <TableHead className="h-11 px-5 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">Type</TableHead>
+                  <TableHead className="h-11 px-5 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground text-right">Amount</TableHead>
+                  <TableHead className="h-11 px-5 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground text-right">Balance</TableHead>
+                  <TableHead className="h-11 px-5 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">Status</TableHead>
+                  <TableHead className="h-11 px-5 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">Date</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
                 {isTxLoading ? (
                   Array(5).fill(0).map((_, i) => (
-                    <TableRow key={i} className="border-slate-100 dark:border-slate-800/50">
+                    <TableRow key={i} className="border-slate-100 border-border/50">
                       <TableCell colSpan={6} className="p-4">
-                        <div className="h-5 w-full bg-slate-100 dark:bg-slate-800 rounded animate-pulse"></div>
+                        <div className="h-5 w-full bg-muted bg-card rounded animate-pulse"></div>
                       </TableCell>
                     </TableRow>
                   ))
                 ) : transactions?.length === 0 ? (
                   <TableRow>
-                    <TableCell colSpan={6} className="h-24 text-center text-slate-500">
+                    <TableCell colSpan={6} className="h-24 text-center text-muted-foreground">
                       No recent activity.
                     </TableCell>
                   </TableRow>
                 ) : transactions?.slice(0, 5).map((tx) => (
-                  <TableRow key={tx.id} className="h-14 border-b border-slate-100/60 dark:border-slate-800/60 hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors">
-                    <TableCell className="px-5 font-semibold text-slate-900 dark:text-white text-[13px]">{tx.id}</TableCell>
+                  <TableRow key={tx.id} className="h-14 border-b border-slate-100/60 border-border/60 hover:bg-slate-50/50 dark:hover:bg-card/30 transition-colors">
+                    <TableCell className="px-5 font-semibold text-foreground dark:text-white text-[13px]">{tx.id}</TableCell>
                     <TableCell className="px-5">
-                      <span className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider">
+                      <span className="text-[11px] font-semibold text-muted-foreground uppercase tracking-wider">
                         {tx.type}
                       </span>
                     </TableCell>
                     <TableCell className={`px-5 text-right text-[13px] font-bold tabular-nums ${
                       tx.type === 'Credit' || tx.type === 'Refund' ? 'text-emerald-600 dark:text-emerald-500' : 
-                      'text-slate-900 dark:text-white'
+                      'text-foreground dark:text-white'
                     }`}>
                       {tx.type === 'Credit' || tx.type === 'Refund' ? '+' : tx.type === 'Debit' || tx.type === 'Withdrawal' || tx.type === 'Payout' ? '-' : ''}
                       {formatCurrency(tx.amount)}
                     </TableCell>
-                    <TableCell className="px-5 text-right text-[13px] font-medium text-slate-500 tabular-nums">
+                    <TableCell className="px-5 text-right text-[13px] font-medium text-muted-foreground tabular-nums">
                       {formatCurrency(tx.balanceAfter)}
                     </TableCell>
                     <TableCell className="px-5">
                       <div className="flex items-center gap-1.5">
                         <div className={`w-1.5 h-1.5 rounded-full ${tx.status === 'Success' ? 'bg-emerald-500' : tx.status === 'Pending' ? 'bg-amber-500' : 'bg-red-500'}`}></div>
-                        <span className="text-[13px] text-slate-600 dark:text-slate-400">{tx.status}</span>
+                        <span className="text-[13px] text-slate-600 text-muted-foreground">{tx.status}</span>
                       </div>
                     </TableCell>
-                    <TableCell className="px-5 text-[12px] text-slate-400 font-medium">
+                    <TableCell className="px-5 text-[12px] text-muted-foreground font-medium">
                       {new Date(tx.createdAt).toLocaleDateString('en-GB', { day: '2-digit', month: 'short' })}
                     </TableCell>
                   </TableRow>
@@ -346,9 +346,9 @@ export function WalletDetailsPage({ walletId }: { walletId: string }) {
               Are you sure you want to freeze this wallet? New wallet transactions will be restricted until the wallet is activated again.
             </DialogDescription>
           </DialogHeader>
-          <div className="bg-slate-50 dark:bg-slate-900/50 p-4 rounded-lg my-2 border border-slate-100 dark:border-slate-800">
-            <p className="text-sm text-slate-500 mb-1">Merchant: <span className="font-semibold text-slate-900 dark:text-white">{wallet?.merchantName}</span></p>
-            <p className="text-sm text-slate-500">Wallet ID: <span className="font-mono font-medium text-slate-900 dark:text-white">{wallet?.id}</span></p>
+          <div className="bg-slate-50 bg-background/50 p-4 rounded-lg my-2 border border-slate-100 border-border">
+            <p className="text-sm text-muted-foreground mb-1">Merchant: <span className="font-semibold text-foreground dark:text-white">{wallet?.merchantName}</span></p>
+            <p className="text-sm text-muted-foreground">Wallet ID: <span className="font-mono font-medium text-foreground dark:text-white">{wallet?.id}</span></p>
           </div>
           <DialogFooter className="mt-4">
             <Button variant="outline" onClick={() => setIsFreezeDialogOpen(false)}>

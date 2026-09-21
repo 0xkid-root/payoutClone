@@ -21,7 +21,7 @@ export function VerifyOtpForm() {
           />
         </div>
         <div>
-          <h1 className="text-xl font-bold text-slate-900 sm:text-2xl">
+          <h1 className="text-xl font-bold text-foreground sm:text-2xl">
             PayNexus
           </h1>
           <p className="text-sm text-slate-600 sm:text-base">
@@ -32,17 +32,17 @@ export function VerifyOtpForm() {
 
       <Link 
         href="/login" 
-        className="inline-flex items-center text-[13px] font-bold text-slate-500 hover:text-slate-900 transition-colors mb-8 w-fit"
+        className="inline-flex items-center text-[13px] font-bold text-muted-foreground hover:text-foreground transition-colors mb-8 w-fit"
       >
         <ArrowLeft className="mr-2 h-4 w-4" />
         Back to Login
       </Link>
 
       <div className="mb-8">
-        <h1 className="text-[24px] sm:text-[28px] font-bold tracking-tight text-slate-900 mb-2 sm:mb-3">Verify Your Identity</h1>
-        <p className="text-[14px] text-slate-500 leading-relaxed font-medium">
+        <h1 className="text-[24px] sm:text-[28px] font-bold tracking-tight text-foreground mb-2 sm:mb-3">Verify Your Identity</h1>
+        <p className="text-[14px] text-muted-foreground leading-relaxed font-medium">
           We've sent a 6-digit verification code to:<br/>
-          <span className="font-medium text-slate-900">admin@paynexus.com</span><br/>
+          <span className="font-medium text-foreground">admin@paynexus.com</span><br/>
           Enter the code below to continue.
         </p>
       </div>
@@ -57,13 +57,13 @@ export function VerifyOtpForm() {
                  key={i}
                  type="text" 
                  maxLength={1}
-                 className="w-11 h-11 sm:w-12 sm:h-12 rounded-lg text-center text-[18px] font-bold bg-slate-50/50 border border-slate-200 transition-all focus-visible:bg-white focus-visible:ring-1 focus-visible:ring-primary focus-visible:border-primary shadow-sm"
+                 className="w-11 h-11 sm:w-12 sm:h-12 rounded-lg text-center text-[18px] font-bold bg-slate-50/50 border border-border transition-all focus-visible:bg-white focus-visible:ring-1 focus-visible:ring-primary focus-visible:border-primary shadow-sm"
                />
             ))}
           </div>
           
           <div className="flex items-center justify-between pt-2">
-            <span className="text-[13px] text-slate-500 font-medium">Didn't receive the code?</span>
+            <span className="text-[13px] text-muted-foreground font-medium">Didn't receive the code?</span>
             <button type="button" className="text-[13px] font-bold text-primary hover:text-primary/90 hover:underline transition-colors focus:outline-none">
               Resend Code (00:45)
             </button>
