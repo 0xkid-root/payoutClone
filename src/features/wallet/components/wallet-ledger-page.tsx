@@ -47,7 +47,7 @@ export function WalletLedgerPage() {
         title="Global Ledger"
         description="Immutable read-only view of all financial wallet operations."
         actions={
-          <Button variant="outline" className="bg-white shadow-sm bg-background border-border border-border">
+          <Button variant="outline" className="bg-white shadow-sm bg-background border-border">
             <Download className="mr-2 h-4 w-4" />
             Export Ledger
           </Button>
@@ -55,13 +55,13 @@ export function WalletLedgerPage() {
       />
 
       {/* Security Notice */}
-      <div className="bg-indigo-50 border border-indigo-100 rounded-xl p-4 flex items-start gap-4 dark:bg-indigo-900/20 dark:border-indigo-900/30">
-        <div className="p-2 bg-indigo-100 text-indigo-700 rounded-lg dark:bg-indigo-800 dark:text-indigo-300">
+      <div className="bg-primary/10 border border-primary/20 rounded-xl p-4 flex items-start gap-4 dark:bg-primary/10 dark:border-primary/20">
+        <div className="p-2 bg-primary/20 text-primary rounded-lg bg-primary/20 dark:text-primary">
           <Calculator className="h-5 w-5" />
         </div>
         <div>
-          <h4 className="text-sm font-semibold text-indigo-900 dark:text-indigo-200">Financial Integrity Lock</h4>
-          <p className="text-sm text-indigo-700 mt-1 dark:text-indigo-300">
+          <h4 className="text-sm font-semibold text-indigo-900 dark:text-primary">Financial Integrity Lock</h4>
+          <p className="text-sm text-primary mt-1 dark:text-primary">
             The ledger is an immutable record. If a correction is required, you must create a new manual adjustment to reflect the change. Old records cannot be edited or deleted.
           </p>
         </div>
@@ -69,7 +69,7 @@ export function WalletLedgerPage() {
 
       <div className="rounded-xl border border-border/60 bg-white shadow-sm border-border bg-background overflow-hidden flex flex-col">
         {/* Toolbar */}
-        <div className="p-4 border-b border-slate-100 border-border bg-slate-50/50 bg-background/50 flex flex-col sm:flex-row items-center gap-4 justify-between">
+        <div className="p-4 border-b border-border bg-background/50 flex flex-col sm:flex-row items-center gap-4 justify-between">
           <div className="flex items-center gap-3 w-full sm:w-auto">
             <div className="relative w-full sm:w-80">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
@@ -109,7 +109,7 @@ export function WalletLedgerPage() {
         <div className="overflow-x-auto">
           <Table>
             <TableHeader className="bg-transparent">
-              <TableRow className="hover:bg-transparent border-slate-100 border-border">
+              <TableRow className="hover:bg-transparent border-border">
                 <TableHead className="h-11 px-5 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Date</TableHead>
                 <TableHead className="h-11 px-5 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Ledger ID</TableHead>
                 <TableHead className="h-11 px-5 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Transaction ID</TableHead>
@@ -124,7 +124,7 @@ export function WalletLedgerPage() {
             <TableBody>
               {isLoading ? (
                 Array(5).fill(0).map((_, i) => (
-                  <TableRow key={i} className="border-slate-100 border-border/50">
+                  <TableRow key={i} className="border-border/50">
                     <TableCell colSpan={9} className="p-5">
                       <div className="h-5 w-full bg-muted bg-card rounded animate-pulse"></div>
                     </TableCell>
@@ -137,7 +137,7 @@ export function WalletLedgerPage() {
                   </TableCell>
                 </TableRow>
               ) : filteredLedger?.map((entry) => (
-                <TableRow key={entry.id} className="border-slate-100 border-border/50 hover:bg-slate-50/50 dark:hover:bg-card/30 transition-colors">
+                <TableRow key={entry.id} className="border-border/50 hover:bg-background dark:hover:bg-card/30 transition-colors">
                   <TableCell className="p-4 px-5 text-[13px] text-muted-foreground">
                     {new Date(entry.date).toLocaleString('en-GB', { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' })}
                   </TableCell>
@@ -148,12 +148,12 @@ export function WalletLedgerPage() {
                     <span className="font-mono text-[12px] text-primary">{entry.transactionId}</span>
                   </TableCell>
                   <TableCell className="p-4 px-5">
-                    <span className="text-[13px] font-medium text-slate-700 dark:text-slate-300">{entry.type}</span>
+                    <span className="text-[13px] font-medium text-foreground">{entry.type}</span>
                   </TableCell>
-                  <TableCell className="p-4 px-5 text-right font-semibold tabular-nums text-[13px] text-emerald-600">
+                  <TableCell className="p-4 px-5 text-right font-semibold tabular-nums text-[13px] text-success">
                     {formatCurrency(entry.credit)}
                   </TableCell>
-                  <TableCell className="p-4 px-5 text-right font-semibold tabular-nums text-[13px] text-red-600">
+                  <TableCell className="p-4 px-5 text-right font-semibold tabular-nums text-[13px] text-danger">
                     {formatCurrency(entry.debit)}
                   </TableCell>
                   <TableCell className="p-4 px-5 text-right tabular-nums font-semibold text-[13px] text-foreground dark:text-white">
@@ -172,7 +172,7 @@ export function WalletLedgerPage() {
         </div>
 
         {/* Pagination */}
-        <div className="p-4 border-t border-slate-100 border-border flex items-center justify-between text-sm">
+        <div className="p-4 border-t border-border flex items-center justify-between text-sm">
           <div className="text-muted-foreground">
             Showing <span className="font-medium text-foreground dark:text-white">{filteredLedger?.length || 0}</span> results
           </div>
