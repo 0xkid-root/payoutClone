@@ -12,9 +12,9 @@ import {
 
 const StatusBadge = ({ status }: { status: Beneficiary["status"] }) => {
   const styles = {
-    Active: "bg-emerald-50 text-emerald-600 border-emerald-200/50",
-    Inactive: "bg-amber-50 text-amber-600 border-amber-200/50",
-    Deleted: "bg-red-50 text-red-600 border-red-200/50",
+    Active: "bg-success/10 text-success border-success/30",
+    Inactive: "bg-warning/10 text-warning border-warning/30",
+    Deleted: "bg-danger/10 text-danger border-danger/30",
   };
 
   return (
@@ -26,7 +26,7 @@ const StatusBadge = ({ status }: { status: Beneficiary["status"] }) => {
 
 const VerificationBadge = ({ status }: { status: Beneficiary["verificationStatus"] }) => {
   const styles = {
-    Verified: "text-emerald-600",
+    Verified: "text-success",
     "Not Verified": "text-muted-foreground",
   };
 
@@ -75,7 +75,7 @@ export const beneficiaryColumns: ColumnDef<Beneficiary>[] = [
     accessorKey: "accountNumber",
     header: "Account",
     cell: ({ row }) => (
-      <span className="text-[13px] font-medium tabular-nums text-slate-700 dark:text-slate-300">
+      <span className="text-[13px] font-medium tabular-nums text-foreground">
         {maskAccountNumber(row.original.accountNumber)}
       </span>
     ),
@@ -84,7 +84,7 @@ export const beneficiaryColumns: ColumnDef<Beneficiary>[] = [
     accessorKey: "ifsc",
     header: "IFSC",
     cell: ({ row }) => (
-      <span className="text-[13px] font-medium tabular-nums text-slate-700 dark:text-slate-300">
+      <span className="text-[13px] font-medium tabular-nums text-foreground">
         {row.original.ifsc}
       </span>
     ),
@@ -109,7 +109,7 @@ export const beneficiaryColumns: ColumnDef<Beneficiary>[] = [
         month: "short",
         year: "numeric",
       });
-      return <span className="text-[13px] font-medium text-slate-600 text-muted-foreground">{formatted}</span>;
+      return <span className="text-[13px] font-medium text-muted-foreground">{formatted}</span>;
     },
   },
   {
