@@ -7,7 +7,7 @@ export function AuthLayout({
   children: React.ReactNode;
 }) {
   return (
-    <main className="h-screen overflow-hidden bg-slate-50 p-0 sm:p-4 lg:p-6">
+    <main className="h-screen overflow-hidden bg-background p-0 sm:p-4 lg:p-6">
 
       <div className="h-full w-full overflow-hidden bg-white shadow-[0_1px_3px_0_rgba(0,0,0,0.02)] border border-border sm:rounded-[20px]">
 
@@ -21,7 +21,7 @@ export function AuthLayout({
           </div>
 
           {/* RIGHT - VISUAL */}
-          <div className="relative hidden h-full overflow-hidden lg:block bg-slate-50 border-l border-slate-100">
+          <div className="relative hidden h-full overflow-hidden lg:block bg-background border-l border-border">
             {/* Ambient Background Glows */}
             <div className="absolute -top-[20%] -right-[10%] h-[70%] w-[70%] rounded-full bg-primary/15 blur-[120px]" />
             <div className="absolute -bottom-[20%] -left-[10%] h-[70%] w-[70%] rounded-full bg-primary/10 blur-[100px]" />
