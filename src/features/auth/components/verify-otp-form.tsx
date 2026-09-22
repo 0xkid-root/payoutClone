@@ -24,7 +24,7 @@ export function VerifyOtpForm() {
           <h1 className="text-xl font-bold text-foreground sm:text-2xl">
             PayNexus
           </h1>
-          <p className="text-sm text-slate-600 sm:text-base">
+          <p className="text-sm text-muted-foreground sm:text-base">
             Admin Portal
           </p>
         </div>
@@ -50,14 +50,14 @@ export function VerifyOtpForm() {
       <form className="space-y-5" onSubmit={(e) => e.preventDefault()}>
         {/* OTP Field */}
         <div className="space-y-3">
-          <div className="text-[13px] font-semibold text-slate-700">Verification Code</div>
+          <div className="text-[13px] font-semibold text-foreground">Verification Code</div>
           <div className="flex gap-2 sm:gap-3 justify-between">
             {[1, 2, 3, 4, 5, 6].map((i) => (
                <Input 
                  key={i}
                  type="text" 
                  maxLength={1}
-                 className="w-11 h-11 sm:w-12 sm:h-12 rounded-lg text-center text-[18px] font-bold bg-slate-50/50 border border-border transition-all focus-visible:bg-white focus-visible:ring-1 focus-visible:ring-primary focus-visible:border-primary shadow-sm"
+                 className="w-11 h-11 sm:w-12 sm:h-12 rounded-lg text-center text-[18px] font-bold bg-background border border-border transition-all focus-visible:bg-white focus-visible:ring-1 focus-visible:ring-primary focus-visible:border-primary shadow-sm"
                />
             ))}
           </div>
