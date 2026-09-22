@@ -38,18 +38,18 @@ export function ReviewApprovalDialog({ isOpen, type, merchant, onClose }: Review
       <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
-            <DialogTitle className="text-red-600">Reject Merchant Application</DialogTitle>
+            <DialogTitle className="text-danger">Reject Merchant Application</DialogTitle>
             <DialogDescription>
               Are you sure you want to reject {merchant.businessName}? This will notify the merchant.
             </DialogDescription>
           </DialogHeader>
           <div className="grid gap-4 py-4">
             <div className="space-y-2">
-              <label className="text-sm font-medium text-slate-700 dark:text-slate-300">
+              <label className="text-sm font-medium text-foreground">
                 Rejection Reason
               </label>
               <select 
-                className="flex h-10 w-full items-center justify-between rounded-md border border-border bg-white px-3 py-2 text-sm ring-offset-white placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-slate-950 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 border-border dark:bg-slate-950 dark:ring-offset-slate-950 dark:placeholder:text-muted-foreground dark:focus:ring-slate-300"
+                className="flex h-10 w-full items-center justify-between rounded-md border border-border bg-white px-3 py-2 text-sm ring-offset-white placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus-visible:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 border-border bg-background ring-offset-background dark:placeholder:text-muted-foreground focus-visible:ring-ring"
                 value={reason}
                 onChange={(e) => setReason(e.target.value)}
               >
@@ -62,11 +62,11 @@ export function ReviewApprovalDialog({ isOpen, type, merchant, onClose }: Review
             </div>
             {reason === "other" && (
               <div className="space-y-2">
-                <label className="text-sm font-medium text-slate-700 dark:text-slate-300">
+                <label className="text-sm font-medium text-foreground">
                   Additional Comments
                 </label>
                 <textarea 
-                  className="flex min-h-[80px] w-full rounded-md border border-border bg-white px-3 py-2 text-sm ring-offset-white placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-950 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 border-border dark:bg-slate-950 dark:ring-offset-slate-950 dark:placeholder:text-muted-foreground dark:focus-visible:ring-slate-300"
+                  className="flex min-h-[80px] w-full rounded-md border border-border bg-white px-3 py-2 text-sm ring-offset-white placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 border-border bg-background ring-offset-background dark:placeholder:text-muted-foreground focus-visible:ring-ring"
                   placeholder="Provide detailed feedback for the merchant..."
                 />
               </div>
@@ -89,12 +89,12 @@ export function ReviewApprovalDialog({ isOpen, type, merchant, onClose }: Review
     <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle className="text-emerald-600">Approve Merchant</DialogTitle>
+          <DialogTitle className="text-success">Approve Merchant</DialogTitle>
           <DialogDescription>
             Are you sure you want to approve this merchant?
           </DialogDescription>
         </DialogHeader>
-        <div className="rounded-lg bg-slate-50 p-4 bg-background/50 my-4">
+        <div className="rounded-lg bg-background p-4 bg-background/50 my-4">
           <div className="flex flex-col space-y-2">
             <div className="flex justify-between">
               <span className="text-sm text-muted-foreground">Business Name</span>
@@ -106,7 +106,7 @@ export function ReviewApprovalDialog({ isOpen, type, merchant, onClose }: Review
             </div>
             <div className="flex justify-between">
               <span className="text-sm text-muted-foreground">KYC Status</span>
-              <span className="text-sm font-medium text-emerald-600">Verified</span>
+              <span className="text-sm font-medium text-success">Verified</span>
             </div>
           </div>
         </div>
