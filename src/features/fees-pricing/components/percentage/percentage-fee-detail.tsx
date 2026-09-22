@@ -19,7 +19,7 @@ export function PercentageFeeDetail() {
   }
 
   if (!fee) {
-    return <div className="p-8 text-center text-red-500">Fee configuration not found.</div>;
+    return <div className="p-8 text-center text-danger">Fee configuration not found.</div>;
   }
 
   return (
@@ -54,41 +54,41 @@ export function PercentageFeeDetail() {
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div>
-                <p className="text-sm text-muted-foreground text-muted-foreground mb-1">Merchant</p>
+                <p className="text-sm text-muted-foreground mb-1">Merchant</p>
                 <p className="font-medium text-foreground dark:text-white">{fee.merchantName}</p>
               </div>
               
               <div>
-                <p className="text-sm text-muted-foreground text-muted-foreground mb-1">Fee Type</p>
+                <p className="text-sm text-muted-foreground mb-1">Fee Type</p>
                 <p className="font-medium text-foreground dark:text-white capitalize">{fee.feeType.toLowerCase()}</p>
               </div>
 
               <div>
-                <p className="text-sm text-muted-foreground text-muted-foreground mb-1">Percentage</p>
+                <p className="text-sm text-muted-foreground mb-1">Percentage</p>
                 <p className="font-medium text-foreground dark:text-white">{fee.percentage?.toFixed(2)}%</p>
               </div>
 
               <div>
-                <p className="text-sm text-muted-foreground text-muted-foreground mb-1">Status</p>
+                <p className="text-sm text-muted-foreground mb-1">Status</p>
                 <StatusBadge status={fee.status} />
               </div>
 
               <div>
-                <p className="text-sm text-muted-foreground text-muted-foreground mb-1">Minimum Fee</p>
+                <p className="text-sm text-muted-foreground mb-1">Minimum Fee</p>
                 <p className="font-medium text-foreground dark:text-white">
                   {fee.minFee !== undefined ? `₹${fee.minFee}` : "-"}
                 </p>
               </div>
 
               <div>
-                <p className="text-sm text-muted-foreground text-muted-foreground mb-1">Maximum Fee</p>
+                <p className="text-sm text-muted-foreground mb-1">Maximum Fee</p>
                 <p className="font-medium text-foreground dark:text-white">
                   {fee.maxFee !== undefined ? `₹${fee.maxFee}` : "-"}
                 </p>
               </div>
 
               <div>
-                <p className="text-sm text-muted-foreground text-muted-foreground mb-1">Effective From</p>
+                <p className="text-sm text-muted-foreground mb-1">Effective From</p>
                 <p className="font-medium text-foreground dark:text-white">
                   {new Date(fee.effectiveFrom).toLocaleDateString("en-GB", {
                     day: "numeric",
@@ -99,7 +99,7 @@ export function PercentageFeeDetail() {
               </div>
 
               <div>
-                <p className="text-sm text-muted-foreground text-muted-foreground mb-1">Effective To</p>
+                <p className="text-sm text-muted-foreground mb-1">Effective To</p>
                 <p className="font-medium text-foreground dark:text-white">
                   {fee.effectiveTo
                     ? new Date(fee.effectiveTo).toLocaleDateString("en-GB", {
@@ -113,7 +113,7 @@ export function PercentageFeeDetail() {
             </div>
           </div>
 
-          <div className="lg:col-span-1 bg-slate-50/50 bg-background/20 p-6">
+          <div className="lg:col-span-1 bg-background/20 p-6">
             <div className="sticky top-6">
               <FeeCalculationPreview
                 feeType="PERCENTAGE"
