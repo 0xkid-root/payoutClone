@@ -26,10 +26,10 @@ import {
 
 const StatusBadge = ({ status }: { status: DashboardMerchant["status"] }) => {
   const styles = {
-    ACTIVE: "bg-emerald-50 text-emerald-600 border-emerald-200/50",
-    PENDING: "bg-amber-50 text-amber-600 border-amber-200/50",
-    SUSPENDED: "bg-red-50 text-red-600 border-red-200/50",
-    BLOCKED: "bg-slate-50 text-slate-600 border-border/50",
+    ACTIVE: "bg-success/10 text-success border-success/30",
+    PENDING: "bg-warning/10 text-warning border-warning/30",
+    SUSPENDED: "bg-danger/10 text-danger border-danger/30",
+    BLOCKED: "bg-background text-muted-foreground border-border/50",
   };
 
   return (
@@ -81,7 +81,7 @@ export const dashboardMerchantColumns: ColumnDef<DashboardMerchant>[] = [
         <div className="flex items-center gap-2">
           <div className="h-1.5 w-16 overflow-hidden rounded-full bg-muted bg-card">
             <div 
-              className={`h-full rounded-full ${rate >= 95 ? "bg-emerald-500" : "bg-amber-500"}`}
+              className={`h-full rounded-full ${rate >= 95 ? "bg-success/100" : "bg-warning/100"}`}
               style={{ width: `${rate}%` }}
             />
           </div>
@@ -94,7 +94,7 @@ export const dashboardMerchantColumns: ColumnDef<DashboardMerchant>[] = [
     accessorKey: "pendingAmount",
     header: "Pending (₹)",
     cell: ({ row }) => (
-      <span className="tabular-nums text-amber-600 font-medium">
+      <span className="tabular-nums text-warning font-medium">
         ₹{row.original.pendingAmount.toLocaleString(undefined, { maximumFractionDigits: 0 })}
       </span>
     ),
@@ -103,7 +103,7 @@ export const dashboardMerchantColumns: ColumnDef<DashboardMerchant>[] = [
     accessorKey: "failedAmount",
     header: "Failed (₹)",
     cell: ({ row }) => (
-      <span className="tabular-nums text-red-500 font-medium">
+      <span className="tabular-nums text-danger font-medium">
         ₹{row.original.failedAmount.toLocaleString(undefined, { maximumFractionDigits: 0 })}
       </span>
     ),
@@ -112,7 +112,7 @@ export const dashboardMerchantColumns: ColumnDef<DashboardMerchant>[] = [
     accessorKey: "totalTxns",
     header: "Total Txns",
     cell: ({ row }) => (
-      <span className="tabular-nums text-slate-600 text-muted-foreground">
+      <span className="tabular-nums text-muted-foreground">
         {row.original.totalTxns.toLocaleString()}
       </span>
     ),
@@ -191,7 +191,7 @@ export function MerchantOverviewTable() {
         {isLoading ? (
           <DataTableSkeleton columnCount={9} rowCount={pagination.pageSize} />
         ) : isError ? (
-          <div className="rounded-md border border-red-200 bg-red-50 p-6 text-center text-red-600">
+          <div className="rounded-md border border-danger/30 bg-danger/10 p-6 text-center text-danger">
             <p className="font-medium text-[14px]">Unable to load dashboard data.</p>
             <Button variant="outline" className="mt-3 text-[13px]" onClick={() => window.location.reload()}>Retry</Button>
           </div>
@@ -215,7 +215,7 @@ export function MerchantOverviewTable() {
               onSortingChange={setSorting}
               hidePagination={true}
             />
-            <div className="mt-4 flex justify-center border-t border-slate-100 pt-4 border-border">
+            <div className="mt-4 flex justify-center border-t border-border pt-4 border-border">
               <Button variant="ghost" className="text-[13px] font-medium text-primary hover:bg-primary/5 hover:text-primary/90">
                 View All Merchants
               </Button>
