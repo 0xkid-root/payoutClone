@@ -75,9 +75,9 @@ export function ManualAdjustmentsPage() {
         {/* Form Section */}
         <div className="lg:col-span-7 xl:col-span-8 flex flex-col gap-6">
           <div className="rounded-2xl border border-border/60 bg-white shadow-sm border-border bg-background p-8">
-            <div className="flex items-center justify-between mb-8 pb-4 border-b border-slate-100 border-border">
-              <div className="flex items-center gap-3 text-primary dark:text-indigo-400">
-                <div className="p-2 bg-indigo-50 dark:bg-indigo-900/30 rounded-lg">
+            <div className="flex items-center justify-between mb-8 pb-4 border-b border-border">
+              <div className="flex items-center gap-3 text-primary dark:text-primary">
+                <div className="p-2 bg-primary/10 dark:bg-primary/10 rounded-lg">
                   <AlertCircle className="h-5 w-5" />
                 </div>
                 <h2 className="text-lg font-bold tracking-tight">Adjustment Details</h2>
@@ -87,9 +87,9 @@ export function ManualAdjustmentsPage() {
             <form onSubmit={handleSubmit} className="flex flex-col gap-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="flex flex-col gap-2.5">
-                  <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">Merchant Wallet <span className="text-red-500">*</span></label>
+                  <label className="text-sm font-semibold text-foreground">Merchant Wallet <span className="text-danger">*</span></label>
                   <Select value={selectedWalletId} onValueChange={(val) => setSelectedWalletId(val || "")}>
-                    <SelectTrigger className="w-full bg-slate-50 bg-background/50 h-11 rounded-xl">
+                    <SelectTrigger className="w-full bg-background/50 h-11 rounded-xl">
                       <SelectValue placeholder="Select a merchant wallet" />
                     </SelectTrigger>
                     <SelectContent>
@@ -106,9 +106,9 @@ export function ManualAdjustmentsPage() {
                 </div>
 
                 <div className="flex flex-col gap-2.5">
-                  <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">Reason for Adjustment <span className="text-red-500">*</span></label>
+                  <label className="text-sm font-semibold text-foreground">Reason for Adjustment <span className="text-danger">*</span></label>
                   <Select value={reason} onValueChange={(val) => setReason(val || "")}>
-                    <SelectTrigger className="w-full bg-slate-50 bg-background/50 h-11 rounded-xl">
+                    <SelectTrigger className="w-full bg-background/50 h-11 rounded-xl">
                       <SelectValue placeholder="Select reason" />
                     </SelectTrigger>
                     <SelectContent>
@@ -124,29 +124,29 @@ export function ManualAdjustmentsPage() {
               </div>
 
               <div className="flex flex-col gap-2.5 mt-2">
-                <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">Adjustment Type <span className="text-red-500">*</span></label>
+                <label className="text-sm font-semibold text-foreground">Adjustment Type <span className="text-danger">*</span></label>
                 <div className="grid grid-cols-2 gap-4">
                   <div 
-                    className={`border-2 rounded-xl p-4 cursor-pointer flex items-center gap-4 transition-all duration-200 ${type === "Credit" ? "border-emerald-500 bg-emerald-50/50 dark:bg-emerald-900/10 shadow-sm" : "border-slate-100 border-border hover:border-emerald-200 hover:bg-slate-50 dark:hover:bg-card/50"}`}
+                    className={`border-2 rounded-xl p-4 cursor-pointer flex items-center gap-4 transition-all duration-200 ${type === "Credit" ? "border-emerald-500 bg-success/10/50 dark:bg-emerald-900/10 shadow-sm" : "border-border hover:border-success/30 hover:bg-background dark:hover:bg-card/50"}`}
                     onClick={() => setType("Credit")}
                   >
                     <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${type === "Credit" ? "border-emerald-500" : "border-border"}`}>
-                      {type === "Credit" && <div className="w-2.5 h-2.5 rounded-full bg-emerald-500" />}
+                      {type === "Credit" && <div className="w-2.5 h-2.5 rounded-full bg-success/100" />}
                     </div>
                     <div>
-                      <p className={`font-bold ${type === "Credit" ? "text-emerald-700 dark:text-emerald-400" : "text-slate-700 dark:text-slate-300"}`}>Credit</p>
+                      <p className={`font-bold ${type === "Credit" ? "text-emerald-700 dark:text-emerald-400" : "text-foreground"}`}>Credit</p>
                       <p className="text-xs text-muted-foreground font-medium">Add funds to wallet</p>
                     </div>
                   </div>
                   <div 
-                    className={`border-2 rounded-xl p-4 cursor-pointer flex items-center gap-4 transition-all duration-200 ${type === "Debit" ? "border-red-500 bg-red-50/50 dark:bg-red-900/10 shadow-sm" : "border-slate-100 border-border hover:border-red-200 hover:bg-slate-50 dark:hover:bg-card/50"}`}
+                    className={`border-2 rounded-xl p-4 cursor-pointer flex items-center gap-4 transition-all duration-200 ${type === "Debit" ? "border-red-500 bg-danger/10/50 dark:bg-red-900/10 shadow-sm" : "border-border hover:border-danger/30 hover:bg-background dark:hover:bg-card/50"}`}
                     onClick={() => setType("Debit")}
                   >
                     <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${type === "Debit" ? "border-red-500" : "border-border"}`}>
-                      {type === "Debit" && <div className="w-2.5 h-2.5 rounded-full bg-red-500" />}
+                      {type === "Debit" && <div className="w-2.5 h-2.5 rounded-full bg-danger/100" />}
                     </div>
                     <div>
-                      <p className={`font-bold ${type === "Debit" ? "text-red-700 dark:text-red-400" : "text-slate-700 dark:text-slate-300"}`}>Debit</p>
+                      <p className={`font-bold ${type === "Debit" ? "text-danger dark:text-red-400" : "text-foreground"}`}>Debit</p>
                       <p className="text-xs text-muted-foreground font-medium">Deduct from wallet</p>
                     </div>
                   </div>
@@ -154,7 +154,7 @@ export function ManualAdjustmentsPage() {
               </div>
 
               <div className="flex flex-col gap-2.5 mt-2">
-                <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">Amount <span className="text-red-500">*</span></label>
+                <label className="text-sm font-semibold text-foreground">Amount <span className="text-danger">*</span></label>
                 <div className="relative">
                   <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                     <span className="text-muted-foreground text-lg font-semibold">₹</span>
@@ -164,26 +164,26 @@ export function ManualAdjustmentsPage() {
                     placeholder="0.00" 
                     value={amount}
                     onChange={(e) => setAmount(e.target.value)}
-                    className="pl-10 bg-slate-50 bg-background/50 text-xl font-bold h-14 rounded-xl border-border/60 border-border"
+                    className="pl-10 bg-background/50 text-xl font-bold h-14 rounded-xl border-border/60 border-border"
                     min="1"
                   />
                 </div>
               </div>
 
               <div className="flex flex-col gap-2.5 mt-2">
-                <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">Remarks / Reference Ticket</label>
+                <label className="text-sm font-semibold text-foreground">Remarks / Reference Ticket</label>
                 <Textarea 
                   placeholder="Provide any additional context or ticket references..."
                   value={remarks}
                   onChange={(e) => setRemarks(e.target.value)}
-                  className="bg-slate-50 bg-background/50 resize-none rounded-xl border-border/60 border-border"
+                  className="bg-background/50 resize-none rounded-xl border-border/60 border-border"
                   rows={3}
                 />
               </div>
 
-              <div className="pt-4 border-t border-slate-100 border-border flex items-center justify-between">
+              <div className="pt-4 border-t border-border flex items-center justify-between">
                 <div className="text-xs text-muted-foreground max-w-[250px] leading-relaxed">
-                  Requires <span className="font-semibold text-slate-700 dark:text-slate-300">checker approval</span> before reflecting in ledger.
+                  Requires <span className="font-semibold text-foreground">checker approval</span> before reflecting in ledger.
                 </div>
                 <Button 
                   type="submit" 
@@ -199,19 +199,19 @@ export function ManualAdjustmentsPage() {
 
         {/* Workflow Side */}
         <div className="lg:col-span-5 xl:col-span-4">
-          <div className="rounded-2xl border border-border/60 bg-slate-50/50 shadow-sm border-border bg-background/30 p-6 sm:p-8 sticky top-6">
+          <div className="rounded-2xl border border-border/60 bg-background shadow-sm border-border bg-background/30 p-6 sm:p-8 sticky top-6">
             <div className="flex items-center gap-3 mb-8">
               <div className="p-2 bg-emerald-100 dark:bg-emerald-900/30 rounded-lg">
-                <CheckCircle2 className="h-5 w-5 text-emerald-600 dark:text-emerald-500" />
+                <CheckCircle2 className="h-5 w-5 text-success dark:text-success" />
               </div>
               <h3 className="text-lg font-bold tracking-tight text-foreground dark:text-white">
                 Maker-Checker Flow
               </h3>
             </div>
             
-            <div className="flex flex-col gap-6 relative before:absolute before:inset-y-4 before:left-[15px] before:w-0.5 before:bg-slate-200 dark:before:bg-card">
+            <div className="flex flex-col gap-6 relative before:absolute before:inset-y-4 before:left-[15px] before:w-0.5 before:bg-muted dark:before:bg-card">
               <div className="flex gap-5 relative z-10">
-                <div className="w-8 h-8 rounded-full bg-indigo-100 text-primary flex items-center justify-center flex-shrink-0 border-4 border-slate-50 dark:border-[#0f172a] dark:bg-indigo-900/50 dark:text-indigo-400">
+                <div className="w-8 h-8 rounded-full bg-primary/20 text-primary flex items-center justify-center flex-shrink-0 border-4 border-slate-50 dark:border-[#0f172a] dark:bg-primary/10 dark:text-primary">
                   <span className="text-xs font-bold">1</span>
                 </div>
                 <div className="pt-1.5">
@@ -220,7 +220,7 @@ export function ManualAdjustmentsPage() {
                 </div>
               </div>
               <div className="flex gap-5 relative z-10">
-                <div className="w-8 h-8 rounded-full bg-slate-200 text-muted-foreground flex items-center justify-center flex-shrink-0 border-4 border-slate-50 dark:border-[#0f172a] bg-card text-muted-foreground">
+                <div className="w-8 h-8 rounded-full bg-muted text-muted-foreground flex items-center justify-center flex-shrink-0 border-4 border-slate-50 dark:border-[#0f172a] bg-card text-muted-foreground">
                   <span className="text-xs font-bold">2</span>
                 </div>
                 <div className="pt-1.5">
@@ -229,7 +229,7 @@ export function ManualAdjustmentsPage() {
                 </div>
               </div>
               <div className="flex gap-5 relative z-10">
-                <div className="w-8 h-8 rounded-full bg-slate-200 text-muted-foreground flex items-center justify-center flex-shrink-0 border-4 border-slate-50 dark:border-[#0f172a] bg-card text-muted-foreground">
+                <div className="w-8 h-8 rounded-full bg-muted text-muted-foreground flex items-center justify-center flex-shrink-0 border-4 border-slate-50 dark:border-[#0f172a] bg-card text-muted-foreground">
                   <span className="text-xs font-bold">3</span>
                 </div>
                 <div className="pt-1.5">
@@ -254,8 +254,8 @@ export function ManualAdjustmentsPage() {
         <div className="rounded-2xl border border-border/60 bg-white shadow-sm border-border bg-background overflow-hidden">
           <div className="overflow-x-auto">
             <Table>
-              <TableHeader className="bg-slate-50/50 bg-background/50">
-                <TableRow className="hover:bg-transparent border-slate-100 border-border">
+              <TableHeader className="bg-background/50">
+                <TableRow className="hover:bg-transparent border-border">
                   <TableHead className="h-12 px-6 text-xs font-semibold uppercase tracking-wider text-muted-foreground">ID / Date</TableHead>
                   <TableHead className="h-12 px-6 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Merchant Details</TableHead>
                   <TableHead className="h-12 px-6 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Reason</TableHead>
@@ -266,7 +266,7 @@ export function ManualAdjustmentsPage() {
               <TableBody>
                 {isAdjustmentsLoading ? (
                   Array(4).fill(0).map((_, i) => (
-                    <TableRow key={i} className="border-slate-100 border-border/50">
+                    <TableRow key={i} className="border-border/50">
                       <TableCell colSpan={5} className="p-6">
                         <div className="h-5 w-full bg-muted bg-card rounded animate-pulse"></div>
                       </TableCell>
@@ -279,7 +279,7 @@ export function ManualAdjustmentsPage() {
                     </TableCell>
                   </TableRow>
                 ) : adjustments?.map((adj) => (
-                  <TableRow key={adj.id} className="border-slate-100 border-border/50 hover:bg-slate-50/50 dark:hover:bg-card/30 transition-colors">
+                  <TableRow key={adj.id} className="border-border/50 hover:bg-background dark:hover:bg-card/30 transition-colors">
                     <TableCell className="p-4 px-6">
                       <div className="flex flex-col">
                         <span className="font-semibold text-foreground dark:text-white text-[14px]">{adj.id}</span>
@@ -288,25 +288,25 @@ export function ManualAdjustmentsPage() {
                     </TableCell>
                     <TableCell className="p-4 px-6">
                       <div className="flex flex-col">
-                        <span className="font-semibold text-foreground dark:text-slate-200 text-[14px]">{adj.merchantName}</span>
+                        <span className="font-semibold text-foreground text-[14px]">{adj.merchantName}</span>
                         <span className="text-[13px] text-muted-foreground font-mono mt-0.5">{adj.walletId}</span>
                       </div>
                     </TableCell>
                     <TableCell className="p-4 px-6">
                       <div className="flex flex-col max-w-[250px]">
-                        <span className="text-[14px] font-medium text-slate-700 dark:text-slate-300 truncate" title={adj.reason}>{adj.reason}</span>
+                        <span className="text-[14px] font-medium text-foreground truncate" title={adj.reason}>{adj.reason}</span>
                         <span className="text-[13px] text-muted-foreground mt-0.5 truncate">by {adj.createdBy}</span>
                       </div>
                     </TableCell>
                     <TableCell className="p-4 px-6 text-right">
                       <div className="flex flex-col items-end gap-1.5">
                         <span className={`font-bold tabular-nums text-[15px] ${
-                          adj.type === "Credit" ? "text-emerald-600 dark:text-emerald-500" : "text-red-600 dark:text-red-500"
+                          adj.type === "Credit" ? "text-success dark:text-success" : "text-danger dark:text-danger"
                         }`}>
                           {adj.type === "Credit" ? "+" : "-"}{formatCurrency(adj.amount)}
                         </span>
                         <span className={`inline-flex items-center rounded border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider ${
-                          adj.type === "Credit" ? "border-emerald-200/50 bg-emerald-50 text-emerald-600 dark:bg-emerald-500/10" : "border-red-200/50 bg-red-50 text-red-600 dark:bg-red-500/10"
+                          adj.type === "Credit" ? "border-success/30 bg-success/10 text-success dark:bg-success/100/10" : "border-danger/30 bg-danger/10 text-danger dark:bg-danger/100/10"
                         }`}>
                           {adj.type}
                         </span>
