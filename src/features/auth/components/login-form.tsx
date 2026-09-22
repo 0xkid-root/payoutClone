@@ -57,33 +57,33 @@ export function LoginForm() {
       <form className="space-y-6" onSubmit={handleLogin}>
         {/* Email Field */}
         <div className="space-y-2">
-          <Label htmlFor="email" className="text-[13px] font-semibold text-slate-700">Email Address</Label>
+          <Label htmlFor="email" className="text-[13px] font-semibold text-foreground">Email Address</Label>
           <div className="relative group">
             <Mail className="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground transition-colors group-focus-within:text-primary" />
             <Input
               id="email"
               type="email"
               placeholder="admin@paynexus.com"
-              className="h-11 rounded-lg border border-border bg-slate-50/50 pl-10 text-[14px] font-medium transition-all placeholder:text-muted-foreground hover:bg-muted focus-visible:bg-white focus-visible:ring-1 focus-visible:ring-primary focus-visible:border-primary shadow-sm"
+              className="h-11 rounded-lg border border-border bg-background pl-10 text-[14px] font-medium transition-all placeholder:text-muted-foreground hover:bg-muted focus-visible:bg-white focus-visible:ring-1 focus-visible:ring-primary focus-visible:border-primary shadow-sm"
             />
           </div>
         </div>
 
         {/* Password Field */}
         <div className="space-y-2">
-          <Label htmlFor="password" className="text-[13px] font-semibold text-slate-700">Password</Label>
+          <Label htmlFor="password" className="text-[13px] font-semibold text-foreground">Password</Label>
           <div className="relative group">
             <Lock className="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground transition-colors group-focus-within:text-primary" />
             <Input
               id="password"
               type={showPassword ? "text" : "password"}
               placeholder="Enter your password"
-              className="h-11 rounded-lg border border-border bg-slate-50/50 pl-10 pr-10 text-[14px] font-medium transition-all placeholder:text-muted-foreground hover:bg-muted focus-visible:bg-white focus-visible:ring-1 focus-visible:ring-primary focus-visible:border-primary shadow-sm"
+              className="h-11 rounded-lg border border-border bg-background pl-10 pr-10 text-[14px] font-medium transition-all placeholder:text-muted-foreground hover:bg-muted focus-visible:bg-white focus-visible:ring-1 focus-visible:ring-primary focus-visible:border-primary shadow-sm"
             />
             <button
               type="button"
               onClick={() => setShowPassword(!showPassword)}
-              className="absolute right-3.5 top-1/2 -translate-y-1/2 text-muted-foreground transition-colors hover:text-slate-700 focus:outline-none"
+              className="absolute right-3.5 top-1/2 -translate-y-1/2 text-muted-foreground transition-colors hover:text-foreground focus:outline-none"
               aria-label={showPassword ? "Hide password" : "Show password"}
             >
               {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
@@ -95,7 +95,7 @@ export function LoginForm() {
         <div className="flex items-center justify-between pt-1">
           <div className="flex items-center space-x-2">
             <Checkbox id="remember" className="h-4 w-4 rounded-[4px] border-border data-[state=checked]:bg-primary data-[state=checked]:border-primary" />
-            <Label htmlFor="remember" className="text-[13px] font-semibold text-slate-700 cursor-pointer select-none">
+            <Label htmlFor="remember" className="text-[13px] font-semibold text-foreground cursor-pointer select-none">
               Remember me
             </Label>
           </div>
@@ -114,7 +114,7 @@ export function LoginForm() {
       </form>
 
       {/* Security Message */}
-      <div className="mt-8 flex items-center justify-center gap-2 text-[13px] font-medium text-muted-foreground rounded-lg bg-slate-50 px-4 py-3 border border-slate-100">
+      <div className="mt-8 flex items-center justify-center gap-2 text-[13px] font-medium text-muted-foreground rounded-lg bg-background px-4 py-3 border border-border">
         <ShieldCheck className="h-4 w-4 text-primary shrink-0" />
         <p>Secure admin access for platform operations.</p>
       </div>
