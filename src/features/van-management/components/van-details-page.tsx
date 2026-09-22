@@ -9,161 +9,161 @@ import { useState } from "react";
 import { VanStatusDialog } from "./van-status-dialog";
 
 export function VanDetailsPage() {
-  const params = useParams();
-  const id = params.id as string;
-  const router = useRouter();
-  
-  const [statusAction, setStatusAction] = useState<"Activate" | "Deactivate" | "Suspend" | null>(null);
+ const params = useParams();
+ const id = params.id as string;
+ const router = useRouter();
+ 
+ const [statusAction, setStatusAction] = useState<"Activate" | "Deactivate" | "Suspend" | null>(null);
 
-  const { data: van, isLoading, error } = useVanQuery(id);
+ const { data: van, isLoading, error } = useVanQuery(id);
 
-  if (isLoading) {
-    return <div className="p-8 text-center text-muted-foreground">Loading details...</div>;
-  }
+ if (isLoading) {
+ return <div className="p-8 text-center text-muted-foreground">Loading details...</div>;
+ }
 
-  if (error || !van) {
-    return <div className="p-8 text-center text-danger">Error loading details or VAN not found.</div>;
-  }
+ if (error || !van) {
+ return <div className="p-8 text-center text-danger">Error loading details or VAN not found.</div>;
+ }
 
-  const maskAccountNumber = (acc: string) => {
-    if (acc.length < 8) return acc;
-    return `XXXX XXXX ${acc.slice(-4)}`;
-  };
+ const maskAccountNumber = (acc: string) => {
+ if (acc.length < 8) return acc;
+ return `XXXX XXXX ${acc.slice(-4)}`;
+ };
 
-  const InfoRow = ({ label, value, monospace }: { label: string, value: string | React.ReactNode, monospace?: boolean }) => (
-    <div className="flex flex-col gap-1">
-      <span className="text-xs font-medium text-muted-foreground">{label}</span>
-      <span className={`text-[13px] text-foreground dark:text-white ${monospace ? 'font-mono font-medium' : 'font-semibold'}`}>
-        {value || "-"}
-      </span>
-    </div>
-  );
+ const InfoRow = ({ label, value, monospace }: { label: string, value: string | React.ReactNode, monospace?: boolean }) => (
+ <div className="flex flex-col gap-1">
+ <span className="text-xs font-medium text-muted-foreground">{label}</span>
+ <span className={`text-[13px] text-foreground dark:text-white ${monospace ? 'font-mono font-medium' : 'font-semibold'}`}>
+ {value || "-"}
+ </span>
+ </div>
+ );
 
-  return (
-    <div className="flex flex-col gap-6 pb-8">
-      <PageHeader
-        title="Virtual Account Details"
-        description="Review detailed information about this virtual account."
-        actions={
-          <Button
-            variant="outline"
-            className="bg-white shadow-sm bg-background border-border"
-            onClick={() => router.back()}
-          >
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Back
-          </Button>
-        }
-      />
+ return (
+ <div className="flex flex-col gap-6 pb-8">
+ <PageHeader
+ title="Virtual Account Details"
+ description="Review detailed information about this virtual account."
+ actions={
+ <Button
+ variant="outline"
+ className=" shadow-sm bg-card border-border"
+ onClick={() => router.back()}
+ >
+ <ArrowLeft className="mr-2 h-4 w-4" />
+ Back
+ </Button>
+ }
+ />
 
-      <div className="rounded-[14px] border border-border/60 bg-white shadow-sm border-border bg-background overflow-hidden flex flex-col p-6 gap-8">
-        
-        {/* VAN Information */}
-        <div className="space-y-4">
-          <h3 className="text-[13px] font-bold uppercase tracking-wider text-muted-foreground border-b border-border pb-2">
-            VAN Information
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            <InfoRow label="VAN Number" value={van.vanNumber} monospace />
-            <InfoRow label="Account Type" value={van.accountType} />
-            <InfoRow 
-              label="Assigned Date" 
-              value={new Date(van.assignedAt).toLocaleString('en-GB')} 
-            />
-            <InfoRow label="Current Status" value={
-              <span className={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-[11px] font-semibold ${
-                van.status === 'Active' ? 'border-success/30 bg-success/10 text-success dark:bg-success/100/10' :
-                van.status === 'Inactive' ? 'border-border/50 bg-background text-muted-foreground bg-background0/10' :
-                van.status === 'Suspended' ? 'border-danger/30 bg-danger/10 text-danger dark:bg-danger/100/10' :
-                'border-warning/30 bg-warning/10 text-warning dark:bg-warning/100/10'
-              }`}>
-                {van.status}
-              </span>
-            } />
-          </div>
-        </div>
+ <div className="rounded-[14px] border border-border/60 shadow-sm border-border bg-card overflow-hidden flex flex-col p-6 gap-8">
+ 
+ {/* VAN Information */}
+ <div className="space-y-4">
+ <h3 className="text-[13px] font-bold uppercase tracking-wider text-muted-foreground border-b border-border pb-2">
+ VAN Information
+ </h3>
+ <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+ <InfoRow label="VAN Number" value={van.vanNumber} monospace />
+ <InfoRow label="Account Type" value={van.accountType} />
+ <InfoRow 
+ label="Assigned Date" 
+ value={new Date(van.assignedAt).toLocaleString('en-GB')} 
+ />
+ <InfoRow label="Current Status" value={
+ <span className={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-[11px] font-semibold ${
+ van.status === 'Active' ? 'border-success/30 bg-success/10 text-success dark:bg-success/100/10' :
+ van.status === 'Inactive' ? 'border-border/50 bg-card text-muted-foreground bg-background0/10' :
+ van.status === 'Suspended' ? 'border-danger/30 bg-danger/10 text-danger dark:bg-danger/100/10' :
+ 'border-warning/30 bg-warning/10 text-warning dark:bg-warning/100/10'
+ }`}>
+ {van.status}
+ </span>
+ } />
+ </div>
+ </div>
 
-        {/* Merchant Information */}
-        <div className="space-y-4">
-          <h3 className="text-[13px] font-bold uppercase tracking-wider text-muted-foreground border-b border-border pb-2">
-            Merchant Information
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <InfoRow label="Merchant Name" value={van.merchantName} />
-            <InfoRow label="Merchant ID" value={van.merchantId} monospace />
-            <InfoRow label="Business Name" value={van.businessName} />
-          </div>
-        </div>
+ {/* Merchant Information */}
+ <div className="space-y-4">
+ <h3 className="text-[13px] font-bold uppercase tracking-wider text-muted-foreground border-b border-border pb-2">
+ Merchant Information
+ </h3>
+ <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+ <InfoRow label="Merchant Name" value={van.merchantName} />
+ <InfoRow label="Merchant ID" value={van.merchantId} monospace />
+ <InfoRow label="Business Name" value={van.businessName} />
+ </div>
+ </div>
 
-        {/* Banking Information */}
-        <div className="space-y-4">
-          <h3 className="text-[13px] font-bold uppercase tracking-wider text-muted-foreground border-b border-border pb-2">
-            Banking Information
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <InfoRow label="Bank / Provider" value={van.provider} />
-            <InfoRow label="IFSC Code" value={van.ifsc} monospace />
-            <InfoRow label="Currency" value={van.currency} />
-          </div>
-        </div>
+ {/* Banking Information */}
+ <div className="space-y-4">
+ <h3 className="text-[13px] font-bold uppercase tracking-wider text-muted-foreground border-b border-border pb-2">
+ Banking Information
+ </h3>
+ <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+ <InfoRow label="Bank / Provider" value={van.provider} />
+ <InfoRow label="IFSC Code" value={van.ifsc} monospace />
+ <InfoRow label="Currency" value={van.currency} />
+ </div>
+ </div>
 
-        {/* Activity */}
-        <div className="space-y-4">
-          <h3 className="text-[13px] font-bold uppercase tracking-wider text-muted-foreground border-b border-border pb-2">
-            Recent Activity
-          </h3>
-          <div className="flex items-start gap-3">
-            <div className="mt-1">
-              <Activity className="h-4 w-4 text-muted-foreground" />
-            </div>
-            <div>
-              <p className="text-[13px] font-semibold text-foreground dark:text-white">Last Status Update</p>
-              <p className="text-[12px] text-muted-foreground">{new Date(van.lastActivityAt).toLocaleString('en-GB')}</p>
-            </div>
-          </div>
-        </div>
+ {/* Activity */}
+ <div className="space-y-4">
+ <h3 className="text-[13px] font-bold uppercase tracking-wider text-muted-foreground border-b border-border pb-2">
+ Recent Activity
+ </h3>
+ <div className="flex items-start gap-3">
+ <div className="mt-1">
+ <Activity className="h-4 w-4 text-muted-foreground" />
+ </div>
+ <div>
+ <p className="text-[13px] font-semibold text-foreground dark:text-white">Last Status Update</p>
+ <p className="text-[12px] text-muted-foreground">{new Date(van.lastActivityAt).toLocaleString('en-GB')}</p>
+ </div>
+ </div>
+ </div>
 
-        {/* Actions Footer */}
-        <div className="pt-6 mt-4 border-t border-border flex justify-end gap-3">
-          {van.status === 'Active' ? (
-            <>
-              <Button 
-                variant="outline" 
-                className="border-warning/30 text-amber-700 hover:bg-warning/10 hover:text-amber-800 dark:border-amber-900/50 dark:hover:bg-amber-900/20 dark:text-warning"
-                onClick={() => setStatusAction("Suspend")}
-              >
-                <PauseCircle className="mr-2 h-4 w-4" />
-                Suspend
-              </Button>
-              <Button 
-                variant="outline"
-                className="border-danger/30 text-danger hover:bg-danger/10 hover:text-red-800 dark:border-red-900/50 dark:hover:bg-red-900/20 dark:text-danger"
-                onClick={() => setStatusAction("Deactivate")}
-              >
-                <XCircle className="mr-2 h-4 w-4" />
-                Deactivate
-              </Button>
-            </>
-          ) : (
-            <Button 
-              className="bg-emerald-600 hover:bg-emerald-700 text-white"
-              onClick={() => setStatusAction("Activate")}
-            >
-              <CheckCircle2 className="mr-2 h-4 w-4" />
-              Activate Account
-            </Button>
-          )}
-        </div>
-      </div>
+ {/* Actions Footer */}
+ <div className="pt-6 mt-4 border-t border-border flex justify-end gap-3">
+ {van.status === 'Active' ? (
+ <>
+ <Button 
+ variant="outline" 
+ className="border-warning/30 text-amber-700 hover:bg-warning/10 hover:text-amber-800 dark:border-amber-900/50 dark:hover:bg-amber-900/20 dark:text-warning"
+ onClick={() => setStatusAction("Suspend")}
+ >
+ <PauseCircle className="mr-2 h-4 w-4" />
+ Suspend
+ </Button>
+ <Button 
+ variant="outline"
+ className="border-danger/30 text-danger hover:bg-danger/10 hover:text-red-800 dark:border-red-900/50 dark:hover:bg-red-900/20 dark:text-danger"
+ onClick={() => setStatusAction("Deactivate")}
+ >
+ <XCircle className="mr-2 h-4 w-4" />
+ Deactivate
+ </Button>
+ </>
+ ) : (
+ <Button 
+ className="bg-emerald-600 hover:bg-emerald-700 text-white"
+ onClick={() => setStatusAction("Activate")}
+ >
+ <CheckCircle2 className="mr-2 h-4 w-4" />
+ Activate Account
+ </Button>
+ )}
+ </div>
+ </div>
 
-      {statusAction && (
-        <VanStatusDialog 
-          isOpen={!!statusAction}
-          onClose={() => setStatusAction(null)}
-          van={van}
-          action={statusAction}
-        />
-      )}
-    </div>
-  );
+ {statusAction && (
+ <VanStatusDialog 
+ isOpen={!!statusAction}
+ onClose={() => setStatusAction(null)}
+ van={van}
+ action={statusAction}
+ />
+ )}
+ </div>
+ );
 }
