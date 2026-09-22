@@ -2,10 +2,10 @@ import { VanManagementPage } from "@/features/van-management/components/van-mana
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "VAN Management | PayNexus Admin",
-  description: "Manage virtual accounts assigned to merchants.",
+ title: "VAN Management | PayNexus Admin",
+ description: "Manage virtual accounts assigned to merchants.",
 };
 
 export default function Page() {
-  return <VanManagementPage />;
+ return <VanManagementPage />;
 }
