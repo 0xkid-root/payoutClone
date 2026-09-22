@@ -1,12 +1,12 @@
 "use client";
 
 import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogFooter,
-  DialogDescription,
+ Dialog,
+ DialogContent,
+ DialogHeader,
+ DialogTitle,
+ DialogFooter,
+ DialogDescription,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { useUpdateVanStatusMutation } from "../hooks/use-vans";
@@ -15,81 +15,81 @@ import { AlertCircle } from "lucide-react";
 import { toast } from "sonner";
 
 interface VanStatusDialogProps {
-  isOpen: boolean;
-  onClose: () => void;
-  van: VanAccount;
-  action: "Activate" | "Deactivate" | "Suspend";
+ isOpen: boolean;
+ onClose: () => void;
+ van: VanAccount;
+ action: "Activate" | "Deactivate" | "Suspend";
 }
 
 export function VanStatusDialog({ isOpen, onClose, van, action }: VanStatusDialogProps) {
-  const { mutate, isPending } = useUpdateVanStatusMutation();
+ const { mutate, isPending } = useUpdateVanStatusMutation();
 
-  const handleAction = () => {
-    let targetStatus: VanStatus = "Active";
-    if (action === "Deactivate") targetStatus = "Inactive";
-    if (action === "Suspend") targetStatus = "Suspended";
+ const handleAction = () => {
+ let targetStatus: VanStatus = "Active";
+ if (action === "Deactivate") targetStatus = "Inactive";
+ if (action === "Suspend") targetStatus = "Suspended";
 
-    mutate({ id: van.id, status: targetStatus }, {
-      onSuccess: () => {
-        toast.success(`Virtual account ${targetStatus.toLowerCase()} successfully`);
-        onClose();
-      },
-      onError: () => {
-        toast.error(`Failed to ${action.toLowerCase()} virtual account`);
-      }
-    });
-  };
+ mutate({ id: van.id, status: targetStatus }, {
+ onSuccess: () => {
+ toast.success(`Virtual account ${targetStatus.toLowerCase()} successfully`);
+ onClose();
+ },
+ onError: () => {
+ toast.error(`Failed to ${action.toLowerCase()} virtual account`);
+ }
+ });
+ };
 
-  const getActionColor = () => {
-    if (action === "Activate") return "text-success dark:text-success";
-    if (action === "Deactivate") return "text-danger dark:text-danger";
-    return "text-warning dark:text-warning";
-  };
+ const getActionColor = () => {
+ if (action === "Activate") return "text-success dark:text-success";
+ if (action === "Deactivate") return "text-danger dark:text-danger";
+ return "text-warning dark:text-warning";
+ };
 
-  const getButtonClass = () => {
-    if (action === "Activate") return "bg-emerald-600 hover:bg-emerald-700 text-white";
-    if (action === "Deactivate") return "bg-red-600 hover:bg-red-700 text-white";
-    return "bg-amber-600 hover:bg-amber-700 text-white";
-  };
+ const getButtonClass = () => {
+ if (action === "Activate") return "bg-emerald-600 hover:bg-emerald-700 text-white";
+ if (action === "Deactivate") return "bg-red-600 hover:bg-red-700 text-white";
+ return "bg-amber-600 hover:bg-amber-700 text-white";
+ };
 
-  const getActionDescription = () => {
-    if (action === "Activate") return "Are you sure you want to activate this virtual account? The merchant will be able to receive funds.";
-    if (action === "Deactivate") return "Are you sure you want to deactivate this virtual account? Inbound transactions will be rejected.";
-    return "Are you sure you want to suspend this virtual account? Operations will be temporarily paused.";
-  };
+ const getActionDescription = () => {
+ if (action === "Activate") return "Are you sure you want to activate this virtual account? The merchant will be able to receive funds.";
+ if (action === "Deactivate") return "Are you sure you want to deactivate this virtual account? Inbound transactions will be rejected.";
+ return "Are you sure you want to suspend this virtual account? Operations will be temporarily paused.";
+ };
 
-  return (
-    <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-[425px]">
-        <DialogHeader>
-          <DialogTitle className={`flex items-center gap-2 ${getActionColor()}`}>
-            <AlertCircle className="h-5 w-5" />
-            {action} Virtual Account?
-          </DialogTitle>
-          <DialogDescription className="pt-3 text-muted-foreground text-foreground">
-            {getActionDescription()}
-          </DialogDescription>
-        </DialogHeader>
+ return (
+ <Dialog open={isOpen} onOpenChange={onClose}>
+ <DialogContent className="sm:max-w-[425px]">
+ <DialogHeader>
+ <DialogTitle className={`flex items-center gap-2 ${getActionColor()}`}>
+ <AlertCircle className="h-5 w-5" />
+ {action} Virtual Account?
+ </DialogTitle>
+ <DialogDescription className="pt-3 text-muted-foreground text-foreground">
+ {getActionDescription()}
+ </DialogDescription>
+ </DialogHeader>
 
-        <div className="bg-background/50 p-4 rounded-lg my-2 border border-border">
-          <p className="text-sm text-muted-foreground mb-1">Merchant: <span className="font-semibold text-foreground dark:text-white">{van.merchantName}</span></p>
-          <p className="text-sm text-muted-foreground mb-1">Provider: <span className="font-semibold text-foreground dark:text-white">{van.provider}</span></p>
-          <p className="text-sm text-muted-foreground">VAN: <span className="font-mono font-medium text-foreground dark:text-white">{van.vanNumber}</span></p>
-        </div>
+ <div className="bg-card/50 p-4 rounded-lg my-2 border border-border">
+ <p className="text-sm text-muted-foreground mb-1">Merchant: <span className="font-semibold text-foreground dark:text-white">{van.merchantName}</span></p>
+ <p className="text-sm text-muted-foreground mb-1">Provider: <span className="font-semibold text-foreground dark:text-white">{van.provider}</span></p>
+ <p className="text-sm text-muted-foreground">VAN: <span className="font-mono font-medium text-foreground dark:text-white">{van.vanNumber}</span></p>
+ </div>
 
-        <DialogFooter className="mt-4">
-          <Button variant="outline" onClick={onClose} disabled={isPending}>
-            Cancel
-          </Button>
-          <Button 
-            className={getButtonClass()}
-            onClick={handleAction}
-            disabled={isPending}
-          >
-            {isPending ? "Processing..." : `Yes, ${action}`}
-          </Button>
-        </DialogFooter>
-      </DialogContent>
-    </Dialog>
-  );
+ <DialogFooter className="mt-4">
+ <Button variant="outline" onClick={onClose} disabled={isPending}>
+ Cancel
+ </Button>
+ <Button 
+ className={getButtonClass()}
+ onClick={handleAction}
+ disabled={isPending}
+ >
+ {isPending ? "Processing..." : `Yes, ${action}`}
+ </Button>
+ </DialogFooter>
+ </DialogContent>
+ </Dialog>
+ );
 }
