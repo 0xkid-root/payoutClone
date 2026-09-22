@@ -22,7 +22,7 @@ export function VanDetailsPage() {
   }
 
   if (error || !van) {
-    return <div className="p-8 text-center text-red-500">Error loading details or VAN not found.</div>;
+    return <div className="p-8 text-center text-danger">Error loading details or VAN not found.</div>;
   }
 
   const maskAccountNumber = (acc: string) => {
@@ -47,7 +47,7 @@ export function VanDetailsPage() {
         actions={
           <Button
             variant="outline"
-            className="bg-white shadow-sm bg-background border-border border-border"
+            className="bg-white shadow-sm bg-background border-border"
             onClick={() => router.back()}
           >
             <ArrowLeft className="mr-2 h-4 w-4" />
@@ -60,7 +60,7 @@ export function VanDetailsPage() {
         
         {/* VAN Information */}
         <div className="space-y-4">
-          <h3 className="text-[13px] font-bold uppercase tracking-wider text-muted-foreground border-b border-border border-border pb-2">
+          <h3 className="text-[13px] font-bold uppercase tracking-wider text-muted-foreground border-b border-border pb-2">
             VAN Information
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
@@ -72,10 +72,10 @@ export function VanDetailsPage() {
             />
             <InfoRow label="Current Status" value={
               <span className={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-[11px] font-semibold ${
-                van.status === 'Active' ? 'border-emerald-200/50 bg-emerald-50 text-emerald-600 dark:bg-emerald-500/10' :
-                van.status === 'Inactive' ? 'border-border/50 bg-slate-50 text-slate-600 dark:bg-slate-500/10' :
-                van.status === 'Suspended' ? 'border-red-200/50 bg-red-50 text-red-600 dark:bg-red-500/10' :
-                'border-amber-200/50 bg-amber-50 text-amber-600 dark:bg-amber-500/10'
+                van.status === 'Active' ? 'border-success/30 bg-success/10 text-success dark:bg-success/100/10' :
+                van.status === 'Inactive' ? 'border-border/50 bg-background text-muted-foreground bg-background0/10' :
+                van.status === 'Suspended' ? 'border-danger/30 bg-danger/10 text-danger dark:bg-danger/100/10' :
+                'border-warning/30 bg-warning/10 text-warning dark:bg-warning/100/10'
               }`}>
                 {van.status}
               </span>
@@ -85,7 +85,7 @@ export function VanDetailsPage() {
 
         {/* Merchant Information */}
         <div className="space-y-4">
-          <h3 className="text-[13px] font-bold uppercase tracking-wider text-muted-foreground border-b border-border border-border pb-2">
+          <h3 className="text-[13px] font-bold uppercase tracking-wider text-muted-foreground border-b border-border pb-2">
             Merchant Information
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -97,7 +97,7 @@ export function VanDetailsPage() {
 
         {/* Banking Information */}
         <div className="space-y-4">
-          <h3 className="text-[13px] font-bold uppercase tracking-wider text-muted-foreground border-b border-border border-border pb-2">
+          <h3 className="text-[13px] font-bold uppercase tracking-wider text-muted-foreground border-b border-border pb-2">
             Banking Information
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -109,7 +109,7 @@ export function VanDetailsPage() {
 
         {/* Activity */}
         <div className="space-y-4">
-          <h3 className="text-[13px] font-bold uppercase tracking-wider text-muted-foreground border-b border-border border-border pb-2">
+          <h3 className="text-[13px] font-bold uppercase tracking-wider text-muted-foreground border-b border-border pb-2">
             Recent Activity
           </h3>
           <div className="flex items-start gap-3">
@@ -124,12 +124,12 @@ export function VanDetailsPage() {
         </div>
 
         {/* Actions Footer */}
-        <div className="pt-6 mt-4 border-t border-slate-100 border-border flex justify-end gap-3">
+        <div className="pt-6 mt-4 border-t border-border flex justify-end gap-3">
           {van.status === 'Active' ? (
             <>
               <Button 
                 variant="outline" 
-                className="border-amber-200 text-amber-700 hover:bg-amber-50 hover:text-amber-800 dark:border-amber-900/50 dark:hover:bg-amber-900/20 dark:text-amber-500"
+                className="border-warning/30 text-amber-700 hover:bg-warning/10 hover:text-amber-800 dark:border-amber-900/50 dark:hover:bg-amber-900/20 dark:text-warning"
                 onClick={() => setStatusAction("Suspend")}
               >
                 <PauseCircle className="mr-2 h-4 w-4" />
@@ -137,7 +137,7 @@ export function VanDetailsPage() {
               </Button>
               <Button 
                 variant="outline"
-                className="border-red-200 text-red-700 hover:bg-red-50 hover:text-red-800 dark:border-red-900/50 dark:hover:bg-red-900/20 dark:text-red-500"
+                className="border-danger/30 text-danger hover:bg-danger/10 hover:text-red-800 dark:border-red-900/50 dark:hover:bg-red-900/20 dark:text-danger"
                 onClick={() => setStatusAction("Deactivate")}
               >
                 <XCircle className="mr-2 h-4 w-4" />
