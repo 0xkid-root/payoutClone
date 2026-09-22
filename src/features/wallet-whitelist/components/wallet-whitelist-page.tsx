@@ -37,7 +37,7 @@ export function WalletWhitelistPage() {
         actions={
           <Button
             variant="outline"
-            className="bg-white shadow-sm bg-background border-border border-border"
+            className="bg-white shadow-sm bg-background border-border"
             onClick={handleRefresh}
             disabled={isRefreshing}
           >
@@ -49,7 +49,7 @@ export function WalletWhitelistPage() {
 
       <div className="rounded-[14px] border border-border/60 bg-white shadow-sm border-border bg-background overflow-hidden flex flex-col">
         {/* Tabs Header */}
-        <div className="border-b border-border/60 border-border bg-slate-50/50 bg-background/50 p-2 flex overflow-x-auto scrollbar-hide">
+        <div className="border-b border-border/60 border-border bg-background/50 p-2 flex overflow-x-auto scrollbar-hide">
           {tabs.map((tab) => {
             const isActive = activeTab === tab.id;
             const Icon = tab.icon;
