@@ -45,22 +45,22 @@ export function BusinessDocumentsTab({ merchant }: { merchant: Merchant }) {
   ];
 
   const StatusBadge = ({ status }: { status: string }) => {
-    if (status === "VERIFIED") return <Badge className="bg-emerald-50 text-emerald-600 border-emerald-200/50"><CheckCircle2 className="mr-1 h-3 w-3" /> Verified</Badge>;
-    if (status === "PENDING") return <Badge className="bg-amber-50 text-amber-600 border-amber-200/50"><Clock className="mr-1 h-3 w-3" /> Pending Review</Badge>;
-    return <Badge className="bg-red-50 text-red-600 border-red-200/50">Rejected</Badge>;
+    if (status === "VERIFIED") return <Badge className="bg-success/10 text-success border-success/30"><CheckCircle2 className="mr-1 h-3 w-3" /> Verified</Badge>;
+    if (status === "PENDING") return <Badge className="bg-warning/10 text-warning border-warning/30"><Clock className="mr-1 h-3 w-3" /> Pending Review</Badge>;
+    return <Badge className="bg-danger/10 text-danger border-danger/30">Rejected</Badge>;
   };
 
   return (
     <Card className="shadow-none border-border/60 border-border">
-      <CardHeader className="pb-3 border-b border-slate-100 border-border bg-slate-50/50 bg-background/20">
-        <CardTitle className="text-sm font-semibold text-slate-700 dark:text-slate-300">Business Documents</CardTitle>
+      <CardHeader className="pb-3 border-b border-border bg-background/20">
+        <CardTitle className="text-sm font-semibold text-foreground">Business Documents</CardTitle>
       </CardHeader>
       <CardContent className="p-0">
         <div className="divide-y divide-slate-100 dark:divide-slate-800">
           {documents.map((doc) => (
-            <div key={doc.id} className="p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-slate-50/30 transition-colors dark:hover:bg-background/10">
+            <div key={doc.id} className="p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-background/30 transition-colors dark:hover:bg-background/10">
               <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-blue-50 text-blue-600 dark:bg-blue-900/20 dark:text-blue-400">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-info/10 text-info dark:bg-blue-900/20 dark:text-blue-400">
                   <FileText className="h-5 w-5" />
                 </div>
                 <div className="flex flex-col">
