@@ -44,7 +44,7 @@ export function RequestChangesModal({ isOpen, onClose, merchant }: RequestChange
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-[500px] border-border/60 border-border shadow-xl bg-white dark:bg-slate-950">
+      <DialogContent className="sm:max-w-[500px] border-border/60 border-border shadow-xl bg-white bg-background">
         <DialogHeader>
           <DialogTitle className="text-xl text-foreground dark:text-white">Request Changes</DialogTitle>
           <DialogDescription className="text-muted-foreground">
@@ -54,7 +54,7 @@ export function RequestChangesModal({ isOpen, onClose, merchant }: RequestChange
 
         <div className="py-4 space-y-6">
           <div className="space-y-3">
-            <Label className="text-sm font-semibold text-slate-700 dark:text-slate-300">Sections Needing Correction</Label>
+            <Label className="text-sm font-semibold text-foreground">Sections Needing Correction</Label>
             <div className="grid sm:grid-cols-2 gap-3">
               {SECTIONS.map((section) => (
                 <div key={section.id} className="flex items-start space-x-2.5">
@@ -66,7 +66,7 @@ export function RequestChangesModal({ isOpen, onClose, merchant }: RequestChange
                   />
                   <Label 
                     htmlFor={section.id} 
-                    className="text-[13px] font-medium leading-none cursor-pointer text-slate-700 dark:text-slate-300"
+                    className="text-[13px] font-medium leading-none cursor-pointer text-foreground"
                   >
                     {section.label}
                   </Label>
@@ -76,22 +76,22 @@ export function RequestChangesModal({ isOpen, onClose, merchant }: RequestChange
           </div>
 
           <div className="space-y-3">
-            <Label className="text-sm font-semibold text-slate-700 dark:text-slate-300">Reason / Instructions</Label>
+            <Label className="text-sm font-semibold text-foreground">Reason / Instructions</Label>
             <textarea 
               placeholder="e.g., The uploaded PAN document is blurry. Please upload a clear, color copy." 
-              className="w-full rounded-md border p-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 resize-none h-24 bg-slate-50/50 bg-background/50 border-border border-border"
+              className="w-full rounded-md border p-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 resize-none h-24 bg-background/50 border-border"
               value={reason}
               onChange={(e) => setReason(e.target.value)}
             />
           </div>
         </div>
 
-        <DialogFooter className="border-t border-slate-100 border-border pt-4 sm:justify-between">
+        <DialogFooter className="border-t border-border pt-4 sm:justify-between">
           <Button variant="ghost" onClick={onClose} className="text-muted-foreground">Cancel</Button>
           <Button 
             onClick={handleSubmit} 
             disabled={selectedSections.length === 0 || !reason.trim() || isSubmitting}
-            className="bg-amber-500 hover:bg-amber-600 text-white"
+            className="bg-warning/100 hover:bg-amber-600 text-white"
           >
             {isSubmitting ? "Sending..." : "Send Back to Merchant"}
           </Button>
