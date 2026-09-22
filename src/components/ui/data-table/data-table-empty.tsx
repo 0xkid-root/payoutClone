@@ -15,11 +15,11 @@ export function DataTableEmpty({
   message,
 }: DataTableEmptyProps) {
   return (
-    <div className="flex flex-col items-center justify-center py-12 text-center h-64 border border-border border-border rounded-md bg-white bg-background border-dashed">
+    <div className="flex flex-col items-center justify-center py-12 text-center h-64 border border-border rounded-md bg-white bg-background border-dashed">
       {isSearchState ? (
         <>
           <div className="flex h-12 w-12 items-center justify-center rounded-full bg-muted bg-card mb-4">
-            <SearchX className="h-6 w-6 text-muted-foreground text-muted-foreground" />
+            <SearchX className="h-6 w-6 text-muted-foreground" />
           </div>
           <h3 className="text-lg font-semibold text-foreground dark:text-white">
             No results found
@@ -40,7 +40,7 @@ export function DataTableEmpty({
       ) : (
         <>
           <div className="flex h-12 w-12 items-center justify-center rounded-full bg-muted bg-card mb-4">
-            <FileX className="h-6 w-6 text-muted-foreground text-muted-foreground" />
+            <FileX className="h-6 w-6 text-muted-foreground" />
           </div>
           <h3 className="text-lg font-semibold text-foreground dark:text-white">
             No data available
