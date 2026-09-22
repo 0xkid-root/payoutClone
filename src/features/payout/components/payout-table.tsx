@@ -97,7 +97,7 @@ export function PayoutTable({
       accessorKey: "netAmount",
       header: () => <div className="text-right">Net Amount</div>,
       cell: ({ row }) => (
-        <div className="text-right font-semibold text-emerald-600 dark:text-emerald-400">
+        <div className="text-right font-semibold text-success dark:text-emerald-400">
           {formatINR(row.original.netAmount)}
         </div>
       ),
@@ -128,7 +128,7 @@ export function PayoutTable({
 
         return (
           <DropdownMenu>
-            <DropdownMenuTrigger className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors hover:bg-muted hover:text-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-slate-950 disabled:pointer-events-none disabled:opacity-50 dark:hover:bg-card dark:hover:text-slate-50 dark:focus-visible:ring-slate-300 h-8 w-8 p-0">
+            <DropdownMenuTrigger className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors hover:bg-muted hover:text-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 dark:hover:bg-card dark:hover:text-foreground focus-visible:ring-ring h-8 w-8 p-0">
               <span className="sr-only">Open menu</span>
               <MoreHorizontal className="h-4 w-4" />
             </DropdownMenuTrigger>
