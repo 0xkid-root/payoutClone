@@ -46,7 +46,7 @@ export function AllWalletsPage() {
         title="All Wallets"
         description="Manage and monitor merchant wallets and balances."
         actions={
-          <Button variant="outline" className="bg-white shadow-sm bg-background border-border border-border">
+          <Button variant="outline" className="bg-white shadow-sm bg-background border-border">
             <Download className="mr-2 h-4 w-4" />
             Export List
           </Button>
@@ -55,7 +55,7 @@ export function AllWalletsPage() {
 
       <div className="rounded-xl border border-border/60 bg-white shadow-sm border-border bg-background overflow-hidden flex flex-col">
         {/* Toolbar */}
-        <div className="p-4 border-b border-slate-100 border-border bg-slate-50/50 bg-background/50 flex flex-col sm:flex-row items-center gap-4 justify-between">
+        <div className="p-4 border-b border-border bg-background/50 flex flex-col sm:flex-row items-center gap-4 justify-between">
           <div className="flex items-center gap-3 w-full sm:w-auto">
             <div className="relative w-full sm:w-80">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
@@ -97,7 +97,7 @@ export function AllWalletsPage() {
         <div className="overflow-x-auto">
           <Table>
             <TableHeader className="bg-transparent">
-              <TableRow className="hover:bg-transparent border-slate-100 border-border">
+              <TableRow className="hover:bg-transparent border-border">
                 <TableHead className="h-11 px-5 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Merchant</TableHead>
                 <TableHead className="h-11 px-5 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Wallet ID</TableHead>
                 <TableHead className="h-11 px-5 text-xs font-semibold uppercase tracking-wider text-muted-foreground text-right">Available Balance</TableHead>
@@ -111,7 +111,7 @@ export function AllWalletsPage() {
             <TableBody>
               {isLoading ? (
                 Array(5).fill(0).map((_, i) => (
-                  <TableRow key={i} className="border-slate-100 border-border/50">
+                  <TableRow key={i} className="border-border/50">
                     <TableCell colSpan={8} className="p-5">
                       <div className="h-5 w-full bg-muted bg-card rounded animate-pulse"></div>
                     </TableCell>
@@ -124,7 +124,7 @@ export function AllWalletsPage() {
                   </TableCell>
                 </TableRow>
               ) : filteredWallets?.map((wallet) => (
-                <TableRow key={wallet.id} className="border-slate-100 border-border/50 hover:bg-slate-50/50 dark:hover:bg-card/30 transition-colors">
+                <TableRow key={wallet.id} className="border-border/50 hover:bg-background dark:hover:bg-card/30 transition-colors">
                   <TableCell className="p-4 px-5">
                     <div className="flex flex-col">
                       <span className="font-semibold text-foreground dark:text-white text-[13px]">{wallet.merchantName}</span>
@@ -132,12 +132,12 @@ export function AllWalletsPage() {
                     </div>
                   </TableCell>
                   <TableCell className="p-4 px-5">
-                    <span className="font-mono text-[13px] text-slate-600 text-muted-foreground">{wallet.id}</span>
+                    <span className="font-mono text-[13px] text-muted-foreground">{wallet.id}</span>
                   </TableCell>
-                  <TableCell className="p-4 px-5 text-right font-semibold tabular-nums text-emerald-600">
+                  <TableCell className="p-4 px-5 text-right font-semibold tabular-nums text-success">
                     {formatCurrency(wallet.availableBalance)}
                   </TableCell>
-                  <TableCell className="p-4 px-5 text-right font-medium tabular-nums text-amber-600">
+                  <TableCell className="p-4 px-5 text-right font-medium tabular-nums text-warning">
                     {formatCurrency(wallet.holdBalance)}
                   </TableCell>
                   <TableCell className="p-4 px-5 text-right font-bold tabular-nums text-foreground dark:text-white">
@@ -145,10 +145,10 @@ export function AllWalletsPage() {
                   </TableCell>
                   <TableCell className="p-4 px-5">
                     <span className={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-[11px] font-semibold ${
-                      wallet.status === 'Active' ? 'border-emerald-200/50 bg-emerald-50 text-emerald-600 dark:bg-emerald-500/10' :
-                      wallet.status === 'Frozen' ? 'border-indigo-200/50 bg-indigo-50 text-primary dark:bg-primary/10' :
-                      wallet.status === 'Suspended' ? 'border-amber-200/50 bg-amber-50 text-amber-600 dark:bg-amber-500/10' :
-                      'border-border/50 bg-slate-50 text-slate-600 dark:bg-slate-500/10'
+                      wallet.status === 'Active' ? 'border-success/30 bg-success/10 text-success dark:bg-success/100/10' :
+                      wallet.status === 'Frozen' ? 'border-primary/20/50 bg-primary/10 text-primary dark:bg-primary/10' :
+                      wallet.status === 'Suspended' ? 'border-warning/30 bg-warning/10 text-warning dark:bg-warning/100/10' :
+                      'border-border/50 bg-background text-muted-foreground bg-background0/10'
                     }`}>
                       {wallet.status}
                     </span>
@@ -171,7 +171,7 @@ export function AllWalletsPage() {
         </div>
 
         {/* Pagination */}
-        <div className="p-4 border-t border-slate-100 border-border flex items-center justify-between text-sm">
+        <div className="p-4 border-t border-border flex items-center justify-between text-sm">
           <div className="text-muted-foreground">
             Showing <span className="font-medium text-foreground dark:text-white">{filteredWallets?.length || 0}</span> results
           </div>
