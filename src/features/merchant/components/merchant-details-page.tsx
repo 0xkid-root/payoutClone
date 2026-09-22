@@ -42,7 +42,7 @@ export function MerchantDetailsPage({ merchantId }: { merchantId: string }) {
 
   if (isError || !merchant) {
     return (
-      <div className="p-8 text-center text-red-500">
+      <div className="p-8 text-center text-danger">
         <p>Failed to load merchant details.</p>
         <Link href="/merchants" className="text-primary hover:underline mt-2 inline-block">Back to Merchants</Link>
       </div>
@@ -50,9 +50,9 @@ export function MerchantDetailsPage({ merchantId }: { merchantId: string }) {
   }
 
   const StatusBadge = ({ status }: { status: string }) => {
-    if (status === "ACTIVE") return <Badge className="bg-emerald-50 text-emerald-600 border-emerald-200/50">Active</Badge>;
-    if (status === "INACTIVE") return <Badge className="bg-amber-50 text-amber-600 border-amber-200/50">Inactive</Badge>;
-    return <Badge className="bg-red-50 text-red-600 border-red-200/50">Suspended</Badge>;
+    if (status === "ACTIVE") return <Badge className="bg-success/10 text-success border-success/30">Active</Badge>;
+    if (status === "INACTIVE") return <Badge className="bg-warning/10 text-warning border-warning/30">Inactive</Badge>;
+    return <Badge className="bg-danger/10 text-danger border-danger/30">Suspended</Badge>;
   };
 
   const formattedBalance = new Intl.NumberFormat("en-IN", {
@@ -85,7 +85,7 @@ export function MerchantDetailsPage({ merchantId }: { merchantId: string }) {
             </div>
             <p className="mt-1 text-sm font-medium text-muted-foreground flex items-center gap-2">
               {merchant.merchantCode}
-              <span className="h-1 w-1 rounded-full bg-slate-300"></span>
+              <span className="h-1 w-1 rounded-full bg-muted-foreground/30"></span>
               {merchant.businessType}
             </p>
           </div>
@@ -102,7 +102,7 @@ export function MerchantDetailsPage({ merchantId }: { merchantId: string }) {
             <DropdownMenuItem>View Beneficiaries</DropdownMenuItem>
             <DropdownMenuItem>View Payouts</DropdownMenuItem>
             <DropdownMenuItem>View Wallet</DropdownMenuItem>
-            <DropdownMenuItem className="text-red-600 focus:text-red-600">Suspend Merchant</DropdownMenuItem>
+            <DropdownMenuItem className="text-danger focus:text-danger">Suspend Merchant</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
@@ -119,7 +119,7 @@ export function MerchantDetailsPage({ merchantId }: { merchantId: string }) {
           title="Total Beneficiaries"
           value={merchant.totalBeneficiaries.toLocaleString()}
           icon={Users}
-          iconColorClass="text-emerald-500"
+          iconColorClass="text-success"
         />
         <StatCard
           title="Total Payouts"
@@ -131,14 +131,14 @@ export function MerchantDetailsPage({ merchantId }: { merchantId: string }) {
           title="Successful Payouts"
           value={merchant.successfulPayouts.toLocaleString()}
           icon={CheckCircle2}
-          iconColorClass="text-emerald-500"
+          iconColorClass="text-success"
         />
       </div>
 
       {/* Unified Main Card for Tabs and Content */}
       <div className="rounded-xl border border-border/60 bg-white shadow-sm border-border bg-background overflow-hidden flex flex-col mt-4">
         {/* Tabs Navigation */}
-        <div className="border-b border-border/60 border-border bg-slate-50/50 bg-background/50 p-2 flex overflow-x-auto scrollbar-hide">
+        <div className="border-b border-border/60 border-border bg-background/50 p-2 flex overflow-x-auto scrollbar-hide">
           {tabs.map((tab) => {
             const isActive = activeTab === tab.id;
             return (
@@ -148,7 +148,7 @@ export function MerchantDetailsPage({ merchantId }: { merchantId: string }) {
                 className={`whitespace-nowrap px-4 py-2.5 rounded-lg text-sm font-medium transition-all mr-1 ${
                   isActive
                     ? "bg-white shadow-sm border border-border/60 text-primary bg-card border-border dark:text-white"
-                    : "text-muted-foreground hover:text-slate-700 hover:bg-muted/50 text-muted-foreground dark:hover:text-slate-300 dark:hover:bg-card/30"
+                    : "text-muted-foreground hover:text-foreground hover:bg-muted/50 text-muted-foreground dark:hover:text-foreground dark:hover:bg-card/30"
                 }`}
               >
                 {tab.label}
