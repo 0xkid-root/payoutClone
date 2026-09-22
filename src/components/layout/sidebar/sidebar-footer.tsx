@@ -17,14 +17,14 @@ export function SidebarFooter() {
   const { isCollapsed } = useSidebar();
 
   return (
-    <div className="mt-auto shrink-0 border-t border-slate-100 p-3 border-sidebar-border">
+    <div className="mt-auto shrink-0 border-t border-sidebar-border p-3 border-sidebar-border">
       
       {/* Environment Indicator (Expanded Only) */}
       {!isCollapsed && (
         <div className="mb-2.5 px-3 flex items-center gap-2 text-[12px] font-semibold text-sidebar-foreground0">
           <span className="relative flex h-2 w-2">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-success/100"></span>
           </span>
           Production
         </div>
@@ -33,7 +33,7 @@ export function SidebarFooter() {
       {/* Profile Dropdown */}
       <DropdownMenu>
         <DropdownMenuTrigger className={cn(
-          "flex w-full items-center rounded-md p-2 outline-none transition-colors hover:bg-slate-50 focus-visible:bg-slate-50 dark:hover:bg-sidebar-accent/50 dark:focus-visible:bg-sidebar-accent/50",
+          "flex w-full items-center rounded-md p-2 outline-none transition-colors hover:bg-sidebar focus-visible:bg-sidebar dark:hover:bg-sidebar-accent/50 dark:focus-visible:bg-sidebar-accent/50",
           isCollapsed ? "justify-center" : "justify-between"
         )}>
           <div className="flex items-center gap-3 overflow-hidden">
@@ -42,13 +42,13 @@ export function SidebarFooter() {
             </div>
             {!isCollapsed && (
               <div className="flex flex-col items-start overflow-hidden text-left">
-                <span className="w-full truncate text-[13px] font-bold text-slate-900 dark:text-white">John Doe</span>
+                <span className="w-full truncate text-[13px] font-bold text-sidebar-foreground dark:text-white">John Doe</span>
                 <span className="w-full truncate text-[12px] font-medium text-sidebar-foreground0">Super Admin</span>
               </div>
             )}
           </div>
           {!isCollapsed && (
-            <ChevronDown className="h-4 w-4 shrink-0 text-slate-400" />
+            <ChevronDown className="h-4 w-4 shrink-0 text-muted-foreground" />
           )}
         </DropdownMenuTrigger>
         <DropdownMenuContent 
@@ -70,7 +70,7 @@ export function SidebarFooter() {
             </DropdownMenuItem>
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
-          <DropdownMenuItem className="text-red-600 focus:text-red-600 focus:bg-red-50 dark:focus:bg-red-950/50">
+          <DropdownMenuItem className="text-danger focus:text-danger focus:bg-danger/10 dark:focus:bg-red-950/50">
             <LogOut className="mr-2 h-4 w-4" />
             <span>Logout</span>
           </DropdownMenuItem>
