@@ -45,30 +45,30 @@ export function HistoryTab() {
 
   const getStatusBadge = (status: WhitelistRequestStatus) => {
     if (status === 'Approved') {
-      return <span className="inline-flex items-center rounded-full border border-emerald-200/50 bg-emerald-50 px-2.5 py-0.5 text-[11px] font-semibold text-emerald-600 dark:bg-emerald-500/10">Approved</span>;
+      return <span className="inline-flex items-center rounded-full border border-success/30 bg-success/10 px-2.5 py-0.5 text-[11px] font-semibold text-success dark:bg-success/100/10">Approved</span>;
     }
     if (status === 'Rejected') {
-      return <span className="inline-flex items-center rounded-full border border-red-200/50 bg-red-50 px-2.5 py-0.5 text-[11px] font-semibold text-red-600 dark:bg-red-500/10">Rejected</span>;
+      return <span className="inline-flex items-center rounded-full border border-danger/30 bg-danger/10 px-2.5 py-0.5 text-[11px] font-semibold text-danger dark:bg-danger/100/10">Rejected</span>;
     }
-    return <span className="inline-flex items-center rounded-full border border-amber-200/50 bg-amber-50 px-2.5 py-0.5 text-[11px] font-semibold text-amber-600 dark:bg-amber-500/10">Pending</span>;
+    return <span className="inline-flex items-center rounded-full border border-warning/30 bg-warning/10 px-2.5 py-0.5 text-[11px] font-semibold text-warning dark:bg-warning/100/10">Pending</span>;
   };
 
   return (
     <div className="flex flex-col">
       {/* Toolbar */}
-      <div className="p-4 flex flex-col sm:flex-row items-center gap-4 justify-between border-b border-slate-100 border-border">
+      <div className="p-4 flex flex-col sm:flex-row items-center gap-4 justify-between border-b border-border">
         <div className="relative w-full sm:w-96">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
           <Input 
             placeholder="Search merchant, account holder, account number..." 
-            className="pl-9 bg-slate-50/50 bg-background/50"
+            className="pl-9 bg-background/50"
             value={searchTerm}
             onChange={handleSearch}
           />
         </div>
         <div className="flex items-center gap-3 w-full sm:w-auto">
           <Select value={statusFilter} onValueChange={(val: any) => { setStatusFilter(val); setPage(0); }}>
-            <SelectTrigger className="w-full sm:w-[150px] bg-slate-50/50 bg-background/50">
+            <SelectTrigger className="w-full sm:w-[150px] bg-background/50">
               <Filter className="mr-2 h-4 w-4 text-muted-foreground" />
               <SelectValue placeholder="Status" />
             </SelectTrigger>
@@ -86,7 +86,7 @@ export function HistoryTab() {
       <div className="overflow-x-auto">
         <Table>
           <TableHeader className="bg-transparent">
-            <TableRow className="hover:bg-transparent border-slate-100 border-border">
+            <TableRow className="hover:bg-transparent border-border">
               <TableHead className="h-11 px-5 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">Merchant</TableHead>
               <TableHead className="h-11 px-5 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">Account</TableHead>
               <TableHead className="h-11 px-5 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">Bank</TableHead>
@@ -99,7 +99,7 @@ export function HistoryTab() {
           <TableBody>
             {isLoading ? (
               Array(5).fill(0).map((_, i) => (
-                <TableRow key={i} className="border-slate-100 border-border/50">
+                <TableRow key={i} className="border-border/50">
                   <TableCell colSpan={7} className="p-5">
                     <div className="h-5 w-full bg-muted bg-card rounded animate-pulse"></div>
                   </TableCell>
@@ -112,7 +112,7 @@ export function HistoryTab() {
                 </TableCell>
               </TableRow>
             ) : data?.data.map((req) => (
-              <TableRow key={req.id} className="border-slate-100/60 border-border/60 hover:bg-slate-50/50 dark:hover:bg-card/30 transition-colors">
+              <TableRow key={req.id} className="border-border/60 hover:bg-background dark:hover:bg-card/30 transition-colors">
                 <TableCell className="p-4 px-5">
                   <div className="flex flex-col">
                     <span className="font-semibold text-foreground dark:text-white text-[13px]">{req.merchantName}</span>
@@ -125,7 +125,7 @@ export function HistoryTab() {
                     <span className="font-mono text-[12px] text-muted-foreground">{maskAccountNumber(req.accountNumber)}</span>
                   </div>
                 </TableCell>
-                <TableCell className="p-4 px-5 text-[13px] text-slate-700 dark:text-slate-300">
+                <TableCell className="p-4 px-5 text-[13px] text-foreground">
                   {req.bankName}
                 </TableCell>
                 <TableCell className="p-4 px-5 text-[13px] text-muted-foreground">
@@ -143,7 +143,7 @@ export function HistoryTab() {
                   <Button 
                     variant="ghost" 
                     size="sm" 
-                    className="h-8 text-[13px] font-medium text-slate-600 hover:text-foreground text-muted-foreground dark:hover:text-slate-100"
+                    className="h-8 text-[13px] font-medium text-muted-foreground hover:text-foreground text-muted-foreground dark:hover:text-foreground"
                     onClick={() => router.push(`/wallet-whitelist/${req.id}`)}
                   >
                     <Eye className="h-4 w-4 mr-2" />
@@ -157,7 +157,7 @@ export function HistoryTab() {
       </div>
 
       {/* Pagination */}
-      <div className="p-4 border-t border-slate-100 border-border flex items-center justify-between text-sm">
+      <div className="p-4 border-t border-border flex items-center justify-between text-sm">
         <div className="text-muted-foreground">
           Showing <span className="font-medium text-foreground dark:text-white">
             {data?.data.length ? page * 10 + 1 : 0}

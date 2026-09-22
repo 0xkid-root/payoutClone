@@ -91,7 +91,7 @@ export function FundRequestsPage() {
         title="Fund Requests"
         description="Review and process manual wallet deposit requests."
         actions={
-          <Button variant="outline" className="bg-white shadow-sm bg-background border-border border-border">
+          <Button variant="outline" className="bg-white shadow-sm bg-background border-border">
             <Download className="mr-2 h-4 w-4" />
             Export
           </Button>
@@ -103,23 +103,23 @@ export function FundRequestsPage() {
           <p className="text-sm font-medium text-muted-foreground">Total Requests</p>
           <p className="text-2xl font-bold mt-1 text-foreground dark:text-white">{total}</p>
         </div>
-        <div className="p-4 rounded-xl border border-amber-200/60 bg-amber-50/50 shadow-sm dark:bg-amber-900/10 dark:border-amber-900/30">
-          <p className="text-sm font-medium text-amber-600 dark:text-amber-500">Pending</p>
+        <div className="p-4 rounded-xl border border-warning/30/60 bg-warning/10/50 shadow-sm dark:bg-amber-900/10 dark:border-amber-900/30">
+          <p className="text-sm font-medium text-warning dark:text-warning">Pending</p>
           <p className="text-2xl font-bold mt-1 text-amber-700 dark:text-amber-400">{pending}</p>
         </div>
-        <div className="p-4 rounded-xl border border-emerald-200/60 bg-emerald-50/50 shadow-sm dark:bg-emerald-900/10 dark:border-emerald-900/30">
-          <p className="text-sm font-medium text-emerald-600 dark:text-emerald-500">Approved</p>
+        <div className="p-4 rounded-xl border border-success/30/60 bg-success/10/50 shadow-sm dark:bg-emerald-900/10 dark:border-emerald-900/30">
+          <p className="text-sm font-medium text-success dark:text-success">Approved</p>
           <p className="text-2xl font-bold mt-1 text-emerald-700 dark:text-emerald-400">{approved}</p>
         </div>
-        <div className="p-4 rounded-xl border border-red-200/60 bg-red-50/50 shadow-sm dark:bg-red-900/10 dark:border-red-900/30">
-          <p className="text-sm font-medium text-red-600 dark:text-red-500">Rejected</p>
-          <p className="text-2xl font-bold mt-1 text-red-700 dark:text-red-400">{rejected}</p>
+        <div className="p-4 rounded-xl border border-danger/30/60 bg-danger/10/50 shadow-sm dark:bg-red-900/10 dark:border-red-900/30">
+          <p className="text-sm font-medium text-danger dark:text-danger">Rejected</p>
+          <p className="text-2xl font-bold mt-1 text-danger dark:text-red-400">{rejected}</p>
         </div>
       </div>
 
       <div className="rounded-xl border border-border/60 bg-white shadow-sm border-border bg-background overflow-hidden flex flex-col">
         {/* Toolbar */}
-        <div className="p-4 border-b border-slate-100 border-border bg-slate-50/50 bg-background/50 flex flex-col sm:flex-row items-center gap-4 justify-between">
+        <div className="p-4 border-b border-border bg-background/50 flex flex-col sm:flex-row items-center gap-4 justify-between">
           <div className="flex items-center gap-3 w-full sm:w-auto">
             <div className="relative w-full sm:w-80">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
@@ -160,7 +160,7 @@ export function FundRequestsPage() {
         <div className="overflow-x-auto">
           <Table>
             <TableHeader className="bg-transparent">
-              <TableRow className="hover:bg-transparent border-slate-100 border-border">
+              <TableRow className="hover:bg-transparent border-border">
                 <TableHead className="h-11 px-5 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Request ID</TableHead>
                 <TableHead className="h-11 px-5 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Merchant</TableHead>
                 <TableHead className="h-11 px-5 text-xs font-semibold uppercase tracking-wider text-muted-foreground text-right">Amount</TableHead>
@@ -174,7 +174,7 @@ export function FundRequestsPage() {
             <TableBody>
               {isLoading ? (
                 Array(3).fill(0).map((_, i) => (
-                  <TableRow key={i} className="border-slate-100 border-border/50">
+                  <TableRow key={i} className="border-border/50">
                     <TableCell colSpan={8} className="p-5">
                       <div className="h-5 w-full bg-muted bg-card rounded animate-pulse"></div>
                     </TableCell>
@@ -187,18 +187,18 @@ export function FundRequestsPage() {
                   </TableCell>
                 </TableRow>
               ) : filteredRequests?.map((req) => (
-                <TableRow key={req.id} className="border-slate-100 border-border/50 hover:bg-slate-50/50 dark:hover:bg-card/30 transition-colors">
+                <TableRow key={req.id} className="border-border/50 hover:bg-background dark:hover:bg-card/30 transition-colors">
                   <TableCell className="p-4 px-5">
                     <span className="font-semibold text-foreground dark:text-white text-[13px]">{req.id}</span>
                   </TableCell>
                   <TableCell className="p-4 px-5">
-                    <span className="text-slate-600 text-muted-foreground text-[13px] font-medium">{req.merchantName}</span>
+                    <span className="text-muted-foreground text-[13px] font-medium">{req.merchantName}</span>
                   </TableCell>
                   <TableCell className="p-4 px-5 text-right font-semibold tabular-nums text-[13px] text-foreground dark:text-white">
                     {formatCurrency(req.amount)}
                   </TableCell>
                   <TableCell className="p-4 px-5">
-                    <span className="text-[13px] text-slate-600 text-muted-foreground">{req.paymentMethod}</span>
+                    <span className="text-[13px] text-muted-foreground">{req.paymentMethod}</span>
                   </TableCell>
                   <TableCell className="p-4 px-5">
                     <span className="font-mono text-[12px] text-muted-foreground">{req.reference || "—"}</span>
@@ -215,7 +215,7 @@ export function FundRequestsPage() {
                         <Button 
                           variant="ghost" 
                           size="sm" 
-                          className="h-8 px-2 text-emerald-600 hover:text-emerald-700 hover:bg-emerald-50 dark:hover:bg-emerald-900/20"
+                          className="h-8 px-2 text-success hover:text-emerald-700 hover:bg-success/10 dark:hover:bg-emerald-900/20"
                           onClick={() => handleAction(req, "approve")}
                         >
                           <CheckCircle2 className="h-4 w-4 mr-1" />
@@ -224,7 +224,7 @@ export function FundRequestsPage() {
                         <Button 
                           variant="ghost" 
                           size="sm" 
-                          className="h-8 px-2 text-red-600 hover:text-red-700 hover:bg-red-50 dark:hover:bg-red-900/20"
+                          className="h-8 px-2 text-danger hover:text-danger hover:bg-danger/10 dark:hover:bg-red-900/20"
                           onClick={() => handleAction(req, "reject")}
                         >
                           <XCircle className="h-4 w-4 mr-1" />
@@ -259,7 +259,7 @@ export function FundRequestsPage() {
           </DialogHeader>
           
           {selectedRequest && (
-            <div className="bg-slate-50 bg-background/50 rounded-lg p-4 my-4 space-y-3">
+            <div className="bg-background/50 rounded-lg p-4 my-4 space-y-3">
               <div className="flex justify-between items-center text-sm">
                 <span className="text-muted-foreground">Merchant</span>
                 <span className="font-semibold text-foreground dark:text-white">{selectedRequest.merchantName}</span>

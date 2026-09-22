@@ -31,7 +31,7 @@ export function PayoutVolumeChart() {
           <Info className="h-4 w-4 text-muted-foreground" />
         </div>
         <div className="flex items-center gap-2">
-          <button className="flex items-center gap-1 rounded-md border border-border bg-white px-3 py-1.5 text-[13px] font-medium text-slate-600 shadow-sm border-border bg-background dark:text-slate-300">
+          <button className="flex items-center gap-1 rounded-md border border-border bg-white px-3 py-1.5 text-[13px] font-medium text-muted-foreground shadow-sm border-border bg-background text-foreground">
             Amount (₹)
             <ChevronDown className="h-3 w-3" />
           </button>

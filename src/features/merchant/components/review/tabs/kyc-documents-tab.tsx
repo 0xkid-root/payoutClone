@@ -28,11 +28,11 @@ export function KycDocumentsTab({ merchant }: { merchant: Merchant }) {
 
   return (
     <Card className="shadow-none border-border/60 border-border">
-      <CardHeader className="pb-3 border-b border-slate-100 border-border bg-slate-50/50 bg-background/20">
-        <CardTitle className="text-sm font-semibold text-slate-700 dark:text-slate-300 flex items-center justify-between">
+      <CardHeader className="pb-3 border-b border-border bg-background/20">
+        <CardTitle className="text-sm font-semibold text-foreground flex items-center justify-between">
           <span>KYC Documents</span>
           <div className="flex items-center gap-2 text-xs font-normal text-muted-foreground">
-            <ShieldCheck className="h-4 w-4 text-emerald-500" />
+            <ShieldCheck className="h-4 w-4 text-success" />
             {isKycApproved ? "All documents verified" : "Verification pending"}
           </div>
         </CardTitle>
@@ -40,10 +40,10 @@ export function KycDocumentsTab({ merchant }: { merchant: Merchant }) {
       <CardContent className="p-0">
         <div className="divide-y divide-slate-100 dark:divide-slate-800">
           {documents.map((doc) => (
-            <div key={doc.id} className="p-4 sm:p-5 hover:bg-slate-50/30 transition-colors dark:hover:bg-background/10">
+            <div key={doc.id} className="p-4 sm:p-5 hover:bg-background/30 transition-colors dark:hover:bg-background/10">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
                 <div className="flex items-center gap-3">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-emerald-50 text-emerald-600 dark:bg-emerald-900/20 dark:text-emerald-400">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-success/10 text-success dark:bg-emerald-900/20 dark:text-emerald-400">
                     <FileText className="h-5 w-5" />
                   </div>
                   <div className="flex flex-col">
@@ -53,9 +53,9 @@ export function KycDocumentsTab({ merchant }: { merchant: Merchant }) {
                 </div>
                 <div className="flex items-center gap-4">
                   {doc.status === "VERIFIED" ? (
-                    <Badge className="bg-emerald-50 text-emerald-600 border-emerald-200/50 px-2 py-0.5 text-xs font-medium">Verified</Badge>
+                    <Badge className="bg-success/10 text-success border-success/30 px-2 py-0.5 text-xs font-medium">Verified</Badge>
                   ) : (
-                    <Badge className="bg-amber-50 text-amber-600 border-amber-200/50 px-2 py-0.5 text-xs font-medium">Pending</Badge>
+                    <Badge className="bg-warning/10 text-warning border-warning/30 px-2 py-0.5 text-xs font-medium">Pending</Badge>
                   )}
                   <Button variant="outline" size="sm" className="h-8 text-xs hidden sm:flex">
                     <Eye className="mr-1.5 h-3.5 w-3.5" /> View
@@ -63,7 +63,7 @@ export function KycDocumentsTab({ merchant }: { merchant: Merchant }) {
                 </div>
               </div>
               
-              <div className="grid sm:grid-cols-2 gap-4 pt-4 border-t border-slate-100 border-border">
+              <div className="grid sm:grid-cols-2 gap-4 pt-4 border-t border-border">
                 <div className="flex justify-between sm:block">
                   <p className="text-[12px] text-muted-foreground uppercase tracking-wider">Doc Number</p>
                   <p className="sm:mt-1 text-[13px] font-medium text-foreground dark:text-white tracking-widest">{doc.number}</p>

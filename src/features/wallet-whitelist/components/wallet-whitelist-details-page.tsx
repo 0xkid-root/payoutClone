@@ -24,7 +24,7 @@ export function WalletWhitelistDetailsPage() {
   }
 
   if (error || !request) {
-    return <div className="p-8 text-center text-red-500">Error loading details or request not found.</div>;
+    return <div className="p-8 text-center text-danger">Error loading details or request not found.</div>;
   }
 
   const maskAccountNumber = (acc: string) => {
@@ -49,7 +49,7 @@ export function WalletWhitelistDetailsPage() {
         actions={
           <Button
             variant="outline"
-            className="bg-white shadow-sm bg-background border-border border-border"
+            className="bg-white shadow-sm bg-background border-border"
             onClick={() => router.back()}
           >
             <ArrowLeft className="mr-2 h-4 w-4" />
@@ -61,15 +61,15 @@ export function WalletWhitelistDetailsPage() {
       <div className="rounded-[14px] border border-border/60 bg-white shadow-sm border-border bg-background overflow-hidden flex flex-col p-6 gap-8">
         {/* Status Banner */}
         {request.status === 'Rejected' && (
-          <div className="p-4 rounded-lg bg-red-50 border border-red-200/60 dark:bg-red-500/10 dark:border-red-500/20">
-            <h4 className="text-[13px] font-bold text-red-700 dark:text-red-400 mb-1">Request Rejected</h4>
-            <p className="text-[13px] text-red-600 dark:text-red-300/80">Reason: {request.rejectionReason}</p>
+          <div className="p-4 rounded-lg bg-danger/10 border border-danger/30/60 dark:bg-danger/100/10 dark:border-red-500/20">
+            <h4 className="text-[13px] font-bold text-danger dark:text-red-400 mb-1">Request Rejected</h4>
+            <p className="text-[13px] text-danger dark:text-red-300/80">Reason: {request.rejectionReason}</p>
           </div>
         )}
 
         {/* Merchant Information */}
         <div className="space-y-4">
-          <h3 className="text-[13px] font-bold uppercase tracking-wider text-muted-foreground border-b border-border border-border pb-2">
+          <h3 className="text-[13px] font-bold uppercase tracking-wider text-muted-foreground border-b border-border pb-2">
             Merchant Information
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -81,7 +81,7 @@ export function WalletWhitelistDetailsPage() {
 
         {/* Bank Account Information */}
         <div className="space-y-4">
-          <h3 className="text-[13px] font-bold uppercase tracking-wider text-muted-foreground border-b border-border border-border pb-2">
+          <h3 className="text-[13px] font-bold uppercase tracking-wider text-muted-foreground border-b border-border pb-2">
             Bank Account Information
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -95,7 +95,7 @@ export function WalletWhitelistDetailsPage() {
 
         {/* Request Information */}
         <div className="space-y-4">
-          <h3 className="text-[13px] font-bold uppercase tracking-wider text-muted-foreground border-b border-border border-border pb-2">
+          <h3 className="text-[13px] font-bold uppercase tracking-wider text-muted-foreground border-b border-border pb-2">
             Request Information
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -106,9 +106,9 @@ export function WalletWhitelistDetailsPage() {
             />
             <InfoRow label="Submitted By" value={request.submittedBy} />
             <InfoRow label="Current Status" value={
-              <span className={`inline-flex items-center rounded-full border px-2 py-0.5 text-[11px] font-bold ${request.status === 'Approved' ? 'border-emerald-200/50 bg-emerald-50 text-emerald-600 dark:bg-emerald-500/10' :
-                  request.status === 'Rejected' ? 'border-red-200/50 bg-red-50 text-red-600 dark:bg-red-500/10' :
-                    'border-amber-200/50 bg-amber-50 text-amber-600 dark:bg-amber-500/10'
+              <span className={`inline-flex items-center rounded-full border px-2 py-0.5 text-[11px] font-bold ${request.status === 'Approved' ? 'border-success/30 bg-success/10 text-success dark:bg-success/100/10' :
+                  request.status === 'Rejected' ? 'border-danger/30 bg-danger/10 text-danger dark:bg-danger/100/10' :
+                    'border-warning/30 bg-warning/10 text-warning dark:bg-warning/100/10'
                 }`}>
                 {request.status}
               </span>
@@ -118,10 +118,10 @@ export function WalletWhitelistDetailsPage() {
 
         {/* Supporting Document */}
         <div className="space-y-4">
-          <h3 className="text-[13px] font-bold uppercase tracking-wider text-muted-foreground border-b border-border border-border pb-2">
+          <h3 className="text-[13px] font-bold uppercase tracking-wider text-muted-foreground border-b border-border pb-2">
             Supporting Document
           </h3>
-          <div className="p-4 rounded-lg bg-slate-50 bg-background border border-border/60 border-border flex items-center justify-between max-w-md">
+          <div className="p-4 rounded-lg bg-background border border-border/60 border-border flex items-center justify-between max-w-md">
             <div>
               <p className="text-[13px] font-bold text-foreground dark:text-white mb-0.5">{request.documentType}</p>
               <p className="text-xs text-muted-foreground">Document provided for verification</p>
@@ -135,10 +135,10 @@ export function WalletWhitelistDetailsPage() {
 
         {/* Actions Footer */}
         {request.status === 'Pending' && (
-          <div className="pt-6 mt-4 border-t border-slate-100 border-border flex justify-end gap-3">
+          <div className="pt-6 mt-4 border-t border-border flex justify-end gap-3">
             <Button
               variant="outline"
-              className="border-red-200 text-red-700 hover:bg-red-50 hover:text-red-800 dark:border-red-900/50 dark:hover:bg-red-900/20 dark:text-red-500"
+              className="border-danger/30 text-danger hover:bg-danger/10 hover:text-red-800 dark:border-red-900/50 dark:hover:bg-red-900/20 dark:text-danger"
               onClick={() => setIsRejectOpen(true)}
             >
               <X className="mr-2 h-4 w-4" />

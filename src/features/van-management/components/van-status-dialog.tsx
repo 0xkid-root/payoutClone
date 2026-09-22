@@ -41,9 +41,9 @@ export function VanStatusDialog({ isOpen, onClose, van, action }: VanStatusDialo
   };
 
   const getActionColor = () => {
-    if (action === "Activate") return "text-emerald-600 dark:text-emerald-500";
-    if (action === "Deactivate") return "text-red-600 dark:text-red-500";
-    return "text-amber-600 dark:text-amber-500";
+    if (action === "Activate") return "text-success dark:text-success";
+    if (action === "Deactivate") return "text-danger dark:text-danger";
+    return "text-warning dark:text-warning";
   };
 
   const getButtonClass = () => {
@@ -66,12 +66,12 @@ export function VanStatusDialog({ isOpen, onClose, van, action }: VanStatusDialo
             <AlertCircle className="h-5 w-5" />
             {action} Virtual Account?
           </DialogTitle>
-          <DialogDescription className="pt-3 text-slate-600 dark:text-slate-300">
+          <DialogDescription className="pt-3 text-muted-foreground text-foreground">
             {getActionDescription()}
           </DialogDescription>
         </DialogHeader>
 
-        <div className="bg-slate-50 bg-background/50 p-4 rounded-lg my-2 border border-slate-100 border-border">
+        <div className="bg-background/50 p-4 rounded-lg my-2 border border-border">
           <p className="text-sm text-muted-foreground mb-1">Merchant: <span className="font-semibold text-foreground dark:text-white">{van.merchantName}</span></p>
           <p className="text-sm text-muted-foreground mb-1">Provider: <span className="font-semibold text-foreground dark:text-white">{van.provider}</span></p>
           <p className="text-sm text-muted-foreground">VAN: <span className="font-mono font-medium text-foreground dark:text-white">{van.vanNumber}</span></p>

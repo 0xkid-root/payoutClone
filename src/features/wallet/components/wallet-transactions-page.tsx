@@ -47,11 +47,11 @@ export function WalletTransactionsPage() {
         description="Monitor system-wide wallet transactions and transfer history."
         actions={
           <div className="flex gap-3">
-            <Button variant="outline" className="bg-white shadow-sm bg-background border-border border-border">
+            <Button variant="outline" className="bg-white shadow-sm bg-background border-border">
               <SlidersHorizontal className="mr-2 h-4 w-4" />
               Advanced Filters
             </Button>
-            <Button variant="outline" className="bg-white shadow-sm bg-background border-border border-border">
+            <Button variant="outline" className="bg-white shadow-sm bg-background border-border">
               <Download className="mr-2 h-4 w-4" />
               Export
             </Button>
@@ -61,7 +61,7 @@ export function WalletTransactionsPage() {
 
       <div className="rounded-xl border border-border/60 bg-white shadow-sm border-border bg-background overflow-hidden flex flex-col">
         {/* Toolbar */}
-        <div className="p-4 border-b border-slate-100 border-border bg-slate-50/50 bg-background/50 flex flex-col sm:flex-row items-center gap-4 justify-between">
+        <div className="p-4 border-b border-border bg-background/50 flex flex-col sm:flex-row items-center gap-4 justify-between">
           <div className="flex items-center gap-3 w-full sm:w-auto">
             <div className="relative w-full sm:w-80">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
@@ -104,7 +104,7 @@ export function WalletTransactionsPage() {
         <div className="overflow-x-auto">
           <Table>
             <TableHeader className="bg-transparent">
-              <TableRow className="hover:bg-transparent border-slate-100 border-border">
+              <TableRow className="hover:bg-transparent border-border">
                 <TableHead className="h-11 px-5 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Transaction ID</TableHead>
                 <TableHead className="h-11 px-5 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Merchant</TableHead>
                 <TableHead className="h-11 px-5 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Type</TableHead>
@@ -118,7 +118,7 @@ export function WalletTransactionsPage() {
             <TableBody>
               {isLoading ? (
                 Array(5).fill(0).map((_, i) => (
-                  <TableRow key={i} className="border-slate-100 border-border/50">
+                  <TableRow key={i} className="border-border/50">
                     <TableCell colSpan={8} className="p-5">
                       <div className="h-5 w-full bg-muted bg-card rounded animate-pulse"></div>
                     </TableCell>
@@ -131,30 +131,30 @@ export function WalletTransactionsPage() {
                   </TableCell>
                 </TableRow>
               ) : filteredTx?.map((tx) => (
-                <TableRow key={tx.id} className="border-slate-100 border-border/50 hover:bg-slate-50/50 dark:hover:bg-card/30 transition-colors">
+                <TableRow key={tx.id} className="border-border/50 hover:bg-background dark:hover:bg-card/30 transition-colors">
                   <TableCell className="p-4 px-5">
                     <span className="font-semibold text-foreground dark:text-white text-[13px]">{tx.id}</span>
                   </TableCell>
                   <TableCell className="p-4 px-5">
-                    <span className="text-slate-600 text-muted-foreground text-[13px] font-medium">{tx.merchantName}</span>
+                    <span className="text-muted-foreground text-[13px] font-medium">{tx.merchantName}</span>
                   </TableCell>
                   <TableCell className="p-4 px-5">
                     <span className={`inline-flex items-center rounded-full border px-2 py-0.5 text-[11px] font-semibold ${
-                      tx.type === 'Credit' ? 'border-emerald-200/50 bg-emerald-50 text-emerald-600 dark:bg-emerald-500/10' :
-                      tx.type === 'Debit' ? 'border-red-200/50 bg-red-50 text-red-600 dark:bg-red-500/10' :
-                      'border-indigo-200/50 bg-indigo-50 text-primary dark:bg-primary/10'
+                      tx.type === 'Credit' ? 'border-success/30 bg-success/10 text-success dark:bg-success/100/10' :
+                      tx.type === 'Debit' ? 'border-danger/30 bg-danger/10 text-danger dark:bg-danger/100/10' :
+                      'border-primary/20/50 bg-primary/10 text-primary dark:bg-primary/10'
                     }`}>
                       {tx.type}
                     </span>
                   </TableCell>
                   <TableCell className={`p-4 px-5 text-right font-semibold tabular-nums text-[13px] ${
-                    tx.type === 'Credit' ? 'text-emerald-600' : 
-                    tx.type === 'Debit' || tx.type === 'Withdrawal' ? 'text-red-600' : 'text-foreground dark:text-white'
+                    tx.type === 'Credit' ? 'text-success' : 
+                    tx.type === 'Debit' || tx.type === 'Withdrawal' ? 'text-danger' : 'text-foreground dark:text-white'
                   }`}>
                     {tx.type === 'Credit' ? '+' : tx.type === 'Debit' || tx.type === 'Withdrawal' ? '-' : ''}
                     {formatCurrency(tx.amount)}
                   </TableCell>
-                  <TableCell className="p-4 px-5 text-right tabular-nums text-[13px] text-slate-600 text-muted-foreground">
+                  <TableCell className="p-4 px-5 text-right tabular-nums text-[13px] text-muted-foreground">
                     {formatCurrency(tx.balanceAfter)}
                   </TableCell>
                   <TableCell className="p-4 px-5">
@@ -173,7 +173,7 @@ export function WalletTransactionsPage() {
         </div>
 
         {/* Pagination */}
-        <div className="p-4 border-t border-slate-100 border-border flex items-center justify-between text-sm">
+        <div className="p-4 border-t border-border flex items-center justify-between text-sm">
           <div className="text-muted-foreground">
             Showing <span className="font-medium text-foreground dark:text-white">{filteredTx?.length || 0}</span> results
           </div>

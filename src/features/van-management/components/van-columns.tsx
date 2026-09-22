@@ -12,7 +12,7 @@ export const getVanColumns = (onViewDetails: (van: VanAccount) => void): ColumnD
     header: "VAN Number",
     cell: ({ row }) => {
       const van = row.original.vanNumber;
-      return <div className="font-mono font-medium text-foreground text-foreground">{van}</div>;
+      return <div className="font-mono font-medium text-foreground">{van}</div>;
     },
   },
   {
@@ -20,7 +20,7 @@ export const getVanColumns = (onViewDetails: (van: VanAccount) => void): ColumnD
     header: "Merchant",
     cell: ({ row }) => (
       <div className="flex flex-col">
-        <span className="font-semibold text-[13px] text-foreground text-foreground">
+        <span className="font-semibold text-[13px] text-foreground">
           {row.original.merchantName}
         </span>
         <span className="text-[12px] text-muted-foreground font-mono">
@@ -34,7 +34,7 @@ export const getVanColumns = (onViewDetails: (van: VanAccount) => void): ColumnD
     header: "Provider",
     cell: ({ row }) => (
       <div className="flex flex-col">
-        <span className="font-medium text-[13px] text-slate-700 dark:text-slate-300">
+        <span className="font-medium text-[13px] text-foreground">
           {row.original.provider}
         </span>
         <span className="text-[12px] text-muted-foreground">
@@ -50,10 +50,10 @@ export const getVanColumns = (onViewDetails: (van: VanAccount) => void): ColumnD
       const status = row.original.status;
       let badgeClass = "";
       
-      if (status === "Active") badgeClass = "border-emerald-200/50 bg-emerald-50 text-emerald-600 dark:bg-emerald-500/10";
-      else if (status === "Inactive") badgeClass = "border-border/50 bg-slate-50 text-slate-600 dark:bg-slate-500/10";
-      else if (status === "Suspended") badgeClass = "border-red-200/50 bg-red-50 text-red-600 dark:bg-red-500/10";
-      else badgeClass = "border-amber-200/50 bg-amber-50 text-amber-600 dark:bg-amber-500/10";
+      if (status === "Active") badgeClass = "border-success/30 bg-success/10 text-success dark:bg-success/100/10";
+      else if (status === "Inactive") badgeClass = "border-border/50 bg-background text-muted-foreground bg-background0/10";
+      else if (status === "Suspended") badgeClass = "border-danger/30 bg-danger/10 text-danger dark:bg-danger/100/10";
+      else badgeClass = "border-warning/30 bg-warning/10 text-warning dark:bg-warning/100/10";
 
       return (
         <Badge variant="outline" className={`font-semibold ${badgeClass}`}>
@@ -67,7 +67,7 @@ export const getVanColumns = (onViewDetails: (van: VanAccount) => void): ColumnD
     header: "Assigned On",
     cell: ({ row }) => {
       const date = new Date(row.original.assignedAt);
-      return <div className="text-[13px] text-slate-600 text-muted-foreground">{date.toLocaleDateString("en-GB")}</div>;
+      return <div className="text-[13px] text-muted-foreground">{date.toLocaleDateString("en-GB")}</div>;
     },
   },
   {
@@ -75,7 +75,7 @@ export const getVanColumns = (onViewDetails: (van: VanAccount) => void): ColumnD
     header: "Last Activity",
     cell: ({ row }) => {
       const date = new Date(row.original.lastActivityAt);
-      return <div className="text-[13px] text-slate-600 text-muted-foreground">{date.toLocaleDateString("en-GB")}</div>;
+      return <div className="text-[13px] text-muted-foreground">{date.toLocaleDateString("en-GB")}</div>;
     },
   },
   {
@@ -85,7 +85,7 @@ export const getVanColumns = (onViewDetails: (van: VanAccount) => void): ColumnD
         <Button 
           variant="ghost" 
           size="sm" 
-          className="h-8 text-[13px] font-medium text-slate-600 hover:text-foreground text-muted-foreground dark:hover:text-slate-100"
+          className="h-8 text-[13px] font-medium text-muted-foreground hover:text-foreground text-muted-foreground dark:hover:text-foreground"
           onClick={() => onViewDetails(row.original)}
         >
           <Eye className="mr-2 h-4 w-4" />

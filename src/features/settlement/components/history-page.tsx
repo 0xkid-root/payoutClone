@@ -66,7 +66,7 @@ const columns: ColumnDef<SettlementRecord>[] = [
     id: 'actions',
     cell: ({ row }) => {
       return (
-        <Link href={`/settlement/${row.original.id}`} className="text-sm font-medium text-blue-600 hover:underline">
+        <Link href={`/settlement/${row.original.id}`} className="text-sm font-medium text-info hover:underline">
           View
         </Link>
       );
@@ -112,7 +112,7 @@ export function SettlementHistoryPage() {
       </div>
 
       <div className="flex w-full flex-col rounded-xl border border-border/60 bg-white shadow-[0_1px_2px_0_rgba(0,0,0,0.01)] border-border bg-background">
-        <div className="p-4 border-b border-slate-100 border-border">
+        <div className="p-4 border-b border-border">
           <div className="flex flex-col md:flex-row flex-wrap gap-4 items-center justify-between">
             <div className="relative w-full md:w-[350px]">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
@@ -120,13 +120,13 @@ export function SettlementHistoryPage() {
                 placeholder="Search Settlement ID, Merchant, UTR..." 
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-9 w-full bg-slate-50 bg-background/50 border-border" 
+                className="pl-9 w-full bg-background/50 border-border" 
               />
             </div>
             
             <div className="flex flex-wrap items-center gap-3 w-full md:w-auto">
               <Select value={statusFilter} onValueChange={(val) => setStatusFilter(val || 'all')}>
-                <SelectTrigger className="w-[160px] bg-slate-50 bg-background/50 border-border">
+                <SelectTrigger className="w-[160px] bg-background/50 border-border">
                   <SelectValue placeholder="Status" />
                 </SelectTrigger>
                 <SelectContent>
@@ -139,7 +139,7 @@ export function SettlementHistoryPage() {
               </Select>
 
               <Select value={providerFilter} onValueChange={(val) => setProviderFilter(val || 'all')}>
-                <SelectTrigger className="w-[160px] bg-slate-50 bg-background/50 border-border">
+                <SelectTrigger className="w-[160px] bg-background/50 border-border">
                   <SelectValue placeholder="Provider" />
                 </SelectTrigger>
                 <SelectContent>
@@ -151,7 +151,7 @@ export function SettlementHistoryPage() {
               </Select>
               
               <Select value={dateRange} onValueChange={(val) => setDateRange(val || 'last30')}>
-                <SelectTrigger className="w-[160px] bg-slate-50 bg-background/50 border-border">
+                <SelectTrigger className="w-[160px] bg-background/50 border-border">
                   <SelectValue placeholder="Date Range" />
                 </SelectTrigger>
                 <SelectContent>

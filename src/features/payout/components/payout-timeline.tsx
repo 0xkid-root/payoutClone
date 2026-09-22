@@ -92,9 +92,9 @@ export function PayoutTimeline({ payout }: PayoutTimelineProps) {
               <div
                 className={cn(
                   "flex h-8 w-8 items-center justify-center rounded-full border-2 text-white shadow-sm ring-4 ring-white dark:ring-slate-950",
-                  step.isCompleted && !step.isError && "border-emerald-500 bg-emerald-500",
-                  step.isCompleted && step.isError && "border-red-500 bg-red-500",
-                  !step.isCompleted && step.isCurrent && "border-blue-500 bg-blue-500",
+                  step.isCompleted && !step.isError && "border-emerald-500 bg-success/100",
+                  step.isCompleted && step.isError && "border-red-500 bg-danger/100",
+                  !step.isCompleted && step.isCurrent && "border-blue-500 bg-info/100",
                   !step.isCompleted && !step.isCurrent && "border-border bg-muted border-border bg-background"
                 )}
               >
@@ -109,7 +109,7 @@ export function PayoutTimeline({ payout }: PayoutTimelineProps) {
                 <div
                   className={cn(
                     "h-full w-[2px] min-h-[32px] my-2",
-                    step.isCompleted ? "bg-emerald-500" : "bg-slate-200 bg-card"
+                    step.isCompleted ? "bg-success/100" : "bg-border"
                   )}
                 />
               )}
@@ -118,13 +118,13 @@ export function PayoutTimeline({ payout }: PayoutTimelineProps) {
               <p
                 className={cn(
                   "text-sm font-semibold",
-                  step.isCurrent ? "text-foreground text-foreground" : "text-slate-600 text-muted-foreground"
+                  step.isCurrent ? "text-foreground" : "text-muted-foreground"
                 )}
               >
                 {step.title}
               </p>
               {step.time && (
-                <p className="text-xs text-muted-foreground text-muted-foreground mt-1">
+                <p className="text-xs text-muted-foreground mt-1">
                   {step.time}
                 </p>
               )}

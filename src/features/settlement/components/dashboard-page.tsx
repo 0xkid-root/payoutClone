@@ -59,7 +59,7 @@ const columns: ColumnDef<SettlementRecord>[] = [
     id: 'actions',
     cell: ({ row }) => {
       return (
-        <Link href={`/settlement/${row.original.id}`} className="text-sm font-medium text-blue-600 hover:underline">
+        <Link href={`/settlement/${row.original.id}`} className="text-sm font-medium text-info hover:underline">
           View
         </Link>
       );
@@ -91,7 +91,7 @@ export function SettlementDashboardPage() {
           title="Today's Settlement"
           value={formatCurrency(12480000)}
           icon={Landmark}
-          iconColorClass="text-blue-600"
+          iconColorClass="text-info"
           trendValue="12.5% vs yesterday"
           trendUp={true}
         />
@@ -99,7 +99,7 @@ export function SettlementDashboardPage() {
           title="Completed"
           value={formatCurrency(11920000)}
           icon={CheckCircle2}
-          iconColorClass="text-emerald-500"
+          iconColorClass="text-success"
           trendValue="95.5% success rate"
           trendUp={true}
         />
@@ -107,13 +107,13 @@ export function SettlementDashboardPage() {
           title="Pending"
           value={formatCurrency(560000)}
           icon={ArrowRightLeft}
-          iconColorClass="text-amber-500"
+          iconColorClass="text-warning"
         />
         <StatCard
           title="Reconciliation Mismatch"
           value={formatCurrency(125000)}
           icon={AlertCircle}
-          iconColorClass="text-red-500"
+          iconColorClass="text-danger"
           trendValue="Needs review"
           trendUp={false}
         />
@@ -133,7 +133,7 @@ export function SettlementDashboardPage() {
                 <button 
                   key={t}
                   onClick={() => setTimeRange(t)}
-                  className={`flex items-center gap-1 rounded px-2.5 py-1 text-[13px] font-semibold transition-colors ${timeRange === t ? 'bg-muted text-foreground bg-card dark:text-white' : 'text-slate-600 hover:text-foreground text-muted-foreground dark:hover:text-white'}`}
+                  className={`flex items-center gap-1 rounded px-2.5 py-1 text-[13px] font-semibold transition-colors ${timeRange === t ? 'bg-muted text-foreground bg-card dark:text-white' : 'text-muted-foreground hover:text-foreground text-muted-foreground dark:hover:text-white'}`}
                 >
                   {t}
                 </button>
@@ -165,19 +165,19 @@ export function SettlementDashboardPage() {
                     content={({ active, payload, label }) => {
                       if (active && payload && payload.length) {
                         return (
-                          <div className="bg-white bg-background border border-border border-border p-3 rounded-lg shadow-lg">
+                          <div className="bg-white bg-background border border-border p-3 rounded-lg shadow-lg">
                             <p className="font-medium text-foreground dark:text-white mb-2">{label}</p>
                             <div className="space-y-1">
-                              <p className="text-sm text-slate-600 text-muted-foreground">
-                                <span className="inline-block w-3 h-3 rounded-full bg-slate-400 mr-2"></span>
+                              <p className="text-sm text-muted-foreground">
+                                <span className="inline-block w-3 h-3 rounded-full bg-muted-foreground/50 mr-2"></span>
                                 Total: <span className="font-semibold text-foreground dark:text-white">{formatCurrency(payload[0].payload.settlement)}</span>
                               </p>
-                              <p className="text-sm text-slate-600 text-muted-foreground">
-                                <span className="inline-block w-3 h-3 rounded-full bg-emerald-500 mr-2"></span>
+                              <p className="text-sm text-muted-foreground">
+                                <span className="inline-block w-3 h-3 rounded-full bg-success/100 mr-2"></span>
                                 Completed: <span className="font-semibold text-foreground dark:text-white">{formatCurrency(payload[0].value as number)}</span>
                               </p>
-                              <p className="text-sm text-slate-600 text-muted-foreground">
-                                <span className="inline-block w-3 h-3 rounded-full bg-amber-500 mr-2"></span>
+                              <p className="text-sm text-muted-foreground">
+                                <span className="inline-block w-3 h-3 rounded-full bg-warning/100 mr-2"></span>
                                 Pending: <span className="font-semibold text-foreground dark:text-white">{formatCurrency(payload[1].value as number)}</span>
                               </p>
                             </div>
@@ -222,7 +222,7 @@ export function SettlementDashboardPage() {
                       if (active && payload && payload.length) {
                         const data = payload[0].payload;
                         return (
-                          <div className="bg-white bg-background border border-border border-border p-2 rounded-lg shadow-lg">
+                          <div className="bg-white bg-background border border-border p-2 rounded-lg shadow-lg">
                             <p className="text-sm font-medium" style={{ color: data.color }}>{data.name}</p>
                             <p className="text-sm font-bold text-foreground dark:text-white">{formatCurrency(data.value)}</p>
                           </div>
@@ -262,28 +262,28 @@ export function SettlementDashboardPage() {
           </div>
           <div className="flex gap-6">
             <div className="text-right">
-              <div className="text-sm text-emerald-600 font-medium">Matched</div>
+              <div className="text-sm text-success font-medium">Matched</div>
               <div className="text-xl font-bold">98.6%</div>
             </div>
             <div className="text-right">
-              <div className="text-sm text-amber-500 font-medium">Pending Review</div>
+              <div className="text-sm text-warning font-medium">Pending Review</div>
               <div className="text-xl font-bold">0.3%</div>
             </div>
             <div className="text-right">
-              <div className="text-sm text-red-500 font-medium">Mismatch</div>
+              <div className="text-sm text-danger font-medium">Mismatch</div>
               <div className="text-xl font-bold">1.1%</div>
             </div>
           </div>
         </div>
         <div className="w-full h-3 rounded-full bg-muted bg-card overflow-hidden flex">
-          <div className="h-full bg-emerald-500" style={{ width: '98.6%' }}></div>
-          <div className="h-full bg-amber-500" style={{ width: '0.3%' }}></div>
-          <div className="h-full bg-red-500" style={{ width: '1.1%' }}></div>
+          <div className="h-full bg-success/100" style={{ width: '98.6%' }}></div>
+          <div className="h-full bg-warning/100" style={{ width: '0.3%' }}></div>
+          <div className="h-full bg-danger/100" style={{ width: '1.1%' }}></div>
         </div>
       </div>
 
       {/* Recent Settlement Activity */}
-      <Card className="shadow-sm border-border border-border">
+      <Card className="shadow-sm border-border">
         <CardHeader>
           <CardTitle>Recent Settlement Activity</CardTitle>
         </CardHeader>

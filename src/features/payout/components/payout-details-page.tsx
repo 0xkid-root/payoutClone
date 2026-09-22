@@ -70,12 +70,12 @@ export function PayoutDetailsPage({ id }: PayoutDetailsPageProps) {
             variant="ghost"
             size="icon"
             onClick={() => router.back()}
-            className="h-8 w-8 text-muted-foreground hover:text-foreground dark:hover:text-slate-100"
+            className="h-8 w-8 text-muted-foreground hover:text-foreground dark:hover:text-foreground"
           >
             <ArrowLeft className="h-5 w-5" />
           </Button>
           <div>
-            <h1 className="text-2xl font-bold tracking-tight text-foreground text-foreground flex items-center gap-3">
+            <h1 className="text-2xl font-bold tracking-tight text-foreground flex items-center gap-3">
               Payout Details
               <PayoutStatusBadge status={payout.status} className="text-sm px-2.5 py-0.5" />
             </h1>
@@ -86,7 +86,7 @@ export function PayoutDetailsPage({ id }: PayoutDetailsPageProps) {
         </div>
         
         {(payout.status === "Failed" || payout.status === "Retry Queued") && (
-          <Button onClick={handleRetry} disabled={retryMutation.isPending} className="bg-background text-slate-50 hover:bg-background/90 dark:bg-slate-50 text-foreground dark:hover:bg-slate-50/90">
+          <Button onClick={handleRetry} disabled={retryMutation.isPending} className="bg-background text-foreground hover:bg-background/90 bg-background text-foreground dark:hover:bg-background/90">
             <RefreshCw className="mr-2 h-4 w-4" />
             {retryMutation.isPending ? "Queuing..." : "Retry Payout"}
           </Button>
@@ -112,7 +112,7 @@ export function PayoutDetailsPage({ id }: PayoutDetailsPageProps) {
                 </div>
                 <div className="flex flex-col gap-2">
                   <span className="text-sm text-muted-foreground font-medium">Net Deducted</span>
-                  <span className="text-3xl font-semibold tracking-tight text-emerald-600 dark:text-emerald-400">{formatINR(payout.netAmount)}</span>
+                  <span className="text-3xl font-semibold tracking-tight text-success dark:text-emerald-400">{formatINR(payout.netAmount)}</span>
                 </div>
               </div>
             </CardContent>
@@ -128,15 +128,15 @@ export function PayoutDetailsPage({ id }: PayoutDetailsPageProps) {
               <CardContent className="space-y-4 text-sm">
                 <div className="flex flex-col">
                   <span className="text-muted-foreground mb-1">Merchant Name</span>
-                  <span className="font-medium text-foreground text-foreground">{payout.merchantName}</span>
+                  <span className="font-medium text-foreground">{payout.merchantName}</span>
                 </div>
                 <div className="flex flex-col">
                   <span className="text-muted-foreground mb-1">Business Name</span>
-                  <span className="font-medium text-foreground text-foreground">{payout.businessName}</span>
+                  <span className="font-medium text-foreground">{payout.businessName}</span>
                 </div>
                 <div className="flex flex-col">
                   <span className="text-muted-foreground mb-1">Merchant ID</span>
-                  <span className="font-medium text-foreground text-foreground">{payout.merchantId}</span>
+                  <span className="font-medium text-foreground">{payout.merchantId}</span>
                 </div>
               </CardContent>
             </Card>
@@ -149,15 +149,15 @@ export function PayoutDetailsPage({ id }: PayoutDetailsPageProps) {
               <CardContent className="space-y-4 text-sm">
                 <div className="flex flex-col">
                   <span className="text-muted-foreground mb-1">Beneficiary Name</span>
-                  <span className="font-medium text-foreground text-foreground">{payout.beneficiaryName}</span>
+                  <span className="font-medium text-foreground">{payout.beneficiaryName}</span>
                 </div>
                 <div className="flex flex-col">
                   <span className="text-muted-foreground mb-1">Beneficiary ID</span>
-                  <span className="font-medium text-foreground text-foreground">{payout.beneficiaryId || "N/A (Direct)"}</span>
+                  <span className="font-medium text-foreground">{payout.beneficiaryId || "N/A (Direct)"}</span>
                 </div>
                 <div className="flex flex-col">
                   <span className="text-muted-foreground mb-1">Bank Details</span>
-                  <span className="font-medium text-foreground text-foreground flex items-center gap-2">
+                  <span className="font-medium text-foreground flex items-center gap-2">
                     {payout.bankName}
                     <span className="text-muted-foreground">•</span>
                     {payout.accountNumber}
@@ -177,19 +177,19 @@ export function PayoutDetailsPage({ id }: PayoutDetailsPageProps) {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="flex flex-col">
                   <span className="text-muted-foreground mb-1">Payout Method</span>
-                  <span className="font-medium text-foreground text-foreground">{payout.method}</span>
+                  <span className="font-medium text-foreground">{payout.method}</span>
                 </div>
                 <div className="flex flex-col">
                   <span className="text-muted-foreground mb-1">Provider</span>
-                  <span className="font-medium text-foreground text-foreground">{payout.provider || "Pending Assignment"}</span>
+                  <span className="font-medium text-foreground">{payout.provider || "Pending Assignment"}</span>
                 </div>
                 <div className="flex flex-col">
                   <span className="text-muted-foreground mb-1">Provider Reference</span>
-                  <span className="font-medium text-foreground text-foreground">{payout.providerReference || "N/A"}</span>
+                  <span className="font-medium text-foreground">{payout.providerReference || "N/A"}</span>
                 </div>
                 <div className="flex flex-col">
                   <span className="text-muted-foreground mb-1">Response Code</span>
-                  <span className="font-medium text-foreground text-foreground">{payout.responseCode || "N/A"}</span>
+                  <span className="font-medium text-foreground">{payout.responseCode || "N/A"}</span>
                 </div>
               </div>
               
@@ -197,8 +197,8 @@ export function PayoutDetailsPage({ id }: PayoutDetailsPageProps) {
                 <>
                   <Separator className="my-4" />
                   <div className="flex flex-col">
-                    <span className="text-red-500 font-medium mb-1">Failure Reason</span>
-                    <span className="text-slate-700 dark:text-slate-300">{payout.failureReason}</span>
+                    <span className="text-danger font-medium mb-1">Failure Reason</span>
+                    <span className="text-foreground">{payout.failureReason}</span>
                   </div>
                 </>
               )}
@@ -208,7 +208,7 @@ export function PayoutDetailsPage({ id }: PayoutDetailsPageProps) {
 
         {/* Timeline Sidebar */}
         <div className="lg:col-span-1">
-          <Card className="border-border/60 shadow-sm border-border bg-slate-50/50 bg-background/50 sticky top-6">
+          <Card className="border-border/60 shadow-sm border-border bg-background/50 sticky top-6">
             <CardHeader>
               <CardTitle className="text-base font-semibold">Status Timeline</CardTitle>
             </CardHeader>

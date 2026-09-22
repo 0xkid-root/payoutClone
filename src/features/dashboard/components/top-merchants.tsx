@@ -32,7 +32,7 @@ export function TopMerchants() {
                 <div className="flex items-center gap-2">
                   <div className="h-1.5 w-16 overflow-hidden rounded-full bg-muted bg-card">
                     <div 
-                      className={`h-full rounded-full ${m.rate >= 95 ? "bg-emerald-500" : "bg-amber-500"}`}
+                      className={`h-full rounded-full ${m.rate >= 95 ? "bg-success/100" : "bg-warning/100"}`}
                       style={{ width: `${m.rate}%` }}
                     />
                   </div>

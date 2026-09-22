@@ -26,14 +26,14 @@ export function VanManagementPage() {
           <h1 className="text-2xl font-bold tracking-tight text-foreground dark:text-white">
             VAN Management
           </h1>
-          <p className="text-muted-foreground text-muted-foreground mt-1 text-[15px]">
+          <p className="text-muted-foreground mt-1 text-[15px]">
             Manage virtual accounts assigned to merchants and monitor their current status.
           </p>
         </div>
         <div className="flex items-center gap-3">
           <Button 
             variant="outline" 
-            className="bg-white shadow-sm bg-background border-border border-border"
+            className="bg-white shadow-sm bg-background border-border"
             onClick={handleRefresh}
             disabled={isRefreshing}
           >

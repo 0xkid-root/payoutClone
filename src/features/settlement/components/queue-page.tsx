@@ -59,7 +59,7 @@ const columns: ColumnDef<SettlementRecord>[] = [
     id: 'actions',
     cell: ({ row }) => {
       return (
-        <Link href={`/settlement/${row.original.id}`} className="text-sm font-medium text-blue-600 hover:underline">
+        <Link href={`/settlement/${row.original.id}`} className="text-sm font-medium text-info hover:underline">
           View
         </Link>
       );
@@ -100,7 +100,7 @@ export function SettlementQueuePage() {
       </div>
 
       <div className="flex w-full flex-col rounded-xl border border-border/60 bg-white shadow-[0_1px_2px_0_rgba(0,0,0,0.01)] border-border bg-background">
-        <div className="p-4 border-b border-slate-100 border-border">
+        <div className="p-4 border-b border-border">
           <div className="flex flex-col md:flex-row justify-between gap-4 items-center">
             {/* Tabs */}
             <div className="flex bg-muted bg-card/50 p-1 rounded-lg w-full md:w-auto overflow-x-auto">
@@ -113,8 +113,8 @@ export function SettlementQueuePage() {
                   }}
                   className={`px-4 py-1.5 text-sm font-medium rounded-md whitespace-nowrap transition-all ${
                     activeTab === tab 
-                      ? 'bg-white dark:bg-slate-700 text-foreground dark:text-white shadow-sm' 
-                      : 'text-slate-600 text-muted-foreground hover:text-foreground dark:hover:text-white'
+                      ? 'bg-white bg-card text-foreground dark:text-white shadow-sm' 
+                      : 'text-muted-foreground hover:text-foreground dark:hover:text-white'
                   }`}
                 >
                   {tab}
@@ -130,11 +130,11 @@ export function SettlementQueuePage() {
                   placeholder="Search Settlement ID..." 
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="pl-9 w-full md:w-[250px] bg-slate-50 bg-background/50 border-border" 
+                  className="pl-9 w-full md:w-[250px] bg-background/50 border-border" 
                 />
               </div>
               <Select value={providerFilter} onValueChange={(val) => setProviderFilter(val || 'all')}>
-                <SelectTrigger className="w-full md:w-[160px] bg-slate-50 bg-background/50 border-border">
+                <SelectTrigger className="w-full md:w-[160px] bg-background/50 border-border">
                   <SelectValue placeholder="Provider" />
                 </SelectTrigger>
                 <SelectContent>

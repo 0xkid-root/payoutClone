@@ -13,11 +13,11 @@ export function DashboardHeader() {
         </p>
       </div>
       <div className="flex items-center gap-3">
-        <Button variant="outline" className="h-9 rounded-md bg-white shadow-[0_1px_2px_0_rgba(0,0,0,0.02)] hover:bg-slate-50 bg-background border-border text-[13px] font-medium text-slate-700 dark:text-slate-300">
+        <Button variant="outline" className="h-9 rounded-md bg-white shadow-[0_1px_2px_0_rgba(0,0,0,0.02)] hover:bg-background border-border text-[13px] font-medium text-foreground">
           <CalendarDays className="mr-2 h-4 w-4 text-muted-foreground" />
           01 May, 2024 - 07 May, 2024
         </Button>
-        <Button variant="outline" className="h-9 rounded-md bg-white shadow-[0_1px_2px_0_rgba(0,0,0,0.02)] hover:bg-slate-50 bg-background border-border text-[13px] font-medium text-slate-700 dark:text-slate-300">
+        <Button variant="outline" className="h-9 rounded-md bg-white shadow-[0_1px_2px_0_rgba(0,0,0,0.02)] hover:bg-background border-border text-[13px] font-medium text-foreground">
           <Download className="mr-2 h-4 w-4 text-muted-foreground" />
           Export Report
         </Button>

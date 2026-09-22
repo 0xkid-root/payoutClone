@@ -15,24 +15,24 @@ export default function NotificationsPage() {
       title: "High-value payout held for review",
       desc: "Payout PO-10045 (₹10,50,000) for M-1002 requires manual approval.",
       time: "10 mins ago",
-      color: "text-amber-500",
-      bg: "bg-amber-100 dark:bg-amber-500/10",
+      color: "text-warning",
+      bg: "bg-amber-100 dark:bg-warning/100/10",
     },
     {
       icon: CreditCard,
       title: "Wallet balance critically low",
       desc: "Merchant M-1005 available balance is below ₹5,000.",
       time: "1 hour ago",
-      color: "text-red-500",
-      bg: "bg-red-100 dark:bg-red-500/10",
+      color: "text-danger",
+      bg: "bg-red-100 dark:bg-danger/100/10",
     },
     {
       icon: Landmark,
       title: "Settlement cycle completed",
       desc: "Batch STL-2001 has been processed successfully.",
       time: "3 hours ago",
-      color: "text-emerald-500",
-      bg: "bg-emerald-100 dark:bg-emerald-500/10",
+      color: "text-success",
+      bg: "bg-emerald-100 dark:bg-success/100/10",
     },
     {
       icon: Bell,
@@ -40,7 +40,7 @@ export default function NotificationsPage() {
       desc: "Admin User (admin@paynexus.com) generated a new production key.",
       time: "Yesterday",
       color: "text-blue-500",
-      bg: "bg-blue-100 dark:bg-blue-500/10",
+      bg: "bg-blue-100 dark:bg-info/100/10",
     },
   ];
 
@@ -52,16 +52,16 @@ export default function NotificationsPage() {
         actions={
           <Button
             variant="outline"
-            className="h-9 px-4 rounded-xl border-border/60 bg-white shadow-[0_1px_2px_0_rgba(0,0,0,0.01)] hover:bg-slate-50 border-border bg-background dark:hover:bg-card"
+            className="h-9 px-4 rounded-xl border-border/60 bg-white shadow-[0_1px_2px_0_rgba(0,0,0,0.01)] hover:bg-background border-border bg-background dark:hover:bg-card"
           >
-            <CheckCircle2 className="mr-2 h-4 w-4 text-emerald-500" />
+            <CheckCircle2 className="mr-2 h-4 w-4 text-success" />
             Mark all as read
           </Button>
         }
       />
 
       <div className="flex flex-col rounded-xl border border-border/60 bg-white shadow-[0_1px_2px_0_rgba(0,0,0,0.01)] border-border bg-background overflow-hidden">
-        <div className="px-6 py-4 border-b border-slate-100 border-border bg-slate-50/50 bg-background/50">
+        <div className="px-6 py-4 border-b border-border bg-background/50">
           <h3 className="text-[15px] font-semibold text-foreground dark:text-white">
             Recent Alerts
           </h3>
@@ -70,7 +70,7 @@ export default function NotificationsPage() {
           {alerts.map((alert, i) => (
             <div
               key={i}
-              className={`flex items-start gap-4 p-5 sm:p-6 transition-colors hover:bg-slate-50/80 dark:hover:bg-card/30 ${i !== alerts.length - 1 ? "border-b border-slate-100 border-border" : ""}`}
+              className={`flex items-start gap-4 p-5 sm:p-6 transition-colors hover:bg-background/80 dark:hover:bg-card/30 ${i !== alerts.length - 1 ? "border-b border-border" : ""}`}
             >
               <div
                 className={`mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full ${alert.bg} ${alert.color}`}
@@ -86,7 +86,7 @@ export default function NotificationsPage() {
                     {alert.time}
                   </span>
                 </div>
-                <p className="mt-1 text-[13px] text-slate-600 text-muted-foreground leading-relaxed">
+                <p className="mt-1 text-[13px] text-muted-foreground leading-relaxed">
                   {alert.desc}
                 </p>
                 <div className="mt-3.5 flex gap-2">

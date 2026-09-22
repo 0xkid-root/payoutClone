@@ -29,7 +29,7 @@ export default function VanManagementPage() {
         <div className="flex flex-col gap-4 border-b border-border p-4 sm:flex-row sm:items-center sm:justify-between border-border">
           <div className="relative w-full sm:max-w-xs">
             <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-            <Input placeholder="Search VANs..." className="h-10 w-full rounded-xl pl-9 bg-slate-50 border-border bg-background/50 border-border" />
+            <Input placeholder="Search VANs..." className="h-10 w-full rounded-xl pl-9 bg-background border-border bg-background/50 border-border" />
           </div>
           <div className="flex items-center gap-3">
             <Button variant="outline" size="sm" className="h-10 rounded-xl"><Filter className="mr-2 h-4 w-4" />Bank</Button>
@@ -39,7 +39,7 @@ export default function VanManagementPage() {
 
         <Table>
           <TableHeader>
-            <TableRow className="bg-slate-50/50 hover:bg-slate-50/50 bg-card/20 dark:hover:bg-card/20 border-border border-border">
+            <TableRow className="bg-background hover:bg-background bg-card/20 dark:hover:bg-card/20 border-border">
               <TableHead>VAN ID</TableHead>
               <TableHead>Merchant</TableHead>
               <TableHead>Account Number</TableHead>

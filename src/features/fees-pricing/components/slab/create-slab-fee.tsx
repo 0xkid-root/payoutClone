@@ -131,7 +131,7 @@ export function CreateSlabFee() {
             <div className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <Label>Merchant <span className="text-red-500">*</span></Label>
+                  <Label>Merchant <span className="text-danger">*</span></Label>
                   <Select 
                     value={watch("merchantId") || undefined}
                     onValueChange={(val) => setValue("merchantId", val as string)}
@@ -149,7 +149,7 @@ export function CreateSlabFee() {
                       ))}
                     </SelectContent>
                   </Select>
-                  {errors.merchantId && <p className="text-sm text-red-500">{errors.merchantId.message}</p>}
+                  {errors.merchantId && <p className="text-sm text-danger">{errors.merchantId.message}</p>}
                 </div>
                 
                 <div className="space-y-2">
@@ -168,20 +168,20 @@ export function CreateSlabFee() {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <Label>Effective From <span className="text-red-500">*</span></Label>
+                  <Label>Effective From <span className="text-danger">*</span></Label>
                   <Input type="date" {...register("effectiveFrom")} className={errors.effectiveFrom ? "border-red-500" : ""} />
-                  {errors.effectiveFrom && <p className="text-sm text-red-500">{errors.effectiveFrom.message}</p>}
+                  {errors.effectiveFrom && <p className="text-sm text-danger">{errors.effectiveFrom.message}</p>}
                 </div>
 
                 <div className="space-y-2">
                   <Label>Effective To</Label>
                   <Input type="date" {...register("effectiveTo")} className={errors.effectiveTo ? "border-red-500" : ""} />
-                  {errors.effectiveTo && <p className="text-sm text-red-500">{errors.effectiveTo.message}</p>}
+                  {errors.effectiveTo && <p className="text-sm text-danger">{errors.effectiveTo.message}</p>}
                 </div>
               </div>
             </div>
 
-            <div className="pt-6 border-t border-border border-border">
+            <div className="pt-6 border-t border-border">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-md font-semibold text-foreground dark:text-white">Pricing Slabs</h3>
                 <Button 
@@ -195,14 +195,14 @@ export function CreateSlabFee() {
               </div>
 
               {errors.slabs?.root && (
-                <div className="mb-4 p-3 bg-red-50 text-red-600 text-sm rounded-lg border border-red-200">
+                <div className="mb-4 p-3 bg-danger/10 text-danger text-sm rounded-lg border border-danger/30">
                   {errors.slabs.root.message}
                 </div>
               )}
 
-              <div className="overflow-x-auto rounded-xl border border-border border-border">
+              <div className="overflow-x-auto rounded-xl border border-border">
                 <div className="min-w-[600px] p-4">
-                  <div className="grid grid-cols-12 gap-4 pb-2 border-b border-border border-border text-sm font-medium text-muted-foreground">
+                  <div className="grid grid-cols-12 gap-4 pb-2 border-b border-border text-sm font-medium text-muted-foreground">
                     <div className="col-span-3">Min Amount</div>
                     <div className="col-span-3">Max Amount</div>
                     <div className="col-span-2">Type</div>
@@ -267,7 +267,7 @@ export function CreateSlabFee() {
                               type="button"
                               variant="ghost"
                               size="icon"
-                              className="text-muted-foreground hover:text-red-500"
+                              className="text-muted-foreground hover:text-danger"
                               onClick={() => remove(index)}
                               disabled={fields.length === 1}
                             >
@@ -276,7 +276,7 @@ export function CreateSlabFee() {
                           </div>
                           
                           {(errors.slabs?.[index]?.minAmount || errors.slabs?.[index]?.maxAmount || errors.slabs?.[index]?.fee) && (
-                            <div className="col-span-12 text-xs text-red-500">
+                            <div className="col-span-12 text-xs text-danger">
                                 Please fix errors in this row.
                             </div>
                           )}
@@ -289,16 +289,16 @@ export function CreateSlabFee() {
             </div>
           </div>
 
-          <div className="border-t border-border border-border" />
+          <div className="border-t border-border" />
           
-          <div className="p-6 md:p-8 bg-slate-50/50 bg-background/20">
+          <div className="p-6 md:p-8 bg-background/20">
             <FeeCalculationPreview
               feeType="SLAB_BASED"
               slabs={watchSlabs as any}
             />
           </div>
 
-          <div className="border-t border-border border-border p-6 md:px-8 flex justify-end gap-3 bg-white bg-background">
+          <div className="border-t border-border p-6 md:px-8 flex justify-end gap-3 bg-white bg-background">
             <Button type="button" variant="outline" onClick={() => router.push("/fees-pricing/slab")}>
               Cancel
             </Button>

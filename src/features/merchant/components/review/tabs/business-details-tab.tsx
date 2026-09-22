@@ -8,19 +8,19 @@ export function BusinessDetailsTab({ merchant }: { merchant: Merchant }) {
         <div className="grid grid-cols-1 divide-y divide-slate-100 dark:divide-slate-800">
           {/* Business Identity */}
           <div>
-            <div className="px-4 py-3 bg-slate-50/50 bg-background/20 border-b border-slate-100 border-border">
-              <h3 className="text-sm font-semibold text-slate-700 dark:text-slate-300">Business Identity</h3>
+            <div className="px-4 py-3 bg-background/20 border-b border-border">
+              <h3 className="text-sm font-semibold text-foreground">Business Identity</h3>
             </div>
             <div>
-              <div className="flex justify-between py-2.5 px-4 border-b border-slate-100 border-border">
+              <div className="flex justify-between py-2.5 px-4 border-b border-border">
                 <span className="text-[13px] text-muted-foreground">Legal Business Name</span>
                 <span className="text-[13px] font-medium text-foreground dark:text-white">{merchant.businessName}</span>
               </div>
-              <div className="flex justify-between py-2.5 px-4 border-b border-slate-100 border-border">
+              <div className="flex justify-between py-2.5 px-4 border-b border-border">
                 <span className="text-[13px] text-muted-foreground">Constitution Type</span>
                 <span className="text-[13px] font-medium text-foreground dark:text-white">{merchant.businessType}</span>
               </div>
-              <div className="flex justify-between py-2.5 px-4 border-b border-slate-100 border-border">
+              <div className="flex justify-between py-2.5 px-4 border-b border-border">
                 <span className="text-[13px] text-muted-foreground">Nature of Business</span>
                 <span className="text-[13px] font-medium text-foreground dark:text-white">Digital Services / Software</span>
               </div>
@@ -35,19 +35,19 @@ export function BusinessDetailsTab({ merchant }: { merchant: Merchant }) {
 
           {/* Tax & Registration */}
           <div>
-            <div className="px-4 py-3 bg-slate-50/50 bg-background/20 border-b border-slate-100 border-border">
-              <h3 className="text-sm font-semibold text-slate-700 dark:text-slate-300">Tax & Registration</h3>
+            <div className="px-4 py-3 bg-background/20 border-b border-border">
+              <h3 className="text-sm font-semibold text-foreground">Tax & Registration</h3>
             </div>
             <div>
-              <div className="flex justify-between py-2.5 px-4 border-b border-slate-100 border-border">
+              <div className="flex justify-between py-2.5 px-4 border-b border-border">
                 <span className="text-[13px] text-muted-foreground">PAN Number</span>
                 <span className="text-[13px] font-medium text-foreground dark:text-white">{merchant.pan}</span>
               </div>
-              <div className="flex justify-between py-2.5 px-4 border-b border-slate-100 border-border">
+              <div className="flex justify-between py-2.5 px-4 border-b border-border">
                 <span className="text-[13px] text-muted-foreground">GST Number</span>
                 <span className="text-[13px] font-medium text-foreground dark:text-white">{merchant.gst || "Not Registered"}</span>
               </div>
-              <div className="flex justify-between py-2.5 px-4 border-b border-slate-100 border-border">
+              <div className="flex justify-between py-2.5 px-4 border-b border-border">
                 <span className="text-[13px] text-muted-foreground">CIN / Reg No.</span>
                 <span className="text-[13px] font-medium text-foreground dark:text-white">U72900MH2021PTC{Math.floor(Math.random() * 90000) + 10000}</span>
               </div>
@@ -60,15 +60,15 @@ export function BusinessDetailsTab({ merchant }: { merchant: Merchant }) {
 
           {/* Bank Details */}
           <div>
-            <div className="px-4 py-3 bg-slate-50/50 bg-background/20 border-b border-slate-100 border-border">
-              <h3 className="text-sm font-semibold text-slate-700 dark:text-slate-300">Bank Details</h3>
+            <div className="px-4 py-3 bg-background/20 border-b border-border">
+              <h3 className="text-sm font-semibold text-foreground">Bank Details</h3>
             </div>
             <div>
-              <div className="flex justify-between py-2.5 px-4 border-b border-slate-100 border-border">
+              <div className="flex justify-between py-2.5 px-4 border-b border-border">
                 <span className="text-[13px] text-muted-foreground">Bank Name</span>
                 <span className="text-[13px] font-medium text-foreground dark:text-white">{merchant.bankName || "N/A"}</span>
               </div>
-              <div className="flex justify-between py-2.5 px-4 border-b border-slate-100 border-border">
+              <div className="flex justify-between py-2.5 px-4 border-b border-border">
                 <span className="text-[13px] text-muted-foreground">Account Number</span>
                 <span className="text-[13px] font-medium text-foreground dark:text-white tracking-widest">{merchant.accountNumber || "N/A"}</span>
               </div>

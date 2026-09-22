@@ -19,7 +19,7 @@ export function SlabFeeDetail() {
   }
 
   if (!fee) {
-    return <div className="p-8 text-center text-red-500">Fee configuration not found.</div>;
+    return <div className="p-8 text-center text-danger">Fee configuration not found.</div>;
   }
 
   return (
@@ -54,22 +54,22 @@ export function SlabFeeDetail() {
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
               <div>
-                <p className="text-sm text-muted-foreground text-muted-foreground mb-1">Merchant</p>
+                <p className="text-sm text-muted-foreground mb-1">Merchant</p>
                 <p className="font-medium text-foreground dark:text-white">{fee.merchantName}</p>
               </div>
               
               <div>
-                <p className="text-sm text-muted-foreground text-muted-foreground mb-1">Fee Type</p>
+                <p className="text-sm text-muted-foreground mb-1">Fee Type</p>
                 <p className="font-medium text-foreground dark:text-white capitalize">{fee.feeType.toLowerCase().replace('_', ' ')}</p>
               </div>
 
               <div>
-                <p className="text-sm text-muted-foreground text-muted-foreground mb-1">Status</p>
+                <p className="text-sm text-muted-foreground mb-1">Status</p>
                 <StatusBadge status={fee.status} />
               </div>
 
               <div>
-                <p className="text-sm text-muted-foreground text-muted-foreground mb-1">Effective From</p>
+                <p className="text-sm text-muted-foreground mb-1">Effective From</p>
                 <p className="font-medium text-foreground dark:text-white">
                   {new Date(fee.effectiveFrom).toLocaleDateString("en-GB", {
                     day: "numeric",
@@ -80,7 +80,7 @@ export function SlabFeeDetail() {
               </div>
 
               <div>
-                <p className="text-sm text-muted-foreground text-muted-foreground mb-1">Effective To</p>
+                <p className="text-sm text-muted-foreground mb-1">Effective To</p>
                 <p className="font-medium text-foreground dark:text-white">
                   {fee.effectiveTo
                     ? new Date(fee.effectiveTo).toLocaleDateString("en-GB", {
@@ -93,11 +93,11 @@ export function SlabFeeDetail() {
               </div>
             </div>
 
-            <div className="border-t border-border border-border pt-6">
+            <div className="border-t border-border pt-6">
               <h4 className="text-md font-semibold text-foreground dark:text-white mb-4">Pricing Slabs</h4>
-              <div className="overflow-x-auto rounded-xl border border-border border-border">
+              <div className="overflow-x-auto rounded-xl border border-border">
                 <table className="w-full text-sm text-left">
-                  <thead className="bg-slate-50 bg-background/50 text-muted-foreground font-medium">
+                  <thead className="bg-background/50 text-muted-foreground font-medium">
                     <tr>
                       <th className="px-4 py-3">Min Amount</th>
                       <th className="px-4 py-3">Max Amount</th>
@@ -107,7 +107,7 @@ export function SlabFeeDetail() {
                   </thead>
                   <tbody className="divide-y divide-slate-200 dark:divide-slate-800">
                     {fee.slabs?.map((slab, i) => (
-                      <tr key={i} className="bg-white bg-background hover:bg-slate-50/50 dark:hover:bg-card/50">
+                      <tr key={i} className="bg-white bg-background hover:bg-background dark:hover:bg-card/50">
                         <td className="px-4 py-3">₹{slab.minAmount.toLocaleString()}</td>
                         <td className="px-4 py-3">₹{slab.maxAmount.toLocaleString()}</td>
                         <td className="px-4 py-3 capitalize">{slab.slabType.toLowerCase()}</td>
@@ -122,7 +122,7 @@ export function SlabFeeDetail() {
             </div>
           </div>
 
-          <div className="lg:col-span-1 bg-slate-50/50 bg-background/20 p-6">
+          <div className="lg:col-span-1 bg-background/20 p-6">
             <div className="sticky top-6">
               <FeeCalculationPreview
                 feeType="SLAB_BASED"

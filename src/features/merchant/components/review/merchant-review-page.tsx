@@ -34,7 +34,7 @@ export function MerchantReviewPage({ merchantId }: { merchantId: string }) {
 
   if (isError || !merchant) {
     return (
-      <div className="p-8 text-center text-red-500">
+      <div className="p-8 text-center text-danger">
         <p>Failed to load merchant details.</p>
         <Link href="/merchants" className="text-primary hover:underline mt-2 inline-block">Back to Merchants</Link>
       </div>
@@ -42,15 +42,15 @@ export function MerchantReviewPage({ merchantId }: { merchantId: string }) {
   }
 
   const KycBadge = ({ status }: { status: string }) => {
-    if (status === "APPROVED") return <Badge className="bg-emerald-50 text-emerald-600 border-emerald-200/50"><CheckCircle2 className="mr-1 h-3 w-3" /> Verified</Badge>;
-    if (status === "PENDING") return <Badge className="bg-amber-50 text-amber-600 border-amber-200/50">Pending</Badge>;
-    return <Badge className="bg-red-50 text-red-600 border-red-200/50">Rejected</Badge>;
+    if (status === "APPROVED") return <Badge className="bg-success/10 text-success border-success/30"><CheckCircle2 className="mr-1 h-3 w-3" /> Verified</Badge>;
+    if (status === "PENDING") return <Badge className="bg-warning/10 text-warning border-warning/30">Pending</Badge>;
+    return <Badge className="bg-danger/10 text-danger border-danger/30">Rejected</Badge>;
   };
 
   const StatusBadge = ({ status }: { status: string }) => {
-    if (status === "ACTIVE") return <Badge className="bg-emerald-50 text-emerald-600 border-emerald-200/50">Under Review</Badge>;
-    if (status === "INACTIVE") return <Badge className="bg-amber-50 text-amber-600 border-amber-200/50">Inactive</Badge>;
-    return <Badge className="bg-red-50 text-red-600 border-red-200/50">Suspended</Badge>;
+    if (status === "ACTIVE") return <Badge className="bg-success/10 text-success border-success/30">Under Review</Badge>;
+    if (status === "INACTIVE") return <Badge className="bg-warning/10 text-warning border-warning/30">Inactive</Badge>;
+    return <Badge className="bg-danger/10 text-danger border-danger/30">Suspended</Badge>;
   };
 
   return (
@@ -76,7 +76,7 @@ export function MerchantReviewPage({ merchantId }: { merchantId: string }) {
         <div className="flex items-center gap-3">
           <Button 
             variant="outline" 
-            className="border-amber-200 text-amber-700 hover:bg-amber-50 hover:text-amber-800 dark:border-amber-900/50 dark:hover:bg-amber-900/20 dark:text-amber-500"
+            className="border-warning/30 text-amber-700 hover:bg-warning/10 hover:text-amber-800 dark:border-amber-900/50 dark:hover:bg-amber-900/20 dark:text-warning"
             onClick={() => setIsRequestChangesOpen(true)}
           >
             <FileEdit className="mr-2 h-4 w-4" />
@@ -110,7 +110,7 @@ export function MerchantReviewPage({ merchantId }: { merchantId: string }) {
         </div>
 
         {/* Verification Progress Stepper Section */}
-        <div className="border-y border-border/60 border-border bg-slate-50/50 bg-background/50 p-2 flex overflow-x-auto scrollbar-hide">
+        <div className="border-y border-border/60 border-border bg-background/50 p-2 flex overflow-x-auto scrollbar-hide">
           {steps.map((step, index) => {
             const isActive = activeTab === step.id;
             const isPassed = steps.findIndex(s => s.id === activeTab) > index;
@@ -123,19 +123,19 @@ export function MerchantReviewPage({ merchantId }: { merchantId: string }) {
                     isActive
                       ? "bg-white shadow-sm border border-border/60 text-primary bg-card border-border dark:text-white"
                       : isPassed
-                        ? "text-slate-700 hover:bg-muted/50 dark:text-slate-300 dark:hover:bg-card/30"
+                        ? "text-foreground hover:bg-muted/50 text-foreground dark:hover:bg-card/30"
                         : "text-muted-foreground hover:bg-muted/50 dark:hover:bg-card/30"
                   }`}
                 >
                   <span className={`flex items-center justify-center h-5 w-5 rounded-full mr-2 text-[11px] font-bold ${
-                    isActive ? "bg-primary text-white" : isPassed ? "bg-emerald-100 text-emerald-600 dark:bg-emerald-900/30" : "bg-muted text-muted-foreground bg-card"
+                    isActive ? "bg-primary text-white" : isPassed ? "bg-emerald-100 text-success dark:bg-emerald-900/30" : "bg-muted text-muted-foreground bg-card"
                   }`}>
                     {isPassed ? <CheckCircle2 className="h-3.5 w-3.5" /> : index + 1}
                   </span>
                   <span className="whitespace-nowrap">{step.label}</span>
                 </button>
                 {index < steps.length - 1 && (
-                  <div className="px-2 text-slate-300 dark:text-slate-700">
+                  <div className="px-2 text-foreground">
                     <ChevronRight className="h-4 w-4" />
                   </div>
                 )}

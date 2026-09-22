@@ -76,7 +76,7 @@ export function PayoutFilters({
           <Button
             variant="ghost"
             onClick={handleClearFilters}
-            className="text-muted-foreground hover:text-foreground dark:hover:text-slate-100 h-9 px-2 text-[13px]"
+            className="text-muted-foreground hover:text-foreground dark:hover:text-foreground h-9 px-2 text-[13px]"
           >
             <X className="mr-2 h-4 w-4" />
             Clear

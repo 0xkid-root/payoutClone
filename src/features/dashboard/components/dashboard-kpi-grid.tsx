@@ -17,7 +17,7 @@ export function DashboardKpiGrid() {
         title="Successful Payouts"
         value="₹7,12,45,650.00"
         icon={CheckCircle2}
-        iconColorClass="text-emerald-500"
+        iconColorClass="text-success"
         trendValue="21.3% vs last 7 days"
         trendUp={true}
       />
@@ -25,7 +25,7 @@ export function DashboardKpiGrid() {
         title="Pending Payouts"
         value="₹98,45,200.00"
         icon={Clock}
-        iconColorClass="text-amber-500"
+        iconColorClass="text-warning"
         trendValue="6.2% vs last 7 days"
         trendUp={true}
       />
@@ -35,7 +35,7 @@ export function DashboardKpiGrid() {
         title="Processing Payouts"
         value="₹23,16,450.00"
         icon={AlertCircle}
-        iconColorClass="text-amber-500"
+        iconColorClass="text-warning"
         trendValue="3.6% vs last 7 days"
         trendUp={true}
       />
@@ -43,7 +43,7 @@ export function DashboardKpiGrid() {
         title="Failed Payouts"
         value="₹11,71,350.00"
         icon={XCircle}
-        iconColorClass="text-red-500"
+        iconColorClass="text-danger"
         trendValue="9.8% vs last 7 days"
         trendUp={false}
       />

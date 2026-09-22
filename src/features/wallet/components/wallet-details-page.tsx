@@ -68,7 +68,7 @@ export function WalletDetailsPage({ walletId }: { walletId: string }) {
   if (!wallet) {
     return (
       <div className="flex flex-col gap-6 pb-8 items-center justify-center min-h-[400px]">
-        <AlertCircle className="h-12 w-12 text-slate-300 dark:text-slate-600 mb-4" />
+        <AlertCircle className="h-12 w-12 text-foreground text-muted-foreground mb-4" />
         <h2 className="text-xl font-bold text-foreground dark:text-white">Wallet Not Found</h2>
         <p className="text-muted-foreground">The wallet you are looking for does not exist.</p>
         <Link href="/wallet/all">
@@ -98,9 +98,9 @@ export function WalletDetailsPage({ walletId }: { walletId: string }) {
             {wallet.merchantName}
           </h1>
           <div className="flex flex-wrap items-center gap-x-2 gap-y-2 text-sm text-muted-foreground">
-            <span>Merchant ID: <span className="font-mono font-medium text-slate-700 dark:text-slate-300">{wallet.merchantId}</span></span>
+            <span>Merchant ID: <span className="font-mono font-medium text-foreground">{wallet.merchantId}</span></span>
             <span>&middot;</span>
-            <span>Wallet ID: <span className="font-mono font-medium text-slate-700 dark:text-slate-300">{wallet.id}</span></span>
+            <span>Wallet ID: <span className="font-mono font-medium text-foreground">{wallet.id}</span></span>
           </div>
           <div className="flex items-center gap-4 mt-5">
             <StatusBadge status={displayStatus || "Active"} />
@@ -108,7 +108,7 @@ export function WalletDetailsPage({ walletId }: { walletId: string }) {
               <Button 
                 variant="outline" 
                 size="sm"
-                className="h-8 border-amber-200 bg-amber-50 text-amber-700 hover:bg-amber-100 hover:text-amber-800 dark:border-amber-900/30 dark:bg-amber-900/20 dark:text-amber-500 dark:hover:bg-amber-900/40"
+                className="h-8 border-warning/30 bg-warning/10 text-amber-700 hover:bg-amber-100 hover:text-amber-800 dark:border-amber-900/30 dark:bg-amber-900/20 dark:text-warning dark:hover:bg-amber-900/40"
                 onClick={() => setIsFreezeDialogOpen(true)}
               >
                 <Snowflake className="mr-2 h-3.5 w-3.5" />
@@ -131,20 +131,20 @@ export function WalletDetailsPage({ walletId }: { walletId: string }) {
           title="Available Balance"
           value={formatCurrency(wallet.availableBalance)}
           icon={WalletIcon}
-          iconColorClass="text-emerald-600"
+          iconColorClass="text-success"
         />
         <StatCard
           title="Hold Balance"
           value={formatCurrency(wallet.holdBalance)}
           icon={WalletIcon}
-          iconColorClass="text-amber-600"
+          iconColorClass="text-warning"
           alertText={wallet.holdBalance > 0 ? "Temporarily frozen funds" : undefined}
         />
       </div>
 
       {/* Wallet Overview */}
       <div className="rounded-[14px] border border-border/60 bg-white shadow-sm border-border bg-background overflow-hidden">
-        <div className="p-5 border-b border-slate-100 border-border bg-slate-50/50 bg-background/50">
+        <div className="p-5 border-b border-border bg-background/50">
           <h2 className="text-sm font-semibold text-foreground dark:text-white">
             Wallet Overview
           </h2>
@@ -187,7 +187,7 @@ export function WalletDetailsPage({ walletId }: { walletId: string }) {
               <div>
                 <p className="text-xs font-medium text-muted-foreground mb-1">KYC Status</p>
                 <div className="flex items-center gap-1.5 mt-0.5">
-                  <div className={`w-1.5 h-1.5 rounded-full ${wallet.kycStatus === 'Verified' ? 'bg-emerald-500' : wallet.kycStatus === 'Pending' ? 'bg-amber-500' : 'bg-red-500'}`}></div>
+                  <div className={`w-1.5 h-1.5 rounded-full ${wallet.kycStatus === 'Verified' ? 'bg-success/100' : wallet.kycStatus === 'Pending' ? 'bg-warning/100' : 'bg-danger/100'}`}></div>
                   <p className="text-[13px] font-semibold text-foreground dark:text-white">{wallet.kycStatus}</p>
                 </div>
               </div>
@@ -211,7 +211,7 @@ export function WalletDetailsPage({ walletId }: { walletId: string }) {
                 <div>
                   <p className="text-xs font-medium text-muted-foreground mb-1.5">Transactions</p>
                   <div className="flex items-center gap-1.5">
-                    <div className={`w-1.5 h-1.5 rounded-full ${displayStatus === 'Frozen' ? 'bg-red-500' : wallet.transactionEnabled ? 'bg-emerald-500' : 'bg-slate-300'}`}></div>
+                    <div className={`w-1.5 h-1.5 rounded-full ${displayStatus === 'Frozen' ? 'bg-danger/100' : wallet.transactionEnabled ? 'bg-success/100' : 'bg-muted-foreground/30'}`}></div>
                     <p className="text-[13px] font-semibold text-foreground dark:text-white">
                       {displayStatus === 'Frozen' ? 'Disabled' : wallet.transactionEnabled ? 'Enabled' : 'Disabled'}
                     </p>
@@ -220,7 +220,7 @@ export function WalletDetailsPage({ walletId }: { walletId: string }) {
                 <div>
                   <p className="text-xs font-medium text-muted-foreground mb-1.5">Credits</p>
                   <div className="flex items-center gap-1.5">
-                    <div className={`w-1.5 h-1.5 rounded-full ${displayStatus === 'Frozen' ? 'bg-red-500' : wallet.creditEnabled ? 'bg-emerald-500' : 'bg-slate-300'}`}></div>
+                    <div className={`w-1.5 h-1.5 rounded-full ${displayStatus === 'Frozen' ? 'bg-danger/100' : wallet.creditEnabled ? 'bg-success/100' : 'bg-muted-foreground/30'}`}></div>
                     <p className="text-[13px] font-semibold text-foreground dark:text-white">
                       {displayStatus === 'Frozen' ? 'Disabled' : wallet.creditEnabled ? 'Enabled' : 'Disabled'}
                     </p>
@@ -229,7 +229,7 @@ export function WalletDetailsPage({ walletId }: { walletId: string }) {
                 <div>
                   <p className="text-xs font-medium text-muted-foreground mb-1.5">Withdrawals</p>
                   <div className="flex items-center gap-1.5">
-                    <div className={`w-1.5 h-1.5 rounded-full ${displayStatus === 'Frozen' ? 'bg-red-500' : wallet.withdrawalEnabled ? 'bg-emerald-500' : 'bg-slate-300'}`}></div>
+                    <div className={`w-1.5 h-1.5 rounded-full ${displayStatus === 'Frozen' ? 'bg-danger/100' : wallet.withdrawalEnabled ? 'bg-success/100' : 'bg-muted-foreground/30'}`}></div>
                     <p className="text-[13px] font-semibold text-foreground dark:text-white">
                       {displayStatus === 'Frozen' ? 'Disabled' : wallet.withdrawalEnabled ? 'Enabled' : 'Disabled'}
                     </p>
@@ -237,16 +237,16 @@ export function WalletDetailsPage({ walletId }: { walletId: string }) {
                 </div>
               </div>
 
-              <div className="pt-5 border-t border-slate-100 border-border">
+              <div className="pt-5 border-t border-border">
                 <p className="text-xs font-medium text-muted-foreground mb-1">Funds on Hold</p>
-                <p className="text-xl font-bold text-amber-600 dark:text-amber-500 tracking-tight mb-0.5">{formatCurrency(wallet.holdBalance)}</p>
+                <p className="text-xl font-bold text-warning dark:text-warning tracking-tight mb-0.5">{formatCurrency(wallet.holdBalance)}</p>
                 <p className="text-xs text-muted-foreground">Temporarily restricted</p>
               </div>
 
-              <div className="pt-5 border-t border-slate-100 border-border">
+              <div className="pt-5 border-t border-border">
                 <p className="text-xs font-medium text-muted-foreground mb-1.5">Wallet Health</p>
                 <div className="flex items-center gap-1.5 mb-1">
-                  <div className={`w-1.5 h-1.5 rounded-full ${displayStatus === 'Frozen' ? 'bg-amber-500' : 'bg-emerald-500'}`}></div>
+                  <div className={`w-1.5 h-1.5 rounded-full ${displayStatus === 'Frozen' ? 'bg-warning/100' : 'bg-success/100'}`}></div>
                   <p className="text-[13px] font-semibold text-foreground dark:text-white">
                     {displayStatus === 'Frozen' ? 'Attention Required' : 'Healthy'}
                   </p>
@@ -275,8 +275,8 @@ export function WalletDetailsPage({ walletId }: { walletId: string }) {
 
         <div className="overflow-x-auto">
             <Table>
-              <TableHeader className="border-b border-border border-border">
-                <TableRow className="hover:bg-transparent border-slate-100 border-border">
+              <TableHeader className="border-b border-border">
+                <TableRow className="hover:bg-transparent border-border">
                   <TableHead className="h-11 px-5 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">Transaction ID</TableHead>
                   <TableHead className="h-11 px-5 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">Type</TableHead>
                   <TableHead className="h-11 px-5 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground text-right">Amount</TableHead>
@@ -288,7 +288,7 @@ export function WalletDetailsPage({ walletId }: { walletId: string }) {
               <TableBody>
                 {isTxLoading ? (
                   Array(5).fill(0).map((_, i) => (
-                    <TableRow key={i} className="border-slate-100 border-border/50">
+                    <TableRow key={i} className="border-border/50">
                       <TableCell colSpan={6} className="p-4">
                         <div className="h-5 w-full bg-muted bg-card rounded animate-pulse"></div>
                       </TableCell>
@@ -301,7 +301,7 @@ export function WalletDetailsPage({ walletId }: { walletId: string }) {
                     </TableCell>
                   </TableRow>
                 ) : transactions?.slice(0, 5).map((tx) => (
-                  <TableRow key={tx.id} className="h-14 border-b border-slate-100/60 border-border/60 hover:bg-slate-50/50 dark:hover:bg-card/30 transition-colors">
+                  <TableRow key={tx.id} className="h-14 border-b border-border/60 hover:bg-background dark:hover:bg-card/30 transition-colors">
                     <TableCell className="px-5 font-semibold text-foreground dark:text-white text-[13px]">{tx.id}</TableCell>
                     <TableCell className="px-5">
                       <span className="text-[11px] font-semibold text-muted-foreground uppercase tracking-wider">
@@ -309,7 +309,7 @@ export function WalletDetailsPage({ walletId }: { walletId: string }) {
                       </span>
                     </TableCell>
                     <TableCell className={`px-5 text-right text-[13px] font-bold tabular-nums ${
-                      tx.type === 'Credit' || tx.type === 'Refund' ? 'text-emerald-600 dark:text-emerald-500' : 
+                      tx.type === 'Credit' || tx.type === 'Refund' ? 'text-success dark:text-success' : 
                       'text-foreground dark:text-white'
                     }`}>
                       {tx.type === 'Credit' || tx.type === 'Refund' ? '+' : tx.type === 'Debit' || tx.type === 'Withdrawal' || tx.type === 'Payout' ? '-' : ''}
@@ -320,8 +320,8 @@ export function WalletDetailsPage({ walletId }: { walletId: string }) {
                     </TableCell>
                     <TableCell className="px-5">
                       <div className="flex items-center gap-1.5">
-                        <div className={`w-1.5 h-1.5 rounded-full ${tx.status === 'Success' ? 'bg-emerald-500' : tx.status === 'Pending' ? 'bg-amber-500' : 'bg-red-500'}`}></div>
-                        <span className="text-[13px] text-slate-600 text-muted-foreground">{tx.status}</span>
+                        <div className={`w-1.5 h-1.5 rounded-full ${tx.status === 'Success' ? 'bg-success/100' : tx.status === 'Pending' ? 'bg-warning/100' : 'bg-danger/100'}`}></div>
+                        <span className="text-[13px] text-muted-foreground">{tx.status}</span>
                       </div>
                     </TableCell>
                     <TableCell className="px-5 text-[12px] text-muted-foreground font-medium">
@@ -338,15 +338,15 @@ export function WalletDetailsPage({ walletId }: { walletId: string }) {
       <Dialog open={isFreezeDialogOpen} onOpenChange={setIsFreezeDialogOpen}>
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
-            <DialogTitle className="flex items-center gap-2 text-amber-700 dark:text-amber-500">
+            <DialogTitle className="flex items-center gap-2 text-amber-700 dark:text-warning">
               <AlertCircle className="h-5 w-5" />
               Freeze Wallet?
             </DialogTitle>
-            <DialogDescription className="pt-3 text-slate-600 dark:text-slate-300">
+            <DialogDescription className="pt-3 text-muted-foreground text-foreground">
               Are you sure you want to freeze this wallet? New wallet transactions will be restricted until the wallet is activated again.
             </DialogDescription>
           </DialogHeader>
-          <div className="bg-slate-50 bg-background/50 p-4 rounded-lg my-2 border border-slate-100 border-border">
+          <div className="bg-background/50 p-4 rounded-lg my-2 border border-border">
             <p className="text-sm text-muted-foreground mb-1">Merchant: <span className="font-semibold text-foreground dark:text-white">{wallet?.merchantName}</span></p>
             <p className="text-sm text-muted-foreground">Wallet ID: <span className="font-mono font-medium text-foreground dark:text-white">{wallet?.id}</span></p>
           </div>

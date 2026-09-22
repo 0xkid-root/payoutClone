@@ -7,15 +7,15 @@ const statusVariants = cva(
   {
     variants: {
       status: {
-        ACTIVE: "bg-emerald-500/15 text-emerald-700 dark:text-emerald-400",
-        INACTIVE: "bg-slate-500/15 text-slate-700 text-muted-foreground",
-        PENDING: "bg-amber-500/15 text-amber-700 dark:text-amber-400",
-        SUSPENDED: "bg-red-500/15 text-red-700 dark:text-red-400",
-        BLOCKED: "bg-slate-500/15 text-slate-700 text-muted-foreground",
-        REJECTED: "bg-red-500/15 text-red-700 dark:text-red-400",
-        VERIFIED: "bg-blue-500/15 text-blue-700 dark:text-blue-400",
-        SUCCESS: "bg-emerald-500/15 text-emerald-700 dark:text-emerald-400",
-        FAILED: "bg-red-500/15 text-red-700 dark:text-red-400",
+        ACTIVE: "bg-success/100/15 text-emerald-700 dark:text-emerald-400",
+        INACTIVE: "bg-background0/15 text-foreground text-muted-foreground",
+        PENDING: "bg-warning/100/15 text-amber-700 dark:text-amber-400",
+        SUSPENDED: "bg-danger/100/15 text-danger dark:text-red-400",
+        BLOCKED: "bg-background0/15 text-foreground text-muted-foreground",
+        REJECTED: "bg-danger/100/15 text-danger dark:text-red-400",
+        VERIFIED: "bg-info/100/15 text-blue-700 dark:text-blue-400",
+        SUCCESS: "bg-success/100/15 text-emerald-700 dark:text-emerald-400",
+        FAILED: "bg-danger/100/15 text-danger dark:text-red-400",
       },
     },
     defaultVariants: {

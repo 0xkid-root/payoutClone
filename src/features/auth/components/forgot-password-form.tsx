@@ -55,14 +55,14 @@ export function ForgotPasswordForm() {
       <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
         {/* Email Field */}
         <div className="space-y-2">
-          <Label htmlFor="email" className="text-[13px] font-semibold text-slate-700">Email Address</Label>
+          <Label htmlFor="email" className="text-[13px] font-semibold text-foreground">Email Address</Label>
           <div className="relative group">
             <Mail className="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground transition-colors group-focus-within:text-primary" />
             <Input
               id="email"
               type="email"
               placeholder="Enter your email address"
-              className="h-11 rounded-lg border border-border bg-slate-50/50 pl-10 text-[14px] font-medium transition-all placeholder:text-muted-foreground hover:bg-muted focus-visible:bg-white focus-visible:ring-1 focus-visible:ring-primary focus-visible:border-primary shadow-sm"
+              className="h-11 rounded-lg border border-border bg-background pl-10 text-[14px] font-medium transition-all placeholder:text-muted-foreground hover:bg-muted focus-visible:bg-white focus-visible:ring-1 focus-visible:ring-primary focus-visible:border-primary shadow-sm"
             />
           </div>
         </div>
@@ -86,7 +86,7 @@ export function ForgotPasswordForm() {
           href="/login"
           className={cn(
             buttonVariants({ variant: "outline" }),
-            "flex h-11 w-full justify-center rounded-lg border-border text-[14px] font-semibold text-slate-700 shadow-sm transition-all hover:bg-slate-50 hover:text-foreground"
+            "flex h-11 w-full justify-center rounded-lg border-border text-[14px] font-semibold text-foreground shadow-sm transition-all hover:bg-background hover:text-foreground"
           )}
         >
           Back to Login
@@ -94,7 +94,7 @@ export function ForgotPasswordForm() {
       </form>
 
       {/* Security Message */}
-      <div className="mt-8 flex items-center justify-center gap-2 text-[13px] font-medium text-muted-foreground rounded-lg bg-slate-50 px-4 py-3 border border-slate-100">
+      <div className="mt-8 flex items-center justify-center gap-2 text-[13px] font-medium text-muted-foreground rounded-lg bg-background px-4 py-3 border border-border">
         <ShieldCheck className="h-4 w-4 shrink-0 text-primary" />
         <p>A secure reset link will be sent directly to your inbox.</p>
       </div>

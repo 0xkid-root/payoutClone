@@ -8,9 +8,9 @@ import { Eye } from "lucide-react";
 
 const StatusBadge = ({ status }: { status: Merchant["status"] }) => {
   const styles = {
-    ACTIVE: "bg-emerald-50 text-emerald-600 border-emerald-200/50",
-    INACTIVE: "bg-amber-50 text-amber-600 border-amber-200/50",
-    SUSPENDED: "bg-red-50 text-red-600 border-red-200/50",
+    ACTIVE: "bg-success/10 text-success border-success/30",
+    INACTIVE: "bg-warning/10 text-warning border-warning/30",
+    SUSPENDED: "bg-danger/10 text-danger border-danger/30",
   };
 
   return (
@@ -22,9 +22,9 @@ const StatusBadge = ({ status }: { status: Merchant["status"] }) => {
 
 const KycBadge = ({ status }: { status: Merchant["kycStatus"] }) => {
   const styles = {
-    APPROVED: "text-emerald-600",
-    PENDING: "text-amber-500",
-    REJECTED: "text-red-500",
+    APPROVED: "text-success",
+    PENDING: "text-warning",
+    REJECTED: "text-danger",
   };
 
   return (
@@ -53,7 +53,7 @@ export const merchantColumns: ColumnDef<Merchant>[] = [
     accessorKey: "businessType",
     header: "Business Type",
     cell: ({ row }) => (
-      <span className="text-[13px] font-medium text-slate-700 dark:text-slate-300">
+      <span className="text-[13px] font-medium text-foreground">
         {row.original.businessType}
       </span>
     ),
@@ -67,7 +67,7 @@ export const merchantColumns: ColumnDef<Merchant>[] = [
     accessorKey: "completionPercentage",
     header: "Completion",
     cell: ({ row }) => (
-      <span className="text-[13px] font-medium text-slate-700 dark:text-slate-300">
+      <span className="text-[13px] font-medium text-foreground">
         {row.original.completionPercentage}%
       </span>
     ),
@@ -80,14 +80,14 @@ export const merchantColumns: ColumnDef<Merchant>[] = [
         style: "currency",
         currency: "INR",
       }).format(row.original.walletBalance);
-      return <span className="text-[13px] font-medium tabular-nums text-slate-700 dark:text-slate-300">{formatted}</span>;
+      return <span className="text-[13px] font-medium tabular-nums text-foreground">{formatted}</span>;
     },
   },
   {
     accessorKey: "totalBeneficiaries",
     header: "Beneficiaries",
     cell: ({ row }) => (
-      <span className="text-[13px] font-medium tabular-nums text-slate-700 dark:text-slate-300">
+      <span className="text-[13px] font-medium tabular-nums text-foreground">
         {row.original.totalBeneficiaries}
       </span>
     ),
@@ -107,7 +107,7 @@ export const merchantColumns: ColumnDef<Merchant>[] = [
         month: "short",
         year: "numeric",
       });
-      return <span className="text-[13px] font-medium text-slate-600 text-muted-foreground">{formatted}</span>;
+      return <span className="text-[13px] font-medium text-muted-foreground">{formatted}</span>;
     },
   },
   {
@@ -115,7 +115,7 @@ export const merchantColumns: ColumnDef<Merchant>[] = [
     cell: ({ row }) => (
       <div className="flex items-center gap-2">
         <Link href={`/merchants/${row.original.id}`}>
-          <Button variant="outline" size="sm" className="h-8 text-[12px] font-medium text-slate-600">
+          <Button variant="outline" size="sm" className="h-8 text-[12px] font-medium text-muted-foreground">
             View
           </Button>
         </Link>

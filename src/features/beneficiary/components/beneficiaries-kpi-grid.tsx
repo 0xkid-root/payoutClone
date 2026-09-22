@@ -14,7 +14,7 @@ export function BeneficiariesKpiGrid() {
         title="Active Beneficiaries"
         value="11,820"
         icon={CheckCircle2}
-        iconColorClass="text-emerald-500"
+        iconColorClass="text-success"
       />
       <StatCard
         title="Inactive Beneficiaries"

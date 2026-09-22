@@ -50,7 +50,7 @@ export function BulkPayoutsPage() {
     <div className="flex flex-col gap-6 p-6 max-w-7xl mx-auto w-full pb-10">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
-          <h1 className="text-2xl font-bold tracking-tight text-foreground text-foreground">
+          <h1 className="text-2xl font-bold tracking-tight text-foreground">
             Bulk Payouts
           </h1>
           <p className="text-sm text-muted-foreground mt-1">

@@ -94,7 +94,7 @@ export function MerchantsTable() {
             <DataTableSkeleton columnCount={8} rowCount={pagination.pageSize} />
           </div>
         ) : isError ? (
-          <div className="absolute inset-0 flex items-center justify-center rounded-md border border-red-200 bg-red-50 p-6 text-center text-red-600 dark:border-red-900/50 dark:bg-red-900/10 dark:text-red-400">
+          <div className="absolute inset-0 flex items-center justify-center rounded-md border border-danger/30 bg-danger/10 p-6 text-center text-danger dark:border-red-900/50 dark:bg-red-900/10 dark:text-red-400">
             <div>
               <p className="font-medium">Failed to load merchants.</p>
               <p className="text-sm mt-1 opacity-80">Please try refreshing the page.</p>

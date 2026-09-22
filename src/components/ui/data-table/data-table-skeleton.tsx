@@ -21,13 +21,13 @@ export function DataTableSkeleton({
 }: DataTableSkeletonProps) {
   return (
     <div className="space-y-4 w-full">
-      <div className="rounded-md border border-border border-border bg-white bg-background overflow-hidden">
+      <div className="rounded-md border border-border bg-white bg-background overflow-hidden">
         <Table>
-          <TableHeader className="bg-slate-50/50 bg-background/50">
+          <TableHeader className="bg-background/50">
             <TableRow>
               {Array.from({ length: columnCount }).map((_, i) => (
                 <TableHead key={i}>
-                  <Skeleton className="h-5 w-24 bg-slate-200 bg-card" />
+                  <Skeleton className="h-5 w-24 bg-border" />
                 </TableHead>
               ))}
             </TableRow>
@@ -49,14 +49,14 @@ export function DataTableSkeleton({
       {/* Pagination Skeleton */}
       <div className="flex items-center justify-between px-2">
         <div className="hidden sm:block">
-          <Skeleton className="h-5 w-32 bg-slate-200 bg-card" />
+          <Skeleton className="h-5 w-32 bg-border" />
         </div>
         <div className="flex items-center space-x-6">
-          <Skeleton className="h-8 w-16 bg-slate-200 bg-card rounded-md" />
-          <Skeleton className="h-5 w-24 bg-slate-200 bg-card" />
+          <Skeleton className="h-8 w-16 bg-border rounded-md" />
+          <Skeleton className="h-5 w-24 bg-border" />
           <div className="flex gap-2">
-            <Skeleton className="h-8 w-8 bg-slate-200 bg-card rounded-md" />
-            <Skeleton className="h-8 w-8 bg-slate-200 bg-card rounded-md" />
+            <Skeleton className="h-8 w-8 bg-border rounded-md" />
+            <Skeleton className="h-8 w-8 bg-border rounded-md" />
           </div>
         </div>
       </div>

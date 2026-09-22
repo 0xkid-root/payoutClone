@@ -67,7 +67,7 @@ const columns: ColumnDef<ReconciliationRecord>[] = [
     accessorKey: "bankAmount",
     header: "Bank",
     cell: ({ row }) => (
-      <span className="text-slate-600 text-muted-foreground">
+      <span className="text-muted-foreground">
         {formatCurrency(row.getValue("bankAmount"))}
       </span>
     ),
@@ -76,7 +76,7 @@ const columns: ColumnDef<ReconciliationRecord>[] = [
     accessorKey: "partnerAmount",
     header: "Partner",
     cell: ({ row }) => (
-      <span className="text-slate-600 text-muted-foreground">
+      <span className="text-muted-foreground">
         {formatCurrency(row.getValue("partnerAmount"))}
       </span>
     ),
@@ -88,12 +88,12 @@ const columns: ColumnDef<ReconciliationRecord>[] = [
       const diff = row.getValue("difference") as number;
       if (diff === 0)
         return (
-          <span className="text-emerald-600 font-medium">
+          <span className="text-success font-medium">
             {formatCurrency(diff)}
           </span>
         );
       return (
-        <span className="text-red-500 font-bold">{formatCurrency(diff)}</span>
+        <span className="text-danger font-bold">{formatCurrency(diff)}</span>
       );
     },
   },
@@ -106,7 +106,7 @@ const columns: ColumnDef<ReconciliationRecord>[] = [
         return (
           <Badge
             variant="default"
-            className="bg-emerald-500 hover:bg-emerald-600"
+            className="bg-success/100 hover:bg-emerald-600"
           >
             MATCHED
           </Badge>
@@ -124,7 +124,7 @@ const columns: ColumnDef<ReconciliationRecord>[] = [
       return (
         <Link
           href={`/settlement/reconciliation/${row.original.id}`}
-          className="text-sm font-medium text-blue-600 hover:underline"
+          className="text-sm font-medium text-info hover:underline"
         >
           View
         </Link>
@@ -180,7 +180,7 @@ export function ReconciliationDashboardPage() {
           title="Total Records"
           value="45,231"
           icon={FileText}
-          iconColorClass="text-blue-600"
+          iconColorClass="text-info"
           trendValue="Last 30 Days"
           trendUp={true}
         />
@@ -188,7 +188,7 @@ export function ReconciliationDashboardPage() {
           title="Matched"
           value="44,601"
           icon={CheckCircle2}
-          iconColorClass="text-emerald-500"
+          iconColorClass="text-success"
           trendValue="98.6% match rate"
           trendUp={true}
         />
@@ -196,7 +196,7 @@ export function ReconciliationDashboardPage() {
           title="Mismatch"
           value="497"
           icon={AlertCircle}
-          iconColorClass="text-red-500"
+          iconColorClass="text-danger"
           trendValue="1.1% of total"
           trendUp={false}
         />
@@ -204,7 +204,7 @@ export function ReconciliationDashboardPage() {
           title="Pending Review"
           value="133"
           icon={Clock}
-          iconColorClass="text-amber-500"
+          iconColorClass="text-warning"
           trendValue="Requires action"
           trendUp={false}
         />
@@ -227,7 +227,7 @@ export function ReconciliationDashboardPage() {
                 <button
                   key={t}
                   onClick={() => setTimeRange(t)}
-                  className={`flex items-center gap-1 rounded px-2.5 py-1 text-[13px] font-semibold transition-colors ${timeRange === t ? "bg-muted text-foreground bg-card dark:text-white" : "text-slate-600 hover:text-foreground text-muted-foreground dark:hover:text-white"}`}
+                  className={`flex items-center gap-1 rounded px-2.5 py-1 text-[13px] font-semibold transition-colors ${timeRange === t ? "bg-muted text-foreground bg-card dark:text-white" : "text-muted-foreground hover:text-foreground text-muted-foreground dark:hover:text-white"}`}
                 >
                   {t}
                 </button>
@@ -279,7 +279,7 @@ export function ReconciliationDashboardPage() {
                   content={({ active, payload, label }) => {
                     if (active && payload && payload.length) {
                       return (
-                        <div className="bg-white bg-background border border-border border-border p-3 rounded-lg shadow-lg">
+                        <div className="bg-white bg-background border border-border p-3 rounded-lg shadow-lg">
                           <p className="font-medium text-foreground dark:text-white mb-2">
                             {label}
                           </p>
@@ -287,7 +287,7 @@ export function ReconciliationDashboardPage() {
                             {payload.map((entry, index) => (
                               <p
                                 key={index}
-                                className="text-sm text-slate-600 text-muted-foreground flex justify-between gap-4"
+                                className="text-sm text-muted-foreground flex justify-between gap-4"
                               >
                                 <span>
                                   {entry.name === "matched"
@@ -298,7 +298,7 @@ export function ReconciliationDashboardPage() {
                                   :
                                 </span>
                                 <span
-                                  className={`font-semibold ${entry.name === "matched" ? "text-emerald-600" : entry.name === "mismatch" ? "text-red-500" : "text-amber-500"}`}
+                                  className={`font-semibold ${entry.name === "matched" ? "text-success" : entry.name === "mismatch" ? "text-danger" : "text-warning"}`}
                                 >
                                   {entry.value}%
                                 </span>
@@ -397,11 +397,11 @@ export function ReconciliationDashboardPage() {
                     content={({ active, payload }) => {
                       if (active && payload && payload.length) {
                         return (
-                          <div className="bg-white bg-background border border-border border-border p-2 rounded shadow-lg text-sm">
+                          <div className="bg-white bg-background border border-border p-2 rounded shadow-lg text-sm">
                             <span className="font-medium text-foreground dark:text-white">
                               {payload[0].name}:{" "}
                             </span>
-                            <span className="text-slate-600 text-muted-foreground">
+                            <span className="text-muted-foreground">
                               {payload[0].value}%
                             </span>
                           </div>
@@ -424,9 +424,9 @@ export function ReconciliationDashboardPage() {
 
             <div className="w-full mt-2 space-y-2">
               {[
-                { name: "Matched", value: 98.6, color: "bg-emerald-500" },
-                { name: "Mismatch", value: 1.1, color: "bg-red-500" },
-                { name: "Pending Review", value: 0.3, color: "bg-amber-500" },
+                { name: "Matched", value: 98.6, color: "bg-success/100" },
+                { name: "Mismatch", value: 1.1, color: "bg-danger/100" },
+                { name: "Pending Review", value: 0.3, color: "bg-warning/100" },
               ].map((item) => (
                 <div
                   key={item.name}
@@ -436,7 +436,7 @@ export function ReconciliationDashboardPage() {
                     <span
                       className={`w-2.5 h-2.5 rounded-full ${item.color}`}
                     ></span>
-                    <span className="text-slate-600 text-muted-foreground font-medium">
+                    <span className="text-muted-foreground font-medium">
                       {item.name}
                     </span>
                   </div>
@@ -451,7 +451,7 @@ export function ReconciliationDashboardPage() {
       </div>
 
       <div className="flex w-full flex-col rounded-xl border border-border/60 bg-white shadow-[0_1px_2px_0_rgba(0,0,0,0.01)] border-border bg-background">
-        <div className="p-4 border-b border-slate-100 border-border">
+        <div className="p-4 border-b border-border">
           <div className="flex bg-muted bg-card/50 p-1 rounded-lg w-fit overflow-x-auto">
             {tabs.map((tab) => (
               <button
@@ -462,8 +462,8 @@ export function ReconciliationDashboardPage() {
                 }}
                 className={`px-4 py-1.5 text-sm font-medium rounded-md whitespace-nowrap transition-all ${
                   activeTab === tab
-                    ? "bg-white dark:bg-slate-700 text-foreground dark:text-white shadow-sm"
-                    : "text-slate-600 text-muted-foreground hover:text-foreground dark:hover:text-white"
+                    ? "bg-white bg-card text-foreground dark:text-white shadow-sm"
+                    : "text-muted-foreground hover:text-foreground dark:hover:text-white"
                 }`}
               >
                 {tab}

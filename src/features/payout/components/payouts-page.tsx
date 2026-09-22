@@ -31,16 +31,16 @@ export default function PayoutsPage() {
 
       <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
         <StatCard title="Total Volume (Today)" value="₹8.45 Cr" icon={ArrowUpRight} iconColorClass="text-primary" />
-        <StatCard title="Successful" value="1,284" icon={CheckCircle2} iconColorClass="text-emerald-600" />
-        <StatCard title="Processing" value="45" icon={Clock} iconColorClass="text-blue-600" />
-        <StatCard title="Failed" value="12" icon={XCircle} iconColorClass="text-red-600" alertText="Needs retry" />
+        <StatCard title="Successful" value="1,284" icon={CheckCircle2} iconColorClass="text-success" />
+        <StatCard title="Processing" value="45" icon={Clock} iconColorClass="text-info" />
+        <StatCard title="Failed" value="12" icon={XCircle} iconColorClass="text-danger" alertText="Needs retry" />
       </div>
 
       <div className="flex flex-col rounded-2xl border border-border bg-white shadow-sm border-border bg-background overflow-hidden">
         <div className="flex flex-col gap-4 border-b border-border p-4 sm:flex-row sm:items-center sm:justify-between border-border">
           <div className="relative w-full sm:max-w-xs">
             <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-            <Input placeholder="Search payouts..." className="h-10 w-full rounded-xl pl-9 bg-slate-50 border-border bg-background/50 border-border" />
+            <Input placeholder="Search payouts..." className="h-10 w-full rounded-xl pl-9 bg-background border-border bg-background/50 border-border" />
           </div>
           <div className="flex items-center gap-3">
              <Button variant="outline" size="sm" className="h-10 rounded-xl"><Filter className="mr-2 h-4 w-4" />Mode</Button>
@@ -50,7 +50,7 @@ export default function PayoutsPage() {
 
         <Table>
           <TableHeader>
-            <TableRow className="bg-slate-50/50 hover:bg-slate-50/50 bg-card/20 dark:hover:bg-card/20 border-border border-border">
+            <TableRow className="bg-background hover:bg-background bg-card/20 dark:hover:bg-card/20 border-border">
               <TableHead>Payout ID</TableHead>
               <TableHead>Date & Time</TableHead>
               <TableHead>Merchant</TableHead>
@@ -70,7 +70,7 @@ export default function PayoutsPage() {
                 <TableCell className="font-medium text-foreground dark:text-white">{item.beneficiary}</TableCell>
                 <TableCell>
                   <div className="flex flex-col">
-                    <span className="font-semibold text-xs text-slate-700 dark:text-slate-300">{item.mode}</span>
+                    <span className="font-semibold text-xs text-foreground">{item.mode}</span>
                     <span className="text-xs text-muted-foreground">{item.bank}</span>
                   </div>
                 </TableCell>
@@ -80,7 +80,7 @@ export default function PayoutsPage() {
                 <TableCell><StatusBadge status={item.status} /></TableCell>
                 <TableCell className="text-right">
                   {item.status === 'FAILED' ? (
-                     <Button variant="ghost" size="sm" className="text-amber-600 hover:bg-amber-50">Retry</Button>
+                     <Button variant="ghost" size="sm" className="text-warning hover:bg-warning/10">Retry</Button>
                   ) : (
                      <Button variant="ghost" size="sm" className="text-primary hover:bg-primary/10">Details</Button>
                   )}
