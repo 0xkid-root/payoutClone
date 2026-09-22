@@ -28,8 +28,8 @@ export function StatCard({
 }: StatCardProps) {
   return (
     <div className={cn(
-      "flex flex-col justify-between rounded-xl border bg-white p-5 shadow-[0_1px_2px_0_rgba(0,0,0,0.01)] transition-colors hover:bg-slate-50/30 bg-background",
-      alertText ? "border-amber-200/60 dark:border-amber-900/30" : "border-border/60 border-border"
+      "flex flex-col justify-between rounded-xl border bg-white p-5 shadow-[0_1px_2px_0_rgba(0,0,0,0.01)] transition-colors hover:bg-background/30 bg-background",
+      alertText ? "border-warning/30/60 dark:border-amber-900/30" : "border-border/60 border-border"
     )}>
       <div className="flex items-start justify-between">
         <div className="flex flex-col">
@@ -52,16 +52,16 @@ export function StatCard({
                   "flex items-center font-medium",
                   trendUp !== undefined
                     ? trendUp
-                      ? "text-emerald-600"
-                      : "text-slate-600"
-                    : "text-slate-700 dark:text-slate-300"
+                      ? "text-success"
+                      : "text-muted-foreground"
+                    : "text-foreground"
                 )}
               >
                 {trendUp ? "↑ " : ""}{trendValue}
               </span>
             )}
             {alertText && (
-              <span className="font-medium text-amber-600">{alertText}</span>
+              <span className="font-medium text-warning">{alertText}</span>
             )}
             {trendLabel && <span className="truncate">{trendLabel}</span>}
           </div>
