@@ -54,14 +54,14 @@ export function VanTable({ onViewDetails }: VanTableProps) {
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
           <Input 
             placeholder="Search VAN, merchant, merchant ID..." 
-            className="pl-9 bg-slate-50/50 dark:bg-slate-950/50"
+            className="pl-9 bg-background bg-background/50"
             value={globalFilter}
             onChange={(e) => setGlobalFilter(e.target.value)}
           />
         </div>
         <div className="flex w-full sm:w-auto items-center gap-3">
           <Select value={currentStatus} onValueChange={(val) => setFilter("status", val)}>
-            <SelectTrigger className="w-[140px] bg-slate-50/50 dark:bg-slate-950/50">
+            <SelectTrigger className="w-[140px] bg-background bg-background/50">
               <SelectValue placeholder="Status" />
             </SelectTrigger>
             <SelectContent>
@@ -74,7 +74,7 @@ export function VanTable({ onViewDetails }: VanTableProps) {
           </Select>
 
           <Select value={currentProvider} onValueChange={(val) => setFilter("provider", val)}>
-            <SelectTrigger className="w-[160px] bg-slate-50/50 dark:bg-slate-950/50">
+            <SelectTrigger className="w-[160px] bg-background bg-background/50">
               <SelectValue placeholder="Provider" />
             </SelectTrigger>
             <SelectContent>
