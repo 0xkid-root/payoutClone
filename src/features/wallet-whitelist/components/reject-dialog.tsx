@@ -53,11 +53,11 @@ export function RejectDialog({ isOpen, onClose, onSuccess, request }: RejectDial
     }}>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle className="flex items-center gap-2 text-red-700 dark:text-red-500">
+          <DialogTitle className="flex items-center gap-2 text-danger dark:text-danger">
             <AlertCircle className="h-5 w-5" />
             Reject Request?
           </DialogTitle>
-          <DialogDescription className="pt-3 text-slate-600 dark:text-slate-300">
+          <DialogDescription className="pt-3 text-muted-foreground text-foreground">
             Please provide a reason for rejecting this bank account. This reason will be visible to the merchant.
           </DialogDescription>
         </DialogHeader>
