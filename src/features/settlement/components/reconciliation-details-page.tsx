@@ -31,7 +31,7 @@ export function ReconciliationDetailsPage({ id = 'REC-1002' }: { id?: string }) 
           <div className="flex items-center gap-3">
             <h1 className="text-3xl font-bold tracking-tight text-foreground dark:text-white">Reconciliation #{record.id}</h1>
             {record.status === 'Matched' ? (
-              <Badge variant="default" className="bg-emerald-500 hover:bg-emerald-600">MATCHED</Badge>
+              <Badge variant="default" className="bg-success/100 hover:bg-emerald-600">MATCHED</Badge>
             ) : record.status === 'Mismatch' ? (
               <Badge variant="destructive">MISMATCH</Badge>
             ) : (
@@ -56,7 +56,7 @@ export function ReconciliationDetailsPage({ id = 'REC-1002' }: { id?: string }) 
           <div className="flex-1 p-6 relative">
             <div className="flex items-center justify-between mb-6">
               <div className="flex items-center gap-3">
-                <div className="p-2 bg-muted text-slate-600 rounded-md bg-card text-muted-foreground">
+                <div className="p-2 bg-muted text-muted-foreground rounded-md bg-card text-muted-foreground">
                   <Server className="w-5 h-5" />
                 </div>
                 <h3 className="font-semibold text-foreground dark:text-white">Internal System</h3>
@@ -67,14 +67,14 @@ export function ReconciliationDetailsPage({ id = 'REC-1002' }: { id?: string }) 
               </div>
             </div>
             
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm bg-slate-50 bg-card/50 p-4 rounded-lg">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm bg-background bg-card/50 p-4 rounded-lg">
               <div>
                 <span className="block text-muted-foreground mb-1">Transaction ID</span>
                 <span className="font-medium text-foreground dark:text-white">{record.transactionId}</span>
               </div>
               <div>
                 <span className="block text-muted-foreground mb-1">Status</span>
-                <span className="font-medium text-emerald-600">Success</span>
+                <span className="font-medium text-success">Success</span>
               </div>
               <div className="md:col-span-2">
                 <span className="block text-muted-foreground mb-1">Created</span>
@@ -86,35 +86,35 @@ export function ReconciliationDetailsPage({ id = 'REC-1002' }: { id?: string }) 
           </div>
 
           <div className="relative flex items-center justify-center h-0 z-10">
-            <div className="absolute w-full h-[1px] bg-slate-200 bg-card"></div>
-            <div className="bg-muted bg-card text-muted-foreground text-muted-foreground text-[11px] font-bold px-3 py-1 rounded-full border border-border border-border z-10">
+            <div className="absolute w-full h-[1px] bg-border"></div>
+            <div className="bg-muted bg-card text-muted-foreground text-[11px] font-bold px-3 py-1 rounded-full border border-border z-10">
               VS
             </div>
           </div>
 
           {/* Bank Record */}
-          <div className={`flex-1 p-6 relative ${record.status === 'Mismatch' ? 'bg-red-50/30 dark:bg-red-900/10' : ''}`}>
+          <div className={`flex-1 p-6 relative ${record.status === 'Mismatch' ? 'bg-danger/10/30 dark:bg-red-900/10' : ''}`}>
             <div className="flex items-center justify-between mb-6">
               <div className="flex items-center gap-3">
-                <div className="p-2 bg-muted text-slate-600 rounded-md bg-card text-muted-foreground">
+                <div className="p-2 bg-muted text-muted-foreground rounded-md bg-card text-muted-foreground">
                   <Landmark className="w-5 h-5" />
                 </div>
                 <h3 className="font-semibold text-foreground dark:text-white">Bank Record</h3>
               </div>
               <div className="text-right">
-                <p className={`text-[20px] font-bold ${record.status === 'Mismatch' ? 'text-red-600 dark:text-red-400' : 'text-foreground dark:text-white'}`}>{formatCurrency(record.bankAmount)}</p>
+                <p className={`text-[20px] font-bold ${record.status === 'Mismatch' ? 'text-danger dark:text-red-400' : 'text-foreground dark:text-white'}`}>{formatCurrency(record.bankAmount)}</p>
                 <p className="text-sm text-muted-foreground mt-0.5">Bank Statement</p>
               </div>
             </div>
             
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm bg-slate-50 bg-card/50 p-4 rounded-lg">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm bg-background bg-card/50 p-4 rounded-lg">
               <div>
                 <span className="block text-muted-foreground mb-1">Bank Ref</span>
                 <span className="font-medium text-foreground dark:text-white">{record.bankReference || '-'}</span>
               </div>
               <div>
                 <span className="block text-muted-foreground mb-1">Status</span>
-                <span className="font-medium text-emerald-600">Success</span>
+                <span className="font-medium text-success">Success</span>
               </div>
               <div className="md:col-span-2">
                 <span className="block text-muted-foreground mb-1">Settlement Date</span>
@@ -126,35 +126,35 @@ export function ReconciliationDetailsPage({ id = 'REC-1002' }: { id?: string }) 
           </div>
 
           <div className="relative flex items-center justify-center h-0 z-10">
-            <div className="absolute w-full h-[1px] bg-slate-200 bg-card"></div>
-            <div className="bg-muted bg-card text-muted-foreground text-muted-foreground text-[11px] font-bold px-3 py-1 rounded-full border border-border border-border z-10">
+            <div className="absolute w-full h-[1px] bg-border"></div>
+            <div className="bg-muted bg-card text-muted-foreground text-[11px] font-bold px-3 py-1 rounded-full border border-border z-10">
               VS
             </div>
           </div>
 
           {/* Payment Partner */}
-          <div className={`flex-1 p-6 relative ${record.status === 'Mismatch' ? 'bg-red-50/30 dark:bg-red-900/10' : ''}`}>
+          <div className={`flex-1 p-6 relative ${record.status === 'Mismatch' ? 'bg-danger/10/30 dark:bg-red-900/10' : ''}`}>
             <div className="flex items-center justify-between mb-6">
               <div className="flex items-center gap-3">
-                <div className="p-2 bg-muted text-slate-600 rounded-md bg-card text-muted-foreground">
+                <div className="p-2 bg-muted text-muted-foreground rounded-md bg-card text-muted-foreground">
                   <Building className="w-5 h-5" />
                 </div>
                 <h3 className="font-semibold text-foreground dark:text-white">Payment Partner</h3>
               </div>
               <div className="text-right">
-                <p className={`text-[20px] font-bold ${record.status === 'Mismatch' ? 'text-red-600 dark:text-red-400' : 'text-foreground dark:text-white'}`}>{formatCurrency(record.partnerAmount)}</p>
+                <p className={`text-[20px] font-bold ${record.status === 'Mismatch' ? 'text-danger dark:text-red-400' : 'text-foreground dark:text-white'}`}>{formatCurrency(record.partnerAmount)}</p>
                 <p className="text-sm text-muted-foreground mt-0.5">Provider Report</p>
               </div>
             </div>
             
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm bg-slate-50 bg-card/50 p-4 rounded-lg">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm bg-background bg-card/50 p-4 rounded-lg">
               <div>
                 <span className="block text-muted-foreground mb-1">Partner Ref</span>
                 <span className="font-medium text-foreground dark:text-white">{record.partnerReference || '-'}</span>
               </div>
               <div>
                 <span className="block text-muted-foreground mb-1">Status</span>
-                <span className="font-medium text-emerald-600">Success</span>
+                <span className="font-medium text-success">Success</span>
               </div>
               <div className="md:col-span-2">
                 <span className="block text-muted-foreground mb-1">Processed</span>
@@ -173,25 +173,25 @@ export function ReconciliationDetailsPage({ id = 'REC-1002' }: { id?: string }) 
           <div className="flex flex-col rounded-xl border border-border bg-white shadow-sm border-border bg-background">
             <div className="p-6 space-y-4">
               <div className="flex justify-between items-center text-sm font-medium">
-                <span className="text-slate-600 text-muted-foreground">PayNexus Internal</span>
+                <span className="text-muted-foreground">PayNexus Internal</span>
                 <span className="text-foreground dark:text-white">{formatCurrency(record.internalAmount)}</span>
               </div>
               <div className="flex justify-between items-center text-sm font-medium">
-                <span className="text-slate-600 text-muted-foreground">Bank</span>
+                <span className="text-muted-foreground">Bank</span>
                 <span className="text-foreground dark:text-white">{formatCurrency(record.bankAmount)}</span>
               </div>
-              <div className="flex justify-between items-center text-sm font-medium pb-4 border-b border-border border-border">
-                <span className="text-slate-600 text-muted-foreground">Payment Partner</span>
+              <div className="flex justify-between items-center text-sm font-medium pb-4 border-b border-border">
+                <span className="text-muted-foreground">Payment Partner</span>
                 <span className="text-foreground dark:text-white">{formatCurrency(record.partnerAmount)}</span>
               </div>
               <div className="flex justify-between items-center font-bold">
                 <span className="text-foreground dark:text-white text-base">Difference</span>
-                <span className="text-red-600 text-lg">{formatCurrency(record.difference)}</span>
+                <span className="text-danger text-lg">{formatCurrency(record.difference)}</span>
               </div>
             </div>
-            <div className="bg-red-50 dark:bg-red-900/10 px-6 py-4 border-t border-red-100 dark:border-red-900/20 rounded-b-xl flex gap-3 items-start">
-              <AlertCircle className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />
-              <p className="text-sm text-red-700 dark:text-red-400">
+            <div className="bg-danger/10 dark:bg-red-900/10 px-6 py-4 border-t border-red-100 dark:border-red-900/20 rounded-b-xl flex gap-3 items-start">
+              <AlertCircle className="w-5 h-5 text-danger shrink-0 mt-0.5" />
+              <p className="text-sm text-danger dark:text-red-400">
                 External records are {formatCurrency(record.difference)} lower than the internal transaction amount.
               </p>
             </div>
