@@ -57,14 +57,14 @@ export function FlatFeesPage() {
               placeholder="Search Merchant / Fee ID..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="h-10 w-full rounded-xl pl-9 bg-slate-50 border-border bg-background/50 border-border"
+              className="h-10 w-full rounded-xl pl-9 bg-background border-border bg-background/50 border-border"
             />
           </div>
         </div>
 
         <Table>
           <TableHeader>
-            <TableRow className="bg-slate-50/50 hover:bg-slate-50/50 bg-card/20 dark:hover:bg-card/20 border-border border-border">
+            <TableRow className="bg-background hover:bg-background bg-card/20 dark:hover:bg-card/20 border-border">
               <TableHead>Fee ID</TableHead>
               <TableHead>Merchant</TableHead>
               <TableHead className="text-right">Flat Fee</TableHead>
@@ -143,7 +143,7 @@ export function FlatFeesPage() {
                           )}
                         </DropdownMenuItem>
                         <DropdownMenuSeparator />
-                        <DropdownMenuItem className="cursor-pointer text-red-600 focus:bg-red-50 focus:text-red-600 dark:focus:bg-red-900/10 dark:focus:text-red-500">
+                        <DropdownMenuItem className="cursor-pointer text-danger focus:bg-danger/10 focus:text-danger dark:focus:bg-red-900/10 dark:focus:text-danger">
                           <Trash2 className="mr-2 h-4 w-4" />
                           Delete
                         </DropdownMenuItem>
