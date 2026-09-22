@@ -70,7 +70,7 @@ export function BeneficiariesTable() {
         {isLoading ? (
           <DataTableSkeleton columnCount={8} rowCount={pagination.pageSize} />
         ) : isError ? (
-          <div className="rounded-md border border-red-200 bg-red-50 p-6 text-center text-red-600">
+          <div className="rounded-md border border-danger/30 bg-danger/10 p-6 text-center text-danger">
             <p className="font-medium text-[14px]">Unable to load beneficiaries.</p>
             <Button variant="outline" className="mt-3 text-[13px]" onClick={() => refetch()}>Retry</Button>
           </div>
