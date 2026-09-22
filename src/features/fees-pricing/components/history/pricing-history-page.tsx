@@ -26,7 +26,7 @@ export function PricingHistoryPage() {
       <div className="flex flex-col rounded-2xl border border-border bg-white shadow-sm border-border bg-background overflow-hidden">
         <Table>
           <TableHeader>
-            <TableRow className="bg-slate-50/50 hover:bg-slate-50/50 bg-card/20 dark:hover:bg-card/20 border-border border-border">
+            <TableRow className="bg-background hover:bg-background bg-card/20 dark:hover:bg-card/20 border-border">
               <TableHead>Date</TableHead>
               <TableHead>Merchant</TableHead>
               <TableHead>Fee Type</TableHead>
@@ -60,7 +60,7 @@ export function PricingHistoryPage() {
                   </TableCell>
                   <TableCell className="font-medium">{item.merchantName}</TableCell>
                   <TableCell>
-                    <span className="inline-flex items-center rounded-md bg-muted px-2 py-1 text-xs font-medium text-slate-700 bg-card dark:text-slate-300 capitalize">
+                    <span className="inline-flex items-center rounded-md bg-muted px-2 py-1 text-xs font-medium text-foreground bg-card text-foreground capitalize">
                       {item.feeType.toLowerCase().replace('_', ' ')}
                     </span>
                   </TableCell>
@@ -70,7 +70,7 @@ export function PricingHistoryPage() {
                         {item.previousConfiguration}
                       </span>
                       <MoveRight className="h-3 w-3 text-muted-foreground flex-shrink-0" />
-                      <span className="font-medium text-emerald-600 dark:text-emerald-400">
+                      <span className="font-medium text-success dark:text-emerald-400">
                         {item.newConfiguration}
                       </span>
                     </div>
