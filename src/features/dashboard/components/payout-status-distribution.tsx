@@ -63,7 +63,7 @@ export function PayoutStatusDistribution() {
           <div key={i} className="flex items-center justify-between text-[13px]">
             <div className="flex items-center gap-2">
               <div className="h-2 w-2 rounded-full" style={{ backgroundColor: item.color }} />
-              <span className="font-medium text-slate-700 dark:text-slate-300">{item.name}</span>
+              <span className="font-medium text-foreground">{item.name}</span>
             </div>
             <div className="flex items-center gap-3">
               <span className="font-semibold tabular-nums text-foreground dark:text-white">{item.value.toLocaleString()}</span>
