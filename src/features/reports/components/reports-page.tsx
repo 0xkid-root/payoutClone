@@ -14,7 +14,7 @@ export default function ReportsPage() {
         {/* Report Card 1 */}
         <div className="flex flex-col justify-between rounded-xl border border-border/60 bg-white p-6 shadow-[0_1px_2px_0_rgba(0,0,0,0.01)] border-border bg-background transition-all hover:shadow-md">
           <div className="flex items-start gap-4">
-            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-50 dark:bg-blue-500/10 text-blue-600">
+            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-info/10 dark:bg-info/100/10 text-info">
               <FileText className="h-5 w-5" />
             </div>
             <div className="flex flex-col">
@@ -29,7 +29,7 @@ export default function ReportsPage() {
           <div className="mt-8 flex flex-col gap-3">
             <Button
               variant="outline"
-              className="w-full justify-start rounded-lg border-border/60 shadow-none text-[13px] font-medium text-slate-600 text-muted-foreground border-border hover:bg-slate-50 dark:hover:bg-card"
+              className="w-full justify-start rounded-lg border-border/60 shadow-none text-[13px] font-medium text-muted-foreground border-border hover:bg-background dark:hover:bg-card"
             >
               <Calendar className="mr-2 h-4 w-4 text-muted-foreground" />
               Select Date Range
@@ -44,7 +44,7 @@ export default function ReportsPage() {
         {/* Report Card 2 */}
         <div className="flex flex-col justify-between rounded-xl border border-border/60 bg-white p-6 shadow-[0_1px_2px_0_rgba(0,0,0,0.01)] border-border bg-background transition-all hover:shadow-md">
           <div className="flex items-start gap-4">
-            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600">
+            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-success/10 dark:bg-success/100/10 text-success">
               <FileText className="h-5 w-5" />
             </div>
             <div className="flex flex-col">
@@ -59,7 +59,7 @@ export default function ReportsPage() {
           <div className="mt-8 flex flex-col gap-3">
             <Button
               variant="outline"
-              className="w-full justify-start rounded-lg border-border/60 shadow-none text-[13px] font-medium text-slate-600 text-muted-foreground border-border hover:bg-slate-50 dark:hover:bg-card"
+              className="w-full justify-start rounded-lg border-border/60 shadow-none text-[13px] font-medium text-muted-foreground border-border hover:bg-background dark:hover:bg-card"
             >
               <Filter className="mr-2 h-4 w-4 text-muted-foreground" />
               Select Merchant
@@ -74,7 +74,7 @@ export default function ReportsPage() {
         {/* Report Card 3 */}
         <div className="flex flex-col justify-between rounded-xl border border-border/60 bg-white p-6 shadow-[0_1px_2px_0_rgba(0,0,0,0.01)] border-border bg-background transition-all hover:shadow-md">
           <div className="flex items-start gap-4">
-            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-amber-50 dark:bg-amber-500/10 text-amber-600">
+            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-warning/10 dark:bg-warning/100/10 text-warning">
               <FileText className="h-5 w-5" />
             </div>
             <div className="flex flex-col">
@@ -89,7 +89,7 @@ export default function ReportsPage() {
           <div className="mt-8 flex flex-col gap-3">
             <Button
               variant="outline"
-              className="w-full justify-start rounded-lg border-border/60 shadow-none text-[13px] font-medium text-slate-600 text-muted-foreground border-border hover:bg-slate-50 dark:hover:bg-card"
+              className="w-full justify-start rounded-lg border-border/60 shadow-none text-[13px] font-medium text-muted-foreground border-border hover:bg-background dark:hover:bg-card"
             >
               <Calendar className="mr-2 h-4 w-4 text-muted-foreground" />
               Select Date Range
