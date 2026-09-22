@@ -14,19 +14,19 @@ export function MerchantsKpiGrid() {
         title="Active Merchants"
         value="2,512"
         icon={CheckCircle2}
-        iconColorClass="text-emerald-500"
+        iconColorClass="text-success"
       />
       <StatCard
         title="Pending KYC"
         value="184"
         icon={Clock}
-        iconColorClass="text-amber-500"
+        iconColorClass="text-warning"
       />
       <StatCard
         title="Suspended Merchants"
         value="149"
         icon={AlertTriangle}
-        iconColorClass="text-red-500"
+        iconColorClass="text-danger"
       />
     </div>
   );
