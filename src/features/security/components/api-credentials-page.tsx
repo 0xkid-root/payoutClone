@@ -29,13 +29,13 @@ export default function ApiCredentialsPage() {
         <div className="flex flex-col gap-4 border-b border-border p-4 sm:flex-row sm:items-center sm:justify-between border-border">
           <div className="relative w-full sm:max-w-xs">
             <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-            <Input placeholder="Search keys..." className="h-10 w-full rounded-xl pl-9 bg-slate-50 border-border bg-background/50 border-border" />
+            <Input placeholder="Search keys..." className="h-10 w-full rounded-xl pl-9 bg-background border-border bg-background/50 border-border" />
           </div>
         </div>
 
         <Table>
           <TableHeader>
-            <TableRow className="bg-slate-50/50 hover:bg-slate-50/50 bg-card/20 dark:hover:bg-card/20 border-border border-border">
+            <TableRow className="bg-background hover:bg-background bg-card/20 dark:hover:bg-card/20 border-border">
               <TableHead>Key Name</TableHead>
               <TableHead>Environment / Merchant</TableHead>
               <TableHead>Secret Key Preview</TableHead>
@@ -52,7 +52,7 @@ export default function ApiCredentialsPage() {
                 <TableCell className="text-muted-foreground">{item.merchantId}</TableCell>
                 <TableCell>
                   <div className="flex items-center gap-2">
-                    <span className="font-mono text-sm tracking-widest text-slate-600 text-muted-foreground">
+                    <span className="font-mono text-sm tracking-widest text-muted-foreground">
                       {item.keyPrefix}••••••••
                     </span>
                     <Button variant="ghost" size="icon" className="h-6 w-6"><Copy className="h-3 w-3" /></Button>
@@ -62,7 +62,7 @@ export default function ApiCredentialsPage() {
                 <TableCell className="text-muted-foreground text-sm">{item.lastUsed}</TableCell>
                 <TableCell><StatusBadge status={item.status} /></TableCell>
                 <TableCell className="text-right">
-                  <Button variant="ghost" size="sm" className="text-red-600 hover:text-red-700 hover:bg-red-50">Revoke</Button>
+                  <Button variant="ghost" size="sm" className="text-danger hover:text-danger hover:bg-danger/10">Revoke</Button>
                 </TableCell>
               </TableRow>
             ))}
