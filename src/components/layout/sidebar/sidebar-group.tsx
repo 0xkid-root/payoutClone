@@ -21,11 +21,11 @@ export function SidebarGroup({ group }: { group: NavGroup }) {
   return (
     <div className="flex flex-col gap-1">
       {!isCollapsed && (
-        <div className="mb-1 px-3 text-[11px] font-semibold uppercase tracking-wider text-slate-400">
+        <div className="mb-1 px-3 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
           {group.label}
         </div>
       )}
-      {isCollapsed && <div className="mx-auto mb-2 h-px w-6 bg-slate-100 bg-sidebar-accent" />}
+      {isCollapsed && <div className="mx-auto mb-2 h-px w-6 bg-muted bg-sidebar-accent" />}
 
       {visibleItems.map((item, index) => {
         if (item.children && item.children.length > 0) {
