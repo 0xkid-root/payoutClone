@@ -95,7 +95,7 @@ export function CreateFlatFee() {
             
             <div className="space-y-6">
               <div className="space-y-2">
-                <Label>Merchant <span className="text-red-500">*</span></Label>
+                <Label>Merchant <span className="text-danger">*</span></Label>
                 <Select 
                   value={watch("merchantId") || undefined}
                   onValueChange={(val) => setValue("merchantId", val as string)}
@@ -113,11 +113,11 @@ export function CreateFlatFee() {
                     ))}
                   </SelectContent>
                 </Select>
-                {errors.merchantId && <p className="text-sm text-red-500">{errors.merchantId.message}</p>}
+                {errors.merchantId && <p className="text-sm text-danger">{errors.merchantId.message}</p>}
               </div>
 
               <div className="space-y-2">
-                <Label>Flat Fee <span className="text-red-500">*</span></Label>
+                <Label>Flat Fee <span className="text-danger">*</span></Label>
                 <div className="relative w-full md:w-1/2">
                   <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground">₹</span>
                   <Input
@@ -128,20 +128,20 @@ export function CreateFlatFee() {
                     placeholder="e.g. 7.00"
                   />
                 </div>
-                {errors.flatFee && <p className="text-sm text-red-500">{errors.flatFee.message}</p>}
+                {errors.flatFee && <p className="text-sm text-danger">{errors.flatFee.message}</p>}
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <Label>Effective From <span className="text-red-500">*</span></Label>
+                  <Label>Effective From <span className="text-danger">*</span></Label>
                   <Input type="date" {...register("effectiveFrom")} className={errors.effectiveFrom ? "border-red-500" : ""} />
-                  {errors.effectiveFrom && <p className="text-sm text-red-500">{errors.effectiveFrom.message}</p>}
+                  {errors.effectiveFrom && <p className="text-sm text-danger">{errors.effectiveFrom.message}</p>}
                 </div>
 
                 <div className="space-y-2">
                   <Label>Effective To</Label>
                   <Input type="date" {...register("effectiveTo")} className={errors.effectiveTo ? "border-red-500" : ""} />
-                  {errors.effectiveTo && <p className="text-sm text-red-500">{errors.effectiveTo.message}</p>}
+                  {errors.effectiveTo && <p className="text-sm text-danger">{errors.effectiveTo.message}</p>}
                 </div>
               </div>
 
@@ -160,16 +160,16 @@ export function CreateFlatFee() {
             </div>
           </div>
 
-          <div className="border-t border-border border-border" />
+          <div className="border-t border-border" />
           
-          <div className="p-6 md:p-8 bg-slate-50/50 bg-background/20">
+          <div className="p-6 md:p-8 bg-background/20">
             <FeeCalculationPreview
               feeType="FLAT"
               flatFee={watchFlatFee || 0}
             />
           </div>
 
-          <div className="border-t border-border border-border p-6 md:px-8 flex justify-end gap-3 bg-white bg-background">
+          <div className="border-t border-border p-6 md:px-8 flex justify-end gap-3 bg-white bg-background">
             <Button type="button" variant="outline" onClick={() => router.push("/fees-pricing/flat")}>
               Cancel
             </Button>
