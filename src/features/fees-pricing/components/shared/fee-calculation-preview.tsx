@@ -76,7 +76,7 @@ export function FeeCalculationPreview({
       </div>
 
       <div className="space-y-3">
-        <div className="flex justify-between text-xs font-medium text-muted-foreground pb-2 border-b border-border border-border">
+        <div className="flex justify-between text-xs font-medium text-muted-foreground pb-2 border-b border-border">
           <span>Transaction Amount</span>
           <span>Calculated Fee</span>
         </div>
@@ -85,7 +85,7 @@ export function FeeCalculationPreview({
           const fee = calculateFee(amt);
           return (
             <div key={amt} className="flex justify-between text-sm">
-              <span className="text-slate-700 dark:text-slate-300">
+              <span className="text-foreground">
                 ₹{amt.toLocaleString('en-IN')}
               </span>
               <span className="font-medium text-foreground dark:text-white">
