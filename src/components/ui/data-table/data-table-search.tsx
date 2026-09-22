@@ -36,7 +36,7 @@ export function DataTableSearch({
         placeholder={placeholder}
         value={value}
         onChange={(e) => setValue(e.target.value)}
-        className="pl-9 bg-white bg-background border-border border-border focus-visible:ring-primary"
+        className="pl-9 bg-white bg-background border-border focus-visible:ring-primary"
       />
     </div>
   );
