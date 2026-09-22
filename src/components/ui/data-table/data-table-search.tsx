@@ -7,37 +7,37 @@ import { useEffect, useState } from "react";
 import { useDebounce } from "use-debounce";
 
 interface DataTableSearchProps {
-  placeholder?: string;
-  value: string;
-  onChange: (value: string) => void;
-  debounceMs?: number;
-  className?: string;
+ placeholder?: string;
+ value: string;
+ onChange: (value: string) => void;
+ debounceMs?: number;
+ className?: string;
 }
 
 export function DataTableSearch({
-  placeholder = "Search...",
-  value: initialValue,
-  onChange,
-  debounceMs = 500,
-  className,
+ placeholder = "Search...",
+ value: initialValue,
+ onChange,
+ debounceMs = 500,
+ className,
 }: DataTableSearchProps) {
-  const [value, setValue] = useState(initialValue);
-  const [debouncedValue] = useDebounce(value, debounceMs);
+ const [value, setValue] = useState(initialValue);
+ const [debouncedValue] = useDebounce(value, debounceMs);
 
-  // When debounced value changes, notify parent
-  useEffect(() => {
-    onChange(debouncedValue);
-  }, [debouncedValue, onChange]);
+ // When debounced value changes, notify parent
+ useEffect(() => {
+ onChange(debouncedValue);
+ }, [debouncedValue, onChange]);
 
-  return (
-    <div className={cn("relative w-full max-w-sm", className)}>
-      <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-      <Input
-        placeholder={placeholder}
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-        className="pl-9 bg-white bg-background border-border focus-visible:ring-primary"
-      />
-    </div>
-  );
+ return (
+ <div className={cn("relative w-full max-w-sm", className)}>
+ <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+ <Input
+ placeholder={placeholder}
+ value={value}
+ onChange={(e) => setValue(e.target.value)}
+ className="pl-9 bg-card border-border focus-visible:ring-primary"
+ />
+ </div>
+ );
 }

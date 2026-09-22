@@ -7,89 +7,89 @@ import { StatusBadge } from "@/components/common/status-badge";
 import { Search, Filter, ArrowUpRight, CheckCircle2, Clock, XCircle, AlertCircle } from "lucide-react";
 
 const MOCK_PAYOUTS = [
-  { id: "PO-10023", merchantId: "M-1004", beneficiary: "Ravi Kumar", amount: 50000, mode: "IMPS", bank: "HDFC", status: "SUCCESS", date: "2024-03-10T14:30:00Z" },
-  { id: "PO-10022", merchantId: "M-1001", beneficiary: "Priya Singh", amount: 150000, mode: "NEFT", bank: "ICICI", status: "PROCESSING", date: "2024-03-10T14:15:00Z" },
-  { id: "PO-10021", merchantId: "M-1002", beneficiary: "Amit Sharma", amount: 20000, mode: "IMPS", bank: "AXIS", status: "FAILED", date: "2024-03-10T13:45:00Z" },
-  { id: "PO-10020", merchantId: "M-1004", beneficiary: "Neha Gupta", amount: 85000, mode: "RTGS", bank: "SBI", status: "PENDING", date: "2024-03-10T12:00:00Z" },
-  { id: "PO-10019", merchantId: "M-1005", beneficiary: "Ravi Kumar", amount: 12000, mode: "IMPS", bank: "HDFC", status: "SUCCESS", date: "2024-03-10T11:30:00Z" },
+ { id: "PO-10023", merchantId: "M-1004", beneficiary: "Ravi Kumar", amount: 50000, mode: "IMPS", bank: "HDFC", status: "SUCCESS", date: "2024-03-10T14:30:00Z" },
+ { id: "PO-10022", merchantId: "M-1001", beneficiary: "Priya Singh", amount: 150000, mode: "NEFT", bank: "ICICI", status: "PROCESSING", date: "2024-03-10T14:15:00Z" },
+ { id: "PO-10021", merchantId: "M-1002", beneficiary: "Amit Sharma", amount: 20000, mode: "IMPS", bank: "AXIS", status: "FAILED", date: "2024-03-10T13:45:00Z" },
+ { id: "PO-10020", merchantId: "M-1004", beneficiary: "Neha Gupta", amount: 85000, mode: "RTGS", bank: "SBI", status: "PENDING", date: "2024-03-10T12:00:00Z" },
+ { id: "PO-10019", merchantId: "M-1005", beneficiary: "Ravi Kumar", amount: 12000, mode: "IMPS", bank: "HDFC", status: "SUCCESS", date: "2024-03-10T11:30:00Z" },
 ];
 
 export default function PayoutsPage() {
-  return (
-    <div className="flex flex-col gap-8 pb-8">
-      <PageHeader
-        title="Payout Management"
-        description="Monitor and manage all merchant payout transactions."
-        actions={
-          <div className="flex items-center gap-2">
-             <Button variant="outline" className="h-10 rounded-xl bg-white shadow-sm bg-background">
-               Export
-             </Button>
-          </div>
-        }
-      />
+ return (
+ <div className="flex flex-col gap-8 pb-8">
+ <PageHeader
+ title="Payout Management"
+ description="Monitor and manage all merchant payout transactions."
+ actions={
+ <div className="flex items-center gap-2">
+ <Button variant="outline" className="h-10 rounded-xl shadow-sm bg-card">
+ Export
+ </Button>
+ </div>
+ }
+ />
 
-      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-        <StatCard title="Total Volume (Today)" value="₹8.45 Cr" icon={ArrowUpRight} iconColorClass="text-primary" />
-        <StatCard title="Successful" value="1,284" icon={CheckCircle2} iconColorClass="text-success" />
-        <StatCard title="Processing" value="45" icon={Clock} iconColorClass="text-info" />
-        <StatCard title="Failed" value="12" icon={XCircle} iconColorClass="text-danger" alertText="Needs retry" />
-      </div>
+ <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+ <StatCard title="Total Volume (Today)" value="₹8.45 Cr" icon={ArrowUpRight} iconColorClass="text-primary" />
+ <StatCard title="Successful" value="1,284" icon={CheckCircle2} iconColorClass="text-success" />
+ <StatCard title="Processing" value="45" icon={Clock} iconColorClass="text-info" />
+ <StatCard title="Failed" value="12" icon={XCircle} iconColorClass="text-danger" alertText="Needs retry" />
+ </div>
 
-      <div className="flex flex-col rounded-2xl border border-border bg-white shadow-sm border-border bg-background overflow-hidden">
-        <div className="flex flex-col gap-4 border-b border-border p-4 sm:flex-row sm:items-center sm:justify-between border-border">
-          <div className="relative w-full sm:max-w-xs">
-            <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-            <Input placeholder="Search payouts..." className="h-10 w-full rounded-xl pl-9 bg-background border-border bg-background/50 border-border" />
-          </div>
-          <div className="flex items-center gap-3">
-             <Button variant="outline" size="sm" className="h-10 rounded-xl"><Filter className="mr-2 h-4 w-4" />Mode</Button>
-            <Button variant="outline" size="sm" className="h-10 rounded-xl"><Filter className="mr-2 h-4 w-4" />Status</Button>
-          </div>
-        </div>
+ <div className="flex flex-col rounded-2xl border border-border shadow-sm border-border bg-card overflow-hidden">
+ <div className="flex flex-col gap-4 border-b border-border p-4 sm:flex-row sm:items-center sm:justify-between border-border">
+ <div className="relative w-full sm:max-w-xs">
+ <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+ <Input placeholder="Search payouts..." className="h-10 w-full rounded-xl pl-9 bg-card border-border bg-card/50 border-border" />
+ </div>
+ <div className="flex items-center gap-3">
+ <Button variant="outline" size="sm" className="h-10 rounded-xl"><Filter className="mr-2 h-4 w-4" />Mode</Button>
+ <Button variant="outline" size="sm" className="h-10 rounded-xl"><Filter className="mr-2 h-4 w-4" />Status</Button>
+ </div>
+ </div>
 
-        <Table>
-          <TableHeader>
-            <TableRow className="bg-background hover:bg-background bg-card/20 dark:hover:bg-card/20 border-border">
-              <TableHead>Payout ID</TableHead>
-              <TableHead>Date & Time</TableHead>
-              <TableHead>Merchant</TableHead>
-              <TableHead>Beneficiary</TableHead>
-              <TableHead>Mode/Bank</TableHead>
-              <TableHead className="text-right">Amount</TableHead>
-              <TableHead>Status</TableHead>
-              <TableHead className="text-right">Actions</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {MOCK_PAYOUTS.map((item) => (
-              <TableRow key={item.id}>
-                <TableCell className="font-medium text-foreground dark:text-white">{item.id}</TableCell>
-                <TableCell className="text-muted-foreground">{new Date(item.date).toLocaleString()}</TableCell>
-                <TableCell>{item.merchantId}</TableCell>
-                <TableCell className="font-medium text-foreground dark:text-white">{item.beneficiary}</TableCell>
-                <TableCell>
-                  <div className="flex flex-col">
-                    <span className="font-semibold text-xs text-foreground">{item.mode}</span>
-                    <span className="text-xs text-muted-foreground">{item.bank}</span>
-                  </div>
-                </TableCell>
-                <TableCell className="text-right font-medium text-foreground dark:text-white">
-                  ₹{(item.amount).toLocaleString()}
-                </TableCell>
-                <TableCell><StatusBadge status={item.status} /></TableCell>
-                <TableCell className="text-right">
-                  {item.status === 'FAILED' ? (
-                     <Button variant="ghost" size="sm" className="text-warning hover:bg-warning/10">Retry</Button>
-                  ) : (
-                     <Button variant="ghost" size="sm" className="text-primary hover:bg-primary/10">Details</Button>
-                  )}
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </div>
-    </div>
-  );
+ <Table>
+ <TableHeader>
+ <TableRow className="bg-card hover:bg-card bg-card/20 dark:hover:bg-card/20 border-border">
+ <TableHead>Payout ID</TableHead>
+ <TableHead>Date & Time</TableHead>
+ <TableHead>Merchant</TableHead>
+ <TableHead>Beneficiary</TableHead>
+ <TableHead>Mode/Bank</TableHead>
+ <TableHead className="text-right">Amount</TableHead>
+ <TableHead>Status</TableHead>
+ <TableHead className="text-right">Actions</TableHead>
+ </TableRow>
+ </TableHeader>
+ <TableBody>
+ {MOCK_PAYOUTS.map((item) => (
+ <TableRow key={item.id}>
+ <TableCell className="font-medium text-foreground dark:text-white">{item.id}</TableCell>
+ <TableCell className="text-muted-foreground">{new Date(item.date).toLocaleString()}</TableCell>
+ <TableCell>{item.merchantId}</TableCell>
+ <TableCell className="font-medium text-foreground dark:text-white">{item.beneficiary}</TableCell>
+ <TableCell>
+ <div className="flex flex-col">
+ <span className="font-semibold text-xs text-foreground">{item.mode}</span>
+ <span className="text-xs text-muted-foreground">{item.bank}</span>
+ </div>
+ </TableCell>
+ <TableCell className="text-right font-medium text-foreground dark:text-white">
+ ₹{(item.amount).toLocaleString()}
+ </TableCell>
+ <TableCell><StatusBadge status={item.status} /></TableCell>
+ <TableCell className="text-right">
+ {item.status === 'FAILED' ? (
+ <Button variant="ghost" size="sm" className="text-warning hover:bg-warning/10">Retry</Button>
+ ) : (
+ <Button variant="ghost" size="sm" className="text-primary hover:bg-primary/10">Details</Button>
+ )}
+ </TableCell>
+ </TableRow>
+ ))}
+ </TableBody>
+ </Table>
+ </div>
+ </div>
+ );
 }
