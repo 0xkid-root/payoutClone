@@ -30,13 +30,13 @@ export default function UsersPage() {
         <div className="flex flex-col gap-4 border-b border-border p-4 sm:flex-row sm:items-center sm:justify-between border-border">
           <div className="relative w-full sm:max-w-xs">
             <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-            <Input placeholder="Search users by name or email..." className="h-10 w-full rounded-xl pl-9 bg-slate-50 border-border bg-background/50 border-border" />
+            <Input placeholder="Search users by name or email..." className="h-10 w-full rounded-xl pl-9 bg-background border-border bg-background/50 border-border" />
           </div>
         </div>
 
         <Table>
           <TableHeader>
-            <TableRow className="bg-slate-50/50 hover:bg-slate-50/50 bg-card/20 dark:hover:bg-card/20 border-border border-border">
+            <TableRow className="bg-background hover:bg-background bg-card/20 dark:hover:bg-card/20 border-border">
               <TableHead>User Name</TableHead>
               <TableHead>Email Address</TableHead>
               <TableHead>Role</TableHead>
@@ -50,7 +50,7 @@ export default function UsersPage() {
               <TableRow key={item.id}>
                 <TableCell className="font-medium text-foreground dark:text-white">
                   <div className="flex items-center gap-3">
-                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-muted text-slate-600 bg-card dark:text-slate-300">
+                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-muted text-muted-foreground bg-card text-foreground">
                        {item.name.charAt(0)}
                     </div>
                     {item.name}
@@ -60,7 +60,7 @@ export default function UsersPage() {
                 <TableCell>
                   <div className="flex items-center gap-1.5">
                     <ShieldCheck className="h-3 w-3 text-primary" />
-                    <span className="text-xs font-semibold text-slate-700 dark:text-slate-300">{item.role}</span>
+                    <span className="text-xs font-semibold text-foreground">{item.role}</span>
                   </div>
                 </TableCell>
                 <TableCell className="text-muted-foreground text-sm">{item.lastLogin}</TableCell>
