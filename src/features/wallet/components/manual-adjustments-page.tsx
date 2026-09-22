@@ -3,12 +3,12 @@
 import { PageHeader } from "@/components/common/page-header";
 import { useState } from "react";
 import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
+ Table,
+ TableBody,
+ TableCell,
+ TableHead,
+ TableHeader,
+ TableRow,
 } from "@/components/ui/table";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -19,309 +19,309 @@ import { StatusBadge } from "@/components/common/status-badge";
 import { Textarea } from "@/components/ui/textarea";
 
 const formatCurrency = (amount: number) => {
-  return new Intl.NumberFormat("en-IN", {
-    style: "currency",
-    currency: "INR",
-  }).format(amount);
+ return new Intl.NumberFormat("en-IN", {
+ style: "currency",
+ currency: "INR",
+ }).format(amount);
 };
 
 export function ManualAdjustmentsPage() {
-  const { data: adjustments, isLoading: isAdjustmentsLoading } = useManualAdjustmentsQuery();
-  const { data: wallets, isLoading: isWalletsLoading } = useWalletsQuery();
-  const createMutation = useCreateManualAdjustment();
+ const { data: adjustments, isLoading: isAdjustmentsLoading } = useManualAdjustmentsQuery();
+ const { data: wallets, isLoading: isWalletsLoading } = useWalletsQuery();
+ const createMutation = useCreateManualAdjustment();
 
-  // Form State
-  const [selectedWalletId, setSelectedWalletId] = useState("");
-  const [type, setType] = useState<"Credit" | "Debit">("Credit");
-  const [amount, setAmount] = useState("");
-  const [reason, setReason] = useState("");
-  const [remarks, setRemarks] = useState("");
+ // Form State
+ const [selectedWalletId, setSelectedWalletId] = useState("");
+ const [type, setType] = useState<"Credit" | "Debit">("Credit");
+ const [amount, setAmount] = useState("");
+ const [reason, setReason] = useState("");
+ const [remarks, setRemarks] = useState("");
 
-  const selectedWallet = wallets?.find(w => w.id === selectedWalletId);
+ const selectedWallet = wallets?.find(w => w.id === selectedWalletId);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!selectedWalletId || !amount || !reason) return;
+ const handleSubmit = (e: React.FormEvent) => {
+ e.preventDefault();
+ if (!selectedWalletId || !amount || !reason) return;
 
-    createMutation.mutate(
-      {
-        walletId: selectedWalletId,
-        merchantName: selectedWallet?.merchantName || "",
-        type,
-        amount: parseFloat(amount),
-        reason,
-        remarks,
-      },
-      {
-        onSuccess: () => {
-          setSelectedWalletId("");
-          setType("Credit");
-          setAmount("");
-          setReason("");
-          setRemarks("");
-        }
-      }
-    );
-  };
+ createMutation.mutate(
+ {
+ walletId: selectedWalletId,
+ merchantName: selectedWallet?.merchantName || "",
+ type,
+ amount: parseFloat(amount),
+ reason,
+ remarks,
+ },
+ {
+ onSuccess: () => {
+ setSelectedWalletId("");
+ setType("Credit");
+ setAmount("");
+ setReason("");
+ setRemarks("");
+ }
+ }
+ );
+ };
 
-  return (
-    <div className="flex flex-col gap-8 pb-8">
-      <PageHeader
-        title="Manual Wallet Adjustment"
-        description="Submit manual wallet adjustments for maker-checker review."
-      />
+ return (
+ <div className="flex flex-col gap-8 pb-8">
+ <PageHeader
+ title="Manual Wallet Adjustment"
+ description="Submit manual wallet adjustments for maker-checker review."
+ />
 
-      <div className="grid lg:grid-cols-12 gap-8">
-        {/* Form Section */}
-        <div className="lg:col-span-7 xl:col-span-8 flex flex-col gap-6">
-          <div className="rounded-2xl border border-border/60 bg-white shadow-sm border-border bg-background p-8">
-            <div className="flex items-center justify-between mb-8 pb-4 border-b border-border">
-              <div className="flex items-center gap-3 text-primary dark:text-primary">
-                <div className="p-2 bg-primary/10 dark:bg-primary/10 rounded-lg">
-                  <AlertCircle className="h-5 w-5" />
-                </div>
-                <h2 className="text-lg font-bold tracking-tight">Adjustment Details</h2>
-              </div>
-            </div>
+ <div className="grid lg:grid-cols-12 gap-8">
+ {/* Form Section */}
+ <div className="lg:col-span-7 xl:col-span-8 flex flex-col gap-6">
+ <div className="rounded-2xl border border-border/60 shadow-sm border-border bg-card p-8">
+ <div className="flex items-center justify-between mb-8 pb-4 border-b border-border">
+ <div className="flex items-center gap-3 text-primary dark:text-primary">
+ <div className="p-2 bg-primary/10 dark:bg-primary/10 rounded-lg">
+ <AlertCircle className="h-5 w-5" />
+ </div>
+ <h2 className="text-lg font-bold tracking-tight">Adjustment Details</h2>
+ </div>
+ </div>
 
-            <form onSubmit={handleSubmit} className="flex flex-col gap-6">
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="flex flex-col gap-2.5">
-                  <label className="text-sm font-semibold text-foreground">Merchant Wallet <span className="text-danger">*</span></label>
-                  <Select value={selectedWalletId} onValueChange={(val) => setSelectedWalletId(val || "")}>
-                    <SelectTrigger className="w-full bg-background/50 h-11 rounded-xl">
-                      <SelectValue placeholder="Select a merchant wallet" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {wallets?.map(w => (
-                        <SelectItem key={w.id} value={w.id}>{w.merchantName} ({w.id})</SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                  {selectedWallet && (
-                    <p className="text-xs font-medium text-muted-foreground mt-1">
-                      Available Balance: <span className="text-foreground dark:text-white font-bold">{formatCurrency(selectedWallet.availableBalance)}</span>
-                    </p>
-                  )}
-                </div>
+ <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+ <div className="grid md:grid-cols-2 gap-6">
+ <div className="flex flex-col gap-2.5">
+ <label className="text-sm font-semibold text-foreground">Merchant Wallet <span className="text-danger">*</span></label>
+ <Select value={selectedWalletId} onValueChange={(val) => setSelectedWalletId(val || "")}>
+ <SelectTrigger className="w-full bg-card/50 h-11 rounded-xl">
+ <SelectValue placeholder="Select a merchant wallet" />
+ </SelectTrigger>
+ <SelectContent>
+ {wallets?.map(w => (
+ <SelectItem key={w.id} value={w.id}>{w.merchantName} ({w.id})</SelectItem>
+ ))}
+ </SelectContent>
+ </Select>
+ {selectedWallet && (
+ <p className="text-xs font-medium text-muted-foreground mt-1">
+ Available Balance: <span className="text-foreground dark:text-white font-bold">{formatCurrency(selectedWallet.availableBalance)}</span>
+ </p>
+ )}
+ </div>
 
-                <div className="flex flex-col gap-2.5">
-                  <label className="text-sm font-semibold text-foreground">Reason for Adjustment <span className="text-danger">*</span></label>
-                  <Select value={reason} onValueChange={(val) => setReason(val || "")}>
-                    <SelectTrigger className="w-full bg-background/50 h-11 rounded-xl">
-                      <SelectValue placeholder="Select reason" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="Refund for failed payout fee">Refund for failed payout fee</SelectItem>
-                      <SelectItem value="Setup fee deduction">Setup fee deduction</SelectItem>
-                      <SelectItem value="Promotional credit">Promotional credit</SelectItem>
-                      <SelectItem value="Correction of previous entry">Correction of previous entry</SelectItem>
-                      <SelectItem value="Chargeback deduction">Chargeback deduction</SelectItem>
-                      <SelectItem value="Other">Other</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-              </div>
+ <div className="flex flex-col gap-2.5">
+ <label className="text-sm font-semibold text-foreground">Reason for Adjustment <span className="text-danger">*</span></label>
+ <Select value={reason} onValueChange={(val) => setReason(val || "")}>
+ <SelectTrigger className="w-full bg-card/50 h-11 rounded-xl">
+ <SelectValue placeholder="Select reason" />
+ </SelectTrigger>
+ <SelectContent>
+ <SelectItem value="Refund for failed payout fee">Refund for failed payout fee</SelectItem>
+ <SelectItem value="Setup fee deduction">Setup fee deduction</SelectItem>
+ <SelectItem value="Promotional credit">Promotional credit</SelectItem>
+ <SelectItem value="Correction of previous entry">Correction of previous entry</SelectItem>
+ <SelectItem value="Chargeback deduction">Chargeback deduction</SelectItem>
+ <SelectItem value="Other">Other</SelectItem>
+ </SelectContent>
+ </Select>
+ </div>
+ </div>
 
-              <div className="flex flex-col gap-2.5 mt-2">
-                <label className="text-sm font-semibold text-foreground">Adjustment Type <span className="text-danger">*</span></label>
-                <div className="grid grid-cols-2 gap-4">
-                  <div 
-                    className={`border-2 rounded-xl p-4 cursor-pointer flex items-center gap-4 transition-all duration-200 ${type === "Credit" ? "border-emerald-500 bg-success/10/50 dark:bg-emerald-900/10 shadow-sm" : "border-border hover:border-success/30 hover:bg-background dark:hover:bg-card/50"}`}
-                    onClick={() => setType("Credit")}
-                  >
-                    <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${type === "Credit" ? "border-emerald-500" : "border-border"}`}>
-                      {type === "Credit" && <div className="w-2.5 h-2.5 rounded-full bg-success/100" />}
-                    </div>
-                    <div>
-                      <p className={`font-bold ${type === "Credit" ? "text-emerald-700 dark:text-emerald-400" : "text-foreground"}`}>Credit</p>
-                      <p className="text-xs text-muted-foreground font-medium">Add funds to wallet</p>
-                    </div>
-                  </div>
-                  <div 
-                    className={`border-2 rounded-xl p-4 cursor-pointer flex items-center gap-4 transition-all duration-200 ${type === "Debit" ? "border-red-500 bg-danger/10/50 dark:bg-red-900/10 shadow-sm" : "border-border hover:border-danger/30 hover:bg-background dark:hover:bg-card/50"}`}
-                    onClick={() => setType("Debit")}
-                  >
-                    <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${type === "Debit" ? "border-red-500" : "border-border"}`}>
-                      {type === "Debit" && <div className="w-2.5 h-2.5 rounded-full bg-danger/100" />}
-                    </div>
-                    <div>
-                      <p className={`font-bold ${type === "Debit" ? "text-danger dark:text-red-400" : "text-foreground"}`}>Debit</p>
-                      <p className="text-xs text-muted-foreground font-medium">Deduct from wallet</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+ <div className="flex flex-col gap-2.5 mt-2">
+ <label className="text-sm font-semibold text-foreground">Adjustment Type <span className="text-danger">*</span></label>
+ <div className="grid grid-cols-2 gap-4">
+ <div 
+ className={`border-2 rounded-xl p-4 cursor-pointer flex items-center gap-4 transition-all duration-200 ${type === "Credit" ? "border-emerald-500 bg-success/10/50 dark:bg-emerald-900/10 shadow-sm" : "border-border hover:border-success/30 hover:bg-card dark:hover:bg-card/50"}`}
+ onClick={() => setType("Credit")}
+ >
+ <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${type === "Credit" ? "border-emerald-500" : "border-border"}`}>
+ {type === "Credit" && <div className="w-2.5 h-2.5 rounded-full bg-success/100" />}
+ </div>
+ <div>
+ <p className={`font-bold ${type === "Credit" ? "text-emerald-700 dark:text-emerald-400" : "text-foreground"}`}>Credit</p>
+ <p className="text-xs text-muted-foreground font-medium">Add funds to wallet</p>
+ </div>
+ </div>
+ <div 
+ className={`border-2 rounded-xl p-4 cursor-pointer flex items-center gap-4 transition-all duration-200 ${type === "Debit" ? "border-red-500 bg-danger/10/50 dark:bg-red-900/10 shadow-sm" : "border-border hover:border-danger/30 hover:bg-card dark:hover:bg-card/50"}`}
+ onClick={() => setType("Debit")}
+ >
+ <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${type === "Debit" ? "border-red-500" : "border-border"}`}>
+ {type === "Debit" && <div className="w-2.5 h-2.5 rounded-full bg-danger/100" />}
+ </div>
+ <div>
+ <p className={`font-bold ${type === "Debit" ? "text-danger dark:text-red-400" : "text-foreground"}`}>Debit</p>
+ <p className="text-xs text-muted-foreground font-medium">Deduct from wallet</p>
+ </div>
+ </div>
+ </div>
+ </div>
 
-              <div className="flex flex-col gap-2.5 mt-2">
-                <label className="text-sm font-semibold text-foreground">Amount <span className="text-danger">*</span></label>
-                <div className="relative">
-                  <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                    <span className="text-muted-foreground text-lg font-semibold">₹</span>
-                  </div>
-                  <Input 
-                    type="number" 
-                    placeholder="0.00" 
-                    value={amount}
-                    onChange={(e) => setAmount(e.target.value)}
-                    className="pl-10 bg-background/50 text-xl font-bold h-14 rounded-xl border-border/60 border-border"
-                    min="1"
-                  />
-                </div>
-              </div>
+ <div className="flex flex-col gap-2.5 mt-2">
+ <label className="text-sm font-semibold text-foreground">Amount <span className="text-danger">*</span></label>
+ <div className="relative">
+ <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+ <span className="text-muted-foreground text-lg font-semibold">₹</span>
+ </div>
+ <Input 
+ type="number" 
+ placeholder="0.00" 
+ value={amount}
+ onChange={(e) => setAmount(e.target.value)}
+ className="pl-10 bg-card/50 text-xl font-bold h-14 rounded-xl border-border/60 border-border"
+ min="1"
+ />
+ </div>
+ </div>
 
-              <div className="flex flex-col gap-2.5 mt-2">
-                <label className="text-sm font-semibold text-foreground">Remarks / Reference Ticket</label>
-                <Textarea 
-                  placeholder="Provide any additional context or ticket references..."
-                  value={remarks}
-                  onChange={(e) => setRemarks(e.target.value)}
-                  className="bg-background/50 resize-none rounded-xl border-border/60 border-border"
-                  rows={3}
-                />
-              </div>
+ <div className="flex flex-col gap-2.5 mt-2">
+ <label className="text-sm font-semibold text-foreground">Remarks / Reference Ticket</label>
+ <Textarea 
+ placeholder="Provide any additional context or ticket references..."
+ value={remarks}
+ onChange={(e) => setRemarks(e.target.value)}
+ className="bg-card/50 resize-none rounded-xl border-border/60 border-border"
+ rows={3}
+ />
+ </div>
 
-              <div className="pt-4 border-t border-border flex items-center justify-between">
-                <div className="text-xs text-muted-foreground max-w-[250px] leading-relaxed">
-                  Requires <span className="font-semibold text-foreground">checker approval</span> before reflecting in ledger.
-                </div>
-                <Button 
-                  type="submit" 
-                  className="h-12 px-8 rounded-xl bg-primary hover:bg-primary/90 text-white font-semibold shadow-sm transition-all"
-                  disabled={!selectedWalletId || !amount || !reason || createMutation.isPending}
-                >
-                  {createMutation.isPending ? "Submitting..." : "Submit for Approval"}
-                </Button>
-              </div>
-            </form>
-          </div>
-        </div>
+ <div className="pt-4 border-t border-border flex items-center justify-between">
+ <div className="text-xs text-muted-foreground max-w-[250px] leading-relaxed">
+ Requires <span className="font-semibold text-foreground">checker approval</span> before reflecting in ledger.
+ </div>
+ <Button 
+ type="submit" 
+ className="h-12 px-8 rounded-xl bg-primary hover:bg-primary/90 text-white font-semibold shadow-sm transition-all"
+ disabled={!selectedWalletId || !amount || !reason || createMutation.isPending}
+ >
+ {createMutation.isPending ? "Submitting..." : "Submit for Approval"}
+ </Button>
+ </div>
+ </form>
+ </div>
+ </div>
 
-        {/* Workflow Side */}
-        <div className="lg:col-span-5 xl:col-span-4">
-          <div className="rounded-2xl border border-border/60 bg-background shadow-sm border-border bg-background/30 p-6 sm:p-8 sticky top-6">
-            <div className="flex items-center gap-3 mb-8">
-              <div className="p-2 bg-emerald-100 dark:bg-emerald-900/30 rounded-lg">
-                <CheckCircle2 className="h-5 w-5 text-success dark:text-success" />
-              </div>
-              <h3 className="text-lg font-bold tracking-tight text-foreground dark:text-white">
-                Maker-Checker Flow
-              </h3>
-            </div>
-            
-            <div className="flex flex-col gap-6 relative before:absolute before:inset-y-4 before:left-[15px] before:w-0.5 before:bg-muted dark:before:bg-card">
-              <div className="flex gap-5 relative z-10">
-                <div className="w-8 h-8 rounded-full bg-primary/20 text-primary flex items-center justify-center flex-shrink-0 border-4 border-slate-50 dark:border-[#0f172a] dark:bg-primary/10 dark:text-primary">
-                  <span className="text-xs font-bold">1</span>
-                </div>
-                <div className="pt-1.5">
-                  <h4 className="text-sm font-bold text-foreground dark:text-white">Adjustment Created</h4>
-                  <p className="text-sm text-muted-foreground mt-1 leading-relaxed">Maker (you) submits the adjustment details with a reason and amount.</p>
-                </div>
-              </div>
-              <div className="flex gap-5 relative z-10">
-                <div className="w-8 h-8 rounded-full bg-muted text-muted-foreground flex items-center justify-center flex-shrink-0 border-4 border-slate-50 dark:border-[#0f172a] bg-card text-muted-foreground">
-                  <span className="text-xs font-bold">2</span>
-                </div>
-                <div className="pt-1.5">
-                  <h4 className="text-sm font-bold text-foreground dark:text-white">Pending Review</h4>
-                  <p className="text-sm text-muted-foreground mt-1 leading-relaxed">A secondary administrator (checker) reviews and verifies the request.</p>
-                </div>
-              </div>
-              <div className="flex gap-5 relative z-10">
-                <div className="w-8 h-8 rounded-full bg-muted text-muted-foreground flex items-center justify-center flex-shrink-0 border-4 border-slate-50 dark:border-[#0f172a] bg-card text-muted-foreground">
-                  <span className="text-xs font-bold">3</span>
-                </div>
-                <div className="pt-1.5">
-                  <h4 className="text-sm font-bold text-foreground dark:text-white">Ledger Updated</h4>
-                  <p className="text-sm text-muted-foreground mt-1 leading-relaxed">Once approved, funds are automatically credited or debited.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+ {/* Workflow Side */}
+ <div className="lg:col-span-5 xl:col-span-4">
+ <div className="rounded-2xl border border-border/60 bg-card shadow-sm border-border bg-card/30 p-6 sm:p-8 sticky top-6">
+ <div className="flex items-center gap-3 mb-8">
+ <div className="p-2 bg-emerald-100 dark:bg-emerald-900/30 rounded-lg">
+ <CheckCircle2 className="h-5 w-5 text-success dark:text-success" />
+ </div>
+ <h3 className="text-lg font-bold tracking-tight text-foreground dark:text-white">
+ Maker-Checker Flow
+ </h3>
+ </div>
+ 
+ <div className="flex flex-col gap-6 relative before:absolute before:inset-y-4 before:left-[15px] before:w-0.5 before:bg-muted dark:before:bg-card">
+ <div className="flex gap-5 relative z-10">
+ <div className="w-8 h-8 rounded-full bg-primary/20 text-primary flex items-center justify-center flex-shrink-0 border-4 border-slate-50 dark:border-[#0f172a] dark:bg-primary/10 dark:text-primary">
+ <span className="text-xs font-bold">1</span>
+ </div>
+ <div className="pt-1.5">
+ <h4 className="text-sm font-bold text-foreground dark:text-white">Adjustment Created</h4>
+ <p className="text-sm text-muted-foreground mt-1 leading-relaxed">Maker (you) submits the adjustment details with a reason and amount.</p>
+ </div>
+ </div>
+ <div className="flex gap-5 relative z-10">
+ <div className="w-8 h-8 rounded-full bg-muted text-muted-foreground flex items-center justify-center flex-shrink-0 border-4 border-slate-50 dark:border-[#0f172a] bg-card text-muted-foreground">
+ <span className="text-xs font-bold">2</span>
+ </div>
+ <div className="pt-1.5">
+ <h4 className="text-sm font-bold text-foreground dark:text-white">Pending Review</h4>
+ <p className="text-sm text-muted-foreground mt-1 leading-relaxed">A secondary administrator (checker) reviews and verifies the request.</p>
+ </div>
+ </div>
+ <div className="flex gap-5 relative z-10">
+ <div className="w-8 h-8 rounded-full bg-muted text-muted-foreground flex items-center justify-center flex-shrink-0 border-4 border-slate-50 dark:border-[#0f172a] bg-card text-muted-foreground">
+ <span className="text-xs font-bold">3</span>
+ </div>
+ <div className="pt-1.5">
+ <h4 className="text-sm font-bold text-foreground dark:text-white">Ledger Updated</h4>
+ <p className="text-sm text-muted-foreground mt-1 leading-relaxed">Once approved, funds are automatically credited or debited.</p>
+ </div>
+ </div>
+ </div>
+ </div>
+ </div>
+ </div>
 
-      {/* History Table */}
-      <div className="flex flex-col gap-4 mt-6">
-        <div className="flex items-center justify-between">
-          <h2 className="text-xl font-bold tracking-tight text-foreground dark:text-white flex items-center gap-2">
-            <FileText className="h-5 w-5 text-muted-foreground" />
-            Recent Adjustments
-          </h2>
-        </div>
+ {/* History Table */}
+ <div className="flex flex-col gap-4 mt-6">
+ <div className="flex items-center justify-between">
+ <h2 className="text-xl font-bold tracking-tight text-foreground dark:text-white flex items-center gap-2">
+ <FileText className="h-5 w-5 text-muted-foreground" />
+ Recent Adjustments
+ </h2>
+ </div>
 
-        <div className="rounded-2xl border border-border/60 bg-white shadow-sm border-border bg-background overflow-hidden">
-          <div className="overflow-x-auto">
-            <Table>
-              <TableHeader className="bg-background/50">
-                <TableRow className="hover:bg-transparent border-border">
-                  <TableHead className="h-12 px-6 text-xs font-semibold uppercase tracking-wider text-muted-foreground">ID / Date</TableHead>
-                  <TableHead className="h-12 px-6 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Merchant Details</TableHead>
-                  <TableHead className="h-12 px-6 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Reason</TableHead>
-                  <TableHead className="h-12 px-6 text-xs font-semibold uppercase tracking-wider text-muted-foreground text-right">Amount</TableHead>
-                  <TableHead className="h-12 px-6 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Status</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {isAdjustmentsLoading ? (
-                  Array(4).fill(0).map((_, i) => (
-                    <TableRow key={i} className="border-border/50">
-                      <TableCell colSpan={5} className="p-6">
-                        <div className="h-5 w-full bg-muted bg-card rounded animate-pulse"></div>
-                      </TableCell>
-                    </TableRow>
-                  ))
-                ) : adjustments?.length === 0 ? (
-                  <TableRow>
-                    <TableCell colSpan={5} className="h-32 text-center text-muted-foreground">
-                      No adjustment history found.
-                    </TableCell>
-                  </TableRow>
-                ) : adjustments?.map((adj) => (
-                  <TableRow key={adj.id} className="border-border/50 hover:bg-background dark:hover:bg-card/30 transition-colors">
-                    <TableCell className="p-4 px-6">
-                      <div className="flex flex-col">
-                        <span className="font-semibold text-foreground dark:text-white text-[14px]">{adj.id}</span>
-                        <span className="text-[13px] text-muted-foreground mt-0.5">{new Date(adj.createdDate).toLocaleDateString('en-GB', { day: '2-digit', month: 'short' })}</span>
-                      </div>
-                    </TableCell>
-                    <TableCell className="p-4 px-6">
-                      <div className="flex flex-col">
-                        <span className="font-semibold text-foreground text-[14px]">{adj.merchantName}</span>
-                        <span className="text-[13px] text-muted-foreground font-mono mt-0.5">{adj.walletId}</span>
-                      </div>
-                    </TableCell>
-                    <TableCell className="p-4 px-6">
-                      <div className="flex flex-col max-w-[250px]">
-                        <span className="text-[14px] font-medium text-foreground truncate" title={adj.reason}>{adj.reason}</span>
-                        <span className="text-[13px] text-muted-foreground mt-0.5 truncate">by {adj.createdBy}</span>
-                      </div>
-                    </TableCell>
-                    <TableCell className="p-4 px-6 text-right">
-                      <div className="flex flex-col items-end gap-1.5">
-                        <span className={`font-bold tabular-nums text-[15px] ${
-                          adj.type === "Credit" ? "text-success dark:text-success" : "text-danger dark:text-danger"
-                        }`}>
-                          {adj.type === "Credit" ? "+" : "-"}{formatCurrency(adj.amount)}
-                        </span>
-                        <span className={`inline-flex items-center rounded border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider ${
-                          adj.type === "Credit" ? "border-success/30 bg-success/10 text-success dark:bg-success/100/10" : "border-danger/30 bg-danger/10 text-danger dark:bg-danger/100/10"
-                        }`}>
-                          {adj.type}
-                        </span>
-                      </div>
-                    </TableCell>
-                    <TableCell className="p-4 px-6">
-                      <StatusBadge status={adj.status} />
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+ <div className="rounded-2xl border border-border/60 shadow-sm border-border bg-card overflow-hidden">
+ <div className="overflow-x-auto">
+ <Table>
+ <TableHeader className="bg-card/50">
+ <TableRow className="hover:bg-transparent border-border">
+ <TableHead className="h-12 px-6 text-xs font-semibold uppercase tracking-wider text-muted-foreground">ID / Date</TableHead>
+ <TableHead className="h-12 px-6 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Merchant Details</TableHead>
+ <TableHead className="h-12 px-6 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Reason</TableHead>
+ <TableHead className="h-12 px-6 text-xs font-semibold uppercase tracking-wider text-muted-foreground text-right">Amount</TableHead>
+ <TableHead className="h-12 px-6 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Status</TableHead>
+ </TableRow>
+ </TableHeader>
+ <TableBody>
+ {isAdjustmentsLoading ? (
+ Array(4).fill(0).map((_, i) => (
+ <TableRow key={i} className="border-border/50">
+ <TableCell colSpan={5} className="p-6">
+ <div className="h-5 w-full bg-muted bg-card rounded animate-pulse"></div>
+ </TableCell>
+ </TableRow>
+ ))
+ ) : adjustments?.length === 0 ? (
+ <TableRow>
+ <TableCell colSpan={5} className="h-32 text-center text-muted-foreground">
+ No adjustment history found.
+ </TableCell>
+ </TableRow>
+ ) : adjustments?.map((adj) => (
+ <TableRow key={adj.id} className="border-border/50 hover:bg-card dark:hover:bg-card/30 transition-colors">
+ <TableCell className="p-4 px-6">
+ <div className="flex flex-col">
+ <span className="font-semibold text-foreground dark:text-white text-[14px]">{adj.id}</span>
+ <span className="text-[13px] text-muted-foreground mt-0.5">{new Date(adj.createdDate).toLocaleDateString('en-GB', { day: '2-digit', month: 'short' })}</span>
+ </div>
+ </TableCell>
+ <TableCell className="p-4 px-6">
+ <div className="flex flex-col">
+ <span className="font-semibold text-foreground text-[14px]">{adj.merchantName}</span>
+ <span className="text-[13px] text-muted-foreground font-mono mt-0.5">{adj.walletId}</span>
+ </div>
+ </TableCell>
+ <TableCell className="p-4 px-6">
+ <div className="flex flex-col max-w-[250px]">
+ <span className="text-[14px] font-medium text-foreground truncate" title={adj.reason}>{adj.reason}</span>
+ <span className="text-[13px] text-muted-foreground mt-0.5 truncate">by {adj.createdBy}</span>
+ </div>
+ </TableCell>
+ <TableCell className="p-4 px-6 text-right">
+ <div className="flex flex-col items-end gap-1.5">
+ <span className={`font-bold tabular-nums text-[15px] ${
+ adj.type === "Credit" ? "text-success dark:text-success" : "text-danger dark:text-danger"
+ }`}>
+ {adj.type === "Credit" ? "+" : "-"}{formatCurrency(adj.amount)}
+ </span>
+ <span className={`inline-flex items-center rounded border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider ${
+ adj.type === "Credit" ? "border-success/30 bg-success/10 text-success dark:bg-success/100/10" : "border-danger/30 bg-danger/10 text-danger dark:bg-danger/100/10"
+ }`}>
+ {adj.type}
+ </span>
+ </div>
+ </TableCell>
+ <TableCell className="p-4 px-6">
+ <StatusBadge status={adj.status} />
+ </TableCell>
+ </TableRow>
+ ))}
+ </TableBody>
+ </Table>
+ </div>
+ </div>
+ </div>
+ </div>
+ );
 }
