@@ -10,7 +10,7 @@ export function AdminLayout({ children }: { children: React.ReactNode }) {
   const [isDesktopCollapsed, setIsDesktopCollapsed] = useState(false);
 
   return (
-    <div className="flex h-screen w-full bg-white dark:bg-slate-950 overflow-hidden relative">
+    <div className="flex h-screen w-full bg-white bg-background overflow-hidden relative">
       {/* Desktop Sidebar */}
       <div
         className={cn(
