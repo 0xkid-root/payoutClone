@@ -46,15 +46,15 @@ export function ApproveDialog({ isOpen, onClose, onSuccess, request }: ApproveDi
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle className="flex items-center gap-2 text-emerald-700 dark:text-emerald-500">
+          <DialogTitle className="flex items-center gap-2 text-emerald-700 dark:text-success">
             <AlertCircle className="h-5 w-5" />
             Approve Request?
           </DialogTitle>
-          <DialogDescription className="pt-3 text-slate-600 dark:text-slate-300">
+          <DialogDescription className="pt-3 text-muted-foreground text-foreground">
             Are you sure you want to approve this bank account for wallet funding? This will authorize the merchant to request funds from this account.
           </DialogDescription>
         </DialogHeader>
-        <div className="bg-slate-50 bg-background/50 p-4 rounded-lg my-2 border border-slate-100 border-border">
+        <div className="bg-background/50 p-4 rounded-lg my-2 border border-border">
           <p className="text-sm text-muted-foreground mb-1">Merchant: <span className="font-semibold text-foreground dark:text-white">{request.merchantName}</span></p>
           <p className="text-sm text-muted-foreground mb-1">Bank: <span className="font-semibold text-foreground dark:text-white">{request.bankName}</span></p>
           <p className="text-sm text-muted-foreground">Account: <span className="font-mono font-medium text-foreground dark:text-white">{maskAccountNumber(request.accountNumber)}</span></p>
